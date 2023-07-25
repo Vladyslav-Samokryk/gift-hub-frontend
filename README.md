@@ -1,46 +1,105 @@
-# Getting Started with Create React App
+# GiftHub
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
-## Available Scripts
+## Description
 
-In the project directory, you can run:
+Online shop description.
 
-### `npm start`
+## Table of Contents
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [Setup](#setup)
+- [Usage](#usage)
+- [Structure](#structure)
+- [License](#license)
+- [.env](#env)
+- [Contact](#contact)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Setup
 
-### `npm test`
+```bash
+# clone project by https
+git clone https://github.com/Vladyslav-Samokryk/gift-hub-frontend.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<details>
+<summary>Download project zip:</summary>
+    <a href="https://github.com/Vladyslav-Samokryk/gift-hub-frontend/archive/refs/heads/master.zip">
+        GiftHub.zip
+    </a>
+</details>
 
-### `npm run build`
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+# open folder with project
+cd gift-hub-frontend
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# install
+$ yarn
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+```bash
+# run application in development mode
+$ npm run dev
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# run application in production watch mode
+$ npm run preview
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+# build application
+$ npm run build
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# analyzing code for potential errors, bugs, and style issues
+$ npm run lint
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+# automatically fixing some of the linting issues
+$ npm run lint-fix
+```
 
-## Learn More
+## Structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Here's the directory structure of the project:<br>
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `dist`
+- `public`
+- `src`
+  - `app`
+  - `pages`
+  - `shared`
+
+<br>
+
+| Folder   | Description                                     |
+| -------- | ----------------------------------------------- |
+| `dist`   | Contain all code of application for production. |
+| `public` | Contain all static assets.                      |
+| `src`    | Contains all the source code of application.    |
+
+## .env
+
+The project utilizes a `.env` file to manage configuration settings.
+<br/>
+To configure all variables for the application, create a `.env` file in the root directory of the project.
+
+Add the following variables and replace `###` with the desired values:
+
+```bash
+# Application Configuration
+VITE_APP_API_URL=###
+VITE_NODE_ENV=###
+```
+
+> Look at `.env.example` file in the root of the project for example.
+
+## Contact
+
+If you have any questions or feedback regarding the project, feel free to contact:
+
+- Email: gift.hub@gmail.com
+- GitHub: [GiftHub](https://github.com/Vladyslav-Samokryk/gift-hub-frontend)
+
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
