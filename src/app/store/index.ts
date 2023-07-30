@@ -1,9 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import type { AnyAction, Dispatch, Middleware } from "@reduxjs/toolkit";
-import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
+import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 import { createLogger } from "redux-logger";
-import { rootReducer } from "./rootReducer";
+
+import rootReducer from "./rootReducer";
 import { isDevEnv } from "../config";
 
 type MiddlewarePointType = Middleware<Record<string, unknown>, unknown, Dispatch<AnyAction>>;
