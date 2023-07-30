@@ -1,5 +1,5 @@
-import { defineConfig } from "vite"
-import react from "@vitejs/plugin-react"
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 import { resolve } from "path";
 
 const publicDir = resolve(__dirname, "./public");
@@ -10,6 +10,7 @@ const appDir = resolve(root, "./app");
 const pagesDir = resolve(root, "./pages");
 const sharedDir = resolve(root, "./shared");
 const assetsDir = resolve(sharedDir, "./assets");
+const i18nDir = resolve(appDir, "./i18n/index.ts");
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -22,6 +23,7 @@ export default defineConfig({
       "@assets": assetsDir,
       "@shared": sharedDir,
       "@pages": pagesDir,
+      "@i18n": i18nDir,
     },
   },
   // dev new port
@@ -32,4 +34,4 @@ export default defineConfig({
   preview: {
     port: 3000,
   },
-})
+});

@@ -49,7 +49,7 @@ module.exports = {
                 requireLast: true,
             },
         }],
-        "@typescript-eslint/semi": "off",
+        "@typescript-eslint/semi": ["error", "always"],
         "react/react-in-jsx-scope": "off",
         "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
         "@typescript-eslint/consistent-type-imports": [
