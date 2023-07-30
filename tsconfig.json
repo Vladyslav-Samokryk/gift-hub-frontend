@@ -38,7 +38,10 @@
       ],
       "@public/*": [
         "public/*"
-      ]
+      ],
+      "@i18n": [
+        "src/app/i18n/index.ts"
+      ],
     }
   },
   "include": [
