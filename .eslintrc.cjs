@@ -59,6 +59,20 @@ module.exports = {
         "@typescript-eslint/triple-slash-reference": ["error", { types: "prefer-import" }],
         "react/display-name": "off",
         "@typescript-eslint/strict-boolean-expressions": "off",
+        "@typescript-eslint/naming-convention": [
+            "error",
+            {
+                selector: "variable",
+                format: null,
+            },
+        ],
+        "@typescript-eslint/no-confusing-void-expression": [
+            "off",
+            {
+                allowArrowShorthand: true,
+                ignoreVoidOperator: true
+            }
+        ],
     },
     ignorePatterns: [".eslintrc.cjs"],
-}
+};

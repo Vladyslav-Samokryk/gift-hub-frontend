@@ -4,8 +4,8 @@ import { setupListeners } from "@reduxjs/toolkit/dist/query";
 import { useDispatch, useSelector, type TypedUseSelectorHook } from "react-redux";
 import { createLogger } from "redux-logger";
 
+import { isDevEnv } from "@config";
 import rootReducer from "./rootReducer";
-import { isDevEnv } from "../config";
 
 type MiddlewarePointType = Middleware<Record<string, unknown>, unknown, Dispatch<AnyAction>>;
 type GetDefaultMiddlewareType = Array<Middleware<Record<string, unknown>, unknown, Dispatch<AnyAction>>>;

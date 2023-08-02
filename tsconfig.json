@@ -27,20 +27,35 @@
       "@app/*": [
         "src/app/*"
       ],
-      "@shared/*": [
-        "src/shared/*"
+      "@api": [
+        "src/app/api"
       ],
-      "@assets/*": [
-        "src/shared/assets/*"
-      ],
-      "@pages/*": [
-        "src/pages/*"
-      ],
-      "@public/*": [
-        "public/*"
+      "@config": [
+        "src/app/config"
       ],
       "@i18n": [
         "src/app/i18n/index.ts"
+      ],
+      "@layouts": [
+        "src/app/layouts"
+      ],
+      "@navigation": [
+        "src/app/navigation"
+      ],
+      "@store": [
+        "src/app/store"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@shared": [
+        "src/shared/index.ts"
+      ],
+      "@pages": [
+        "src/pages"
+      ],
+      "@public/*": [
+        "public/*"
       ],
     }
   },
