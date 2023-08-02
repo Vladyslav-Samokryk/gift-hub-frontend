@@ -8,9 +8,15 @@ const root = resolve(__dirname, "./src");
 
 const appDir = resolve(root, "./app");
 const pagesDir = resolve(root, "./pages");
+const componentsDir = resolve(root, "./components");
 const sharedDir = resolve(root, "./shared");
-const assetsDir = resolve(sharedDir, "./assets");
+
 const i18nDir = resolve(appDir, "./i18n/index.ts");
+const configDir = resolve(appDir, "./config");
+const apiDir = resolve(appDir, "./api");
+const navigationDir = resolve(appDir, "./navigation");
+const storeDir = resolve(appDir, "./store");
+const layoutsDir = resolve(appDir, "./layouts");
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -20,10 +26,15 @@ export default defineConfig({
     alias: {
       "@src": root,
       "@app": appDir,
-      "@assets": assetsDir,
+      "@api": apiDir,
+      "@config": configDir,
+      "@i18n": i18nDir,
+      "@layouts": layoutsDir,
+      "@navigation": navigationDir,
+      "@store": storeDir,
+      "@components": componentsDir,
       "@shared": sharedDir,
       "@pages": pagesDir,
-      "@i18n": i18nDir,
     },
   },
   // dev new port

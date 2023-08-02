@@ -1,5 +1,5 @@
 import i18n from "i18next";
-import { initReactI18next, useTranslation } from "react-i18next";
+import { initReactI18next } from "react-i18next";
 
 import { en } from "./locales/en";
 import { uk } from "./locales/uk";
@@ -15,5 +15,3 @@ i18n
     debug: true,
     lng: "en",
   });
-
-export const useTypedTranslation = (): ((key: TranslationKeys) => string) => useTranslation().t;

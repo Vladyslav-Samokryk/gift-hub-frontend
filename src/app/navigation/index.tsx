@@ -7,11 +7,10 @@ import {
   Settings,
   Contacts,
   Main,
-  // NotFound,
-  ShopingCart,
+  ShoppingCart,
   Product,
-} from "@src/pages";
-import { Layout } from "./Layout";
+} from "@pages";
+import { Layout, PrivateLayout } from "@layouts";
 
 export const Routing = (): JSX.Element => {
   return (
@@ -26,7 +25,9 @@ export const Routing = (): JSX.Element => {
         <Route path="contacts" element={<Contacts />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="settings" element={<Settings />} />
-        <Route path="shoping-cart" element={<ShopingCart />} />
+        <Route path="shopping-cart" element={<PrivateLayout />}>
+          <Route index element={<ShoppingCart />} />
+        </Route>
       </Route>
       <Route path="*" element={<Navigate to="/" />} />
     </Routes>

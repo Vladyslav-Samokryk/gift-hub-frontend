@@ -1,4 +1,4 @@
-import { useTypedTranslation } from "@i18n";
+import { useTypedTranslation } from "@shared";
 
 export default function Footer (): JSX.Element {
   const t = useTypedTranslation();

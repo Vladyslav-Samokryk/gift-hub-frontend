@@ -4,5 +4,5 @@ export { default as Main } from "./Main";
 export { default as NotFound } from "./NotFound";
 export { default as FAQ } from "./FAQ";
 export { default as Settings } from "./Settings";
-export { default as ShopingCart } from "./ShopingCart";
+export { default as ShoppingCart } from "./ShoppingCart";
 export { default as Product } from "./Product";
