@@ -9,6 +9,7 @@ import {
   Main,
   ShoppingCart,
   Product,
+  AboutUs,
 } from "@pages";
 import { Layout, PrivateLayout } from "@layouts";
 
@@ -23,6 +24,7 @@ export const Routing = (): JSX.Element => {
           <Route path=":productId" element={<Product />} />
         </Route>
         <Route path="contacts" element={<Contacts />} />
+        <Route path="about-us" element={<AboutUs />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="settings" element={<Settings />} />
         <Route path="shopping-cart" element={<PrivateLayout />}>

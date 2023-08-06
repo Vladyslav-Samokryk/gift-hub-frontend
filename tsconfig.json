@@ -45,6 +45,9 @@
       "@store": [
         "src/app/store"
       ],
+      "@styles": [
+        "src/app/styles/index.scss"
+      ],
       "@components/*": [
         "src/components/*"
       ],

@@ -4,4 +4,5 @@ type PathUnion = "/"
 | "/contacts"
 | "/faq"
 | "/settings"
-| "/shopping-cart";
+| "/shopping-cart"
+| "/about-us";
