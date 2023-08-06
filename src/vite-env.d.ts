@@ -7,3 +7,15 @@ interface ImportMetaEnv extends Readonly<Record<string, string>> {
 interface ImportMeta {
   readonly env: ImportMetaEnv;
 }
+
+interface Navigator {
+  connection?: NetworkInformation;
+  mozConnection?: NetworkInformation;
+  webkitConnection?: NetworkInformation;
+}
+
+type NetworkConnection =
+  | NetworkInformation
+  | { mozConnection: NetworkInformation; }
+  | { webkitConnection: NetworkInformation; }
+  | null;
