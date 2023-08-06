@@ -9,7 +9,7 @@ import { authUser } from "@src/app/store/slices/user";
 
 export default function Header (): JSX.Element {
   const dispatch = useAppDispatch();
-  // const navigate = useTypedNavigate();
+  const navigate = useTypedNavigate();
   const t = useTypedTranslation();
   // const [login] = useLoginMutation();
 
@@ -71,10 +71,12 @@ export default function Header (): JSX.Element {
           </button>),
         )}
       </div>
-      {/*  <button type="button" onClick={loginHandler}>Login</button>
-      <button type="button" onClick={logoutHandler}>Logout</button>
-      <button type="button" onClick={() => navigate("/shopping-cart")}>Go Shopping Cart</button>
-      <button type="button" onClick={() => navigate("/")}>Go Main</button> */}
+      <div>
+        <button type="button" onClick={loginHandler}>Login</button>
+        <button type="button" onClick={logoutHandler}>Logout</button>
+        {/* <button type="button" onClick={() => navigate("/shopping-cart")}>Go Shopping Cart</button> */}
+        {/* <button type="button" onClick={() => navigate("/")}>Go Main</button> */}
+      </div>
     </header>
   );
 }
