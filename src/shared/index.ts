@@ -1,6 +1,7 @@
 /** Assets */
 
 /** Hooks */
+export { useNetwork } from "./hooks/useNetwork";
 export { useAuth } from "./hooks/useAuth";
 export { useTypedNavigate } from "./hooks/useTypedNavigate";
 export { useTypedTranslation } from "./hooks/useTypedTranslation";

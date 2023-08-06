@@ -119,6 +119,7 @@ Ilona`s: [figma](https://www.figma.com/file/zDc7MmRInCyP0iNORar5Xk/Untitled)
 
 ## BackendApi
 Django REST API: [link](https://alex-online-store.fly.dev/api/v1/accounts/)
+Postman: [link](https://app.getpostman.com/join-team?invite_code=0c32f0b68818814f27012c8899cba06f&target_code=6f7cd67875a00cc6eefe3381c0610770)
 
 ## Survey
 Result of survey: [Link](https://docs.google.com/forms/d/e/1FAIpQLSd90hd9qvWqWTkMjjnyS4xLyUXHLuJSq_iJln3pB1YmtYGjew/viewform?usp=sharing  )

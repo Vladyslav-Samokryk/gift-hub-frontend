@@ -14,6 +14,7 @@ const sharedDir = resolve(root, "./shared");
 const i18nDir = resolve(appDir, "./i18n/index.ts");
 const configDir = resolve(appDir, "./config");
 const apiDir = resolve(appDir, "./api");
+const stylesDir = resolve(appDir, "./styles/index.scss");
 const navigationDir = resolve(appDir, "./navigation");
 const storeDir = resolve(appDir, "./store");
 const layoutsDir = resolve(appDir, "./layouts");
@@ -35,6 +36,7 @@ export default defineConfig({
       "@components": componentsDir,
       "@shared": sharedDir,
       "@pages": pagesDir,
+      "@styles": stylesDir,
     },
   },
   // dev new port
