@@ -4,6 +4,7 @@ export const en: AllLocalesType = {
     footer: "Footer",
     aboutAs: "About us",
     contacts: "Contacts",
+    catalog: "Catalog",
     en: "ENG",
     uk: "UA",
   },
