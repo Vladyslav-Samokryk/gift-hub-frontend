@@ -2,27 +2,36 @@ import type { ChangeEvent, MouseEvent, MouseEventHandler, ReactElement } from "r
 import { changeLanguage } from "i18next";
 import { Link } from "react-router-dom";
 
-import { useAppDispatch } from "@store";
+import { useAppDispatch, useAppSelector } from "@store";
 import { useTypedNavigate, useTypedTranslation } from "@shared";
-import { authUser } from "@src/app/store/slices/user";
+import { authUser, setRole } from "@src/app/store/slices/user";
 // import { useLoginMutation } from "@src/app/api/auth";
 
-export default function Header (): JSX.Element {
-  const dispatch = useAppDispatch();
+function LogButtons (): JSX.Element {
   const navigate = useTypedNavigate();
-  const t = useTypedTranslation();
+  const dispatch = useAppDispatch();
   // const [login] = useLoginMutation();
 
-  const handleChangeLanguage = (event: MouseEvent<HTMLButtonElement>): void => {
-    const { name } = event.target as HTMLButtonElement;
-    void changeLanguage(name);
-  };
-
   const loginHandler = (event: MouseEvent<HTMLButtonElement>): void => {
+    // get role to check role action
+    const role = prompt("enter your role", "");
+
+    if (role === "manager") {
+      dispatch(setRole({
+        role: "manager",
+      }));
+    } else if (role === "admin") {
+      dispatch(setRole({
+        role: "admin",
+      }));
+    }
+
     dispatch(authUser({
       isAuth: true,
     }));
-    // navigate("/");
+
+    navigate("/");
+
     // try {
     //   void login({
     //     password: "",
@@ -39,6 +48,10 @@ export default function Header (): JSX.Element {
     dispatch(authUser({
       isAuth: false,
     }));
+    // set role to default when logout
+    dispatch(setRole({
+      role: "buyer",
+    }));
     // navigate("/");
     // try {
     //   void login({
@@ -51,31 +64,64 @@ export default function Header (): JSX.Element {
     //   });
     // }
   };
+  return (
+    <div>
+      <button type="button" onClick={loginHandler}>Login</button>
+      <button type="button" onClick={logoutHandler}>Logout</button>
+    </div>
+  );
+}
 
+function LanguageToggle (): JSX.Element {
+  const t = useTypedTranslation();
+
+  const handleChangeLanguage = (event: MouseEvent<HTMLButtonElement>): void => {
+    const { name } = event.target as HTMLButtonElement;
+    void changeLanguage(name);
+  };
+
+  return (
+    <>
+      {(["en", "uk"] as TranslationKeys[]).map((language, index) => (
+        <button
+          key={language}
+          name={language}
+          onClick={handleChangeLanguage}
+        >
+          {t(language)}
+          {index === 0 ? "|" : ""}
+        </button>),
+      )}
+    </>
+
+  );
+}
+
+export default function Header (): JSX.Element {
+  const t = useTypedTranslation();
+  const role = useAppSelector(state => state.user.role);
   return (
     <header className="flex justify-between p-3 bg-[#D9D9D9]">
       <p>Logo</p>
       <div className="flex">
-        <Link to={"/about-us"}>{t("aboutAs")}</Link>
-        <Link to={"/contacts"}>{t("contacts")}</Link>
-      </div>
-      <div>
-        {(["en", "uk"] as TranslationKeys[]).map((language, index) => (
-          <button
-            key={language}
-            name={language}
-            onClick={handleChangeLanguage}
-          >
-            {t(language)}
-            {index === 0 ? "|" : ""}
-          </button>),
-        )}
-      </div>
-      <div>
-        <button type="button" onClick={loginHandler}>Login</button>
-        <button type="button" onClick={logoutHandler}>Logout</button>
-        {/* <button type="button" onClick={() => navigate("/shopping-cart")}>Go Shopping Cart</button> */}
-        {/* <button type="button" onClick={() => navigate("/")}>Go Main</button> */}
+        {(!role || role === "buyer") &&
+          <>
+            <Link to={"/about-us"}>{t("aboutAs")}</Link>
+            <Link to={"/contacts"}>{t("contacts")}</Link>
+          </>
+        }
+
+        {role === "manager" &&
+          <Link to={"/catalog-for-manager"}>{t("catalog")}</Link>
+        }
+
+        {role === "admin" &&
+          <Link to={"/catalog-for-admin"}>{t("catalog")}</Link>
+        }
+        <div>
+          <LanguageToggle/>
+          <LogButtons/>
+        </div>
       </div>
     </header>
   );
