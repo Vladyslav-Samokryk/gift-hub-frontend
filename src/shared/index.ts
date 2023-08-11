@@ -9,5 +9,5 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 /** Types */
 export type { User } from "./types/User";
 
-/** UI */
+/** UI  */
 export { default as Preloader } from "./UI/Preloader";
