@@ -1,10 +1,11 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
 import { authApi } from "@api";
+import type { RoleUnion } from "@src/shared/types/User";
 
 interface UserState {
   isAuth: boolean;
-  role: string;
+  role: RoleUnion;
   first_name: string | null;
   last_name: string | null;
   token: string | null;
@@ -12,7 +13,7 @@ interface UserState {
 
 const initialState: UserState = {
   isAuth: false,
-  role: "buyer",
+  role: "guest_user",
   first_name: null,
   last_name: null,
   token: null,
