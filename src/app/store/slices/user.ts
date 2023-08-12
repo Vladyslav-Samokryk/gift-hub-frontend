@@ -25,7 +25,7 @@ interface AuthAction {
 
 // add actions for role recognice
 interface RoleAction {
-  role: UserState["role"];
+  role: RoleUnion;
 }
 
 const userSlice = createSlice({
