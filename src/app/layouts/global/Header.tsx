@@ -66,7 +66,7 @@ function LogButtons (): JSX.Element {
   };
   return (
     <div>
-      <button className="text-primary" type="button" onClick={loginHandler}>Login</button>
+      <button type="button" onClick={loginHandler}>Login</button>
       <button type="button" onClick={logoutHandler}>Logout</button>
     </div>
   );
@@ -84,17 +84,12 @@ function LanguageToggle (): JSX.Element {
     <>
       {(["en", "uk"] as TranslationKeys[]).map((language, index) => (
         <button
-          className={index === 0 ? "text-primary-200" : "text-primary-500"}
           key={language}
           name={language}
           onClick={handleChangeLanguage}
         >
           {t(language)}
-          {index === 0
-            ? (
-              <span className="text-black">|</span>
-            )
-            : ""}
+          {index === 0 ? "|" : ""}
         </button>),
       )}
     </>
@@ -106,9 +101,9 @@ export default function Header (): JSX.Element {
   const t = useTypedTranslation();
   const role = useAppSelector(state => state.user.role);
   return (
-    <header className="flex justify-between p-3 bg-background-header bg-gradient-radial shadow-randomize-result">
-      <p className="">Logo</p>
-      <div className="flex font-exo2">
+    <header className="flex justify-between bg-[#D9D9D9] p-3">
+      <p>Logo</p>
+      <div className="flex">
         {(!role || role === "buyer") &&
           <>
             <Link to={"/about-us"}>{t("aboutAs")}</Link>
@@ -123,7 +118,7 @@ export default function Header (): JSX.Element {
         {role === "admin" &&
           <Link to={"/catalog-for-admin"}>{t("catalog")}</Link>
         }
-        <div className="font-rubik">
+        <div>
           <LanguageToggle/>
           <LogButtons/>
         </div>
