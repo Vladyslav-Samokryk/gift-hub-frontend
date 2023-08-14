@@ -14,4 +14,3 @@ export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
-export { default as Logo } from "./UI/Logo";
