@@ -1,128 +1,58 @@
-import type { ChangeEvent, MouseEvent, MouseEventHandler, ReactElement } from "react";
-import { changeLanguage } from "i18next";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
-import { useAppDispatch, useAppSelector } from "@store";
-import { useTypedNavigate, useTypedTranslation } from "@shared";
-import { authUser, setRole } from "@src/app/store/slices/user";
-// import { useLoginMutation } from "@src/app/api/auth";
+import { Logo, useTypedTranslation } from "@shared";
 
-function LogButtons (): JSX.Element {
-  const navigate = useTypedNavigate();
-  const dispatch = useAppDispatch();
-  // const [login] = useLoginMutation();
-
-  const loginHandler = (event: MouseEvent<HTMLButtonElement>): void => {
-    // get role to check role action
-    const role = prompt("enter your role", "");
-
-    if (role === "manager") {
-      dispatch(setRole({
-        role: "manager",
-      }));
-    } else if (role === "admin") {
-      dispatch(setRole({
-        role: "admin",
-      }));
-    }
-
-    dispatch(authUser({
-      isAuth: true,
-    }));
-
-    navigate("/");
-
-    // try {
-    //   void login({
-    //     password: "",
-    //     username: "",
-    //   }).unwrap();
-    // } catch (error) {
-    //   console.log({
-    //     error,
-    //   });
-    // }
-  };
-
-  const logoutHandler = (event: MouseEvent<HTMLButtonElement>): void => {
-    dispatch(authUser({
-      isAuth: false,
-    }));
-    // set role to default when logout
-    dispatch(setRole({
-      role: "buyer",
-    }));
-    // navigate("/");
-    // try {
-    //   void login({
-    //     password: "",
-    //     username: "",
-    //   }).unwrap();
-    // } catch (error) {
-    //   console.log({
-    //     error,
-    //   });
-    // }
-  };
-  return (
-    <div>
-      <button type="button" onClick={loginHandler}>Login</button>
-      <button type="button" onClick={logoutHandler}>Logout</button>
-    </div>
-  );
-}
-
-function LanguageToggle (): JSX.Element {
-  const t = useTypedTranslation();
-
-  const handleChangeLanguage = (event: MouseEvent<HTMLButtonElement>): void => {
-    const { name } = event.target as HTMLButtonElement;
-    void changeLanguage(name);
-  };
-
-  return (
-    <>
-      {(["en", "uk"] as TranslationKeys[]).map((language, index) => (
-        <button
-          key={language}
-          name={language}
-          onClick={handleChangeLanguage}
-        >
-          {t(language)}
-          {index === 0 ? "|" : ""}
-        </button>),
-      )}
-    </>
-
-  );
-}
+import { LanguageToggle } from "@src/components";
 
 export default function Header (): JSX.Element {
   const t = useTypedTranslation();
-  const role = useAppSelector(state => state.user.role);
+  // const role = useAppSelector(state => state.user.role);
+  const [search, setSearch] = useState("");
+
   return (
-    <header className="flex justify-between p-3 bg-[#D9D9D9]">
-      <p>Logo</p>
-      <div className="flex">
-        {(!role || role === "buyer") &&
-          <>
-            <Link to={"/about-us"}>{t("aboutAs")}</Link>
-            <Link to={"/contacts"}>{t("contacts")}</Link>
-          </>
-        }
+    <header>
+      <div className="flex justify-between bg-background-header px-[5%] items-center">
+        <Logo/>
+        <LanguageToggle/>
+      </div>
 
-        {role === "manager" &&
-          <Link to={"/catalog-for-manager"}>{t("catalog")}</Link>
-        }
+      <svg className="" width="100%" viewBox="0 0 20 0.5">
+        <path
+          d="M 0 0.2 C 4.5 0.5 5 0 9 0 C 14 0 15.4 0.6 20 0.2 L 20 0 L 0 0 L 0 0.2"
+          fill="#E8E6F3"
+        >
+        </path>
+      </svg>
 
-        {role === "admin" &&
-          <Link to={"/catalog-for-admin"}>{t("catalog")}</Link>
-        }
-        <div>
-          <LanguageToggle/>
-          <LogButtons/>
+      <div className="flex justify-between items-center px-[5%]">
+        <button className="group flex items-center">
+          <div className="button-icon bg-[url('icons/catalog.svg')] group-hover:bg-[url('icons/catalog-hover.svg')]"></div>
+          <p className="pl-1 rubik-300 text-[24px]">{t("catalog")}</p>
+        </button>
+
+        <div className="w-[500px] p-1 flex items-center border-black border rounded-md">
+          <div className="button-icon flex-none bg-[url('icons/search.svg')]"></div>
+          <input className="p-1 grow outline-none" placeholder="Пошук" type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+          {search &&
+            <button className="button-icon flex-none bg-[url('icons/blue-close.svg')]" onClick={() => setSearch("")}></button>
+          }
+        </div>
+
+        <div className="group flex items-center">
+          <p className="pr-1 rubik-300 text-[24px] group-hover:text-[#00BCD4]">{t("secretPresent")}</p>
+          <button className="button-icon bg-[url('icons/present.svg')] group-hover:bg-[url('icons/present-hover.svg')]">
+          </button>
+
+        </div>
+        <div className="flex justify-between w-[150px]">
+          <button className="group hover:bg-[#222D4A] hover:rounded-full">
+            <div className="button-icon bg-[url('icons/user-account.svg')] group-hover:bg-[url('icons/user-account-hover.svg')]"></div>
+          </button>
+          <button className="button-icon bg-[url('icons/wishlist.svg')] hover:bg-[url('icons/wishlist-hover.svg')]"></button>
+          <button className="button-icon bg-[url('icons/basket.svg')]"></button>
         </div>
       </div>
     </header>
+
   );
 }
