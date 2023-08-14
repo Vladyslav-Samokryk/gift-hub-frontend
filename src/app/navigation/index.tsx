@@ -13,6 +13,7 @@ import {
 } from "@pages";
 import { Layout, PrivateLayout } from "@layouts";
 import { useAppSelector } from "../store";
+import { ADMIN, MANAGER } from "@src/shared";
 
 const useBuyerRouting = (): React.ReactElement | null => {
   // eslint-disable-next-line prefer-const
@@ -115,33 +116,10 @@ const useAdminRouting = (): React.ReactElement | null => {
 export const Routing = (): React.ReactElement | null => {
   const role = useAppSelector(state => state.user.role);
 
-  if (role === "manager") {
+  if (role === MANAGER) {
     return useManagerRouting();
-  } else if (role === "admin") {
+  } else if (role === ADMIN) {
     return useAdminRouting();
   }
   return useBuyerRouting();
 };
-
-/* export const Routing = (): JSX.Element => {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Main />} />
-        <Route path="catalog" element={<Catalog />} />
-        <Route path="product">
-          <Route index element={<Navigate to="/catalog" />} />
-          <Route path=":productId" element={<Product />} />
-        </Route>
-        <Route path="contacts" element={<Contacts />} />
-        <Route path="about-us" element={<AboutUs />} />
-        <Route path="faq" element={<FAQ />} />
-        <Route path="settings" element={<Settings />} />
-        <Route path="shopping-cart" element={<PrivateLayout />}>
-          <Route index element={<ShoppingCart />} />
-        </Route>
-      </Route>
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  );
-}; */
