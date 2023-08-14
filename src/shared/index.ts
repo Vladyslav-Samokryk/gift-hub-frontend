@@ -9,7 +9,7 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 /** Types */
 export type { User } from "./types/User";
 
-/** Roles */
+/** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
 
 /** UI  */

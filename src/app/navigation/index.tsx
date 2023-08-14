@@ -15,9 +15,8 @@ import { Layout, PrivateLayout } from "@layouts";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "@src/shared";
 
-const useBuyerRouting = (): React.ReactElement | null => {
-  // eslint-disable-next-line prefer-const
-  let element = useRoutes([
+const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
+  const element = useRoutes([
     {
       path: "/",
       element: <Layout/>,
@@ -65,9 +64,8 @@ const useBuyerRouting = (): React.ReactElement | null => {
   return element;
 };
 
-const useManagerRouting = (): React.ReactElement | null => {
-  // eslint-disable-next-line prefer-const
-  let element = useRoutes([
+const useManagerRouting = (): ReturnType<typeof useRoutes> => {
+  const element = useRoutes([
     {
       path: "/",
       element: <Layout/>,
@@ -91,9 +89,8 @@ const useManagerRouting = (): React.ReactElement | null => {
   return element;
 };
 
-const useAdminRouting = (): React.ReactElement | null => {
-  // eslint-disable-next-line prefer-const
-  let element = useRoutes([
+const useAdminRouting = (): ReturnType<typeof useRoutes> => {
+  const element = useRoutes([
     {
       path: "/",
       element: <Layout/>,
@@ -116,10 +113,15 @@ const useAdminRouting = (): React.ReactElement | null => {
 export const Routing = (): React.ReactElement | null => {
   const role = useAppSelector(state => state.user.role);
 
-  if (role === MANAGER) {
+  switch (role) {
+    case MANAGER: {
     return useManagerRouting();
-  } else if (role === ADMIN) {
-    return useAdminRouting();
+    }
+    case ADMIN: {
+      return useAdminRouting();
+    }
+    default: {
+      return useBuyerRouting();
+    }
   }
-  return useBuyerRouting();
 };
