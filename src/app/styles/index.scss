@@ -13,3 +13,9 @@
     font-family: Rubik;
     src: url(fonts/Rubik-Regular.ttf);
 }
+
+@layer components {
+    .button-icon {
+        @apply p-1 w-6 h-6 m-1 bg-center bg-contain bg-no-repeat;
+    }
+}
