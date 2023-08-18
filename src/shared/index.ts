@@ -11,3 +11,4 @@ export type { User } from "./types/User";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
+export { default as Logo } from "./UI/Logo";
