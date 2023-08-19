@@ -1,5 +1,7 @@
+export type RoleUnion = "admin" | "manager" | "auth_user" | "guest_user";
+
 export interface User {
-  role: string;
+  role: RoleUnion;
   first_name: string;
   last_name: string;
 }
