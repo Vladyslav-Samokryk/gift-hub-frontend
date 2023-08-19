@@ -98,18 +98,23 @@ function LanguageToggle (): JSX.Element {
   );
 }
 
-const RoleLink = (role: RoleUnion): JSX.Element => {
+const RoleLink = ({ role }: { role: RoleUnion; }): JSX.Element => {
   const t = useTypedTranslation();
   switch (role) {
-  case MANAGER:
-    return <Link to={"/catalog-for-manager"}>{t("catalog")}</Link>;
-  case ADMIN:
-    return <Link to={"/catalog-for-admin"}>{t("catalog")}</Link>;
-  default:
-    return <>
-      <Link to={"/about-us"}>{t("aboutAs")}</Link>
-      <Link to={"/contacts"}>{t("contacts")}</Link>
-    </>;
+    case MANAGER: {
+      return <Link to={"/catalog-for-manager"}>{t("catalog")}</Link>;
+    }
+    case ADMIN: {
+      return <Link to={"/catalog-for-admin"}>{t("catalog")}</Link>;
+    }
+    default: {
+      return (
+        <>
+          <Link to={"/about-us"}>{t("aboutAs")}</Link>
+          <Link to={"/contacts"}>{t("contacts")}</Link>
+        </>
+      );
+    }
   }
 };
 
