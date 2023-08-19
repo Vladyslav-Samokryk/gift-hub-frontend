@@ -9,5 +9,8 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 /** Types */
 export type { User } from "./types/User";
 
+/** Constants */
+export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
+
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
