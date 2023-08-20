@@ -1,10 +1,11 @@
 import { useTypedTranslation } from "@shared";
 
-export default function Footer (): JSX.Element {
+export default function Footer(): JSX.Element {
   const t = useTypedTranslation();
 
   return (
-    <footer className="grid grid-cols-3 divide-x divide-gray-400 bg-background-footer px-16 pt-8 font-rubik">
+    <footer className="grid grid-cols-3 divide-x divide-gray-400 bg-background-footer px-12 pt-8 font-rubik">
+
       <section className="flex flex-col items-center">
         <MainLogo />
         <fieldset className="flex h-max gap-4">
@@ -25,19 +26,19 @@ export default function Footer (): JSX.Element {
           <address>
             <a href="/" className="flex space-x-2">
               <WhatsAppLogo />
-              <span className="text-primary">+380991235678</span>
+              <span className="text-primary not-italic">+380991235678</span>
             </a>
           </address>
           <address>
             <a href="/" className="flex space-x-2">
               <EmailLogo />
-              <span className="text-primary">gifthub@gmail.com</span>
+              <span className="text-primary not-italic">gifthub@gmail.com</span>
             </a>
           </address>
           <address>
             <a href="/" className="flex space-x-2">
               <LocationPointLogo />
-              <span className="text-primary">м.Київ; вулиця Олеся Гончара</span>
+              <span className="text-primary not-italic">м.Київ; вулиця Олеся Гончара</span>
             </a>
           </address>
         </fieldset>
@@ -62,7 +63,7 @@ export default function Footer (): JSX.Element {
           <legend className="pb-5  text-primary-700">
             <strong>Допомога</strong>
           </legend>
-          <ul className="flex flex-col gap-4">
+          <ul className="flex flex-col gap-3">
             <li>
               <a href="/" className="font-light text-primary">Часті питання</a>
             </li>
@@ -103,7 +104,7 @@ export default function Footer (): JSX.Element {
   );
 }
 
-function MainLogo (): JSX.Element {
+function MainLogo(): JSX.Element {
   return (
     <svg width="110" height="79" viewBox="0 0 110 79" fill="none" xmlns="http://www.w3.org/2000/svg">
       <g filter="url(#filter0_d_372_1632)">
@@ -176,7 +177,7 @@ function MainLogo (): JSX.Element {
   );
 }
 
-function TweeterLogo (): JSX.Element {
+function TweeterLogo(): JSX.Element {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
       <g clipPath="url(#clip0_372_1740)">
@@ -191,7 +192,7 @@ function TweeterLogo (): JSX.Element {
   );
 }
 
-function FacebookLogo (): JSX.Element {
+function FacebookLogo(): JSX.Element {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
       <path d="M5.40039 2.40039C3.75068 2.40039 2.40039 3.75068 2.40039 5.40039V24.6004C2.40039 26.2501 3.75068 27.6004 5.40039 27.6004H15.4996C15.5644 27.6111 15.6305 27.6111 15.6953 27.6004H19.0996C19.1644 27.6111 19.2305 27.6111 19.2953 27.6004H24.6004C26.2501 27.6004 27.6004 26.2501 27.6004 24.6004V5.40039C27.6004 3.75068 26.2501 2.40039 24.6004 2.40039H5.40039ZM5.40039 3.60039H24.6004C25.6015 3.60039 26.4004 4.3993 26.4004 5.40039V24.6004C26.4004 25.6015 25.6015 26.4004 24.6004 26.4004H19.8004V18.0004H22.0926L22.9328 13.8004H19.8004V12.6004C19.8004 12.2659 19.8322 12.2397 19.9445 12.1668C20.0568 12.0938 20.4039 12.0004 21.0004 12.0004H22.8004V8.62188L22.4582 8.45898C22.4582 8.45898 21.08 7.80039 19.2004 7.80039C17.8504 7.80039 16.7413 8.33826 16.0316 9.22539C15.3219 10.1125 15.0004 11.3004 15.0004 12.6004V13.8004H13.2004V18.0004H15.0004V26.4004H5.40039C4.3993 26.4004 3.60039 25.6015 3.60039 24.6004V5.40039C3.60039 4.3993 4.3993 3.60039 5.40039 3.60039ZM19.2004 9.00039C20.4478 9.00039 21.2328 9.27546 21.6004 9.42109V10.8004H21.0004C20.3099 10.8004 19.7566 10.8575 19.2906 11.1602C18.8247 11.4628 18.6004 12.0373 18.6004 12.6004V15.0004H21.468L21.1082 16.8004H18.6004V26.4004H16.2004V16.8004H14.4004V15.0004H16.2004V12.6004C16.2004 11.5004 16.4788 10.5883 16.9691 9.97539C17.4594 9.36252 18.1504 9.00039 19.2004 9.00039Z" fill="#13183A" />
@@ -199,7 +200,7 @@ function FacebookLogo (): JSX.Element {
   );
 }
 
-function TikTokLogo (): JSX.Element {
+function TikTokLogo(): JSX.Element {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" fill="none">
       <path d="M5.40039 2.40039C3.75014 2.40039 2.40039 3.75014 2.40039 5.40039V24.6004C2.40039 26.2506 3.75014 27.6004 5.40039 27.6004H24.6004C26.2506 27.6004 27.6004 26.2506 27.6004 24.6004V5.40039C27.6004 3.75014 26.2506 2.40039 24.6004 2.40039H5.40039ZM5.40039 3.60039H24.6004C25.6033 3.60039 26.4004 4.39745 26.4004 5.40039V24.6004C26.4004 25.6033 25.6033 26.4004 24.6004 26.4004H5.40039C4.39745 26.4004 3.60039 25.6033 3.60039 24.6004V5.40039C3.60039 4.39745 4.39745 3.60039 5.40039 3.60039ZM15.6262 6.00039C15.4672 6.00041 15.3148 6.06346 15.2023 6.17573C15.0899 6.28799 15.0265 6.4403 15.0262 6.59922C15.0262 6.59922 15.0196 9.52435 15.0133 12.4563C15.0101 13.9222 15.0063 15.3897 15.0039 16.4945C15.0015 17.5994 15.0004 18.2985 15.0004 18.3566C15.0004 19.4458 14.0112 20.3359 12.884 20.3359C11.7657 20.3359 10.873 19.4421 10.873 18.3238C10.873 17.2056 11.7657 16.3129 12.884 16.3129C12.9219 16.3129 12.9982 16.3253 13.1289 16.341C13.2132 16.3511 13.2987 16.3432 13.3797 16.3179C13.4607 16.2925 13.5354 16.2502 13.5988 16.1938C13.6623 16.1375 13.7131 16.0683 13.7478 15.9908C13.7826 15.9134 13.8005 15.8294 13.8004 15.7445V13.2238C13.8004 13.0712 13.7422 12.9243 13.6377 12.8131C13.5332 12.7018 13.3902 12.6346 13.2379 12.625C13.1444 12.6191 13.0267 12.6074 12.884 12.6074C9.73427 12.6074 7.16758 15.1741 7.16758 18.3238C7.16758 21.4735 9.73427 24.0402 12.884 24.0402C16.0336 24.0402 18.6004 21.4735 18.6004 18.3238V12.8945C19.4732 13.5926 20.5609 14.0348 21.7621 14.0348C21.9259 14.0348 22.0818 14.0251 22.2309 14.0113C22.3799 13.9976 22.5183 13.9287 22.6191 13.8181C22.7199 13.7075 22.7758 13.5633 22.7758 13.4137V10.6117C22.7759 10.46 22.7185 10.3139 22.6152 10.2028C22.512 10.0917 22.3704 10.0239 22.2191 10.0129C20.3324 9.87753 18.8283 8.40772 18.632 6.53828C18.6167 6.39076 18.5472 6.25415 18.4371 6.15482C18.3269 6.05549 18.1839 6.00048 18.0355 6.00039H15.6262ZM16.225 7.20039H17.5938C18.0298 9.17961 19.5764 10.689 21.5758 11.0676V12.7867C20.2925 12.7216 19.1653 12.0814 18.502 11.0723C18.431 10.9643 18.3271 10.8821 18.2057 10.8379C18.0842 10.7937 17.9518 10.7899 17.828 10.827C17.7043 10.8641 17.5958 10.9402 17.5187 11.044C17.4417 11.1477 17.4002 11.2735 17.4004 11.4027V18.3238C17.4004 20.8249 15.3852 22.8402 12.884 22.8402C10.3829 22.8402 8.36758 20.8249 8.36758 18.3238C8.36758 15.9235 10.24 14.0183 12.6004 13.8648V15.1703C10.9722 15.3218 9.67305 16.6577 9.67305 18.3238C9.67305 20.0904 11.1175 21.5359 12.884 21.5359C14.6415 21.5359 16.2004 20.1523 16.2004 18.3566C16.2004 18.386 16.2015 17.6017 16.2039 16.4969C16.2062 15.392 16.2101 13.9245 16.2133 12.4586C16.2189 9.82646 16.2239 7.70991 16.225 7.20039Z" fill="#13183A" />
@@ -207,7 +208,7 @@ function TikTokLogo (): JSX.Element {
   );
 }
 
-function TelegramLogo (): JSX.Element {
+function TelegramLogo(): JSX.Element {
   return (
     <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect width="30" height="30" fill="url(#pattern0)" />
@@ -221,7 +222,7 @@ function TelegramLogo (): JSX.Element {
   );
 }
 
-function WhatsAppLogo (): JSX.Element {
+function WhatsAppLogo(): JSX.Element {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path fillRule="evenodd" clipRule="evenodd" d="M19.2008 4.71484C17.2718 2.78584 14.7008 1.71484 12.0008 1.71484C6.38684 1.71484 1.80084 6.30084 1.80084 11.9148C1.80084 13.7148 2.27184 15.4718 3.17184 17.0148L1.71484 22.2858L7.11484 20.8718C8.61415 21.6877 10.2939 22.115 12.0008 22.1148C17.6148 22.1148 22.2008 17.5288 22.2008 11.9148C22.2008 9.17184 21.1288 6.64284 19.2008 4.71484ZM12.0008 20.3998C10.4578 20.3998 9.00084 19.9708 7.67184 19.1998L7.37184 19.0278L4.15784 19.8848L5.01484 16.7568L4.80084 16.4568C3.94384 15.1278 3.51484 13.5418 3.51484 11.9568C3.51484 7.28484 7.32984 3.47084 12.0008 3.47084C14.2718 3.47084 16.3718 4.37084 18.0008 5.95684C18.7899 6.74398 19.4157 7.67923 19.8423 8.70888C20.2689 9.73853 20.488 10.8423 20.4868 11.9568C20.4868 16.5848 16.6718 20.3998 12.0008 20.3998ZM16.6288 14.0568C16.3718 13.9278 15.1288 13.3278 14.8718 13.2418C14.6578 13.1568 14.4868 13.1138 14.3148 13.3708C14.0649 13.7166 13.793 14.0459 13.5008 14.3568C13.3718 14.5278 13.2008 14.5278 12.9438 14.3998C12.6868 14.2708 11.8718 14.0138 10.8868 13.1568C10.1148 12.4708 9.60084 11.6568 9.47184 11.3998C9.34384 11.1418 9.47184 11.0138 9.60084 10.8848C9.72984 10.7568 9.85784 10.5848 9.98684 10.4568C10.1148 10.3278 10.1578 10.1998 10.2438 10.0278C10.3288 9.85684 10.2868 9.72784 10.2438 9.59984C10.2008 9.47084 9.68684 8.22784 9.47184 7.71384C9.25784 7.19984 9.04384 7.28484 8.91484 7.28484H8.44384C8.31502 7.285 8.18761 7.31173 8.06958 7.36335C7.95154 7.41496 7.84542 7.49037 7.75784 7.58484C7.54384 7.84184 6.85784 8.44184 6.85784 9.72784C6.85784 10.9708 7.75784 12.2138 7.88684 12.3418C8.01484 12.5138 9.68684 15.0848 12.2578 16.1998C12.8578 16.4568 13.3298 16.6278 13.7148 16.7568C14.3148 16.9708 14.8718 16.9278 15.3008 16.8418C15.7718 16.7568 16.8008 16.2418 17.0148 15.6418C17.2298 15.0418 17.2298 14.5278 17.1438 14.4418C17.0578 14.2278 16.8868 14.1848 16.6288 14.0568Z" fill="#140285" />
@@ -230,7 +231,7 @@ function WhatsAppLogo (): JSX.Element {
   );
 }
 
-function EmailLogo (): JSX.Element {
+function EmailLogo(): JSX.Element {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M2.64047 3.35938C1.45547 3.35938 0.486094 4.32688 0.480469 5.51188C0.480469 5.51188 0.480469 5.51375 0.480469 5.51563C0.480469 5.5175 0.480469 5.5175 0.480469 5.51938V18.4794C0.480469 19.6663 1.45359 20.6394 2.64047 20.6394H21.3605C22.5473 20.6394 23.5205 19.6663 23.5205 18.4794V5.51938C23.5205 5.5175 23.5205 5.5175 23.5205 5.51563C23.5205 5.51375 23.5205 5.51188 23.5205 5.51188C23.5148 4.32688 22.5455 3.35938 21.3605 3.35938H2.64047ZM3.88922 4.31938H20.1136L12.0005 9.97438L3.88922 4.31938ZM2.29172 4.37563L12.0005 11.1444L21.7111 4.37563C22.2023 4.52375 22.5567 4.97 22.5605 5.51375C22.5586 5.615 22.4555 5.8175 22.3055 5.98063C22.1536 6.14563 22.0055 6.24875 22.0055 6.24875L22.0036 6.2525L12.0005 13.3325L1.99734 6.2525L1.99547 6.24875C1.99547 6.24875 1.84734 6.14563 1.69547 5.98063C1.54547 5.8175 1.44234 5.615 1.44047 5.51375C1.44422 4.97 1.79859 4.52375 2.29172 4.37563ZM1.44047 7.0325L1.44422 7.03625L1.44797 7.03813V7.04L2.88047 8.0525V19.6794H2.64047C1.97297 19.6794 1.44047 19.1469 1.44047 18.4794V7.0325ZM22.5605 7.0325V18.4794C22.5605 19.1469 22.028 19.6794 21.3605 19.6794H21.1205V8.0525L22.553 7.04V7.03813L22.5605 7.0325ZM3.84047 8.73125L12.0005 14.5063L20.1605 8.73125V19.6794H3.84047V8.73125Z" fill="#140285" />
@@ -239,7 +240,7 @@ function EmailLogo (): JSX.Element {
   );
 }
 
-function LocationPointLogo (): JSX.Element {
+function LocationPointLogo(): JSX.Element {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect width="24" height="24" fill="url(#pattern1)" />
@@ -253,7 +254,7 @@ function LocationPointLogo (): JSX.Element {
   );
 }
 
-function VisaLogo (): JSX.Element {
+function VisaLogo(): JSX.Element {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <rect width="40" height="40" fill="url(#pattern2)" />
@@ -268,7 +269,7 @@ function VisaLogo (): JSX.Element {
   );
 }
 
-function MasterCardLogo (): JSX.Element {
+function MasterCardLogo(): JSX.Element {
   return (
     <svg width="40" height="26" viewBox="0 0 40 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <rect y="0.5" width="40" height="25" fill="url(#pattern3)" />
@@ -283,7 +284,7 @@ function MasterCardLogo (): JSX.Element {
   );
 }
 
-function GooglePayLogo (): JSX.Element {
+function GooglePayLogo(): JSX.Element {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <rect width="40" height="40" fill="url(#pattern4)" />
@@ -298,7 +299,7 @@ function GooglePayLogo (): JSX.Element {
   );
 }
 
-function ApplePayLogo (): JSX.Element {
+function ApplePayLogo(): JSX.Element {
   return (
     <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <rect width="40" height="40" fill="url(#pattern5)" />
