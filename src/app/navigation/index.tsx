@@ -13,10 +13,10 @@ import {
 } from "@pages";
 import { Layout, PrivateLayout } from "@layouts";
 import { useAppSelector } from "../store";
+import { ADMIN, MANAGER } from "@src/shared";
 
-const useBuyerRouting = (): React.ReactElement | null => {
-  // eslint-disable-next-line prefer-const
-  let element = useRoutes([
+const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
+  const element = useRoutes([
     {
       path: "/",
       element: <Layout/>,
@@ -64,9 +64,8 @@ const useBuyerRouting = (): React.ReactElement | null => {
   return element;
 };
 
-const useManagerRouting = (): React.ReactElement | null => {
-  // eslint-disable-next-line prefer-const
-  let element = useRoutes([
+const useManagerRouting = (): ReturnType<typeof useRoutes> => {
+  const element = useRoutes([
     {
       path: "/",
       element: <Layout/>,
@@ -90,9 +89,8 @@ const useManagerRouting = (): React.ReactElement | null => {
   return element;
 };
 
-const useAdminRouting = (): React.ReactElement | null => {
-  // eslint-disable-next-line prefer-const
-  let element = useRoutes([
+const useAdminRouting = (): ReturnType<typeof useRoutes> => {
+  const element = useRoutes([
     {
       path: "/",
       element: <Layout/>,
@@ -115,33 +113,15 @@ const useAdminRouting = (): React.ReactElement | null => {
 export const Routing = (): React.ReactElement | null => {
   const role = useAppSelector(state => state.user.role);
 
-  if (role === "manager") {
+  switch (role) {
+    case MANAGER: {
     return useManagerRouting();
-  } else if (role === "admin") {
-    return useAdminRouting();
+    }
+    case ADMIN: {
+      return useAdminRouting();
+    }
+    default: {
+      return useBuyerRouting();
+    }
   }
-  return useBuyerRouting();
 };
-
-/* export const Routing = (): JSX.Element => {
-  return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Main />} />
-        <Route path="catalog" element={<Catalog />} />
-        <Route path="product">
-          <Route index element={<Navigate to="/catalog" />} />
-          <Route path=":productId" element={<Product />} />
-        </Route>
-        <Route path="contacts" element={<Contacts />} />
-        <Route path="about-us" element={<AboutUs />} />
-        <Route path="faq" element={<FAQ />} />
-        <Route path="settings" element={<Settings />} />
-        <Route path="shopping-cart" element={<PrivateLayout />}>
-          <Route index element={<ShoppingCart />} />
-        </Route>
-      </Route>
-      <Route path="*" element={<Navigate to="/" />} />
-    </Routes>
-  );
-}; */

@@ -1,18 +1,16 @@
 import { useState } from "react";
-
 import { Logo, useTypedTranslation } from "@shared";
-
-import { LanguageToggle } from "@src/components";
+import { LanguageToggle, RoleLink } from "@src/components";
 
 export default function Header (): JSX.Element {
   const t = useTypedTranslation();
-  // const role = useAppSelector(state => state.user.role);
   const [search, setSearch] = useState("");
 
   return (
     <header>
       <div className="flex justify-between bg-background-header px-[5%] items-center">
         <Logo/>
+        <RoleLink/>
         <LanguageToggle/>
       </div>
 
