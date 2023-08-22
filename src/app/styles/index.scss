@@ -15,7 +15,80 @@
 }
 
 @layer components {
-    .button-icon {
-        @apply p-1 w-6 h-6 m-1 bg-center bg-contain bg-no-repeat;
-    }
+   .h1 {
+      @apply font-rubik font-normal text-8xl
+   }
+
+   .h2 {
+      @apply font-rubik font-semibold text-[50px]
+   }
+
+   .h3 {
+      @apply font-rubik font-medium text-5xl
+   }
+
+   .h4 {
+      @apply font-rubik font-normal text-[46px]
+   }
+
+   .h5 {
+      @apply font-rubik font-normal text-4xl
+   }
+
+   .h6 {
+      @apply font-rubik font-light text-2xl
+   }
+
+   .primary {
+      @apply font-rubik font-normal text-xl
+   }
+
+   .primary-bold {
+      @apply font-rubik font-semibold text-[22px]
+   }
+
+   .secondary {
+      @apply font-rubik font-light text-lg
+   }
+
+   .secondary-bold {
+      @apply font-rubik font-medium text-lg
+   }
+
+   .additional {
+      @apply font-rubik font-normal text-base
+   }
+}
+
+
+.catalog-icon:hover circle {
+    fill: #00BCD4;
+ }
+
+ .present-icon:hover path:nth-child(1){
+    fill: #4495ff;
+ }
+
+ .present-icon:hover path:nth-child(2), .present-icon:hover path:nth-child(5){
+    fill: #006eff;
+ }
+
+ .present-icon:hover path:nth-child(3) {
+    fill: #00BCD4;
+ }
+
+ .search-icon:focus-within path {
+   fill: #0047FF;
+ }
+
+.user-icon:hover path {
+   fill: white;
+}
+
+.wishlist-icon:hover path {
+   fill: #FF3232;
+}
+
+.basket-icon:hover path {
+   fill: white;
 }

@@ -6,6 +6,7 @@ interface AllLocalesType {
     contacts: string;
     catalog: string;
     secretPresent: string;
+    search: string;
     en: string;
     uk: string;
   };

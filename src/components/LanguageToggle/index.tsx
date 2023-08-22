@@ -1,4 +1,4 @@
-import { useState, type MouseEvent} from "react";
+import { useState, type MouseEvent } from "react";
 import { changeLanguage } from "i18next";
 
 import { useTypedTranslation } from "@shared";
@@ -21,7 +21,7 @@ export default function LanguageToggle (): JSX.Element {
             key={language}
             name={language}
             onClick={handleChangeLanguage}
-            className={language !== active ? "text-primary-200" : "text--primary-500" }
+            className={language !== active ? "text-blue-200" : "text-black" }
           >
             {t(language)}
           </button>

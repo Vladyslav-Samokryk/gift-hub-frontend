@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Logo, useTypedTranslation } from "@shared";
+import { Logo, useTypedTranslation, BlueClose, Catalog, Present, Basket, Wishlist, UserAccount, Search } from "@shared";
 import { LanguageToggle, RoleLink } from "@src/components";
 
 export default function Header (): JSX.Element {
@@ -8,49 +8,50 @@ export default function Header (): JSX.Element {
 
   return (
     <header>
-      <div className="flex justify-between bg-background-header px-[5%] items-center">
+      <div className="flex justify-between relative z-10 bg-white px-[5%] items-center">
         <Logo/>
         <RoleLink/>
         <LanguageToggle/>
       </div>
-
-      <svg className="" width="100%" viewBox="0 0 20 0.5">
+      <svg className="relative z-0 -top-[0.5rem]" width="100%" viewBox="0 0 20 0.7" style={{ filter: "drop-shadow(0px 4px 20px rgba(50, 64, 161, 0.5))" }}>
         <path
-          d="M 0 0.2 C 4.5 0.5 5 0 9 0 C 14 0 15.4 0.6 20 0.2 L 20 0 L 0 0 L 0 0.2"
-          fill="#E8E6F3"
+          d="M 0 0.4 C 4.5 0.8 5 0.3 9 0.3 C 14 0.3 15.4 0.8 20 0.4 L 20 0 L 0 0"
+          fill="white"
         >
         </path>
       </svg>
-
-      <div className="flex justify-between items-center px-[5%]">
-        <button className="group flex items-center">
-          <div className="button-icon bg-[url('icons/catalog.svg')] group-hover:bg-[url('icons/catalog-hover.svg')]"></div>
-          <p className="pl-1 rubik-300 text-[24px]">{t("catalog")}</p>
+      <div className="flex justify-between items-center px-[5%] mt-4">
+        <button className="flex items-center catalog-icon">
+          <Catalog/>
+          <p className="pl-1 h6">{t("catalog")}</p>
         </button>
-
-        <div className="w-[500px] p-1 flex items-center border-black border rounded-md">
-          <div className="button-icon flex-none bg-[url('icons/search.svg')]"></div>
-          <input className="p-1 grow outline-none" placeholder="Пошук" type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+        <div className="search-icon w-[500px] p-1 flex items-center border-black border rounded-md">
+          <Search/>
+          <input className="p-1 grow outline-none" placeholder={t("search")} type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
           {search &&
-            <button className="button-icon flex-none bg-[url('icons/blue-close.svg')]" onClick={() => setSearch("")}></button>
+            <button onClick={() => setSearch("")} className="pr-1">
+              <BlueClose/>
+            </button>
           }
         </div>
-
-        <div className="group flex items-center">
-          <p className="pr-1 rubik-300 text-[24px] group-hover:text-[#00BCD4]">{t("secretPresent")}</p>
-          <button className="button-icon bg-[url('icons/present.svg')] group-hover:bg-[url('icons/present-hover.svg')]">
+        <div className="group present-icon flex items-center">
+          <p className="pr-1 h6 group-hover:text-accent-turkus">{t("secretPresent")}</p>
+          <button>
+            <Present/>
           </button>
-
         </div>
         <div className="flex justify-between w-[150px]">
-          <button className="group hover:bg-[#222D4A] hover:rounded-full">
-            <div className="button-icon bg-[url('icons/user-account.svg')] group-hover:bg-[url('icons/user-account-hover.svg')]"></div>
+          <button className="user-icon flex justify-center items-center hover:bg-deepBlue rounded-full w-9 h-9">
+            <UserAccount/>
           </button>
-          <button className="button-icon bg-[url('icons/wishlist.svg')] hover:bg-[url('icons/wishlist-hover.svg')]"></button>
-          <button className="button-icon bg-[url('icons/basket.svg')]"></button>
+          <button className="wishlist-icon flex justify-center items-center hover:bg-deepBlue rounded-full w-9 h-9">
+            <Wishlist/>
+          </button>
+          <button className="basket-icon flex justify-center items-center hover:bg-deepBlue rounded-full w-9 h-9">
+            <Basket/>
+          </button>
         </div>
       </div>
     </header>
-
   );
 }
