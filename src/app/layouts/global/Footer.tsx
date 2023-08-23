@@ -1,4 +1,5 @@
 import { useTypedTranslation } from "@shared";
+import { Link } from "react-router-dom";
 
 export default function Footer(): JSX.Element {
   const t = useTypedTranslation();
@@ -12,9 +13,9 @@ export default function Footer(): JSX.Element {
           <legend className="pb-5">
             <strong className="text-primary-700">Стеж за нами:</strong>
           </legend>
-          <a href="/"><TweeterLogo /></a>
-          <a href="/"><FacebookLogo /></a>
-          <a href="/"><TikTokLogo /></a>
+          <Link to="/"><TweeterLogo /></Link>
+          <Link to="/"><FacebookLogo /></Link>
+          <Link to="/"><TikTokLogo /></Link>
         </fieldset>
       </section>
 
@@ -24,22 +25,22 @@ export default function Footer(): JSX.Element {
             <strong>Зв’язатися з нами:</strong>
           </legend>
           <address>
-            <a href="/" className="flex space-x-2">
+            <Link to="/" className="flex space-x-2">
               <WhatsAppLogo />
               <span className="text-primary not-italic">+380991235678</span>
-            </a>
+            </Link>
           </address>
           <address>
-            <a href="/" className="flex space-x-2">
+            <Link to="/" className="flex space-x-2">
               <EmailLogo />
               <span className="text-primary not-italic">gifthub@gmail.com</span>
-            </a>
+            </Link>
           </address>
           <address>
-            <a href="/" className="flex space-x-2">
+            <Link to="/" className="flex space-x-2">
               <LocationPointLogo />
               <span className="text-primary not-italic">м.Київ; вулиця Олеся Гончара</span>
-            </a>
+            </Link>
           </address>
         </fieldset>
 
@@ -49,10 +50,10 @@ export default function Footer(): JSX.Element {
           </legend>
           <ul className="flex space-x-4">
             <li>
-              <a href="/"><FacebookLogo /></a>
+              <Link to="/"><FacebookLogo /></Link>
             </li>
             <li>
-              <a href="/"><TelegramLogo /></a>
+              <Link to="/"><TelegramLogo /></Link>
             </li>
           </ul>
         </fieldset>
@@ -65,19 +66,19 @@ export default function Footer(): JSX.Element {
           </legend>
           <ul className="flex flex-col gap-3">
             <li>
-              <a href="/" className="font-light text-primary">Часті питання</a>
+              <Link to="/" className="font-light text-primary">Часті питання</Link>
             </li>
             <li>
-              <a href="/" className="font-light text-primary">Договір оферти</a>
+              <Link to="/" className="font-light text-primary">Договір оферти</Link>
             </li>
             <li>
-              <a href="/" className="font-light text-primary">Оплата і доставка</a>
+              <Link to="/" className="font-light text-primary">Оплата і доставка</Link>
             </li>
             <li>
-              <a href="/" className="font-light text-primary">Умови повернення</a>
+              <Link to="/" className="font-light text-primary">Умови повернення</Link>
             </li>
             <li>
-              <a href="/" className="font-light text-primary">Політика конфіденційності</a>
+              <Link to="/" className="font-light text-primary">Політика конфіденційності</Link>
             </li>
           </ul>
         </fieldset>
@@ -87,16 +88,16 @@ export default function Footer(): JSX.Element {
         <small>&copy; GIFTHUB.ua, 2023-2023 Інтернет-магазин</small>
         <ul className="flex items-center space-x-4">
           <li>
-            <a href="/"><VisaLogo /></a>
+            <Link to="/"><VisaLogo /></Link>
           </li>
           <li>
-            <a href="/"><MasterCardLogo /></a>
+            <Link to="/"><MasterCardLogo /></Link>
           </li>
           <li>
-            <a href="/"><GooglePayLogo /></a>
+            <Link to="/"><GooglePayLogo /></Link>
           </li>
           <li>
-            <a href="/"><ApplePayLogo /></a>
+            <Link to="/"><ApplePayLogo /></Link>
           </li>
         </ul>
       </section>
@@ -256,7 +257,7 @@ function LocationPointLogo(): JSX.Element {
 
 function VisaLogo(): JSX.Element {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect width="40" height="40" fill="url(#pattern2)" />
       <defs>
         <pattern id="pattern2" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -271,7 +272,7 @@ function VisaLogo(): JSX.Element {
 
 function MasterCardLogo(): JSX.Element {
   return (
-    <svg width="40" height="26" viewBox="0 0 40 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="40" height="26" viewBox="0 0 40 26" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect y="0.5" width="40" height="25" fill="url(#pattern3)" />
       <defs>
         <pattern id="pattern3" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -286,7 +287,7 @@ function MasterCardLogo(): JSX.Element {
 
 function GooglePayLogo(): JSX.Element {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect width="40" height="40" fill="url(#pattern4)" />
       <defs>
         <pattern id="pattern4" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -301,7 +302,7 @@ function GooglePayLogo(): JSX.Element {
 
 function ApplePayLogo(): JSX.Element {
   return (
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
       <rect width="40" height="40" fill="url(#pattern5)" />
       <defs>
         <pattern id="pattern5" patternContentUnits="objectBoundingBox" width="1" height="1">
