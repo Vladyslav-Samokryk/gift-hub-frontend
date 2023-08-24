@@ -1,4 +1,6 @@
 /** Assets */
+export { LeftArrow } from "./assets/svg/LeftArrow";
+export { RightArrow } from "./assets/svg/RightArrow";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -12,7 +14,3 @@ export type { User } from "./types/User";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
-
-/** Icons  */
-export { LeftArrow } from "./icons/LeftArrow";
-export { RightArrow } from "./icons/RightArrow";

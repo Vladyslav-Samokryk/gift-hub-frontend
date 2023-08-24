@@ -5,6 +5,7 @@ export const uk: AllLocalesType = {
     aboutAs: "Про нас",
     contacts: "Контакти",
     catalog: "Каталог",
+    goToSale: "Перейти до знижки",
     en: "ENG",
     uk: "УКР",
   },
