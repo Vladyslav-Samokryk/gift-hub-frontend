@@ -1,5 +1,6 @@
 import { useState, type MouseEvent } from "react";
 import { changeLanguage } from "i18next";
+import className from "classnames";
 
 import { useTypedTranslation } from "@shared";
 
@@ -13,22 +14,22 @@ export default function LanguageToggle (): JSX.Element {
     void changeLanguage(name);
   };
 
-  return (
-    <div className="flex font-rubik font-normal ">
-      {(["uk", "en"] as TranslationKeys[]).map((language, index) => (
-        <>
-          <button
-            key={language}
-            name={language}
-            onClick={handleChangeLanguage}
-            className={language !== active ? "text-blue-200" : "text-black" }
-          >
-            {t(language)}
-          </button>
-          {!index && <p className="px-1">|</p>}
-        </>
-      ),
-      )}
-    </div>
-  );
+  return <div className="flex">
+    {(["uk", "en"] as TranslationKeys[]).map((language, index) => (
+      <div key={language} className="flex">
+        <button
+          name={language}
+          onClick={handleChangeLanguage}
+          className={className({
+            "text-blue-200 secondary": language !== active,
+            "text-blue-700 secondary-bold": language === active,
+          })}
+        >
+          {t(language)}
+        </button>
+        {!index && <p className="px-1">|</p>}
+      </div>
+    ),
+    )}
+  </div>;
 }

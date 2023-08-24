@@ -1,2 +1,2 @@
 export { default as LanguageToggle } from "./LanguageToggle";
-export { default as RoleLink } from "./RoleLink";
+export { default as NavigationByRole } from "./NavigationByRole";
