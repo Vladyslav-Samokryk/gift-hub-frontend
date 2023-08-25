@@ -59,35 +59,3 @@
       @apply font-rubik font-normal text-base
    }
 }
-
-.catalog-icon:hover circle {
-    @apply fill-accent-turkus;
-}
-
-.present-icon {
-&:hover {
-    path:nth-child(1){
-        @apply fill-[#4495ff];
-    }
-
-    path:nth-child(3) {
-        @apply fill-accent-turkus;
-    }        
-    
-    path:nth-child(2), path:nth-child(5){
-        @apply fill-[#006eff];
-    }
-}
-}
- 
-.search-icon:focus-within path {
-   @apply fill-[#0047FF];
-}
-
-.user-icon:hover path, .basket-icon:hover path {
-   @apply fill-white;
-}
-
-.wishlist-icon:hover path {
-   @apply fill-accent-red;
-}

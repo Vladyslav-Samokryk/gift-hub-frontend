@@ -33,7 +33,8 @@ module.exports = {
           bYellow: '#FFD805',
           bOrange: '#FF8C22',
           green: '#00BF13',
-          turkus: '#00BCD4'
+          turkus: '#00BCD4',
+          blue: "#4495ff",
         },
         background: {
           footer: '#D9D9D9',
