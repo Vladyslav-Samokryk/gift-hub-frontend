@@ -12,7 +12,7 @@ export const baseApi = createApi({
         "logout",
       ];
       if (token && listOfRequiredJWTEndpoints.includes(endpoint)) {
-        headers.set("authorization", `Bearer ${token}`);
+        headers.set("Authorization", `Bearer ${token}`);
       }
       return headers;
     },
