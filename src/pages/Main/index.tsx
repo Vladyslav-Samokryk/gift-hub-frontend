@@ -1,4 +1,4 @@
-import { BannerSlider } from "@src/components";
+import { BannerSlider } from "@components";
 import { useAppSelector } from "@store";
 
 export default function Main (): JSX.Element {
