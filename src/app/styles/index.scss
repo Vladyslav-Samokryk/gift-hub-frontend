@@ -13,3 +13,17 @@
     font-family: Rubik;
     src: url(fonts/Rubik-Regular.ttf);
 }
+
+@layer components {
+.primary {
+    @apply font-rubik font-normal text-xl
+ }
+
+ .primary-bold {
+    @apply font-rubik font-semibold text-[22px]
+ }
+
+ .additional {
+    @apply font-rubik font-normal text-base
+ }
+}

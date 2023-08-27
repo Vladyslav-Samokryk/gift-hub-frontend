@@ -10,6 +10,9 @@ export { TelegramLogo } from "./assets/svg/TelegramLogo";
 export { TikTokLogo } from "./assets/svg/TikTokLogo";
 export { TweeterLogo } from "./assets/svg/TweeterLogo";
 export { MainLogo } from "./assets/svg/MainLogo";
+export { Basket } from "./assets/svg/Basket";
+export { Wishlist } from "./assets/svg/Wishlist";
+export { StarIcon } from "./assets/svg/StarIcon";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -25,3 +28,4 @@ export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
+export { default as StarRate } from "./UI/StarRate";

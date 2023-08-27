@@ -27,6 +27,14 @@ module.exports = {
           200: '#DCE0EB',
           300: '#ECF3FD',
         },
+        accent: {
+          red: '#FF3232',
+          bYellow: '#FFD805',
+          bOrange: '#FF8C22',
+          green: '#00BF13',
+          turkus: '#00BCD4',
+          blue: "#4495ff",
+        },
         background: {
           header: '#E8E6F3',
           footer: '#D9D9D9',
