@@ -15,6 +15,15 @@ module.exports = {
         error: {
           DEFAULT: '#CA0928',
         },
+        purple: {
+          100: '#E5E9FD',
+          900: '#6F57FF'
+        },
+        blue: {
+          100: "#CBCFDA",
+          300: "#A6B8E8",
+          700: "#0047FF"
+        },
         primary: {
           200: '#ABB5CF',
           500: '#0047FF',
@@ -36,6 +45,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(33deg, #A18CD1 14.90%, rgba(0, 71, 255, 0.27) 35.73%, rgba(160, 150, 242, 0.70) 57.08%, #FBC2EB 85.73%)',
+        'gradient-primary-linear': 'linear-gradient(33deg, rgba(48,63,159,1) 0%, rgba(111,87,255,1) 100%)'
       },
       boxShadow: {
         'randomize-result': '-2px 26px 100px 18px #EBEEF4',

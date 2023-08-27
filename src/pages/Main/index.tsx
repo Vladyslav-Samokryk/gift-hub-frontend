@@ -1,3 +1,4 @@
+import { RandomPresent } from "@src/components";
 import { useAppSelector } from "@store";
 
 export default function Main (): JSX.Element {
@@ -7,6 +8,7 @@ export default function Main (): JSX.Element {
   return (
     <div>
       <h2>Main</h2>
+      <RandomPresent/>
     </div>
   );
 }

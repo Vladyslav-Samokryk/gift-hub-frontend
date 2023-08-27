@@ -14,6 +14,12 @@ interface AllLocalesType {
     returnConditions: string;
     privacyPolicy: string;
     copyrightText: string;
+    randomPresent_header1: string;
+    randomPresent_header2: string;
+    randomPresent_step1: string;
+    randomPresent_step2: string;
+    randomPresent_step3: string;
+    getRandomPresent: string;
     help: string;
     en: string;
     uk: string;
