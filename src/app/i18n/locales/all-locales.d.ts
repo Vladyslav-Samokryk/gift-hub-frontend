@@ -4,6 +4,18 @@ interface AllLocalesType {
     footer: string;
     aboutAs: string;
     contacts: string;
+    catalog: string;
+    follow_us: string;
+    contact_us: string;
+    contact_us_messengers: string;
+    frequentlyAskedQuestion: string;
+    offerContract: string;
+    paymentAndDelivery: string;
+    returnConditions: string;
+    privacyPolicy: string;
+    copyrightText: string;
+    seeMore: string;
+    help: string;
     en: string;
     uk: string;
   };
