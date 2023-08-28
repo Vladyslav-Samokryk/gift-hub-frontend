@@ -47,7 +47,15 @@ module.exports = {
       },
       boxShadow: {
         'randomize-result': '-2px 26px 100px 18px #EBEEF4',
-      }
+      },
+      height: {
+        card: "438px",
+        cardImg: "300px",
+        hr: "2px",
+      },
+      width: {
+        cardImg: "317px",
+      },
     },
     fontFamily: {
       sans: ['Helvetica Neue', "Helvetica", "Roboto", "Arial", ...defaultTheme.fontFamily.sans],
