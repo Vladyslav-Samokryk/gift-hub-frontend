@@ -3,19 +3,3 @@
 @tailwind utilities;
 
 @import "./normalize.scss";
-
-@font-face {
-    font-family: Exo2;
-    src: url(fonts/Exo2-Regular.ttf);
-}
-
-@font-face {
-    font-family: Rubik;
-    src: url(fonts/Rubik-Regular.ttf);
-}
-
-@layer components {
-    .h6 {
-        @apply font-rubik font-light text-2xl
-     }
-}

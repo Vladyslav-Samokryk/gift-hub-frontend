@@ -7,7 +7,6 @@ module.exports = {
         "standard-with-typescript",
         "plugin:react/recommended",
         "plugin:@typescript-eslint/recommended",
-        "plugin:tailwindcss/recommended"
     ],
     overrides: [
         {
@@ -30,7 +29,6 @@ module.exports = {
     plugins: [
         "react",
         "@typescript-eslint",
-        "tailwindcss",
     ],
     settings: {
         react: {
@@ -40,7 +38,7 @@ module.exports = {
     rules: {
         "@typescript-eslint/quotes": ["error", "double"],
         "@typescript-eslint/indent": ["error", 2],
-        // indent: ["error", 2],
+        indent: ["error", 2],
         "@typescript-eslint/member-delimiter-style": ["error", {
             multiline: {
                 delimiter: "semi",
