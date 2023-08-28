@@ -15,6 +15,7 @@ export const en: AllLocalesType = {
     returnConditions: "Return conditions",
     privacyPolicy: "Privacy Policy",
     copyrightText: "GIFTHUB.ua, 2023-2023 Internet-shop",
+    seeMore: "Show more products",
     help: "Help",
     en: "ENG",
     uk: "UA",

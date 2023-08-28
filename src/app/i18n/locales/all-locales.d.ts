@@ -15,6 +15,7 @@ interface AllLocalesType {
     returnConditions: string;
     privacyPolicy: string;
     copyrightText: string;
+    seeMore: string;
     help: string;
     en: string;
     uk: string;
