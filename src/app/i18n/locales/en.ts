@@ -5,6 +5,7 @@ export const en: AllLocalesType = {
     aboutAs: "About us",
     contacts: "Contacts",
     catalog: "Catalog",
+    goToSale: "Get my sales",
     follow_us: "Follow us",
     contact_us: "Contact us",
     contact_us_messengers: "We are in touch in messengers",

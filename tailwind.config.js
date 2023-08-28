@@ -9,11 +9,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        black: "#13183A",
         success: {
           DEFAULT: 'green',
         },
         error: {
           DEFAULT: '#CA0928',
+        },
+        accent: {
+          turkus: "#00bcd4",
         },
         primary: {
           200: '#ABB5CF',

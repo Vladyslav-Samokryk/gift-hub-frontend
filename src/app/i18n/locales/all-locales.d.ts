@@ -5,6 +5,7 @@ interface AllLocalesType {
     aboutAs: string;
     contacts: string;
     catalog: string;
+    goToSale: string;
     follow_us: string;
     contact_us: string;
     contact_us_messengers: string;

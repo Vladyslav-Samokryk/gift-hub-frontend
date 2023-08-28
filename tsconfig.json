@@ -48,8 +48,8 @@
       "@styles": [
         "src/app/styles/index.scss"
       ],
-      "@components/*": [
-        "src/components/*"
+      "@components": [
+        "src/components/index.tsx"
       ],
       "@shared": [
         "src/shared/index.ts"
