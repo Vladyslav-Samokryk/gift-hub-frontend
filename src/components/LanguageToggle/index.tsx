@@ -14,7 +14,7 @@ export default function LanguageToggle (): JSX.Element {
     void changeLanguage(name);
   };
 
-  return <div className="flex">
+  return <div className="flex pt-5">
     {(["uk", "en"] as TranslationKeys[]).map((language, index) => (
       <div key={language} className="flex">
         <button

@@ -17,7 +17,7 @@ export default function NavigationByRole (): JSX.Element {
     }
     default: {
       return (
-        <nav className='flex justify-between w-80'>
+        <nav className='flex pt-5 justify-between w-80'>
           <Link to={"/about-us"} className="secondary hover:text-accent-turkus">{t("aboutAs")}</Link>
           <Link to={"/contacts"} className="secondary flex items-center hover:text-accent-turkus">{t("contacts")}
             <DropDown/>

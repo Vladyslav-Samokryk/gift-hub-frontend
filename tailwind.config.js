@@ -18,6 +18,8 @@ module.exports = {
         },
         blue: {
           100: '#CBCFDA',
+          200: '#AAB5CF',
+        },
         primary: {
           200: '#ABB5CF',
           300: '#A6B8E8',
