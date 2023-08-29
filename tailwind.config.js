@@ -16,6 +16,7 @@ module.exports = {
         error: {
           DEFAULT: '#CA0928',
         },
+        deepBlue: '#1700A5',
         accent: {
           turkus: "#00bcd4",
         },
@@ -40,6 +41,7 @@ module.exports = {
       },
       backgroundImage: {
         'gradient-primary': 'linear-gradient(33deg, #A18CD1 14.90%, rgba(0, 71, 255, 0.27) 35.73%, rgba(160, 150, 242, 0.70) 57.08%, #FBC2EB 85.73%)',
+        'CTA-gradient': 'linear-gradient(90deg, #131313 0%, #1700A5 100%)',
       },
       boxShadow: {
         'randomize-result': '-2px 26px 100px 18px #EBEEF4',

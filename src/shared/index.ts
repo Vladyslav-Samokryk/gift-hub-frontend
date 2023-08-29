@@ -22,6 +22,7 @@ export { useInterval } from "./hooks/useInterval";
 
 /** Types */
 export type { User } from "./types/User";
+export type { Banner } from "./types/Banner";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";

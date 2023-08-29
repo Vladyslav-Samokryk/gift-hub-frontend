@@ -18,4 +18,13 @@
     .h6 {
         @apply font-rubik font-light text-2xl
      }
+    .btn-effect {
+        &:hover {
+            @apply bg-CTA-gradient;
+        }
+
+        &:active {
+            @apply bg-deepBlue;
+        }
+    }
 }
