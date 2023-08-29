@@ -1,19 +1,11 @@
-import { StarRate, Wishlist, Basket } from "@shared";
+import { StarRate, Wishlist, Basket, type Product } from "@shared";
+import { CURRENCY } from "@config";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-interface ProductProp {
-  img: string;
-  name: string;
-  type: string;
-  cost: number;
-  rate: number;
-}
-
-export default function ProductCard ({ img, name, type, cost, rate }: ProductProp): JSX.Element {
+export default function ProductCard ({ img, name, type, cost, rate }: Product): JSX.Element {
   const [imgLoad, setImgLoad] = useState(false);
-  console.log(img);
   return (
     <section className="m-1 h-card w-80 rounded-lg border-2 border-black">
       <div className="relative">
@@ -32,9 +24,11 @@ export default function ProductCard ({ img, name, type, cost, rate }: ProductPro
       <div className="p-2">
         <Link to={"/catalog"}>
           <h2 className="primary-bold">{name}</h2>
+        </Link>
+        <Link to={"/catalog"}>
           <h3 className="additional text-gray-900">{type}</h3>
         </Link>
-        <data className='primary'>{cost} ₴</data>
+        <data className='primary' value={cost}>{cost} {CURRENCY}</data>
         <div className="mr-2 flex items-center justify-between">
           <StarRate rate={rate}/>
           <button>

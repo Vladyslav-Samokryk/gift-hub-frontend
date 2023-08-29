@@ -19,7 +19,7 @@ const basketType = {
 export const Basket = ({ className = "fill-[#131313]", type }: BasketIconProp): JSX.Element => {
   const { width, height, pathDefinition } = basketType[type];
   return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path className={className} d={pathDefinition} fill="#131313"/>
+    <path className={className} d={pathDefinition}/>
     {/* <circle cx="20" cy="5" r="5" fill="#FF3232"/> */}
   </svg>;
 };

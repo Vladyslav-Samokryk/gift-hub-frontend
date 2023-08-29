@@ -1,15 +1,39 @@
-import { StarIcon } from "@shared";
+import { useRef } from "react";
 
 interface StarRateProps {
   rate: number;
 }
 
+interface MeterCSSProperties extends React.CSSProperties {
+  "--max": number;
+  "--star-size": string;
+  "--stars-gap": string;
+}
+
 export default function StarRate ({ rate }: StarRateProps): JSX.Element {
+  const meterRef = useRef<HTMLMeterElement | null>(null);
+  const maxStars = 5;
+  const minStars = 0;
+  const starSize = 25;
+  const starsGap = 6;
+
+  const style: MeterCSSProperties = {
+    "--max": maxStars,
+    "--star-size": `${starSize}px`,
+    "--stars-gap": `${starsGap}px`,
+  };
+
   return (
-    <div className="flex w-5/12 justify-between">
-      {Array.from({ length: 5 }).map((_, i: number) => {
-        return <StarIcon key={i} rated={i + 1 <= rate}/>;
-      })}
-    </div>
+    <meter
+      ref={meterRef}
+      style={style}
+      className="rating"
+      min={minStars}
+      max={maxStars}
+      value={rate}
+      itemProp="aggregateRating"
+      itemScope
+      itemType="http://schema.org/AggregateRating"
+    />
   );
 }

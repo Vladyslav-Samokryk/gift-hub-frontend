@@ -12,7 +12,6 @@ export { TweeterLogo } from "./assets/svg/TweeterLogo";
 export { MainLogo } from "./assets/svg/MainLogo";
 export { Basket } from "./assets/svg/Basket";
 export { Wishlist } from "./assets/svg/Wishlist";
-export { StarIcon } from "./assets/svg/StarIcon";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -22,6 +21,7 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 
 /** Types */
 export type { User } from "./types/User";
+export type { Product } from "./types/Product";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";

@@ -1,15 +1,8 @@
 import { ProductCard } from "@components";
+import { type Product } from "@shared";
 import { useAppSelector } from "@store";
 
-interface ProductProp {
-  img: string;
-  name: string;
-  type: string;
-  cost: number;
-  rate: number;
-}
-
-const productCardMock: ProductProp[] = [
+const productCardMock: Product[] = [
   {
     img: "https://www.collinsdictionary.com/images/full/paper_111691001.jpg",
     name: "Paper name",
