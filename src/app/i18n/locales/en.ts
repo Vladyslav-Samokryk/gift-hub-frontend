@@ -6,6 +6,7 @@ export const en: AllLocalesType = {
     contacts: "Contacts",
     catalog: "Catalog",
     goToSale: "Get my sales",
+    aboutSecterPresent: "FIND OUT ABOUT THE SECRET PRESENT",
     follow_us: "Follow us",
     contact_us: "Contact us",
     contact_us_messengers: "We are in touch in messengers",

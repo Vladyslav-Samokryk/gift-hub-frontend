@@ -1,4 +1,4 @@
-import { BannerSlider } from "@components";
+import { BannerSlider, TrickedLine } from "@components";
 import { useAppSelector } from "@store";
 
 export default function Main (): JSX.Element {
@@ -9,6 +9,7 @@ export default function Main (): JSX.Element {
     <div>
       <h2>Main</h2>
       <BannerSlider/>
+      <TrickedLine/>
     </div>
   );
 }
