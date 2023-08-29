@@ -1,4 +1,4 @@
-import { ProductCard } from "@components";
+import { ProductCard, BannerSlider } from "@components";
 import { type Product } from "@shared";
 import { useAppSelector } from "@store";
 
@@ -27,6 +27,7 @@ export default function Main (): JSX.Element {
   return (
     <div>
       <h2>Main</h2>
+      <BannerSlider/>
       <section className="flex">
         {productCardMock.map((el, i) => {
           return <ProductCard key={i} {...el}/>;
