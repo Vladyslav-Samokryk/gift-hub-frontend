@@ -1,5 +1,5 @@
-import { useTypedTranslation } from "@shared";
-import { useState, useEffect } from "react";
+import { useTypedTranslation, useInterval } from "@shared";
+import { useState } from "react";
 import { START_OFFSET, END_OFFSET, MAX_OFFSET, MIN_OFFSET, STEP } from "./constants";
 
 export default function TrickedLine (): JSX.Element {
@@ -11,10 +11,10 @@ export default function TrickedLine (): JSX.Element {
     return path >= MAX_OFFSET ? MIN_OFFSET : path + STEP;
   }
 
-  useEffect(() => {
+  useInterval(() => {
     setPath1(getOffset(path1));
     setPath2(getOffset(path2));
-  });
+  }, 10);
 
   return (
     <svg width="100%" height="224">
@@ -25,7 +25,7 @@ export default function TrickedLine (): JSX.Element {
         </linearGradient>
       </defs>
       <path id="curve" strokeLinecap="square" className="stroke-[url(#grad1)]" fill="transparent" strokeWidth="78px" d="M 6 97 Q 440 25 937 110 Q 1464.5 212.7 1907 110"/>
-      <text width="100%" style={{ transform: "translate3d(0,0,0);" }}>
+      <text width="100%" style={{ transform: "translate3d(0,0,0)" }}>
         <textPath className="font-exo2 text-base font-semibold" xlinkHref="#curve" startOffset={path1} fill="#fff">{t("aboutSecterPresent")} • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} •
         </textPath>
         <textPath className="font-exo2 text-base font-semibold" xlinkHref="#curve" startOffset={path2} fill="#fff"> • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} •
