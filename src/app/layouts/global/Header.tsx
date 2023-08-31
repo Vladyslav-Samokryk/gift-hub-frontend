@@ -42,7 +42,7 @@ export default function Header (): JSX.Element {
             <Wishlist/>
           </button>
           <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue">
-            <Basket/>
+            <Basket type="sm" className="group-hover:fill-white fill-black"/>
           </button>
         </section>
       </section>

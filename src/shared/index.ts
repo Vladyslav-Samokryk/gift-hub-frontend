@@ -20,9 +20,6 @@ export { TelegramLogo } from "./assets/svg/TelegramLogo";
 export { TikTokLogo } from "./assets/svg/TikTokLogo";
 export { TweeterLogo } from "./assets/svg/TweeterLogo";
 export { MainLogo } from "./assets/svg/MainLogo";
-export { Basket } from "./assets/svg/Basket";
-export { Wishlist } from "./assets/svg/Wishlist";
-
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
