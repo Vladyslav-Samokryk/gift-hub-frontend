@@ -8,7 +8,7 @@ export default function Header (): JSX.Element {
 
   return (
     <header>
-      <section className="flex items-center justify-between bg-white px-20 pb-6" style={{ boxShadow: "0 4px 20px rgba(50, 64, 161, 0.5)" }}>
+      <section className="shadow-main flex items-center justify-between bg-white px-20 pb-6" >
         <Logo/>
         <NavigationByRole/>
         <LanguageToggle/>
