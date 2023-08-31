@@ -13,7 +13,7 @@ export const isProdEnv = NODE_ENV === "production";
 
 // TODO: in future get all information from .env
 export const CONTACT_INFO = {
-  number: '+380991235678',
-  mail: 'gifthub@gmail.com',
-  location: 'м.Київ; вулиця Олеся Гончара',
-}
+  number: "+380991235678",
+  mail: "gifthub@gmail.com",
+  location: "м.Київ; вулиця Олеся Гончара",
+};

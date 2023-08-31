@@ -21,7 +21,7 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 export { useInterval } from "./hooks/useInterval";
 
 /** Types */
-export type { User } from "./types/User";
+export type { User, RoleUnion } from "./types/User";
 export type { Banner } from "./types/Banner";
 
 /** Constants */
