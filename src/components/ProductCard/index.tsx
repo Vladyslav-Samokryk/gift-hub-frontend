@@ -1,10 +1,10 @@
-import { StarRate, Wishlist, Basket, type Product } from "@shared";
+import { StarRate, Wishlist, Basket, type ProductCardType } from "@shared";
 import { CURRENCY } from "@config";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ProductCard ({ img, name, type, cost, rate }: Product): JSX.Element {
+export default function ProductCard ({ img, name, type, cost, rate }: ProductCardType): JSX.Element {
   const [imgLoad, setImgLoad] = useState(false);
   return (
     <section className="m-1 h-card w-80 rounded-lg border-2 border-black">

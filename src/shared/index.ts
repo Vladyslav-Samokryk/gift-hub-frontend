@@ -24,7 +24,7 @@ export { useInterval } from "./hooks/useInterval";
 
 /** Types */
 export type { User } from "./types/User";
-export type { Product } from "./types/Product";
+export type { ProductCardType } from "./types/ProductCardType";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";

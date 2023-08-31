@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import "./index.scss";
 
 interface StarRateProps {
   rate: number;

@@ -1,4 +1,4 @@
-export interface Product {
+export interface ProductCardType {
   /** Source image link of product card, example: "https://.../image.jpg" */
   img: string;
   /** Translated name of product (or map of translations to get name dynamically based on selected language) */

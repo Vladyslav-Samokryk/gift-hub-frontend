@@ -20,6 +20,6 @@ export const Basket = ({ className = "fill-[#131313]", type }: BasketIconProp): 
   const { width, height, pathDefinition } = basketType[type];
   return <svg width={width} height={height} viewBox={`0 0 ${width} ${height}`} fill="none" xmlns="http://www.w3.org/2000/svg">
     <path className={className} d={pathDefinition}/>
-    {/* <circle cx="20" cy="5" r="5" fill="#FF3232"/> */}
+    {/* <circle cx="20" cy="5" r="5" fill="#FF3232"/> it will show that basket has products */}
   </svg>;
 };
