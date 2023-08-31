@@ -49,7 +49,7 @@
         "src/app/styles/index.scss"
       ],
       "@components": [
-        "src/components/index.tsx"
+        "src/components/index.ts"
       ],
       "@shared": [
         "src/shared/index.ts"

@@ -1,135 +1,51 @@
-import type { ChangeEvent, MouseEvent, MouseEventHandler, ReactElement } from "react";
-import { changeLanguage } from "i18next";
-import { Link } from "react-router-dom";
-
-import { useAppDispatch, useAppSelector } from "@store";
-import { ADMIN, GUEST_USER, MANAGER, useTypedNavigate, useTypedTranslation } from "@shared";
-import { authUser, setRole } from "@src/app/store/slices/user";
-import type { RoleUnion } from "@src/shared/types/User";
-// import { useLoginMutation } from "@src/app/api/auth";
-
-function LogButtons (): JSX.Element {
-  const navigate = useTypedNavigate();
-  const dispatch = useAppDispatch();
-  // const [login] = useLoginMutation();
-
-  const loginHandler = (event: MouseEvent<HTMLButtonElement>): void => {
-    // get role to check role action
-    const role = prompt("enter your role", "");
-
-    if (role === MANAGER) {
-      dispatch(setRole({
-        role: MANAGER,
-      }));
-    } else if (role === ADMIN) {
-      dispatch(setRole({
-        role: ADMIN,
-      }));
-    }
-
-    dispatch(authUser({
-      isAuth: true,
-    }));
-
-    navigate("/");
-
-    // try {
-    //   void login({
-    //     password: "",
-    //     username: "",
-    //   }).unwrap();
-    // } catch (error) {
-    //   console.log({
-    //     error,
-    //   });
-    // }
-  };
-
-  const logoutHandler = (event: MouseEvent<HTMLButtonElement>): void => {
-    dispatch(authUser({
-      isAuth: false,
-    }));
-    // set role to default when logout
-    dispatch(setRole({
-      role: GUEST_USER,
-    }));
-    // navigate("/");
-    // try {
-    //   void login({
-    //     password: "",
-    //     username: "",
-    //   }).unwrap();
-    // } catch (error) {
-    //   console.log({
-    //     error,
-    //   });
-    // }
-  };
-  return (
-    <div>
-      <button type="button" onClick={loginHandler}>Login</button>
-      <button type="button" onClick={logoutHandler}>Logout</button>
-    </div>
-  );
-}
-
-function LanguageToggle (): JSX.Element {
-  const t = useTypedTranslation();
-
-  const handleChangeLanguage = (event: MouseEvent<HTMLButtonElement>): void => {
-    const { name } = event.target as HTMLButtonElement;
-    void changeLanguage(name);
-  };
-
-  return (
-    <>
-      {(["en", "uk"] as TranslationKeys[]).map((language, index) => (
-        <button
-          key={language}
-          name={language}
-          onClick={handleChangeLanguage}
-        >
-          {t(language)}
-          {index === 0 ? "|" : ""}
-        </button>),
-      )}
-    </>
-
-  );
-}
-
-const RoleLink = ({ role }: { role: RoleUnion; }): JSX.Element => {
-  const t = useTypedTranslation();
-  switch (role) {
-    case MANAGER: {
-      return <Link to={"/catalog-for-manager"}>{t("catalog")}</Link>;
-    }
-    case ADMIN: {
-      return <Link to={"/catalog-for-admin"}>{t("catalog")}</Link>;
-    }
-    default: {
-      return (
-        <>
-          <Link to={"/about-us"}>{t("aboutAs")}</Link>
-          <Link to={"/contacts"}>{t("contacts")}</Link>
-        </>
-      );
-    }
-  }
-};
+import { useState } from "react";
+import { Logo, useTypedTranslation, BlueClose, Catalog, Present, Basket, Wishlist, UserAccount, Search } from "@shared";
+import { LanguageToggle, NavigationByRole } from "@components";
 
 export default function Header (): JSX.Element {
-  const role = useAppSelector(state => state.user.role);
+  const t = useTypedTranslation();
+  const [search, setSearch] = useState("");
+
   return (
-    <header className="flex justify-between bg-[#D9D9D9] p-3">
-      <p>Logo</p>
-      <div className="flex">
-        <div>
-          <LanguageToggle/>
-          <RoleLink role={role}/>
-          <LogButtons/>
-        </div>
-      </div>
+    <header>
+      <section className="flex items-center justify-between bg-white px-20 pb-6" style={{ boxShadow: "0 4px 20px rgba(50, 64, 161, 0.5)" }}>
+        <Logo/>
+        <NavigationByRole/>
+        <LanguageToggle/>
+      </section>
+      <section className="mt-10 flex items-center justify-between px-10">
+        <button className="group flex items-center">
+          <Catalog/>
+          <p className="h6 pl-1">{t("catalog")}</p>
+        </button>
+        <section className="group flex w-96 items-center rounded-md border border-black p-1">
+          <Search/>
+          <input className="grow p-1 outline-none" placeholder={t("search")} type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+          {search
+            ? <button onClick={() => setSearch("")} className="pr-1">
+              <BlueClose/>
+            </button>
+            : null
+          }
+        </section>
+        <section className="group flex items-center">
+          <p className="h6 pr-1 group-hover:text-accent-turkus">{t("secretPresent")}</p>
+          <button className="group">
+            <Present/>
+          </button>
+        </section>
+        <section className="flex w-36 justify-between">
+          <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue">
+            <UserAccount/>
+          </button>
+          <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue">
+            <Wishlist/>
+          </button>
+          <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue">
+            <Basket/>
+          </button>
+        </section>
+      </section>
     </header>
   );
 }
