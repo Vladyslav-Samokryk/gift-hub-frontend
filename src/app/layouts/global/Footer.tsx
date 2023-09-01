@@ -119,7 +119,7 @@ export default function Footer (): JSX.Element {
   const t = useTypedTranslation();
 
   return (
-    <>
+    <div className="relative">
       <UpArrow/>
       <footer className=" grid grid-cols-3 divide-x divide-gray-400 bg-white px-12 pt-8 font-rubik shadow-main">
         <section className="flex flex-col items-center">
@@ -189,7 +189,7 @@ export default function Footer (): JSX.Element {
           </ul>
         </section>
       </footer>
-    </>
+    </div>
 
   );
 }

@@ -25,7 +25,7 @@ export default function Main (): JSX.Element {
   const { isAuth } = user;
 
   return (
-    <div>
+    <>
       <h2>Main</h2>
       <BannerSlider/>
       <TrickedLine/>
@@ -34,6 +34,6 @@ export default function Main (): JSX.Element {
           return <ProductCard key={i} {...el}/>;
         })}
       </section>
-    </div>
+    </>
   );
 }
