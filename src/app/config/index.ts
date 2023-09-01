@@ -17,3 +17,5 @@ export const CONTACT_INFO = {
   mail: "gifthub@gmail.com",
   location: "м.Київ; вулиця Олеся Гончара",
 };
+
+export const CURRENCY = "₴";
