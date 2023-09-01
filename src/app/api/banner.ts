@@ -3,7 +3,7 @@ import type { Banner } from "@shared";
 
 export const bannerApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    banners: builder.query<Banner, string>({
+    getBanners: builder.query<Banner[], string>({
       query: () => ({
         url: "shop/guest_user/banner_list",
         method: "GET",
@@ -12,4 +12,4 @@ export const bannerApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useBannersQuery } = bannerApi;
+export const { useGetBannersQuery } = bannerApi;
