@@ -1,10 +1,16 @@
 import { useTypedTranslation, useInterval } from "@shared";
-import { useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import { START_OFFSET, END_OFFSET, MAX_OFFSET, MIN_OFFSET, STEP } from "./constants";
 
 export default function TrickedLine (): JSX.Element {
   const [path1, setPath1] = useState(START_OFFSET);
   const [path2, setPath2] = useState(END_OFFSET);
+  const [widthStep, setWidthStep] = useState(0);
+
+  useLayoutEffect(() => {
+    setWidthStep(window.innerWidth / 4);
+  });
+
   const t = useTypedTranslation();
 
   function getOffset (path: number): number {
@@ -24,7 +30,7 @@ export default function TrickedLine (): JSX.Element {
           <stop offset="100%" style={{ stopColor: "#9747FF" }} />
         </linearGradient>
       </defs>
-      <path id="curve" strokeLinecap="square" className="stroke-[url(#grad1)]" fill="transparent" strokeWidth="78px" d="M 6 97 Q 440 25 937 110 Q 1464.5 212.7 1907 110"/>
+      <path id="curve" strokeLinecap="square" className="stroke-[url(#grad1)]" fill="transparent" strokeWidth="78px" d={`M 6 97 Q ${widthStep} 25 ${widthStep * 2} 110 Q ${widthStep * 3} 212.7 ${widthStep * 4} 110`}/>
       <text width="100%" style={{ transform: "translate3d(0,0,0)" }}>
         <textPath className="font-exo2 text-base font-semibold" xlinkHref="#curve" startOffset={path1} fill="#fff">{t("aboutSecterPresent")} • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} • {t("aboutSecterPresent")} •
         </textPath>
