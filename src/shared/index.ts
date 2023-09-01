@@ -31,12 +31,14 @@ export { useInterval } from "./hooks/useInterval";
 
 /** Types */
 export type { User } from "./types/User";
+export type { ProductCardType } from "./types/ProductCardType";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
+export { default as StarRate } from "./UI/StarRate";
 export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
 export { default as UpArrow } from "./UI/UpArrow";
