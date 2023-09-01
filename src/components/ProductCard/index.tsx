@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ProductCard ({ img, name, type, cost, rate }: ProductCardType): JSX.Element {
+export default function ProductCard ({ img, name, type, price, rate }: ProductCardType): JSX.Element {
   const [imgLoad, setImgLoad] = useState(false);
   return (
-    <section className="m-1 h-card w-80 rounded-lg border-2 border-black">
+    <section className="m-2 h-card w-80 rounded-lg border-2 border-black">
       <div className="relative">
         <Link to={"/catalog"}>
           <picture >
@@ -28,7 +28,7 @@ export default function ProductCard ({ img, name, type, cost, rate }: ProductCar
         <Link to={"/catalog"}>
           <h3 className="additional text-gray-900">{type}</h3>
         </Link>
-        <data className='primary' value={cost}>{cost} {CURRENCY}</data>
+        <data className='primary' value={price}>{price} {CURRENCY}</data>
         <div className="mr-2 flex items-center justify-between">
           <StarRate rate={rate}/>
           <button>

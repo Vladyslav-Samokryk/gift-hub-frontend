@@ -21,6 +21,8 @@ interface AllLocalesType {
     help: string;
     en: string;
     uk: string;
+    popularProductSection: string;
+    newProductSection: string;
   };
 }
 

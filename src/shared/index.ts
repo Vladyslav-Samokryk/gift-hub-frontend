@@ -31,7 +31,7 @@ export { useInterval } from "./hooks/useInterval";
 
 /** Types */
 export type { User } from "./types/User";
-export type { ProductCardType } from "./types/ProductCardType";
+export type { ProductCardType, ProductSectionUnion } from "./types/ProductTypes";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
@@ -42,4 +42,4 @@ export { default as StarRate } from "./UI/StarRate";
 export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
 export { default as UpArrow } from "./UI/UpArrow";
-
+export { default as ProductSection } from "./UI/ProductSection";
