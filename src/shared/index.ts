@@ -19,7 +19,8 @@ export { WhatsAppLogo } from "./assets/svg/WhatsAppLogo";
 export { TelegramLogo } from "./assets/svg/TelegramLogo";
 export { TikTokLogo } from "./assets/svg/TikTokLogo";
 export { TweeterLogo } from "./assets/svg/TweeterLogo";
-export { MainLogo } from "./assets/svg/MainLogo";
+export { FacebookLogo } from "./assets/svg/FacebookLogo";
+export { InstagramLogo } from "./assets/svg/InstagramLogo";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -40,3 +41,5 @@ export { default as Preloader } from "./UI/Preloader";
 export { default as StarRate } from "./UI/StarRate";
 export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
+export { default as UpArrow } from "./UI/UpArrow";
+
