@@ -121,9 +121,11 @@ export default function Footer (): JSX.Element {
   return (
     <>
       <UpArrow/>
-      <footer className=" grid grid-cols-3 divide-x divide-gray-400 bg-white px-12 pt-8 font-rubik shadow-main">
-        <section className="flex flex-col items-center">
-          <Logo />
+      <footer className="divide-gray-400 bg-white px-10 pt-8 font-rubik shadow-main md:grid md:grid-cols-3 md:divide-x md:px-12">
+        <section className="flex flex-col pb-5 md:items-center">
+          <div className="self-center">
+            <Logo />
+          </div>
           <fieldset className="flex h-max gap-4">
             <legend className="pb-5">
               <strong className="text-primary-900">{t("follow_us")}:</strong>
@@ -134,7 +136,7 @@ export default function Footer (): JSX.Element {
           </fieldset>
         </section>
 
-        <section className="grid items-start justify-center justify-items-center gap-6 pb-5">
+        <section className="grid gap-6 border-t py-5 md:justify-center md:border-t-0">
           <fieldset className="flex w-full flex-col gap-4">
             <legend className="pb-5 text-primary-900">
               <strong>{t("contact_us")}:</strong>
@@ -163,7 +165,7 @@ export default function Footer (): JSX.Element {
           </fieldset>
         </section>
 
-        <section className="flex justify-center">
+        <section className="flex border-t py-5 md:justify-center md:border-t-0">
           <fieldset className="flex flex-col items-start">
             <legend className="pb-5 text-primary-900">
               <strong>{t("help")}</strong>
@@ -178,8 +180,8 @@ export default function Footer (): JSX.Element {
           </fieldset>
         </section>
 
-        <section className="col-span-full flex items-center justify-between border-t px-11" style={{ borderLeft: "0px" }}>
-          <small className="additional">&copy; {t("copyrightText")}</small>
+        <section className="col-span-full flex flex-col-reverse items-center justify-between border-t py-5 md:flex-row md:px-11" style={{ borderLeft: "0px" }}>
+          <small className="md:additional text-[10px]">&copy; {t("copyrightText")}</small>
           <ul className="flex items-center space-x-4">
             {paymentSection.map(({ key, logo, path }) => (
               <li key={key}>

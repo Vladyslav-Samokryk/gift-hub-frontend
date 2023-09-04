@@ -1,5 +1,5 @@
-export default function Logo (): JSX.Element {
-  return <svg width="110" height="79" viewBox="0 0 110 79" fill="none" xmlns="http://www.w3.org/2000/svg">
+export default function Logo ({ className = "h-[79px] w-[110px]" }: { className?: string; }): JSX.Element {
+  return <svg className={className} viewBox="0 0 110 79" preserveAspectRatio="none" fill="none" xmlns="http://www.w3.org/2000/svg">
     <g filter="url(#filter0_d_352_1955)">
       <rect x="6" y="60.6689" width="44.1811" height="44.1811" rx="3.99007" transform="rotate(-75.1388 6 60.6689)" stroke="url(#paint0_linear_352_1955)" strokeWidth="0.997518" shapeRendering="crispEdges"/>
     </g>
