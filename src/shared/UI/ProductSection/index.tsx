@@ -10,7 +10,7 @@ export default function ProductSection ({ section }: { section: ProductSectionUn
   return (
     <section className="my-20 w-full">
       <h5 className="h5 text-center">{section === "new" ? t("newProductSection") : t("popularProductSection")}</h5>
-      <div className="my-12 flex justify-center">
+      <div className="my-12 flex overflow-x-auto overflow-y-hidden px-10 before:m-auto after:m-auto">
         {data.results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product}/>;
         })}

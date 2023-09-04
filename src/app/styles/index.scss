@@ -59,3 +59,13 @@
       @apply font-rubik font-normal text-base
    }
 }
+
+
+::-webkit-scrollbar {
+   width: 0; 
+   background: transparent;  
+}
+
+::-webkit-scrollbar-thumb {
+   background: transparent;
+}

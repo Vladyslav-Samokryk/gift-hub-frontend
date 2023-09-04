@@ -4,15 +4,15 @@ import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function ProductCard ({ img, name, type, price, rate }: ProductCardType): JSX.Element {
+export default function ProductCard ({ img, name, type, price, global_rating }: ProductCardType): JSX.Element {
   const [imgLoad, setImgLoad] = useState(false);
   return (
-    <section className="m-2 h-card w-80 rounded-lg border-2 border-black">
+    <div className="m-2 h-fit w-80 rounded-lg border-2 border-black">
       <div className="relative">
         <Link to={"/catalog"}>
           <picture >
             <div className={classNames("h-cardImg w-cardImg rounded-t-lg", { "animate-pulse bg-slate-300": !imgLoad })}>
-              <img className={classNames("h-full w-fit rounded-t-lg visible", { invisible: !imgLoad })} src={img} alt={name} onLoad={() => setImgLoad(true)}/>
+              <img className={classNames("h-full w-full rounded-t-lg visible", { invisible: !imgLoad })} src={img} alt={name} onLoad={() => setImgLoad(true)}/>
             </div>
           </picture>
         </Link>
@@ -30,12 +30,12 @@ export default function ProductCard ({ img, name, type, price, rate }: ProductCa
         </Link>
         <data className='primary' value={price}>{price} {CURRENCY}</data>
         <div className="mr-2 flex items-center justify-between">
-          <StarRate rate={rate}/>
+          <StarRate rate={global_rating}/>
           <button>
             <Basket type="lg" className="fill-blue-700"/>
           </button>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

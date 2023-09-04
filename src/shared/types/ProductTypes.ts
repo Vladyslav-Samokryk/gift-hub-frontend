@@ -11,5 +11,7 @@ export interface ProductCardType {
   /** Price of product */
   price: number;
   /** Rate of product (number from 0 to 5) */
-  rate: number;
+  global_rating: number;
+  /** Discount */
+  discount: number;
 }
