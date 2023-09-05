@@ -8,6 +8,7 @@ export const en: AllLocalesType = {
     secretPresent: "Secret present",
     search: "Search",
     goToSale: "Get my sales",
+    aboutSecterPresent: "FIND OUT ABOUT THE SECRET PRESENT",
     follow_us: "Follow us",
     contact_us: "Contact us",
     contact_us_messengers: "We are in touch in messengers",

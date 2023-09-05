@@ -1,4 +1,4 @@
-import { ProductCard, BannerSlider } from "@components";
+import { BannerSlider, TrickedLine, ProductCard } from "@components";
 import { type Product } from "@shared";
 import { useAppSelector } from "@store";
 
@@ -25,14 +25,15 @@ export default function Main (): JSX.Element {
   const { isAuth } = user;
 
   return (
-    <div>
+    <>
       <h2>Main</h2>
       <BannerSlider/>
+      <TrickedLine/>
       <section className="flex">
         {productCardMock.map((el, i) => {
           return <ProductCard key={i} {...el}/>;
         })}
       </section>
-    </div>
+    </>
   );
 }
