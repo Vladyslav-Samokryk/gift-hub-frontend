@@ -1,5 +1,5 @@
-import { LeftArrow, useTypedTranslation } from "@src/shared";
-import React, { useState, useEffect, useRef } from "react";
+import { LeftStep, useTypedTranslation } from "@src/shared";
+import { useState, useEffect, useRef } from "react";
 import className from "classnames";
 
 type CallbackFunction = () => void;
@@ -188,8 +188,8 @@ export default function RandomPresent (): JSX.Element {
       <h2 className='h4'>{t("randomPresent_header1")}</h2>
       <h2 className='h2 bg-gradient-primary-linear bg-clip-text text-right text-transparent'>{t("randomPresent_header2")}</h2>
       <div className='flex items-center justify-around'>
-        <div className='flex items-center'><span className='text-[70px] text-purple-900'>1</span><p className='h6'>{t("randomPresent_step1")}</p> </div> <LeftArrow/>
-        <div className='flex items-center'><span className='text-[70px] text-purple-900'>2</span><p className='h6'>{t("randomPresent_step2")}</p> </div> <LeftArrow/>
+        <div className='flex items-center'><span className='text-[70px] text-purple-900'>1</span><p className='h6'>{t("randomPresent_step1")}</p> </div> <LeftStep/>
+        <div className='flex items-center'><span className='text-[70px] text-purple-900'>2</span><p className='h6'>{t("randomPresent_step2")}</p> </div> <LeftStep/>
         <div className='flex items-center'><span className='text-[70px] text-purple-900'>3</span><p className='h6'>{t("randomPresent_step3")}</p> </div>
       </div>
       <div className='my-3 flex flex-col items-center justify-center'>

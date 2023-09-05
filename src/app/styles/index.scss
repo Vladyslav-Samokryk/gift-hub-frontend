@@ -50,4 +50,65 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+
+
+
+@layer components {
+    .btn-effect {
+        &:hover {
+            @apply bg-CTA-gradient;
+        }
+
+        &:active {
+            @apply bg-deepBlue;
+        }
+    }
+
+   .h1 {
+      @apply font-rubik font-normal text-8xl
+   }
+
+   .h2 {
+      @apply font-rubik font-semibold text-[50px]
+   }
+
+   .h3 {
+      @apply font-rubik font-medium text-5xl
+   }
+
+   .h4 {
+      @apply font-rubik font-normal text-[46px]
+   }
+
+   .h5 {
+      @apply font-rubik font-normal text-4xl
+   }
+
+   .h6 {
+      @apply font-rubik font-light text-2xl
+   }
+
+   .primary {
+      @apply font-rubik font-normal text-xl
+   }
+
+   .primary-bold {
+      @apply font-rubik font-semibold text-[22px]
+   }
+
+   .secondary {
+      @apply font-rubik font-light text-lg
+   }
+
+   .secondary-bold {
+      @apply font-rubik font-medium text-lg
+   }
+
+   .additional {
+      @apply font-rubik font-normal text-base
+   }
+
+   .mobile-font {
+      @apply font-rubik font-normal text-[12px]
+   }
 }

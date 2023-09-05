@@ -5,6 +5,10 @@ interface AllLocalesType {
     aboutAs: string;
     contacts: string;
     catalog: string;
+    secretPresent: string;
+    search: string;
+    goToSale: string;
+    aboutSecterPresent: string;
     follow_us: string;
     contact_us: string;
     contact_us_messengers: string;
@@ -20,6 +24,7 @@ interface AllLocalesType {
     randomPresent_step2: string;
     randomPresent_step3: string;
     getRandomPresent: string;
+    seeMore: string;
     help: string;
     en: string;
     uk: string;
