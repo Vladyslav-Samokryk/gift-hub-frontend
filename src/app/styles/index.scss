@@ -15,6 +15,16 @@
 }
 
 @layer components {
+    .btn-effect {
+        &:hover {
+            @apply bg-CTA-gradient;
+        }
+
+        &:active {
+            @apply bg-deepBlue;
+        }
+    }
+
    .h1 {
       @apply font-rubik font-normal text-8xl
    }

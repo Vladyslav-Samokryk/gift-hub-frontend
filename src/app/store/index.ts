@@ -6,6 +6,7 @@ import { createLogger } from "redux-logger";
 
 import { isDevEnv } from "@config";
 import rootReducer from "./rootReducer";
+import { bannerApi, baseApi, authApi } from "../api";
 
 type MiddlewarePointType = Middleware<Record<string, unknown>, unknown, Dispatch<AnyAction>>;
 type GetDefaultMiddlewareType = Array<Middleware<Record<string, unknown>, unknown, Dispatch<AnyAction>>>;
@@ -22,7 +23,10 @@ if (isDevEnv) {
 export const setupStore = (): ReturnType<typeof configureStore> => {
   return configureStore({
     reducer: rootReducer,
-    middleware: (getDefaultMiddleware) => (getDefaultMiddleware() as GetDefaultMiddlewareType).concat(...middleware),
+    middleware: (getDefaultMiddleware) => (getDefaultMiddleware() as GetDefaultMiddlewareType).concat(...middleware,
+      baseApi.middleware as MiddlewarePointType,
+      authApi.middleware as MiddlewarePointType,
+      bannerApi.middleware as MiddlewarePointType),
     devTools: isDevEnv,
     preloadedState: {},
   });
