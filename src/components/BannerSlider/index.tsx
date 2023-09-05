@@ -1,94 +1,81 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
+import type { Banner } from "@shared";
 import {
   LeftArrow,
   RightArrow,
   useInterval,
   useTypedTranslation,
-} from '@src/shared';
-import classNames from 'classnames';
+} from "@shared";
+import classNames from "classnames";
+import { useGetBannersQuery } from "@src/app/api/banner";
 
-interface BannerMockType {
-  img: string;
-  link: string;
-  title: string;
-  description: string;
-}
-
-const bannerMock: BannerMockType[] = [
-  {
-    img: 'pink',
-    link: 'catalog/pink',
-    title: 'Sales',
-    description: 'Go here and buy it PINK!',
-  },
-  {
-    img: 'green',
-    link: 'catalog/green',
-    title: 'Sales',
-    description: 'Go here and buy it GREEN!',
-  },
-  {
-    img: 'blue',
-    link: 'catalog/blue',
-    title: 'Sales',
-    description: 'Go here and buy it BLUE!',
-  },
-];
-
-export default function BannerSlider(): JSX.Element {
+export default function BannerSlider (): JSX.Element {
+  const { data, error, isLoading } = useGetBannersQuery("");
+  const [banner, setBanner] = useState<Banner | null>(null);
   const [bannerIndex, setBannerIndex] = useState(0);
-  const [banner, setBanner] = useState(bannerMock[0]);
   const t = useTypedTranslation();
 
-  const setDirection = (direction: 'back' | 'forward'): number => {
-    switch (direction) {
-      case 'back':
-        return bannerIndex > 0 ? bannerIndex - 1 : bannerMock.length - 1;
-      case 'forward':
-        return bannerIndex < bannerMock.length - 1 ? bannerIndex + 1 : 0;
+  const setDirection = (direction: "back" | "forward"): number => {
+    if (data) {
+      switch (direction) {
+        case "back":
+          return bannerIndex > 0 ? bannerIndex - 1 : data.length - 1;
+        case "forward":
+          return bannerIndex < data.length - 1 ? bannerIndex + 1 : 0;
+      }
     }
+    return 0;
   };
 
   useEffect(() => {
-    setBanner(bannerMock[bannerIndex]);
+    if (data) {
+      setBanner(data[bannerIndex]);
+    }
   }, [bannerIndex]);
 
-  useInterval(() => setBannerIndex(setDirection('forward')), 5000);
+  useInterval(() => setBannerIndex(setDirection("forward")), 5000);
+
+  if (isLoading || !data || !banner || error) {
+    return <div className='mx-[10%] mb-7 h-[40vw] w-[80%] animate-pulse bg-slate-200'/>;
+  }
 
   return (
     <>
-      <div key={banner.img} className='flex justify-center items-center w-full'>
-        <button
-          className='group rounded-full w-9 h-9 flex justify-center items-center hover:bg-accent-turkus'
-          onClick={() => setBannerIndex(setDirection('back'))}
-        >
-          <LeftArrow />
-        </button>
-        <div>
-          <h1 className='h1'>{banner.title}</h1>
-          <h2 className='h2'>{banner.description}</h2>
-          <button className='bg-black text-white px-9 py-2 primary-bold rounded-lg'>
-            {t('goToSale')}
+      <div className='relative h-[40vw] w-[80%] px-[10%]'>
+        <img src={banner.img} alt={banner.title} className='absolute z-0 h-full w-full object-fill'/>
+        <div className='absolute z-10 flex h-full w-full items-center justify-between'>
+          <button
+            className='group top-[10px] m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent-turkus'
+            onClick={() => setBannerIndex(setDirection("back"))}
+          >
+            <LeftArrow />
+          </button>
+          <div className="w-[80%]">
+            <h1 className='h1'>{banner.title}</h1>
+            <h2 className='h2'>{banner.description}</h2>
+            <button className='btn-effect primary-bold rounded-lg bg-black px-9 py-2 text-white'>
+              {t("goToSale")}
+            </button>
+          </div>
+          <button
+            className='group m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent-turkus'
+            onClick={() => setBannerIndex(setDirection("forward"))}
+          >
+            <RightArrow />
           </button>
         </div>
-        <button
-          className='group rounded-full w-9 h-9 flex justify-center items-center hover:bg-accent-turkus'
-          onClick={() => setBannerIndex(setDirection('forward'))}
-        >
-          <RightArrow />
-        </button>
       </div>
       <div className='flex justify-center'>
-        {bannerMock.map((_, i) => {
+        {data.map((_, i) => {
           return (
             <button
               key={i}
               className={classNames(
-                'border-accent-turkus border-2 rounded-full w-4 h-4 m-1',
+                "border-accent-turkus border-2 rounded-full w-4 h-4 m-1",
                 {
-                  'bg-accent-turkus': i === bannerIndex,
-                  'bg-white': i !== bannerIndex,
-                }
+                  "bg-accent-turkus": i === bannerIndex,
+                  "bg-white": i !== bannerIndex,
+                },
               )}
               onClick={() => setBannerIndex(i)}
             />

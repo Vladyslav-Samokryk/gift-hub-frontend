@@ -30,8 +30,9 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 export { useInterval } from "./hooks/useInterval";
 
 /** Types */
-export type { User } from "./types/User";
-export type { ProductCardType } from "./types/ProductTypes";
+export type { User, RoleUnion } from "./types/User";
+export type { Banner } from "./types/Banner";
+export type { ProductCardType } from "./types/ProductCardType";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";

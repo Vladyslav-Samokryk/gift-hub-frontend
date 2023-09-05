@@ -1,5 +1,5 @@
 import { combineReducers } from "@reduxjs/toolkit";
-import { authApi, baseApi, productsApi } from "@api";
+import { productsApi, bannerApi, authApi, baseApi } from "@api";
 
 import { userReducer } from "./slices";
 
@@ -8,6 +8,7 @@ const rootReducer = combineReducers({
   [productsApi.reducerPath]: baseApi.reducer,
   [baseApi.reducerPath]: baseApi.reducer,
   [authApi.reducerPath]: authApi.reducer,
+  [bannerApi.reducerPath]: bannerApi.reducer,
 });
 
 export default rootReducer;
