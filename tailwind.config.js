@@ -65,7 +65,7 @@ module.exports = {
         'drop-2': '0px 4px 15px 0px #80808080',
       },
       height: {
-        card: "438px",
+        card: "472px",
         cardImg: "300px",
         hr: "2px",
       },

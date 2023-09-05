@@ -28,5 +28,7 @@ export const uk: AllLocalesType = {
     help: "Допомога",
     en: "ENG",
     uk: "УКР",
+    popularProductSection: "ПОПУЛЯРНІ ТОВАРИ",
+    newProductSection: "НОВІ НАДХОДЖЕННЯ",
   },
 };

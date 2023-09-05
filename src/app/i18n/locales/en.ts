@@ -28,5 +28,7 @@ export const en: AllLocalesType = {
     help: "Help",
     en: "ENG",
     uk: "UA",
+    popularProductSection: "POPULAR PRODUCTS",
+    newProductSection: "NEW PRODUCTS",
   },
 };

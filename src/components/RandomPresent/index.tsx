@@ -1,22 +1,6 @@
-import { LeftStep, useTypedTranslation } from "@src/shared";
-import { useState, useEffect, useRef } from "react";
+import { LeftStep, useTypedTranslation, useInterval } from "@shared";
+import { useState } from "react";
 import className from "classnames";
-
-type CallbackFunction = () => void;
-
-export function useInterval (callback: CallbackFunction, delay: number): void {
-  const savedCallback = useRef<CallbackFunction | null>(null);
-
-  useEffect(() => {
-    savedCallback.current = callback;
-  }, [callback]);
-
-  useEffect(() => {
-    const tick = (): void => savedCallback.current?.();
-    const id = setInterval(tick, delay);
-    return () => clearInterval(id);
-  }, [delay]);
-}
 
 interface RandomMockType {
   img: string;
