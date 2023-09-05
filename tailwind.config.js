@@ -39,14 +39,6 @@ module.exports = {
           turkus: '#00BCD4',
           blue: "#4495ff",
         },
-        accent: {
-          red: '#FF3232',
-          bYellow: '#FFD805',
-          bOrange: '#FF8C22',
-          green: '#00BF13',
-          turkus: '#00BCD4',
-          blue: "#4495ff",
-        },
         background: {
           main: '#F7F7FF',
         },
@@ -62,7 +54,7 @@ module.exports = {
         'drop-2': '0px 4px 15px 0px #80808080',
       },
       height: {
-        card: "438px",
+        card: "472px",
         cardImg: "300px",
         hr: "2px",
       },

@@ -31,7 +31,7 @@ export { useInterval } from "./hooks/useInterval";
 
 /** Types */
 export type { User } from "./types/User";
-export type { ProductCardType, ProductSectionUnion } from "./types/ProductTypes";
+export type { ProductCardType } from "./types/ProductTypes";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
