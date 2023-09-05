@@ -58,4 +58,8 @@
    .additional {
       @apply font-rubik font-normal text-base
    }
+
+   .mobile-font {
+      @apply font-rubik font-normal text-[12px]
+   }
 }

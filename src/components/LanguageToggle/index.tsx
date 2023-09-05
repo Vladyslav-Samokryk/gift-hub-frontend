@@ -21,8 +21,8 @@ export default function LanguageToggle (): JSX.Element {
           name={language}
           onClick={handleChangeLanguage}
           className={className({
-            "text-blue-200 secondary": language !== active,
-            "text-blue-700 secondary-bold": language === active,
+            "text-blue-200 md:secondary mobile-font": language !== active,
+            "text-blue-700 md:secondary-bold mobile-font font-bold": language === active,
           })}
         >
           {t(language)}
