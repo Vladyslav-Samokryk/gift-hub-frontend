@@ -44,3 +44,4 @@ export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
 export { default as UpArrow } from "./UI/UpArrow";
 export { default as ProductSection } from "./UI/ProductSection";
+export { default as RangePrice } from "./UI/RangePrice";

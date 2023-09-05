@@ -1,4 +1,10 @@
+import type { ProductCardType } from "@shared";
 import { baseApi } from "./base";
+
+interface Range {
+  from: number;
+  to: number;
+}
 
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -14,7 +20,16 @@ export const productsApi = baseApi.injectEndpoints({
         method: "GET",
       }),
     }),
+    getRandomProducts: builder.query<ProductCardType[], Range>({
+      query: (arg) => {
+        const { from, to } = arg;
+        return {
+          url: `shop/guest_user/random-gifts/?from=${from}&to=${to}&quantity=5`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
-export const { useGetNewProductsQuery, useGetPopularProductsQuery } = productsApi;
+export const { useGetNewProductsQuery, useGetPopularProductsQuery, useGetRandomProductsQuery } = productsApi;
