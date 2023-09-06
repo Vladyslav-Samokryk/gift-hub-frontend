@@ -1,7 +1,7 @@
-import { LeftStep, useTypedTranslation, useInterval, RangePrice } from "@shared";
+import { LeftStep, useTypedTranslation, useInterval, RangePrice, type StylePropType } from "@shared";
 import { useEffect, useState } from "react";
 import { useGetRandomProductsQuery } from "@src/app/api/products";
-import { getLeft, getSize, getWay, getStyle, getPresent } from "./helpers";
+import { getLeft, getSize, getDirection, getStyle, getPresent } from "./helpers";
 import { useAppSelector } from "@src/app/store";
 
 export default function RandomPresent (): JSX.Element {
@@ -12,20 +12,20 @@ export default function RandomPresent (): JSX.Element {
   const [random, setRandom] = useState(false);
   const [r, setR] = useState(false);
 
-  const [style, setStyle] = useState([
-    { left: 5, size: 21, way: true },
-    { left: 20, size: 23, way: true },
-    { left: 37, size: 27, way: true },
-    { left: 58, size: 23, way: true },
-    { left: 75, size: 21, way: false },
+  const [style, setStyle] = useState<StylePropType[]>([
+    { left: 5, size: 21, direction: "forward" },
+    { left: 20, size: 23, direction: "forward" },
+    { left: 37, size: 27, direction: "forward" },
+    { left: 58, size: 23, direction: "forward" },
+    { left: 75, size: 21, direction: "back" },
   ]);
 
   useInterval(() => {
     if (random) {
       setStyle(style.map((el) => ({
-        left: getLeft(el.way, el.left),
-        size: getSize(el.way, el.size, el.left),
-        way: getWay(el.left, el.way),
+        left: getLeft(el),
+        size: getSize(el),
+        direction: getDirection(el),
       })));
     }
   }, 1);
@@ -40,20 +40,20 @@ export default function RandomPresent (): JSX.Element {
 
   return (
     <section className='m-3 rounded-2xl bg-purple-100 px-5 py-10'>
-      <h2 className='h4'>{t("randomPresent_header1")}</h2>
-      <h2 className='h2 bg-gradient-primary-linear bg-clip-text text-right text-transparent'>{t("randomPresent_header2")}</h2>
-      <div className='flex items-center justify-around'>
-        <div className='flex items-center'><span className='text-[70px] text-purple-900'>1</span><p className='h6'>{t("randomPresent_step1")}</p> </div> <LeftStep/>
-        <div className='flex items-center'><span className='text-[70px] text-purple-900'>2</span><p className='h6'>{t("randomPresent_step2")}</p> </div> <LeftStep/>
-        <div className='flex items-center'><span className='text-[70px] text-purple-900'>3</span><p className='h6'>{t("randomPresent_step3")}</p> </div>
+      <h2 className='primary md:h4 mb-10'>{t("randomPresent_header1")}</h2>
+      <h2 className='primary-bold md:h2 mb-10 bg-gradient-primary-linear bg-clip-text text-right text-transparent'>{t("randomPresent_header2")}</h2>
+      <div className='flex flex-col items-center justify-around md:flex-row '>
+        <div className='flex w-full items-center justify-center'><span className='mr-2 text-[40px] text-purple-900 lg:text-[70px]'>1</span><p className='secondary lg:h6'>{t("randomPresent_step1")}</p> </div> <LeftStep/>
+        <div className='flex w-full items-center justify-center'><span className='mr-2 text-[40px] text-purple-900 lg:text-[70px]'>2</span><p className='secondary lg:h6 md:w-[25vw]'>{t("randomPresent_step2")}</p> </div> <LeftStep/>
+        <div className='flex w-full items-center justify-center'><span className='mr-2 text-[40px] text-purple-900 lg:text-[70px]'>3</span><p className='secondary lg:h6'>{t("randomPresent_step3")}</p> </div>
       </div>
       <div className='my-3 flex flex-col items-center justify-center'>
         <RangePrice/>
-        <button onClick={() => { setRandom(true); setR(false); }} className='secondary-bold my-10 h-12 w-96 rounded-md bg-blue-700 text-white'>{t("getRandomPresent")}</button>
+        <button onClick={() => { setRandom(true); setR(false); }} className='secondary-bold my-10 h-12 w-max rounded-md bg-blue-700 px-8 text-white'>{t("getRandomPresent")}</button>
       </div>
 
-      <div className='mx-5 flex h-[27vw] w-[100vw] whitespace-nowrap '>
-        <div className="flex w-full items-center">
+      <div className='mx-5 flex h-[27vw] whitespace-nowrap '>
+        <div className="flex items-center">
           {data.map((el, i) => {
             return <img key={i} src={el.img} className="absolute bg-white object-contain shadow-randomize-result" style={getStyle(style[i])}/>;
           })}

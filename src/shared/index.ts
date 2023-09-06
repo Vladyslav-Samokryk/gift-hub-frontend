@@ -30,11 +30,13 @@ export { useTypedTranslation } from "./hooks/useTypedTranslation";
 export { useInterval } from "./hooks/useInterval";
 export { useHideOnScroll } from "./hooks/useHideOnScroll";
 export { useHorizontalScroll } from "./hooks/useHorizontalScroll";
+export { useScreenWidth } from "./hooks/useScreenWidth";
 
 /** Types */
 export type { User, RoleUnion } from "./types/User";
 export type { Banner } from "./types/Banner";
 export type { ProductCardType } from "./types/ProductTypes";
+export type { StylePropType, DirectionUnionType } from "./types/Styles";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";

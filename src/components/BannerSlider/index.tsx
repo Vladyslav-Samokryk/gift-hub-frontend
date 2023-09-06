@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import type { Banner } from "@shared";
 import {
   LeftArrow,
   RightArrow,
   useInterval,
   useTypedTranslation,
 } from "@shared";
+import type {
+  Banner,
+  DirectionUnionType,
+} from "@shared";
+
 import classNames from "classnames";
 import { useGetBannersQuery } from "@src/app/api/banner";
 
@@ -15,7 +19,7 @@ export default function BannerSlider (): JSX.Element {
   const [bannerIndex, setBannerIndex] = useState(0);
   const t = useTypedTranslation();
 
-  const setDirection = (direction: "back" | "forward"): number => {
+  const setDirection = (direction: DirectionUnionType): number => {
     if (data) {
       switch (direction) {
         case "back":
