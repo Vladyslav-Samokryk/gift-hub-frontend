@@ -28,6 +28,8 @@ export { useAuth } from "./hooks/useAuth";
 export { useTypedNavigate } from "./hooks/useTypedNavigate";
 export { useTypedTranslation } from "./hooks/useTypedTranslation";
 export { useInterval } from "./hooks/useInterval";
+export { useHideOnScroll } from "./hooks/useHideOnScroll";
+export { useHorizontalScroll } from "./hooks/useHorizontalScroll";
 
 /** Types */
 export type { User, RoleUnion } from "./types/User";
