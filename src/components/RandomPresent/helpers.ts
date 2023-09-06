@@ -42,11 +42,21 @@ export function getIndex (size: number, direction: DirectionUnionType): number {
   return 30;
 }
 
-export function getStyle ({ left, size, direction }: StylePropType): StyleType {
+export function getStyle ({ left, size, direction }: StylePropType, windowWidth: number): StyleType {
+  let times = 1;
+  let offset = 0;
+  let width = 1;
+
+  if (windowWidth < 768) {
+    times = 2; offset = 30; width = 0.7;
+  } else {
+    times = 1; offset = 0; width = 1;
+  }
+
   return {
-    left: `${left}vw`,
-    height: `${size}vw`,
-    width: `${size}vw`,
+    left: `${left / width - offset}vw`,
+    height: `${size * times}vw`,
+    width: `${size * times}vw`,
     zIndex: getIndex(size, direction),
   };
 }

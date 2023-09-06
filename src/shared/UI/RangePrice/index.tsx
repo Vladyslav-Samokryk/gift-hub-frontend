@@ -32,6 +32,8 @@ export default function RangePrice (): JSX.Element {
       : (range <= from + minDiffer ? from + minDiffer : range);
   }
 
+  console.log(permition);
+
   return (
     <div className="relative m-auto my-3 h-8 w-[70vw] lg:w-[50vw]">
       <div className="absolute top-2 h-2 w-full rounded-sm bg-blue-300"/>
