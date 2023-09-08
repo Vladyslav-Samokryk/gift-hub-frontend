@@ -1,11 +1,10 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { productsApi, bannerApi, authApi, baseApi } from "@api";
 
-import { userReducer, randomRangeReducer } from "./slices";
+import { userReducer } from "./slices";
 
 const rootReducer = combineReducers({
   user: userReducer,
-  randomRange: randomRangeReducer,
   [productsApi.reducerPath]: baseApi.reducer,
   [baseApi.reducerPath]: baseApi.reducer,
   [authApi.reducerPath]: authApi.reducer,

@@ -1,10 +1,10 @@
 export type DirectionUnionType = "back" | "forward";
 
 export interface StylePropType {
-  // Left stype parametr
+  // Left style parameter
   left: number;
-  // Width and height stype parametr
+  // Width and height style parameter
   size: number;
-  // Mooving direction
+  // Moving direction
   direction: DirectionUnionType;
 }
