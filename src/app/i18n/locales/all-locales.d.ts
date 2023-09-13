@@ -19,6 +19,9 @@ interface AllLocalesType {
     privacyPolicy: string;
     copyrightText: string;
     seeMore: string;
+    contacts_header: string;
+    contacts_email: string;
+    contacts_telegram: string;
     help: string;
     en: string;
     uk: string;

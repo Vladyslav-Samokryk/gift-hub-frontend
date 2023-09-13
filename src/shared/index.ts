@@ -2,7 +2,7 @@
 export { Basket } from "./assets/svg/Basket";
 export { BlueClose } from "./assets/svg/BlueClose";
 export { Catalog } from "./assets/svg/Catalog";
-export { DropDown } from "./assets/svg/DropDown";
+export { DropDown, DropUp } from "./assets/svg/Drops";
 export { Present } from "./assets/svg/Present";
 export { Search } from "./assets/svg/Search";
 export { UserAccount } from "./assets/svg/UserAccount";
@@ -43,4 +43,3 @@ export { default as StarRate } from "./UI/StarRate";
 export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
 export { default as UpArrow } from "./UI/UpArrow";
-
