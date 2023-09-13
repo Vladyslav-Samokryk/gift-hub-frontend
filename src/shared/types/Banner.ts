@@ -3,6 +3,8 @@ export interface Banner {
   id: string;
   // banner image
   img: string;
+  // banner mobile image
+  mobileImg: string;
   // link to specific catalog
   link: string;
   // title of ad
