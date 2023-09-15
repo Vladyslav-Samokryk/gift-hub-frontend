@@ -47,4 +47,6 @@ export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
 export { default as UpArrow } from "./UI/UpArrow";
 export { default as ModalContainer } from "./UI/ModalContainer";
+export { default as ModalHeader } from "./UI/ModalHeader";
 export { default as InputContainer } from "./UI/InputContainer";
+export { default as InputPassword } from "./UI/InputPassword";

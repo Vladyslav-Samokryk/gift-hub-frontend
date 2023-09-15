@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Logo, useTypedTranslation, BlueClose, Catalog, Present, Basket, Wishlist, UserAccount, Search } from "@shared";
-import { LanguageToggle, LoginPopUp, NavigationByRole } from "@components";
+import { LanguageToggle, LoginPopUp, NavigationByRole, RegistrationPopUp } from "@components";
 
 export default function Header (): JSX.Element {
   const t = useTypedTranslation();
@@ -39,7 +39,7 @@ export default function Header (): JSX.Element {
           </button>
         </section>
 
-        <LoginPopUp visible={loginPopUp} setVisible={setLoginPopUp}/>
+        <RegistrationPopUp visible={loginPopUp} setVisible={setLoginPopUp}/>
 
         <section className="flex w-36 justify-between self-center">
           <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue" onClick={() => setLoginPopUp(prev => !prev)}>

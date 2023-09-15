@@ -13,7 +13,7 @@ export default function ModalContainer ({ visible, children }: ChildrenProps): J
       block: visible,
     },
     )} style={{ backdropFilter: "blur(2px) contrast(50%)" }}>
-      <div className='fixed inset-x-0 top-60 m-auto h-max w-fit rounded-md border-2 border-gray-400 bg-white shadow-main'>
+      <div className='sticky inset-x-0 top-32 m-auto h-max w-fit rounded-md border-2 border-gray-400 bg-white px-7 py-5 shadow-main'>
         {children}
       </div>
     </div>

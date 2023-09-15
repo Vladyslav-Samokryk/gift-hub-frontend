@@ -1,7 +1,5 @@
-import React from "react";
-
 export const RegistrationIcon = (): JSX.Element => {
-  return <svg width="250" height="250" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return <svg width="200" height="200" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="250" height="250" fill="url(#pattern0)"/>
     <defs>
       <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
@@ -13,7 +11,7 @@ export const RegistrationIcon = (): JSX.Element => {
 };
 
 export const LoginIcon = (): JSX.Element => {
-  return <svg className="w-40 h-44" viewBox="0 0 250 236" fill="none" xmlns="http://www.w3.org/2000/svg">
+  return <svg width="200" height="230" viewBox="0 0 250 236" fill="none" xmlns="http://www.w3.org/2000/svg">
     <rect width="250" height="276.243" transform="matrix(-1 0 0 1 250 0)" fill="url(#pattern0)"/>
     <defs>
       <pattern id="pattern0" patternContentUnits="objectBoundingBox" width="1" height="1">
