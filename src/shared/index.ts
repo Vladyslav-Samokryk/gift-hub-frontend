@@ -35,6 +35,7 @@ export { useInterval } from "./hooks/useInterval";
 export type { User, RoleUnion } from "./types/User";
 export type { Banner } from "./types/Banner";
 export type { ProductCardType } from "./types/ProductCardType";
+export type { Children } from "./types/CommonTypes";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
@@ -46,3 +47,4 @@ export { default as Logo } from "./UI/Logo";
 export { default as SeeMoreButton } from "./UI/SeeMoreButton";
 export { default as UpArrow } from "./UI/UpArrow";
 export { default as ModalContainer } from "./UI/ModalContainer";
+export { default as InputContainer } from "./UI/InputContainer";

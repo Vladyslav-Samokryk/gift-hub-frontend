@@ -1,8 +1,9 @@
+import type { Children } from "@src/shared";
 import classNames from "classnames";
 
 interface ChildrenProps {
   visible: boolean;
-  children: string | JSX.Element | JSX.Element[];
+  children: Children;
 }
 
 export default function ModalContainer ({ visible, children }: ChildrenProps): JSX.Element {
