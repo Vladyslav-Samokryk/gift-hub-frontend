@@ -1,4 +1,4 @@
-import { BannerSlider, TrickedLine, RandomPresent } from "@components";
+import { BannerSlider, TrickedLine, RandomPresentSection } from "@components";
 import { ProductSection } from "@shared";
 import { useAppSelector } from "@store";
 
@@ -12,7 +12,7 @@ export default function Main (): JSX.Element {
       <ProductSection section={"popular"}/>
       <TrickedLine/>
       <ProductSection section={"new"}/>
-      <RandomPresent/>
+      <RandomPresentSection/>
     </div>
   );
 }

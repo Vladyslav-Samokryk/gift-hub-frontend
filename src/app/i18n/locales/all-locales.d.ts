@@ -22,6 +22,10 @@ interface AllLocalesType {
       headers: string[];
       steps: string[];
     };
+    winTitle: string;
+    knowMore: string;
+    tryAgain: string;
+    makeOrder: string;
     getRandomPresent: string;
     seeMore: string;
     help: string;

@@ -1,6 +1,6 @@
 /** Assets */
 export { Basket } from "./assets/svg/Basket";
-export { BlueClose } from "./assets/svg/BlueClose";
+export { BlueClose, WhiteClose } from "./assets/svg/BlueClose";
 export { Catalog } from "./assets/svg/Catalog";
 export { DropDown } from "./assets/svg/DropDown";
 export { Present } from "./assets/svg/Present";
@@ -21,6 +21,7 @@ export { TikTokLogo } from "./assets/svg/TikTokLogo";
 export { TweeterLogo } from "./assets/svg/TweeterLogo";
 export { FacebookLogo } from "./assets/svg/FacebookLogo";
 export { InstagramLogo } from "./assets/svg/InstagramLogo";
+export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
