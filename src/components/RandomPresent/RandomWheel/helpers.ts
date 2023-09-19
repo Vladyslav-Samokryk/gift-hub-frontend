@@ -6,6 +6,10 @@ interface StyleType {
   zIndex: number;
 }
 
+export function getRandomNumber (): number {
+  return Math.floor(2000 + Math.random() * 7999);
+}
+
 export function getLeft ({ left, direction }: StylePropType): number {
   switch (direction) {
     case "back":

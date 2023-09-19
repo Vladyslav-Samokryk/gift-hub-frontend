@@ -1,7 +1,7 @@
 import { LeftStep, useInterval, RangePrice, type StylePropType, useScreenWidth, type ProductCardType } from "@shared";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useGetRandomProductsQuery } from "@src/app/api/products";
-import { getLeft, getSize, getDirection, getStyle, getPresent } from "./helpers";
+import { getLeft, getSize, getDirection, getStyle, getPresent, getRandomNumber } from "./helpers";
 import { RandomStep, DownStep } from "@shared";
 import { useTranslation } from "react-i18next";
 
@@ -37,6 +37,11 @@ export default function RandomWheel ({ setUserWin, setWheelRotate, wheelRotate, 
     { left: 58, size: 23, direction: "forward" },
     { left: 75, size: 21, direction: "back" },
   ]);
+  const styleRef = useRef(style);
+
+  useEffect(() => {
+    styleRef.current = style;
+  }, [style]);
 
   useInterval(() => {
     if (wheelRotate) {
@@ -49,14 +54,14 @@ export default function RandomWheel ({ setUserWin, setWheelRotate, wheelRotate, 
   }, 1);
 
   useEffect(() => {
-    if (wheelRotate) {
+    if (wheelRotate && data) {
       setTimeout(() => {
         setWheelRotate(false);
-        if (data) setPresent(data[getPresent(style)]);
+        setPresent(data[getPresent(styleRef.current)]);
         setUserWin(true);
-      }, 10000);
+      }, getRandomNumber());
     }
-  }, [wheelRotate]);
+  }, [wheelRotate, data]);
 
   return (
     <section className='relative m-3 rounded-2xl bg-purple-100 px-5 py-10'>
