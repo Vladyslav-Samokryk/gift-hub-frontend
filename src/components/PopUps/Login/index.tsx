@@ -1,5 +1,6 @@
 import { LoginIcon, ModalContainer, useTypedTranslation, InputContainer, ModalHeader, InputPassword } from "@src/shared";
 import EnterAsSection from "../EnterAsSection";
+import { useState } from "react";
 
 interface LoginType {
   error?: boolean;
@@ -9,6 +10,9 @@ interface LoginType {
 
 export default function LoginPopUp ({ visible, setVisible, error = false }: LoginType): JSX.Element {
   const t = useTypedTranslation();
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <ModalContainer visible={visible}>
       <ModalHeader title={t("login")} setVisible={setVisible}>
@@ -18,11 +22,11 @@ export default function LoginPopUp ({ visible, setVisible, error = false }: Logi
       <div className="grid grid-cols-[2fr_40px_1fr]">
 
         <div className="mr-5 mt-6 grid grid-cols-1 justify-around gap-6">
-          <InputContainer label={t("ph_email")}>
-            <input type="email" placeholder=" " className="input"/>
+          <InputContainer label={t("ph_email")} inputValue={email} setInputValue={setEmail}>
+            <input type="email" placeholder=" " value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full pr-8 focus:outline-none"/>
           </InputContainer>
 
-          <InputPassword label={t("ph_password_login")}/>
+          <InputPassword label={t("ph_password_login")} password={password} setPassword={setPassword}/>
 
           <div className="flex justify-between">
             <div className="flex items-center">

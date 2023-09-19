@@ -39,7 +39,7 @@ export default function Header (): JSX.Element {
           </button>
         </section>
 
-        <RegistrationPopUp visible={loginPopUp} setVisible={setLoginPopUp}/>
+        <LoginPopUp visible={loginPopUp} setVisible={setLoginPopUp}/>
 
         <section className="flex w-36 justify-between self-center">
           <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue" onClick={() => setLoginPopUp(prev => !prev)}>

@@ -1,15 +1,24 @@
 import { useState } from "react";
 import { InputContainer, PasswordHide, PasswordShow } from "@shared";
 
-export default function InputPassword ({ label }: { label: string; }): JSX.Element {
+interface InputPasswordProps {
+  label: string;
+  password: string;
+  setPassword: (arg: string) => void;
+}
+
+export default function InputPassword ({ label, password, setPassword }: InputPasswordProps): JSX.Element {
   const [inputType, setInputType] = useState<"password" | "text">("password");
 
   return (
-    <InputContainer label={label}>
-      <input type={inputType} placeholder=" " className="input mr-3 w-[80%]" required/>
+    <div className="flex justify-between w-[90%]">
+      <InputContainer label={label} inputValue={password} setInputValue={setPassword} className="w-[90%]">
+        <input type={inputType} value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" " className="h-full w-full pr-8 focus:outline-none" required/>
+      </InputContainer>
       <button onClick={() => setInputType(prev => prev === "password" ? "text" : "password")}>
         {inputType === "password" ? <PasswordHide/> : <PasswordShow/>}
       </button>
-    </InputContainer>
+    </div>
+
   );
 }

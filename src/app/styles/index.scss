@@ -38,14 +38,15 @@
     }
 
     .input {
-      @apply rounded-sm border-[1px] h-10 border-gray-900 px-2 py-1 w-full focus:outline-none;
+      @apply rounded-sm border-[1px] h-10 border-gray-900 px-2 py-1 w-full;
       &:hover {
          @apply border-link
       }
-      &:focus, &:hover, &:not(:placeholder-shown), &:-webkit-autofill {
-         & ~ label {
+      & input{
+         &:focus, &:hover, &:not(:placeholder-shown), &:-webkit-autofill {
+         & ~ .label {
             @apply -top-3 z-10 bg-white additional;
-         } 
+         } }
    }
 }
 
