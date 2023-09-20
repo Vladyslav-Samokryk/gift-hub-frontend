@@ -9,6 +9,7 @@ interface RegistrType {
 
 export default function RegistrationPopUp ({ visible, setVisible }: RegistrType): JSX.Element {
   const t = useTypedTranslation();
+
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -16,7 +17,7 @@ export default function RegistrationPopUp ({ visible, setVisible }: RegistrType)
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible}>
+    <ModalContainer visible={visible} setVisible={setVisible}>
       <ModalHeader title={t("registration")} setVisible={setVisible}/>
 
       <div className="grid grid-cols-[2fr_40px_1fr]">

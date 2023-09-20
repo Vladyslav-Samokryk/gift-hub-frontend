@@ -6,15 +6,16 @@ interface LoginType {
   error?: boolean;
   visible: boolean;
   setVisible: (value: boolean | ((prev: boolean) => boolean)) => void;
+  goToRegistr: (value: boolean | ((prev: boolean) => boolean)) => void;
 }
 
-export default function LoginPopUp ({ visible, setVisible, error = false }: LoginType): JSX.Element {
+export default function LoginPopUp ({ visible, setVisible, goToRegistr, error = false }: LoginType): JSX.Element {
   const t = useTypedTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible}>
+    <ModalContainer visible={visible} setVisible={setVisible}>
       <ModalHeader title={t("login")} setVisible={setVisible}>
         {error ? <p className="additional text-accent-bOrange">{t("wishlistError")}</p> : null}
       </ModalHeader>
@@ -36,8 +37,11 @@ export default function LoginPopUp ({ visible, setVisible, error = false }: Logi
             <a href="#" className="additional text-blue-800 underline">{t("remind_password")}</a>
           </div>
           <div className="m-auto flex flex-col items-center">
-            <button className="btn-effect btn">Login</button>
-            <a className="additional mt-3 text-link underline">{t("registration")}</a>
+            <button className="btn-effect btn">{t("login_btn")}</button>
+            <button className="additional mt-3 text-link underline" onClick={() => {
+              setVisible(false);
+              goToRegistr(true);
+            }}>{t("registration")}</button>
           </div>
         </div>
 

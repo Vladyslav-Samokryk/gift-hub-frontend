@@ -6,6 +6,7 @@ export default function Header (): JSX.Element {
   const t = useTypedTranslation();
   const [search, setSearch] = useState("");
   const [loginPopUp, setLoginPopUp] = useState(false);
+  const [registrPopUp, setRegistrPopUp] = useState(false);
 
   return (
     <header>
@@ -39,7 +40,8 @@ export default function Header (): JSX.Element {
           </button>
         </section>
 
-        <LoginPopUp visible={loginPopUp} setVisible={setLoginPopUp}/>
+        <LoginPopUp visible={loginPopUp} setVisible={setLoginPopUp} goToRegistr={setRegistrPopUp}/>
+        <RegistrationPopUp visible={registrPopUp} setVisible={setRegistrPopUp}/>
 
         <section className="flex w-36 justify-between self-center">
           <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-deepBlue" onClick={() => setLoginPopUp(prev => !prev)}>
