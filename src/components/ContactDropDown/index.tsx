@@ -10,8 +10,6 @@ export default function ContactDropDown (): JSX.Element {
     setIsVisible(prev => !prev);
   };
 
-  console.log(isVisible);
-
   const subMenuAnimate = {
     enter: {
       opacity: 1,
@@ -35,10 +33,12 @@ export default function ContactDropDown (): JSX.Element {
 
   return (
     <>
+      {isVisible &&
       <motion.div
         className="absolute left-0 top-0 z-10 h-screen w-screen"
-        onClick={() => toggleMenu()}
+        onClick={() => setIsVisible(false)}
       />
+      }
       <div className="relative">
 
         <button className="flex items-center" onClick={() => toggleMenu()}>
@@ -65,7 +65,7 @@ export default function ContactDropDown (): JSX.Element {
           </button>
           <button className="group flex items-center ">
             <TelegramLogo className="fill-blue-900"/>
-            <a href="https://telegram.me/share/url?url=gift_hub_channel" className="md:secondary pl-3 text-[10px] font-light group-hover:text-purple-900">{t("contacts_telegram")}</a>
+            <a href="https://telegram.me/share/url?url=gift_hub_channel" target="_blank" className="md:secondary pl-3 text-[10px] font-light group-hover:text-purple-900" rel="noreferrer">{t("contacts_telegram")}</a>
           </button>
         </motion.div>
 
