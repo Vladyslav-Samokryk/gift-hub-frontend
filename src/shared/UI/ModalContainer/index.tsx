@@ -13,9 +13,9 @@ export default function ModalContainer ({ visible, setVisible, children }: Child
       {visible &&
           <div className="fixed inset-0 z-50">
             <motion.div
-              initial={{ y: 100, opacity: 0 }}
+              initial={{ y: 200, opacity: 0 }}
               animate={{
-                y: -100,
+                y: 100,
                 opacity: 1,
               }}
               exit={{
