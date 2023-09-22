@@ -1,114 +1,65 @@
 import { CURRENCY } from "@config";
 import { useScreenWidth } from "@src/shared";
-import type { Dispatch, SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 
-type RangeType = "from" | "to";
-
-function differ (width: number, min: number, max: number): number[] {
-  const MAX_STEP = 2000;
-  const THUMB = 12;
-  const px = width / MAX_STEP;
-  const min_step = (min + THUMB) * px;
-  const max_step = (max - THUMB) * px;
-  return [max_step - min_step, min_step, max_step];
-}
-
-function adaptWidth (width: number): number {
-  return width < 1024 ? width * 0.7 : width / 2;
-}
+import ReactSlider from "react-slider";
 
 interface Range {
   from: number;
   to: number;
 }
 
-interface RangeProp {
+interface RangeProp extends Range {
   permission: boolean;
-  from: number;
-  to: number;
   setRange: Dispatch<SetStateAction<Range>>;
 }
 
-export default function RangePrice ({ permission, from, to, setRange }: RangeProp): JSX.Element {
-  const minDiffer = 200;
+interface RangeInputProps {
+  value: number;
+}
+
+const differ = 200;
+const MAX_STEP = 2000;
+
+function getDiffer (width: number, value: number): number {
+  const THUMB = 24;
+  const px = width / MAX_STEP;
+  return (value * px - THUMB);
+}
+
+function adaptWidth (width: number): number {
+  return width < 1024 ? width * 0.36 : width * 0.45;
+}
+
+function RangeInput ({ value }: RangeInputProps): JSX.Element {
   const windowWidth = useScreenWidth();
-
-  function getRange (rangeType: RangeType, range: number): number {
-    return rangeType === "from"
-      ? (range >= to - minDiffer ? to - minDiffer : range)
-      : (range <= from + minDiffer ? from + minDiffer : range);
-  }
-
-  function handlerSetTo (toRange: number): void {
-    setRange((prev: Range) => ({ from: prev.from, to: getRange("to", toRange) }));
-  }
-
-  function handlerSetFrom (fromRange: number): void {
-    setRange((prev: Range) => ({ to: prev.to, from: getRange("from", fromRange) }));
-  }
-
+  const width = adaptWidth(windowWidth);
   return (
-    <div className="relative m-auto my-3 h-16 w-[70vw] lg:w-[50vw]">
-      <div className="absolute top-2 h-2 w-full rounded-sm bg-blue-300"/>
+    <div className="secondary absolute top-8 flex h-7 w-20 items-center justify-center rounded-full bg-white"
+      style={{
+        filter: "drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.2))",
+        left: `${getDiffer(width, value)}px`,
+      }}>
+      <p>{CURRENCY}{value}</p>
+    </div>);
+}
 
-      <div className='absolute top-2 h-2 bg-gradient-primary-linear'
-        style={{
-          left: `${differ(adaptWidth(windowWidth), from, to)[1]}px`,
-          width: `${differ(adaptWidth(windowWidth), from, to)[0]}px`,
-        }}/>
-
-      <input className="absolute w-full"
-        type='range'
-        min='0' max="2000" step="1"
-        value={from}
-        onChange={(e) => !permission ? handlerSetFrom(+e.target.value) : from}
+export default function RangePrice ({ permission, from, to, setRange }: RangeProp): JSX.Element {
+  return (
+    <div className="relative mb-20 mt-10 w-[70%] lg:w-[50%]">
+      <ReactSlider
+        className="h-2"
+        thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7"
+        defaultValue={[200, 700]}
+        value={[from, to]}
+        max={MAX_STEP}
+        pearling
+        renderTrack={(props, state) => <div {...props} className={state.index === 1 ? "h-2 bg-gradient-primary-linear" : "h-2 bg-blue-300"}/>}
+        renderThumb={(props, state) => <div className="relative"> <div {...props}/> <RangeInput value={state.valueNow}/></div>}
+        minDistance={differ}
+        disabled={permission}
+        onChange={(value) => setRange({ from: value[0], to: value[1] })}
       />
-      <input className="absolute w-full"
-        type='range'
-        min="0" max='2000' step="1"
-        value={to}
-        onChange={(e) => !permission ? handlerSetTo(+e.target.value) : to}
-      />
-
-      <div className="secondary absolute top-10 flex h-7 w-20 items-center justify-center rounded-full bg-white"
-        style={{
-          left: `${differ(adaptWidth(windowWidth), from, to)[1] - 40}px`,
-          filter: "drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.2))",
-        }}>
-        <p>{CURRENCY}</p>
-        <input className="w-12 text-center"
-          type="number"
-          min='0' max="2000" step='1'
-          value={from}
-          onChange={(e) => !permission ? handlerSetFrom(+e.target.value) : from}
-          onInput={(e) => {
-            const inputElement = e.target as HTMLInputElement;
-            if (inputElement.value.startsWith("0")) {
-              inputElement.value = "0";
-            }
-          }}
-        />
-      </div>
-
-      <div className="secondary absolute top-10 flex h-7 w-20 items-center justify-center rounded-full bg-white text-center"
-        style={{
-          left: `${differ(adaptWidth(windowWidth), from, to)[2] - 38}px`,
-          filter: "drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.2))",
-        }} >
-        <p>{CURRENCY}</p>
-        <input className="w-12 text-center"
-          type="number"
-          min='0' max="2000" step='1'
-          value={to}
-          onChange={(e) => permission && +e.target.value <= 2000 ? handlerSetTo(parseInt(e.target.value, 10)) : to}
-          onInput={(e) => {
-            const inputElement = e.target as HTMLInputElement;
-            if (inputElement.value.startsWith("0")) {
-              inputElement.value = "0";
-            }
-          }}
-        />
-      </div>
     </div>
   );
 }

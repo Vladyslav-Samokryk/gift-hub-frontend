@@ -75,14 +75,13 @@ export default function RandomWheel ({ setUserWin, setWheelRotate, wheelRotate, 
           const stepIcon = windowWidth >= 768 ? <LeftStep/> : <DownStep/>;
           return <div key={index} className='flex flex-col items-center justify-center md:flex-row'>
             <RandomStep index={index + 1} step={step}/>
-            {index === 0 && windowWidth < 768 && <RangePrice permission={wheelRotate} setRange={setRange} {...range} />}
+            {index === 0 && windowWidth < 768 && <RangePrice permission={wheelRotate} setRange={setRange} {...range}/>}
             {index < sectionText.steps.length - 1 && stepIcon }
           </div>;
         })}
       </div>
       <div className='my-3 flex flex-col items-center justify-center'>
-        {windowWidth >= 768 && <RangePrice permission={wheelRotate} setRange={setRange} {...range}/>
-        }
+        {windowWidth >= 768 && <RangePrice permission={wheelRotate} setRange={setRange} {...range}/>}
         <button onClick={() => setWheelRotate(true)} className='secondary-bold mb-5 h-12 w-max rounded-md bg-blue-700 px-8 text-white lg:w-96'>{t("getRandomPresent")}</button>
       </div>
 
