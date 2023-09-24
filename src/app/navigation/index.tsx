@@ -19,7 +19,7 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: "",
@@ -55,7 +55,7 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/"/>,
+          element: <Navigate to="/" />,
         },
       ],
     },
@@ -68,7 +68,7 @@ const useManagerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: "",
@@ -80,7 +80,7 @@ const useManagerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/"/>,
+          element: <Navigate to="/" />,
         },
       ],
     },
@@ -93,7 +93,7 @@ const useAdminRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
     {
       path: "/",
-      element: <Layout/>,
+      element: <Layout />,
       children: [
         {
           path: "",
@@ -115,7 +115,7 @@ export const Routing = (): React.ReactElement | null => {
 
   switch (role) {
     case MANAGER: {
-    return useManagerRouting();
+      return useManagerRouting();
     }
     case ADMIN: {
       return useAdminRouting();
