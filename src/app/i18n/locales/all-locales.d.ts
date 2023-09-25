@@ -18,10 +18,21 @@ interface AllLocalesType {
     returnConditions: string;
     privacyPolicy: string;
     copyrightText: string;
+    randomPresent: {
+      headers: string[];
+      steps: string[];
+    };
+    winTitle: string;
+    knowMore: string;
+    tryAgain: string;
+    makeOrder: string;
+    getRandomPresent: string;
     seeMore: string;
     help: string;
     en: string;
     uk: string;
+    popularProductSection: string;
+    newProductSection: string;
   };
 }
 
