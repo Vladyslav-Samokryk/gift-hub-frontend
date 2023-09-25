@@ -18,6 +18,15 @@ export const en: AllLocalesType = {
     returnConditions: "Return conditions",
     privacyPolicy: "Privacy Policy",
     copyrightText: "GIFTHUB.ua, 2023-2023 Internet-shop",
+    randomPresent: {
+      headers: ["Still don't know what to choose as a gift for an IT professional?", "Our randomizer will choose it for you!"],
+      steps: ["Choose a price segment for your gift", "Click \"Randomize a present\" button to start", "Get a gift chosen by a randomizer"],
+    },
+    winTitle: "Here you go, the random gift:",
+    knowMore: "Get to know more",
+    tryAgain: "Try one more time",
+    makeOrder: "Make the order",
+    getRandomPresent: "Randomize a present",
     seeMore: "Show more products",
     contacts_header: "Call us or write us in messengers:",
     contacts_email: "Write to us via mail",
@@ -25,5 +34,7 @@ export const en: AllLocalesType = {
     help: "Help",
     en: "ENG",
     uk: "UA",
+    popularProductSection: "POPULAR PRODUCTS",
+    newProductSection: "NEW PRODUCTS",
   },
 };

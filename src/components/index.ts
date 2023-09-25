@@ -1,3 +1,4 @@
+export { default as RandomPresentSection } from "./RandomPresent";
 export { default as ProductCard } from "./ProductCard";
 export { default as LanguageToggle } from "./LanguageToggle";
 export { default as NavigationByRole } from "./NavigationByRole";

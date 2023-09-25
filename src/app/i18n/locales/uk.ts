@@ -18,6 +18,15 @@ export const uk: AllLocalesType = {
     returnConditions: "Умови повернення",
     privacyPolicy: "Політика конфіденційності",
     copyrightText: "GIFTHUB.ua, 2023-2023 Інтернет-магазин",
+    randomPresent: {
+      headers: ["Не знаєш, що обрати в подарунок ITшніку?", "Наш рандомайзер обере за тебе!"],
+      steps: ["Встанови ціновий діапазон для подарунка", "Клацни \"Cтарт\", щоб розпочати пошук", "Отримай подарунок, обраний рандомайзером"],
+    },
+    winTitle: "Твій рандомний подарунок:",
+    knowMore: "Дізнатись більше",
+    makeOrder: "Оформити замовлення",
+    tryAgain: "Спробувати ще",
+    getRandomPresent: "Рандомізуй подарунок",
     seeMore: "Показати ще",
     help: "Допомога",
     contacts_header: "Телефонуйте нам або пишіть у месенджерах:",
@@ -25,5 +34,7 @@ export const uk: AllLocalesType = {
     contacts_telegram: "Написати нам в телеграм",
     en: "ENG",
     uk: "УКР",
+    popularProductSection: "ПОПУЛЯРНІ ТОВАРИ",
+    newProductSection: "НОВІ НАДХОДЖЕННЯ",
   },
 };
