@@ -1,6 +1,7 @@
 import { useAppSelector } from "@store";
-import { ADMIN, MANAGER, useTypedTranslation, DropDown } from "@shared";
+import { ADMIN, MANAGER, useTypedTranslation } from "@shared";
 import { Link } from "react-router-dom";
+import { ContactDropDown } from "@components";
 
 export default function NavigationByRole (): JSX.Element {
   const t = useTypedTranslation();
@@ -18,10 +19,8 @@ export default function NavigationByRole (): JSX.Element {
     default: {
       return (
         <nav className='mobile-font md:secondary flex w-52 items-center justify-between px-5 pt-5 md:w-80 md:grow-0'>
-          <Link to={"/about-us"} className=" hover:text-accent-turkus">{t("aboutAs")}</Link>
-          <Link to={"/contacts"} className=" flex items-center hover:text-accent-turkus">{t("contacts")}
-            <DropDown/>
-          </Link>
+          <Link to={"/about-us"} className="hover:text-accent-turkus">{t("aboutAs")}</Link>
+          <ContactDropDown/>
         </nav>
       );
     }
