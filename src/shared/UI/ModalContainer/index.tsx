@@ -23,7 +23,7 @@ export default function ModalContainer ({ visible, setVisible, children }: Child
                 opacity: 0,
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.9 }}
-              className="sticky inset-x-0 top-32 m-auto h-max w-fit rounded-md border-2 border-gray-400 z-10 bg-white px-7 py-5 shadow-main"
+              className="sticky inset-x-0 m-auto h-max w-fit rounded-md border-2 border-gray-400 z-10 bg-white px-7 py-5 shadow-main"
             >
               {children}
             </motion.div>
@@ -36,7 +36,7 @@ export default function ModalContainer ({ visible, setVisible, children }: Child
                 opacity: 0,
               }}
               transition={{ type: "spring", bounce: 0, duration: 0.2 }}
-              onClick={() => setVisible((prev) => !prev)}
+              onClick={() => setVisible(false)}
               className="fixed left-0 top-0 flex h-full w-full items-center justify-center bg-gray-900 px-5 z-0"
             />
           </div>
