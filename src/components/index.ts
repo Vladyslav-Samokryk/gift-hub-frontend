@@ -5,3 +5,4 @@ export { default as NavigationByRole } from "./NavigationByRole";
 export { default as BannerSlider } from "./BannerSlider";
 export { default as TrickedLine } from "./TrickedLine";
 export { default as ContactDropDown } from "./ContactDropDown";
+export { default as Category } from "./PopUps/Category";

@@ -2,7 +2,7 @@ export const en: AllLocalesType = {
   translation: {
     categories: [],
     subcategories: [
-      ["", "", "", ""],
+      ["", "", "", "", ""],
       ["", "", "", ""],
       ["", "", "", "", ""],
       ["", ""],

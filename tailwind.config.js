@@ -63,6 +63,7 @@ module.exports = {
         'randomize-result': '-2px 26px 100px 18px #EBEEF4',
         'main': "0 4px 20px rgba(50, 64, 161, 0.5)",
         'drop-2': '0px 4px 15px 0px #80808080',
+        'drop':'0px 4px 4px rgba(0, 0, 0, 0.25)',
       },
       height: {
         card: "472px",

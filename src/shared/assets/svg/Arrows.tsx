@@ -12,3 +12,7 @@ export const LeftArrow = (): JSX.Element => <svg width="24" height="24" viewBox=
 export const DownStep = (): JSX.Element => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <path d="M10.5876 16.851L1 7.11981L2.21976 6L11.7782 15.7017L21.8097 6.01827L23 7.16725L11.7779 18L10.5876 16.851Z" fill="#607D8B"/>
 </svg>;
+
+export const CategoryArrow = (): JSX.Element => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M16.851 13.0914L7.11981 20.5L6 19.5575L15.7017 12.1714L6.01827 4.41977L7.16725 3.5L18 12.1716L16.851 13.0914Z" fill="currentColor"/>
+</svg>;

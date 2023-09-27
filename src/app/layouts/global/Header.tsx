@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Logo, useTypedTranslation, BlueClose, Catalog, Present, Basket, Wishlist, UserAccount, Search } from "@shared";
-import { LanguageToggle, NavigationByRole } from "@components";
+import { Category, LanguageToggle, NavigationByRole } from "@components";
 
 export default function Header (): JSX.Element {
   const t = useTypedTranslation();
   const [search, setSearch] = useState("");
+  const [categoryVisible, setCategoryVisible] = useState(false);
 
   return (
     <header>
@@ -13,9 +14,10 @@ export default function Header (): JSX.Element {
         <NavigationByRole/>
         <LanguageToggle/>
       </section>
+      <Category visible={categoryVisible} setVisible={setCategoryVisible}/>
 
       <section className="relative mb-6 mt-8 flex h-28 items-start justify-between px-10 lg:mb-1 lg:h-fit">
-        <button className="group flex items-center self-center">
+        <button className="group flex items-center self-center" onClick={() => setCategoryVisible(true)}>
           <Catalog/>
           <p className="lg:h6 additional pl-1">{t("catalog")}</p>
         </button>

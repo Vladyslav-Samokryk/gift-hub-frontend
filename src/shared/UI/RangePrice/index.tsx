@@ -55,7 +55,7 @@ export default function RangePrice ({ permission, from, to, setRange }: RangePro
         max={MAX_STEP}
         pearling
         renderTrack={(props, state) => <div {...props} className={state.index === 1 ? "h-2 bg-gradient-primary-linear" : "h-2 bg-blue-300"}/>}
-        renderThumb={(props, state) => <div className="relative"> <div {...props}/> <RangeInput value={state.valueNow}/></div>}
+        renderThumb={(props, state) => <div className="relative" key={state.index}> <div {...props}/> <RangeInput value={state.valueNow}/></div>}
         minDistance={differ}
         disabled={permission}
         onChange={(value) => setRange({ from: value[0], to: value[1] })}
