@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
-import type { Banner } from "@shared";
 import {
   LeftArrow,
   RightArrow,
   useInterval,
   useTypedTranslation,
 } from "@shared";
+import type {
+  Banner,
+  DirectionUnionType,
+} from "@shared";
+
 import classNames from "classnames";
 import { useGetBannersQuery } from "@src/app/api/banner";
 
@@ -14,8 +18,9 @@ export default function BannerSlider (): JSX.Element {
   const [banner, setBanner] = useState<Banner | null>(null);
   const [bannerIndex, setBannerIndex] = useState(0);
   const t = useTypedTranslation();
+  const windowWidth = 0;
 
-  const setDirection = (direction: "back" | "forward"): number => {
+  const setDirection = (direction: DirectionUnionType): number => {
     if (data) {
       switch (direction) {
         case "back":
@@ -36,36 +41,36 @@ export default function BannerSlider (): JSX.Element {
   useInterval(() => setBannerIndex(setDirection("forward")), 5000);
 
   if (isLoading || !data || !banner || error) {
-    return <div className='mx-[10%] mb-7 h-[40vw] w-[80%] animate-pulse bg-slate-200'/>;
+    return <div className=' m-auto h-[530px] w-[95%] animate-pulse bg-slate-200 sm:h-[40vw] sm:w-[90%]'/>;
   }
 
   return (
     <>
-      <div className='relative h-[40vw] w-[80%] px-[10%]'>
-        <img src={banner.img} alt={banner.title} className='absolute z-0 h-full w-full object-fill'/>
-        <div className='absolute z-10 flex h-full w-full items-center justify-between'>
-          <button
+      <div className='relative m-auto h-[530px] w-[95%] sm:h-[40vw] sm:w-[90%] '>
+        <img src={windowWidth > 640 ? banner.img : banner.mobileImg} alt={banner.title} className='absolute z-0 h-full w-full object-fill'/>
+        <div className='absolute z-10 flex h-full w-full justify-between sm:items-center'>
+          {windowWidth > 640 && <button
             className='group top-[10px] m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent-turkus'
             onClick={() => setBannerIndex(setDirection("back"))}
           >
             <LeftArrow />
-          </button>
-          <div className="w-[80%]">
-            <h1 className='h1'>{banner.title}</h1>
-            <h2 className='h2'>{banner.description}</h2>
-            <button className='btn-effect primary-bold rounded-lg bg-black px-9 py-2 text-white'>
-              {t("goToSale")}
-            </button>
-          </div>
+          </button>}
+          <div className="mx-auto mt-5 w-[80%] text-white sm:mt-0">
+            <h1 className='h3 sm:h1'>{banner.title}</h1>
+            <h2 className='sm:h2 text-2xl font-semibold leading-relaxed'>{banner.description}</h2>
+          </div>{windowWidth > 640 &&
           <button
             className='group m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent-turkus'
             onClick={() => setBannerIndex(setDirection("forward"))}
           >
             <RightArrow />
-          </button>
+          </button>}
         </div>
+        <button className='btn-effect secondary-bold sm:primary-bold absolute inset-x-0 bottom-5 z-20 m-auto w-40 rounded-lg bg-black py-2 text-white'>
+          {t("goToSale")}
+        </button>
       </div>
-      <div className='flex justify-center'>
+      <div className='mt-2 flex justify-center'>
         {data.map((_, i) => {
           return (
             <button
