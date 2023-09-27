@@ -1,7 +1,7 @@
 interface AllLocalesType {
   translation: {
-    header: string;
-    footer: string;
+    categories: string[];
+    subcategories: string[][];
     aboutAs: string;
     contacts: string;
     catalog: string;

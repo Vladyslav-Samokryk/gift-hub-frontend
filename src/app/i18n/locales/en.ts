@@ -1,7 +1,14 @@
 export const en: AllLocalesType = {
   translation: {
-    header: "Header",
-    footer: "Footer",
+    categories: [],
+    subcategories: [
+      ["", "", "", ""],
+      ["", "", "", ""],
+      ["", "", "", "", ""],
+      ["", ""],
+      ["", "", "", "", ""],
+      ["", "", "", "", ""],
+      ["", "", "", ""]],
     aboutAs: "About us",
     contacts: "Contacts",
     catalog: "Catalog",
