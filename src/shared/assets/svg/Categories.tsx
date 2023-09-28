@@ -4,6 +4,24 @@ export const AccessoriesCategory = <svg width="24" height="24" viewBox="0 0 24 2
   <path fillRule="evenodd" clipRule="evenodd" d="M14.0002 0H11.0002V11.242L6.29304 15.9491L5.58594 16.6562L6.29304 17.3634L11.9499 23.0202L12.657 23.7273L13.3641 23.0202L19.021 17.3634L19.7281 16.6562L19.021 15.9491L14.0002 10.9283V0ZM12.0706 13H13.2434L16.8996 16.6562L12.657 20.8989L8.41436 16.6562L12.0706 13Z" fill="currentColor"/>
 </svg>;
 
+export const GamesCategory = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clipPath="url(#clip0_637_9649)">
+    <path d="M12 22.9986V11.0421L22.5 5.78125V17.2595L12 22.9986Z" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M12 11.0421L1.5 5.78125V17.2595L12 22.9986" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1.5 5.78261L12 1L22.5 5.78261" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M17.5 8.28711V19.6515" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M6.5 8.28711V19.6515" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M1.5 11.5234L12 16.7843L22.5 11.5234" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M6.875 3.33594L17.619 8.22973" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M17.1249 3.33594L6.38086 8.22973" stroke="currentColor" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
+  </g>
+  <defs>
+    <clipPath id="clip0_637_9649">
+      <rect width="24" height="24" fill="white"/>
+    </clipPath>
+  </defs>
+</svg>;
+
 export const ClothesCategory = <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
   <g clipPath="url(#clip0_331_2115)">
     <path fillRule="evenodd" clipRule="evenodd" d="M9 6C9 5.44772 9.44772 5 10 5C10.5523 5 11 5.44772 11 6V8.8L3.01391 15.1889C2.37306 15.7016 2 16.4777 2 17.2984C2 18.7905 3.20953 20 4.70156 20H19.2984C20.7905 20 22 18.7905 22 17.2984C22 16.4777 21.6269 15.7016 20.9861 15.1889L13 8.8V6C13 4.34315 11.6569 3 10 3C8.34315 3 7 4.34315 7 6V7C7 7.55228 7.44772 8 8 8C8.55228 8 9 7.55228 9 7V6ZM4.2633 16.7506L12 10.5612L19.7367 16.7506C19.9031 16.8837 20 17.0853 20 17.2984C20 17.6859 19.6859 18 19.2984 18H4.70156C4.3141 18 4 17.6859 4 17.2984C4 17.0853 4.09688 16.8837 4.2633 16.7506Z" fill="currentColor"/>
@@ -71,4 +89,4 @@ export const TechCategory = <svg width="24" height="24" viewBox="0 0 24 24" fill
   </defs>
 </svg>;
 
-export const arrayCategories = [TechCategory, DishesCategory, SweetsCategory, KnowledgeCategory, ClothesCategory, AccessoriesCategory, OfficeCategory];
+export const arrayCategories = [TechCategory, DishesCategory, SweetsCategory, KnowledgeCategory, ClothesCategory, AccessoriesCategory, OfficeCategory, GamesCategory];
