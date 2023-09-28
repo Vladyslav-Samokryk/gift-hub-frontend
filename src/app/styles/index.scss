@@ -14,6 +14,16 @@
     src: url(fonts/Rubik-Regular.ttf);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @layer components {
    .btn {
       @apply w-max rounded-sm bg-blue-700 px-8 py-1 text-xl font-semibold text-white
@@ -63,7 +73,7 @@
    }
 
    .h4 {
-      @apply font-rubik font-normal text-[46px]
+      @apply font-rubik font-normal text-[46px] leading-[50px]
    }
 
    .h5 {
@@ -98,3 +108,15 @@
       @apply font-rubik font-normal text-[12px]
    }
 }
+
+@layer utilities {
+     .no-scrollbar::-webkit-scrollbar {
+         display: none;
+     }
+
+     .no-scrollbar {
+         -ms-overflow-style: none;
+         scrollbar-width: none;  
+     }
+
+ }

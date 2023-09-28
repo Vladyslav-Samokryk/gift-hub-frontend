@@ -18,6 +18,15 @@ interface AllLocalesType {
     returnConditions: string;
     privacyPolicy: string;
     copyrightText: string;
+    randomPresent: {
+      headers: string[];
+      steps: string[];
+    };
+    winTitle: string;
+    knowMore: string;
+    tryAgain: string;
+    makeOrder: string;
+    getRandomPresent: string;
     seeMore: string;
     login: string;
     login_btn: string;
@@ -34,9 +43,14 @@ interface AllLocalesType {
     remember_person: string;
     remind_password: string;
     or: string;
+    contacts_header: string;
+    contacts_email: string;
+    contacts_telegram: string;
     help: string;
     en: string;
     uk: string;
+    popularProductSection: string;
+    newProductSection: string;
   };
 }
 
