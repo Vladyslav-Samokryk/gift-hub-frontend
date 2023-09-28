@@ -13,12 +13,14 @@ module.exports = {
         link: '#006EFF',
         deepBlue: '#222D4A',
         gray: {
+          400: "#A6A6A6",
           600: '#A3A3A3',
           900: '#70706D'
         },
         blue: {
           100: '#CBCFDA',
           200: '#AAB5CF',
+          700: '#0047FF',
         },
         purple: {
           100: '#E5E9FD',
