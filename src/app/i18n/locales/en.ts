@@ -11,7 +11,6 @@ export const en: AllLocalesType = {
     aboutSecterPresent: "FIND OUT ABOUT THE SECRET PRESENT",
     follow_us: "Follow us",
     contact_us: "Contact us",
-    contact_us_messengers: "We are in touch in messengers",
     frequentlyAskedQuestion: "Frequently asked question",
     offerContract: "Offer contract",
     paymentAndDelivery: "Payment and delivery",
