@@ -3,6 +3,7 @@ import {
   LeftArrow,
   RightArrow,
   useInterval,
+  useScreenWidth,
   useTypedTranslation,
 } from "@shared";
 import type {
@@ -18,7 +19,7 @@ export default function BannerSlider (): JSX.Element {
   const [banner, setBanner] = useState<Banner | null>(null);
   const [bannerIndex, setBannerIndex] = useState(0);
   const t = useTypedTranslation();
-  const windowWidth = 0;
+  const windowWidth = useScreenWidth();
 
   const setDirection = (direction: DirectionUnionType): number => {
     if (data) {
@@ -41,16 +42,16 @@ export default function BannerSlider (): JSX.Element {
   useInterval(() => setBannerIndex(setDirection("forward")), 5000);
 
   if (isLoading || !data || !banner || error) {
-    return <div className=' m-auto h-[530px] w-[95%] animate-pulse bg-slate-200 sm:h-[40vw] sm:w-[90%]'/>;
+    return <div className=' m-auto h-[530px] w-[95%] mt-10 mb-5 animate-pulse bg-slate-200 sm:h-[40vw] sm:w-[90%]'/>;
   }
 
   return (
     <>
-      <div className='relative m-auto h-[530px] w-[95%] sm:h-[40vw] sm:w-[90%] '>
+      <div className='relative m-auto mt-10 mb-5 h-[530px] w-[95%] sm:h-[40vw] sm:w-[90%] '>
         <img src={windowWidth > 640 ? banner.img : banner.mobileImg} alt={banner.title} className='absolute z-0 h-full w-full object-fill'/>
         <div className='absolute z-10 flex h-full w-full justify-between sm:items-center'>
           {windowWidth > 640 && <button
-            className='group top-[10px] m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent-turkus'
+            className='group top-[10px] m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-700'
             onClick={() => setBannerIndex(setDirection("back"))}
           >
             <LeftArrow />
@@ -60,7 +61,7 @@ export default function BannerSlider (): JSX.Element {
             <h2 className='sm:h2 text-2xl font-semibold leading-relaxed'>{banner.description}</h2>
           </div>{windowWidth > 640 &&
           <button
-            className='group m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-accent-turkus'
+            className='group m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-700'
             onClick={() => setBannerIndex(setDirection("forward"))}
           >
             <RightArrow />
@@ -76,9 +77,9 @@ export default function BannerSlider (): JSX.Element {
             <button
               key={i}
               className={classNames(
-                "border-accent-turkus border-2 rounded-full w-4 h-4 m-1",
+                "border-blue-700 border-2 rounded-full w-4 h-4 m-1",
                 {
-                  "bg-accent-turkus": i === bannerIndex,
+                  "bg-blue-700": i === bannerIndex,
                   "bg-white": i !== bannerIndex,
                 },
               )}

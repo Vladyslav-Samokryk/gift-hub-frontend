@@ -8,7 +8,9 @@ export default function ProductSection ({ section }: { section: ProductSectionUn
   const t = useTypedTranslation();
   const { data, isLoading, error } = section === "new" ? useGetNewProductsQuery("") : useGetPopularProductsQuery("");
   const scrollRef = useHorizontalScroll();
-  if (isLoading || !data || error) return <p>Loading...</p>;
+
+  if (isLoading || !data || error) return <></>;
+
   return (
     <section className="my-20 w-full">
       <h5 className="h5 text-center">{section === "new" ? t("newProductSection") : t("popularProductSection")}</h5>
