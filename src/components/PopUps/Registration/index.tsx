@@ -20,8 +20,8 @@ export default function RegistrationPopUp ({ visible, setVisible }: RegistrType)
     <ModalContainer visible={visible} setVisible={setVisible}>
       <ModalHeader title={t("registration")} setVisible={setVisible}/>
 
-      <div className="grid grid-cols-[2fr_40px_1fr]">
-        <div className="mr-5 mt-6 grid grid-cols-1 justify-around gap-8">
+      <div className="grid md:grid-cols-[2fr_40px_1fr]">
+        <div className="mt-6 grid grid-cols-1 justify-around gap-4 md:mr-5 md:gap-8">
           <InputContainer label={t("person_name")} inputValue={name} setInputValue={setName}>
             <input type="text" placeholder=" " value={name} onChange={(e) => setName(e.target.value)} className="h-full w-full pr-8 focus:outline-none"/>
           </InputContainer>

@@ -1,19 +1,20 @@
-import { useTypedTranslation } from "@src/shared";
+import { useScreenWidth, useTypedTranslation } from "@src/shared";
 
 export default function EnterAsSection ({ icon }: { icon: JSX.Element; }): JSX.Element {
   const t = useTypedTranslation();
+  const windowWidth = useScreenWidth();
   return (
     <>
-      <div className="relative mx-2 h-[90%] w-[2px] py-5">
-        <div className="h-full w-[1.5px] bg-gray-900"/>
-        <p className="absolute top-[30%] -translate-x-1/2 bg-white">{t("or")}</p>
+      <div className="relative my-3 w-full py-5 md:mx-2 md:h-[90%] md:w-[2px]">
+        <div className=" h-[1.5px] w-full bg-gray-900 md:h-full md:w-[1.5px]"/>
+        <p className="absolute left-1/2 top-[10%] -translate-x-1/2 bg-white md:top-[30%]">{t("or")}</p>
       </div>
 
-      <div className="mt-6">
+      <div className="md:mt-6">
         <h5>{t("enter_as")}</h5>
         <button>Google</button>
         <button>Facebook</button>
-        {icon}
+        {windowWidth > 648 ? icon : null}
       </div>
     </>
 

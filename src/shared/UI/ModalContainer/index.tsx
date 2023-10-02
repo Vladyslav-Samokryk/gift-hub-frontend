@@ -1,4 +1,4 @@
-import type { Children } from "@src/shared";
+import { useScreenWidth, type Children } from "@src/shared";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface ChildrenProps {
@@ -8,6 +8,7 @@ interface ChildrenProps {
 }
 
 export default function ModalContainer ({ visible, setVisible, children }: ChildrenProps): JSX.Element {
+  const windowWidth = useScreenWidth();
   return (
     <AnimatePresence>
       {visible &&
@@ -15,7 +16,7 @@ export default function ModalContainer ({ visible, setVisible, children }: Child
             <motion.div
               initial={{ y: 200, opacity: 0 }}
               animate={{
-                y: 100,
+                y: windowWidth > 648 ? 100 : 30,
                 opacity: 1,
               }}
               exit={{
