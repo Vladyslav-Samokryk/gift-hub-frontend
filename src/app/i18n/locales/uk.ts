@@ -11,7 +11,6 @@ export const uk: AllLocalesType = {
     aboutSecterPresent: "ДІЗНАТИСЯ ПРО СЕКРЕНИЙ ПОДАРУНОК",
     follow_us: "Стеж за нами",
     contact_us: "Зв’язатися з нами",
-    contact_us_messengers: "Ми на зв’язку у месенджерах",
     frequentlyAskedQuestion: "Часті питання",
     offerContract: "Договір оферти",
     paymentAndDelivery: "Оплата і доставка",

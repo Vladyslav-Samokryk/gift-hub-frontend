@@ -20,21 +20,23 @@ export default function LoginPopUp ({ visible, setVisible, goToRegistr, error = 
         {error ? <p className="additional text-accent-bOrange">{t("wishlistError")}</p> : null}
       </ModalHeader>
 
-      <div className="grid grid-cols-[2fr_40px_1fr]">
+      <div className="grid md:grid-cols-[2fr_40px_1fr]">
 
-        <div className="mr-5 mt-6 grid grid-cols-1 justify-around gap-6">
-          <InputContainer label={t("ph_email")} inputValue={email} setInputValue={setEmail}>
-            <input type="email" placeholder=" " value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full pr-8 focus:outline-none"/>
-          </InputContainer>
+        <div className="mt-6 grid grid-cols-1 justify-around gap-3 md:mr-5 md:gap-6">
+          <div className="grid gap-6">
+            <InputContainer label={t("ph_email")} inputValue={email} setInputValue={setEmail}>
+              <input type="email" placeholder=" " value={email} onChange={(e) => setEmail(e.target.value)} className="h-full w-full pr-8 focus:outline-none"/>
+            </InputContainer>
 
-          <InputPassword label={t("ph_password_login")} password={password} setPassword={setPassword}/>
+            <InputPassword label={t("ph_password_login")} password={password} setPassword={setPassword}/>
+          </div>
 
-          <div className="flex justify-between">
+          <div className="flex flex-col-reverse justify-between md:flex-row">
             <div className="flex items-center">
               <input id="remember" type="checkbox" className="mr-3 h-5 w-5 accent-green-600"/>
               <label htmlFor="remember">{t("remember_person")}</label>
             </div>
-            <a href="#" className="additional text-blue-800 underline">{t("remind_password")}</a>
+            <a href="#" className="additional mb-3 text-blue-800 underline md:mb-0">{t("remind_password")}</a>
           </div>
           <div className="m-auto flex flex-col items-center">
             <button className="btn-effect btn">{t("login_btn")}</button>

@@ -11,7 +11,6 @@ interface AllLocalesType {
     aboutSecterPresent: string;
     follow_us: string;
     contact_us: string;
-    contact_us_messengers: string;
     frequentlyAskedQuestion: string;
     offerContract: string;
     paymentAndDelivery: string;
