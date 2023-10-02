@@ -14,7 +14,20 @@
     src: url(fonts/Rubik-Regular.ttf);
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
 @layer components {
+   .btn {
+      @apply w-max rounded-sm bg-blue-700 px-8 py-1 text-xl font-semibold text-white
+   }
     .btn-effect {
         &:hover {
             @apply bg-CTA-gradient;
@@ -23,7 +36,29 @@
         &:active {
             @apply bg-deepBlue;
         }
+
+        &:disabled {
+            @apply bg-blue-100 text-blue-200
+        }
     }
+
+    .label {
+      @apply absolute transition-all duration-150 ease-in-out top-2 left-3 secondary pointer-events-none
+   
+    }
+
+    .input {
+      @apply rounded-sm border-[1px] h-10 border-gray-900 px-2 py-1 w-full;
+      &:hover {
+         @apply border-link
+      }
+      & input{
+         &:focus, &:hover, &:not(:placeholder-shown), &:-webkit-autofill {
+         & ~ .label {
+            @apply -top-3 z-10 bg-white additional;
+         } }
+   }
+}
 
    .h1 {
       @apply font-rubik font-normal text-8xl
@@ -38,7 +73,7 @@
    }
 
    .h4 {
-      @apply font-rubik font-normal text-[46px]
+      @apply font-rubik font-normal text-[46px] leading-[50px]
    }
 
    .h5 {
@@ -73,3 +108,15 @@
       @apply font-rubik font-normal text-[12px]
    }
 }
+
+@layer utilities {
+     .no-scrollbar::-webkit-scrollbar {
+         display: none;
+     }
+
+     .no-scrollbar {
+         -ms-overflow-style: none;
+         scrollbar-width: none;  
+     }
+
+ }

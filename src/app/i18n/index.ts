@@ -12,6 +12,7 @@ i18n
       en: { ...en },
       uk: { ...uk },
     },
+    returnObjects: true,
     debug: true,
     lng: "en",
   });
