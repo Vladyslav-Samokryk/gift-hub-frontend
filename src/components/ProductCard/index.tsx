@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 export default function ProductCard ({ img, name, category, price, global_rating }: ProductCardType): JSX.Element {
   const [imgLoad, setImgLoad] = useState(false);
   return (
-    <div className="m-2 h-card w-80 rounded-lg border-2 border-black">
+    <div className="m-2 h-card w-card rounded-lg border-2 border-black bg-white">
       <div className="relative">
         <Link to={"/catalog"}>
           <picture >
@@ -26,12 +26,12 @@ export default function ProductCard ({ img, name, category, price, global_rating
         <Link to={"/catalog"}>
           <h2 className="primary-bold">{name}</h2>
         </Link>
-        <div className="absolute bottom-0">
+        <div className="absolute bottom-0 w-[95%]">
           <Link to={"/catalog"}>
             <h3 className="additional text-gray-900">{category}</h3>
           </Link>
           <data className='primary' value={price}>{price} {CURRENCY}</data>
-          <div className="mr-2 flex w-72 items-center justify-between">
+          <div className="mr-2 flex items-center w-full justify-between">
             <StarRate rate={global_rating}/>
             <button>
               <Basket type="lg" className="fill-blue-700"/>

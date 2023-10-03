@@ -24,7 +24,7 @@ export default function Header (): JSX.Element {
 
         <section className="group absolute -bottom-4 left-1/2 flex w-80 translate-x-[-50%] items-center rounded-lg border border-black p-1 text-center lg:static lg:w-96 lg:translate-x-0">
           <Search/>
-          <input className="grow p-1 outline-none" placeholder={t("search")} type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
+          <input className="grow p-1 outline-none bg-transparent" placeholder={t("search")} type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)}/>
           {search
             ? <button onClick={() => setSearch("")} className="pr-1">
               <BlueClose/>

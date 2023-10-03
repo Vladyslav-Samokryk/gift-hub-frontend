@@ -9,7 +9,7 @@ export const Layout = (): JSX.Element => {
   return (
     <>
       <Header />
-      <main className="">
+      <main>
         <Outlet />
         {!isVisible ? <UpArrow/> : null}
       </main>

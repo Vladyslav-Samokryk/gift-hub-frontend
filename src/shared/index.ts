@@ -22,8 +22,7 @@ export { TweeterLogo } from "./assets/svg/TweeterLogo";
 export { FacebookLogo } from "./assets/svg/FacebookLogo";
 export { InstagramLogo } from "./assets/svg/InstagramLogo";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
-export { arrayCategories } from "./assets/svg/Categories";
-export { getSubImg } from "./assets/webp/subcategories";
+export { Plus } from "./assets/svg/Plus";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -43,6 +42,8 @@ export type { StylePropType, DirectionUnionType } from "./types/Styles";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
+export { arrayCategories } from "./assets/svg/Categories";
+export { getSubImg } from "./assets/webp/subcategories";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";

@@ -49,7 +49,7 @@ module.exports = {
           blue: "#4495ff",
         },
         background: {
-          main: '#F7F7FF',
+          main: '#F6F7FF',
         },
         star: '#FFD805',
       },
@@ -71,7 +71,7 @@ module.exports = {
         hr: "2px",
       },
       width: {
-        cardImg: "317px",
+        card: "340px",
       },
     },
     fontFamily: {
