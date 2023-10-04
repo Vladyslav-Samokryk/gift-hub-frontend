@@ -1,4 +1,4 @@
-import { LoginIcon, ModalContainer, useTypedTranslation, InputContainer, ModalHeader, InputPassword } from "@src/shared";
+import { LoginIcon, ModalContainer, useTypedTranslation, InputContainer, ModalHeader, InputPassword, Checkbox } from "@src/shared";
 import EnterAsSection from "../EnterAsSection";
 import { useState } from "react";
 
@@ -32,10 +32,7 @@ export default function LoginPopUp ({ visible, setVisible, goToRegistr, error = 
           </div>
 
           <div className="flex flex-col-reverse justify-between md:flex-row">
-            <div className="flex items-center">
-              <input id="remember" type="checkbox" className="mr-3 h-5 w-5 accent-green-600"/>
-              <label htmlFor="remember">{t("remember_person")}</label>
-            </div>
+            <Checkbox title={t("remember_person")}/>
             <a href="#" className="additional mb-3 text-blue-800 underline md:mb-0">{t("remind_password")}</a>
           </div>
           <div className="m-auto flex flex-col items-center">

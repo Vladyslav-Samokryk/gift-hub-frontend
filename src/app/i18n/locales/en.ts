@@ -59,5 +59,21 @@ export const en: AllLocalesType = {
     uk: "UA",
     popularProductSection: "POPULAR PRODUCTS",
     newProductSection: "NEW PRODUCTS",
+    filters_title: "MAIN FILTERS",
+    filters: {
+      sale: "Sale",
+      pending: "Pending",
+      available: "Available",
+    },
+    rate: "RATE",
+    price: "PRICE",
+    sorts_title: "Show first:",
+    sorts: {
+      cheap: "cheap",
+      expensive: "expensive",
+      new: "new",
+      popular: "popular",
+      rate: "by rate",
+    },
   },
 };

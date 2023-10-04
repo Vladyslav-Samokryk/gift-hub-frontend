@@ -50,6 +50,22 @@ interface AllLocalesType {
     uk: string;
     popularProductSection: string;
     newProductSection: string;
+    filters_title: string;
+    filters: {
+      sale: string;
+      pending: string;
+      available: string;
+    };
+    rate: string;
+    price: string;
+    sorts_title: string;
+    sorts: {
+      cheap: string;
+      expensive: string;
+      new: string;
+      popular: string;
+      rate: string;
+    };
   };
 }
 

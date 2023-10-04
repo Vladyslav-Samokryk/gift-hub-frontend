@@ -61,3 +61,4 @@ export { default as InputPassword } from "./UI/InputPassword";
 export { default as ProductSection } from "./UI/ProductSection";
 export { default as RangePrice } from "./UI/RangePrice";
 export { default as RandomStep } from "./UI/RandomStep";
+export { default as Checkbox } from "./UI/Checkbox";

@@ -59,5 +59,21 @@ export const uk: AllLocalesType = {
     uk: "УКР",
     popularProductSection: "ПОПУЛЯРНІ ТОВАРИ",
     newProductSection: "НОВІ НАДХОДЖЕННЯ",
+    filters_title: "ОСНОВНІ ФІЛЬТРИ",
+    filters: {
+      sale: "Зі знижкою",
+      pending: "В очікуванні",
+      available: "Є в наявності",
+    },
+    rate: "РЕЙТИНГ",
+    price: "ЦІНА",
+    sorts_title: "Показати спочатку:",
+    sorts: {
+      cheap: "дешеві",
+      expensive: "дорогі",
+      new: "новинки",
+      popular: "популярні",
+      rate: "за рейтингом",
+    },
   },
 };
