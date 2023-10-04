@@ -82,7 +82,7 @@ export default function RandomWheel ({ setUserWin, setWheelRotate, wheelRotate, 
       </div>
       <div className='my-3 flex flex-col items-center justify-center'>
         {windowWidth >= 768 && <RangePrice permission={wheelRotate} setRange={setRange} {...range}/>}
-        <button onClick={() => setWheelRotate(true)} className='secondary-bold mb-5 h-12 w-max rounded-md bg-blue-700 px-8 text-white lg:w-96'>{t("getRandomPresent")}</button>
+        <button onClick={() => setWheelRotate(true)} className='secondary-bold mb-5 h-12 w-max rounded-md bg-blue-700 px-8 text-white md:w-96'>{t("getRandomPresent")}</button>
       </div>
 
       {(data && !error) && <div className={"no-scrolling relative -left-10 mx-5 flex h-[60vw] w-[96vw] items-center overflow-x-hidden whitespace-nowrap md:-left-16 md:h-[27vw]"}>

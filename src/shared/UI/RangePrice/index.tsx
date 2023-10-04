@@ -28,7 +28,7 @@ function getDiffer (width: number, value: number): number {
 }
 
 function adaptWidth (width: number): number {
-  return width < 1024 ? width * 0.36 : width * 0.45;
+  return width < 768 ? width * 0.36 : width * 0.45;
 }
 
 function RangeInput ({ value }: RangeInputProps): JSX.Element {
@@ -46,7 +46,7 @@ function RangeInput ({ value }: RangeInputProps): JSX.Element {
 
 export default function RangePrice ({ permission, from, to, setRange }: RangeProp): JSX.Element {
   return (
-    <div className="relative mb-20 mt-10 w-[70%] lg:w-[50%]">
+    <div className="relative mb-20 mt-10 w-[70%] md:w-[50%]">
       <ReactSlider
         className="h-2"
         thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7"
@@ -55,7 +55,7 @@ export default function RangePrice ({ permission, from, to, setRange }: RangePro
         max={MAX_STEP}
         pearling
         renderTrack={(props, state) => <div {...props} className={state.index === 1 ? "h-2 bg-gradient-primary-linear" : "h-2 bg-blue-300"}/>}
-        renderThumb={(props, state) => <div className="relative"> <div {...props}/> <RangeInput value={state.valueNow}/></div>}
+        renderThumb={(props, state) => <div key={state.index} className="relative"> <div {...props}/> <RangeInput value={state.valueNow}/></div>}
         minDistance={differ}
         disabled={permission}
         onChange={(value) => setRange({ from: value[0], to: value[1] })}
