@@ -101,19 +101,6 @@ const followUsSection: Array<{ key: string; path: PathUnion; logo: JSX.Element; 
   },
 ];
 
-const messengersSection: Array<{ key: string; path: PathUnion; logo: JSX.Element; }> = [
-  {
-    key: "messengersSection_1",
-    path: "/",
-    logo: <FacebookLogo />,
-  },
-  {
-    key: "messengersSection_2",
-    path: "/",
-    logo: <TelegramLogo />,
-  },
-];
-
 export default function Footer (): JSX.Element {
   const t = useTypedTranslation();
 
@@ -146,19 +133,6 @@ export default function Footer (): JSX.Element {
               </Link>
             </address>
           ))}
-        </fieldset>
-
-        <fieldset className="flex w-full flex-col">
-          <legend className="pb-5 text-primary-900">
-            <strong>{t("contact_us_messengers")}:</strong>
-          </legend>
-          <ul className="flex space-x-4">
-            {messengersSection.map(({ key, logo, path }) => (
-              <li key={key}>
-                <Link to={path}>{logo}</Link>
-              </li>
-            ))}
-          </ul>
         </fieldset>
       </section>
 

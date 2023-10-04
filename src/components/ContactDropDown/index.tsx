@@ -35,7 +35,7 @@ export default function ContactDropDown (): JSX.Element {
     <>
       {isVisible &&
       <motion.div
-        className="absolute left-0 top-0 z-10 h-screen w-screen"
+        className="absolute left-0 top-0 z-10 h-full w-full"
         onClick={() => setIsVisible(false)}
       />
       }

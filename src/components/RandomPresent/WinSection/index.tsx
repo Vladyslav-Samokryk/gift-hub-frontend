@@ -15,13 +15,13 @@ export default function WinSection ({ setUserWin, setWheelRotate, setPresent, pr
     return <p>{present}</p>;
   } else {
     return (
-      <div className='relative flex flex-col items-center justify-between m-3 h-screen rounded-2xl bg-cover bg-center px-5 py-10 text-center text-white' style={{ backgroundImage: "url('src/shared/assets/img/RandomPresentBg.svg')" }}>
+      <div className='relative m-3 flex h-screen flex-col items-center justify-between rounded-2xl bg-cover bg-center px-5 py-10 text-center text-white' style={{ backgroundImage: "url('src/shared/assets/img/RandomPresentBg.svg')" }}>
         <button className="absolute right-4 top-4" onClick={() => setUserWin(false)}>
           <WhiteClose/>
         </button>
 
         <h3 className="h3 md:mt-8">{t("winTitle")}</h3>
-        <img src={present.img} alt={present.name} className="top-1/2 absolute left-1/2 h-56 -translate-x-1/2 -translate-y-2/3 -rotate-6 shadow-2xl shadow-white/30 bg-white"/>
+        <img src={present.img} alt={present.name} className="absolute left-1/2 top-1/2 h-40 -translate-x-1/2 -translate-y-2/3 -rotate-6 bg-white shadow-2xl shadow-white/30 md:h-56"/>
         <div className="flex flex-col items-center justify-center break-words">
           <h4 className="md:h4 mb-6 text-4xl">{present.name}</h4>
           <Link to={"/"} className='additional text-blue-100 underline'>{t("knowMore")}</Link>
