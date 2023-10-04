@@ -72,6 +72,7 @@ module.exports = {
       },
       width: {
         card: "340px",
+        cardImg: "335px",
       },
     },
     fontFamily: {

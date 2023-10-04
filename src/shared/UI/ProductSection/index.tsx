@@ -12,7 +12,7 @@ export default function ProductSection ({ section }: { section: ProductSectionUn
   return (
     <section className="my-20 w-full">
       <h5 className="h5 text-center">{section === "new" ? t("newProductSection") : t("popularProductSection")}</h5>
-      <div className="my-10 flex overflow-x-scroll overflow-y-scroll no-scrollbar px-2 before:m-auto after:m-auto" ref={scrollRef} style={{ scrollbarWidth: "none" }}>
+      <div className="no-scrollbar my-10 flex overflow-scroll px-2 before:m-auto after:m-auto" ref={scrollRef} style={{ scrollbarWidth: "none" }}>
         {data.results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product}/>;
         })}
