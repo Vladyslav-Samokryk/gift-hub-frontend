@@ -31,11 +31,11 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    authUser (state, action: PayloadAction<AuthAction>) {
+    authUser(state, action: PayloadAction<AuthAction>) {
       const { isAuth } = action.payload;
       state.isAuth = isAuth;
     },
-    setRole (state, action: PayloadAction<RoleAction>) {
+    setRole(state, action: PayloadAction<RoleAction>) {
       const { role } = action.payload;
       state.role = role;
     },

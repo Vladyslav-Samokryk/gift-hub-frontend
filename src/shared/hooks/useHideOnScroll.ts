@@ -4,7 +4,8 @@ export const useHideOnScroll = (heightToHideFrom = 500): boolean => {
   const [isVisible, setIsVisible] = useState(true);
 
   const listenToScroll = (): void => {
-    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const winScroll =
+      document.body.scrollTop || document.documentElement.scrollTop;
     setIsVisible(winScroll < heightToHideFrom);
   };
 

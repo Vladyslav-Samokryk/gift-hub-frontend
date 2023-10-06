@@ -5,7 +5,7 @@ interface ProductParamTypes {
   productId: string;
 }
 
-export default function Product (): JSX.Element {
+export default function Product(): JSX.Element {
   const params = useParams<ProductParamTypes>();
 
   console.log(params.productId);

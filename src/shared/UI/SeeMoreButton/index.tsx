@@ -1,16 +1,15 @@
-import { useTypedTranslation } from "@src/shared";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-export default function SeeMoreButton (): JSX.Element {
-  const t = useTypedTranslation();
+export default function SeeMoreButton(): JSX.Element {
+  const { t } = useTranslation();
   return (
     <div className="flex justify-center">
-      <Link to={"/catalog"} >
+      <Link to={"/catalog"}>
         <p className="h6 w-fit hover:text-accent-turkus">
-          {t("seeMore")}
+          {t("btn_show_more")}
         </p>
       </Link>
     </div>
-
   );
 }
