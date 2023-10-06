@@ -1,4 +1,4 @@
-export default function Contacts (): JSX.Element {
+export default function Contacts(): JSX.Element {
   return (
     <div>
       <h2>Contacts</h2>

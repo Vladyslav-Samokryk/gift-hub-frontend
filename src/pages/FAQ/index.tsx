@@ -1,4 +1,4 @@
-export default function FAQ (): JSX.Element {
+export default function FAQ(): JSX.Element {
   return (
     <div>
       <h2>FAQ</h2>

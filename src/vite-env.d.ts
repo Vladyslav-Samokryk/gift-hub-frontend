@@ -16,6 +16,6 @@ interface Navigator {
 
 type NetworkConnection =
   | NetworkInformation
-  | { mozConnection: NetworkInformation; }
-  | { webkitConnection: NetworkInformation; }
+  | { mozConnection: NetworkInformation }
+  | { webkitConnection: NetworkInformation }
   | null;
