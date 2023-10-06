@@ -6,10 +6,11 @@ export const withInternet = (component: () => ReactNode) => () => {
 
   return (
     <>
-      {online
-        ? component()
-        : <p>You are offline. Please check your internet connection.</p>
-      }
+      {online ? (
+        component()
+      ) : (
+        <p>You are offline. Please check your internet connection.</p>
+      )}
     </>
   );
 };

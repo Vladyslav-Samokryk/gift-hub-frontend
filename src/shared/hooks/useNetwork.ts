@@ -9,16 +9,22 @@ interface NetworkConnectionInfoType {
   effectiveType?: undefined;
 }
 
-function getNetworkConnection (): NetworkConnection {
-  return (navigator.connection || navigator.mozConnection || navigator.webkitConnection || null);
+function getNetworkConnection(): NetworkConnection {
+  return (
+    navigator.connection ||
+    navigator.mozConnection ||
+    navigator.webkitConnection ||
+    null
+  );
 }
 
-function getNetworkConnectionInfo (): NetworkConnectionInfoType {
+function getNetworkConnectionInfo(): NetworkConnectionInfoType {
   const connection = getNetworkConnection();
 
   if (!connection) {
     return {};
-  } return {
+  }
+  return {
     rtt: connection.rtt,
     type: connection.type,
     saveData: connection.saveData,
@@ -28,8 +34,13 @@ function getNetworkConnectionInfo (): NetworkConnectionInfoType {
   };
 }
 
-export const useNetwork = (): NetworkConnectionInfoType & { online: boolean; since?: string; } => {
-  const [state, setState] = useState<NetworkConnectionInfoType & { online: boolean; since?: string; }>(() => {
+export const useNetwork = (): NetworkConnectionInfoType & {
+  online: boolean;
+  since?: string;
+} => {
+  const [state, setState] = useState<
+    NetworkConnectionInfoType & { online: boolean; since?: string }
+  >(() => {
     return {
       since: undefined,
       online: navigator.onLine,

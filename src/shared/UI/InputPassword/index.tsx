@@ -7,18 +7,37 @@ interface InputPasswordProps {
   setPassword: (arg: string) => void;
 }
 
-export default function InputPassword ({ label, password, setPassword }: InputPasswordProps): JSX.Element {
+export default function InputPassword({
+  label,
+  password,
+  setPassword,
+}: InputPasswordProps): JSX.Element {
   const [inputType, setInputType] = useState<"password" | "text">("password");
 
   return (
-    <div className="flex justify-between w-[90%]">
-      <InputContainer label={label} inputValue={password} setInputValue={setPassword} className="w-[90%]">
-        <input type={inputType} value={password} onChange={(e) => setPassword(e.target.value)} placeholder=" " className="h-full w-full pr-8 focus:outline-none" required/>
+    <div className="flex w-[90%] justify-between">
+      <InputContainer
+        label={label}
+        inputValue={password}
+        setInputValue={setPassword}
+        className="w-[90%]"
+      >
+        <input
+          type={inputType}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder=" "
+          className="h-full w-full pr-8 focus:outline-none"
+          required
+        />
       </InputContainer>
-      <button onClick={() => setInputType(prev => prev === "password" ? "text" : "password")}>
-        {inputType === "password" ? <PasswordHide/> : <PasswordShow/>}
+      <button
+        onClick={() =>
+          setInputType((prev) => (prev === "password" ? "text" : "password"))
+        }
+      >
+        {inputType === "password" ? <PasswordHide /> : <PasswordShow />}
       </button>
     </div>
-
   );
 }

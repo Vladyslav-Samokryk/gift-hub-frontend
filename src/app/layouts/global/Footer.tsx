@@ -1,40 +1,54 @@
 import { Link } from "react-router-dom";
+import type { TRHelp } from "@shared";
 import {
-  ApplePayLogo, EmailLogo, GooglePayLogo, LocationPointLogo, Logo, MasterCardLogo, TelegramLogo, TikTokLogo, TweeterLogo, VisaLogo, WhatsAppLogo, useTypedTranslation,
+  ApplePayLogo,
+  EmailLogo,
+  GooglePayLogo,
+  LocationPointLogo,
+  Logo,
+  MasterCardLogo,
+  TikTokLogo,
+  TweeterLogo,
+  VisaLogo,
+  WhatsAppLogo,
   FacebookLogo,
   InstagramLogo,
 } from "@shared";
 import { CONTACT_INFO } from "@config";
+import { useTranslation } from "react-i18next";
 
-const helpSection: Array<{ key: string; path: PathUnion; translationKey: TranslationKeys; }> = [
+const helpSection: Array<{
+  key: string;
+  path: PathUnion;
+}> = [
   {
     key: "helpSection_1",
     path: "/",
-    translationKey: "frequentlyAskedQuestion",
   },
   {
     key: "helpSection_2",
     path: "/",
-    translationKey: "offerContract",
   },
   {
     key: "helpSection_3",
     path: "/",
-    translationKey: "paymentAndDelivery",
   },
   {
     key: "helpSection_4",
     path: "/",
-    translationKey: "returnConditions",
   },
   {
     key: "helpSection_5",
     path: "/",
-    translationKey: "privacyPolicy",
   },
 ];
 
-const contactUsSection: Array<{ key: string; path: PathUnion; value: string; logo: JSX.Element; }> = [
+const contactUsSection: Array<{
+  key: string;
+  path: PathUnion;
+  value: string;
+  logo: JSX.Element;
+}> = [
   {
     key: "contactUsSection_1",
     path: "/",
@@ -55,30 +69,33 @@ const contactUsSection: Array<{ key: string; path: PathUnion; value: string; log
   },
 ];
 
-const paymentSection: Array<{ key: string; path: PathUnion; logo: JSX.Element; }> = [
+const paymentSection: Array<{
+  key: string;
+  logo: JSX.Element;
+}> = [
   {
     key: "paymentSection_1",
-    path: "/",
     logo: <VisaLogo />,
   },
   {
     key: "paymentSection_2",
-    path: "/",
     logo: <MasterCardLogo />,
   },
   {
     key: "paymentSection_3",
-    path: "/",
     logo: <GooglePayLogo />,
   },
   {
     key: "paymentSection_4",
-    path: "/",
     logo: <ApplePayLogo />,
   },
 ];
 
-const followUsSection: Array<{ key: string; path: PathUnion; logo: JSX.Element; }> = [
+const followUsSection: Array<{
+  key: string;
+  path: PathUnion;
+  logo: JSX.Element;
+}> = [
   {
     key: "followUsSection_1",
     path: "/",
@@ -101,8 +118,11 @@ const followUsSection: Array<{ key: string; path: PathUnion; logo: JSX.Element; 
   },
 ];
 
-export default function Footer (): JSX.Element {
-  const t = useTypedTranslation();
+export default function Footer(): JSX.Element {
+  const { t } = useTranslation();
+  const helpLinks: TRHelp = t("help_section", {
+    returnObjects: true,
+  });
 
   return (
     <footer className="divide-gray-400 bg-white px-10 pt-8 font-rubik shadow-main lg:grid lg:grid-cols-3 lg:divide-x lg:px-12">
@@ -112,18 +132,22 @@ export default function Footer (): JSX.Element {
         </div>
         <fieldset className="flex h-max gap-4">
           <legend className="pb-5">
-            <strong className="text-primary-900">{t("follow_us")}:</strong>
+            <strong className="text-blue-900">
+              {t("footer_sections.follow_us")}:
+            </strong>
           </legend>
           {followUsSection.map(({ key, logo, path }) => (
-            <Link key={key} to={path}>{logo}</Link>
+            <Link key={key} to={path}>
+              {logo}
+            </Link>
           ))}
         </fieldset>
       </section>
 
       <section className="grid gap-6 border-t py-5 lg:justify-center lg:border-t-0">
         <fieldset className="flex w-full flex-col gap-4">
-          <legend className="pb-5 text-primary-900">
-            <strong>{t("contact_us")}:</strong>
+          <legend className="pb-5 text-blue-900">
+            <strong>{t("footer_sections.contact_us")}:</strong>
           </legend>
           {contactUsSection.map(({ key, path, value, logo }) => (
             <address key={key}>
@@ -138,26 +162,31 @@ export default function Footer (): JSX.Element {
 
       <section className="flex border-t py-5 lg:justify-center lg:border-t-0">
         <fieldset className="flex flex-col items-start">
-          <legend className="pb-5 text-primary-900">
-            <strong>{t("help")}</strong>
+          <legend className="pb-5 text-blue-900">
+            <strong>{t("footer_sections.help")}</strong>
           </legend>
           <ul className="flex flex-col gap-3">
-            {helpSection.map(({ key, path, translationKey }) => (
+            {helpSection.map(({ key, path }, index: number) => (
               <li key={key}>
-                <Link to={path} className="secondary">{t(translationKey)}</Link>
+                <Link to={path} className="secondary">
+                  {Object.values(helpLinks)[index]}
+                </Link>
               </li>
             ))}
           </ul>
         </fieldset>
       </section>
 
-      <section className="col-span-full flex flex-col-reverse items-center justify-between border-t py-5 lg:flex-row lg:px-11" style={{ borderLeft: "0px" }}>
-        <small className="lg:additional text-[10px]">&copy; {t("copyrightText")}</small>
+      <section
+        className="col-span-full flex flex-col-reverse items-center justify-between border-t py-5 lg:flex-row lg:px-11"
+        style={{ borderLeft: "0px" }}
+      >
+        <small className="lg:additional text-[10px]">
+          &copy; {t("footer_sections.copyright")}
+        </small>
         <ul className="flex items-center space-x-4">
-          {paymentSection.map(({ key, logo, path }) => (
-            <li key={key}>
-              <Link to={path}>{logo}</Link>
-            </li>
+          {paymentSection.map(({ key, logo }) => (
+            <li key={key}>{logo}</li>
           ))}
         </ul>
       </section>

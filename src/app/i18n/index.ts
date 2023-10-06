@@ -2,17 +2,18 @@ import i18n from "i18next";
 import { initReactI18next } from "react-i18next";
 
 import { en } from "./locales/en";
-import { uk } from "./locales/uk";
+import { ua } from "./locales/ua";
 
-// eslint-disable-next-line @typescript-eslint/no-floating-promises
-i18n
-  .use(initReactI18next)
-  .init({
-    resources: {
-      en: { ...en },
-      uk: { ...uk },
-    },
-    returnObjects: true,
-    debug: true,
-    lng: "en",
-  });
+/* eslint-disable @typescript-eslint/no-floating-promises */
+i18n.use(initReactI18next).init({
+  resources: {
+    en: { ...en },
+    ua: { ...ua },
+  },
+  debug: true,
+  lng: "en",
+  interpolation: {
+    escapeValue: false,
+  },
+  returnObjects: true,
+});

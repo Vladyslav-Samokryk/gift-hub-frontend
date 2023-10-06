@@ -3,9 +3,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Preloader } from "@shared";
 
-export const withRouter = (component: () => ReactNode) => () =>
+export const withRouter = (component: () => ReactNode) => () => (
   <BrowserRouter>
-    <Suspense fallback={<Preloader />}>
-      {component()}
-    </Suspense>
-  </BrowserRouter>;
+    <Suspense fallback={<Preloader />}>{component()}</Suspense>
+  </BrowserRouter>
+);
