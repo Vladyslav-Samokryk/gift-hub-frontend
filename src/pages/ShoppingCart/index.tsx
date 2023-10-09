@@ -1,4 +1,4 @@
-export default function ShoppingCart (): JSX.Element {
+export default function ShoppingCart(): JSX.Element {
   return (
     <div>
       <h2>ShoppingCart</h2>

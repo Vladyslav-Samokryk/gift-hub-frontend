@@ -1,4 +1,4 @@
-export default function Catalog (): JSX.Element {
+export default function Catalog(): JSX.Element {
   return (
     <div>
       <h2>catalog</h2>

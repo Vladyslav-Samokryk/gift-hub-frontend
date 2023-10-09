@@ -1,5 +1,3 @@
 import userReducer from "./user";
 
-export {
-  userReducer,
-};
+export { userReducer };

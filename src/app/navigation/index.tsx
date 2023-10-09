@@ -1,5 +1,5 @@
-import { Routes, Route, useRoutes } from "react-router";
-import { Navigate, RouteObject } from "react-router-dom";
+import { useRoutes } from "react-router";
+import { Navigate } from "react-router-dom";
 
 import {
   Catalog,
@@ -11,7 +11,7 @@ import {
   Product,
   AboutUs,
 } from "@pages";
-import { Layout, PrivateLayout } from "@layouts";
+import { Layout } from "@layouts";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "@src/shared";
 
@@ -111,7 +111,7 @@ const useAdminRouting = (): ReturnType<typeof useRoutes> => {
 };
 
 export const Routing = (): React.ReactElement | null => {
-  const role = useAppSelector(state => state.user.role);
+  const role = useAppSelector((state) => state.user.role);
 
   switch (role) {
     case MANAGER: {
