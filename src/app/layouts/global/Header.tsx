@@ -11,6 +11,7 @@ import {
 } from "@shared";
 import {
   LanguageToggle,
+  Category,
   LoginPopUp,
   NavigationByRole,
   RegistrationPopUp,
@@ -20,6 +21,7 @@ import { useTranslation } from "react-i18next";
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
   const [search, setSearch] = useState("");
+  const [categoryVisible, setCategoryVisible] = useState(false);
   const [loginPopUp, setLoginPopUp] = useState(false);
   const [registrPopUp, setRegistrPopUp] = useState(false);
 
@@ -30,9 +32,13 @@ export default function Header(): JSX.Element {
         <NavigationByRole />
         <LanguageToggle />
       </section>
+      <Category visible={categoryVisible} setVisible={setCategoryVisible} />
 
       <section className="relative mb-6 mt-8 flex h-28 items-start justify-between px-10 lg:mb-1 lg:h-fit">
-        <button className="group flex items-center self-center">
+        <button
+          className="group flex items-center self-center"
+          onClick={() => setCategoryVisible(true)}
+        >
           <Catalog />
           <p className="lg:h6 additional pl-1">{t("header_links.catalog")}</p>
         </button>

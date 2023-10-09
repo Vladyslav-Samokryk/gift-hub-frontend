@@ -7,7 +7,13 @@ export { Present } from "./assets/svg/Present";
 export { Search } from "./assets/svg/Search";
 export { UserAccount } from "./assets/svg/UserAccount";
 export { Wishlist } from "./assets/svg/Wishlist";
-export { LeftArrow, LeftStep, DownStep, RightArrow } from "./assets/svg/Arrows";
+export {
+  LeftArrow,
+  LeftStep,
+  DownStep,
+  RightArrow,
+  CategoryArrow,
+} from "./assets/svg/Arrows";
 export {
   ApplePayLogo,
   GooglePayLogo,
@@ -51,6 +57,7 @@ export type {
   TRLang,
   TRRandomPresent,
 } from "./types/Translation";
+export type { Categories } from "./types/Categories";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
@@ -61,8 +68,8 @@ export { DIRECTION } from "./constants/direction";
 export { default as Preloader } from "./UI/Preloader";
 export { default as StarRate } from "./UI/StarRate";
 export { default as Logo } from "./UI/Logo";
-export { default as SeeMoreButton } from "./UI/SeeMoreButton";
-export { default as UpArrow } from "./UI/UpArrow";
+export { default as SeeMoreButton } from "./UI/Buttons/SeeMoreButton";
+export { default as UpArrow } from "./UI/Buttons/UpArrow";
 export { default as ModalContainer } from "./UI/ModalContainer";
 export { default as ModalHeader } from "./UI/ModalHeader";
 export { default as InputContainer } from "./UI/InputContainer";
@@ -71,3 +78,4 @@ export { default as ProductSection } from "./UI/ProductSection";
 export { default as RangePrice } from "./UI/RangePrice";
 export { default as RandomStep } from "./UI/RandomStep";
 export { default as GoToSaleButton } from "./UI/GoToSaleButton";
+export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
