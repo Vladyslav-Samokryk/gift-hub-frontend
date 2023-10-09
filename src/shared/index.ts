@@ -7,7 +7,13 @@ export { Present } from "./assets/svg/Present";
 export { Search } from "./assets/svg/Search";
 export { UserAccount } from "./assets/svg/UserAccount";
 export { Wishlist } from "./assets/svg/Wishlist";
-export { LeftArrow, LeftStep, DownStep, RightArrow } from "./assets/svg/Arrows";
+export {
+  LeftArrow,
+  LeftStep,
+  DownStep,
+  RightArrow,
+  CategoryArrow,
+} from "./assets/svg/Arrows";
 export {
   ApplePayLogo,
   GooglePayLogo,
@@ -27,8 +33,6 @@ export {
 export { LoginIcon, RegistrationIcon } from "./assets/svg/ModalAuth";
 export { PasswordHide, PasswordShow } from "./assets/svg/PasswordIcons";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
-export { arrayCategories } from "./assets/svg/Categories";
-export { getSubImg } from "./assets/webp/subcategories";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -53,6 +57,7 @@ export type {
   TRLang,
   TRRandomPresent,
 } from "./types/Translation";
+export type { Categories } from "./types/Categories";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
@@ -73,3 +78,4 @@ export { default as ProductSection } from "./UI/ProductSection";
 export { default as RangePrice } from "./UI/RangePrice";
 export { default as RandomStep } from "./UI/RandomStep";
 export { default as GoToSaleButton } from "./UI/GoToSaleButton";
+export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
