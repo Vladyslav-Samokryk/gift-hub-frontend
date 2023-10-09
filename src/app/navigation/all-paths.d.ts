@@ -1,10 +1,11 @@
-type PathUnion = "/"
-| "/catalog"
-| "/catalog-for-admin"
-| "/catalog-for-manager"
-| "/product"
-| "/contacts"
-| "/faq"
-| "/settings"
-| "/shopping-cart"
-| "/about-us";
+type PathUnion =
+  | "/"
+  | "/catalog"
+  | "/catalog-for-admin"
+  | "/catalog-for-manager"
+  | "/product"
+  | "/contacts"
+  | "/faq"
+  | "/settings"
+  | "/shopping-cart"
+  | "/about-us";

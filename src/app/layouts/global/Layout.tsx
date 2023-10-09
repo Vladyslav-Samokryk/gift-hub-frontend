@@ -11,7 +11,7 @@ export const Layout = (): JSX.Element => {
       <Header />
       <main>
         <Outlet />
-        {!isVisible ? <UpArrow/> : null}
+        {!isVisible ? <UpArrow /> : null}
       </main>
       <Footer />
     </>

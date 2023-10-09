@@ -34,7 +34,7 @@ input[type=number] {
         }
 
         &:active {
-            @apply bg-deepBlue;
+            @apply bg-blue-900;
         }
 
         &:disabled {
@@ -50,7 +50,7 @@ input[type=number] {
     .input {
       @apply rounded-sm border-[1px] h-10 border-gray-900 px-2 py-1 w-full;
       &:hover {
-         @apply border-link
+         @apply border-blue-600
       }
       & input{
          &:focus, &:hover, &:not(:placeholder-shown), &:-webkit-autofill {

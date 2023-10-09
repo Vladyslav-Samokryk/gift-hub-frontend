@@ -1,17 +1,14 @@
-import { BannerSlider, TrickedLine, RandomPresentSection, Category } from "@components";
+import { BannerSlider, TrickedLine, RandomPresentSection } from "@components";
 import { ProductSection } from "@shared";
-import { useAppSelector } from "@store";
 
-export default function Main (): JSX.Element {
-  const user = useAppSelector((state) => state.user);
-  const { isAuth } = user;
+export default function Main(): JSX.Element {
   return (
     <div>
-      <BannerSlider/>
-      <ProductSection section={"popular"}/>
-      <TrickedLine/>
-      <ProductSection section={"new"}/>
-      <RandomPresentSection/>
+      <BannerSlider />
+      <ProductSection section={"popular"} />
+      <TrickedLine />
+      <ProductSection section={"new"} />
+      <RandomPresentSection />
     </div>
   );
 }

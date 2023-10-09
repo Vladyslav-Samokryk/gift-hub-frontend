@@ -1,4 +1,4 @@
-export default function AboutUs (): JSX.Element {
+export default function AboutUs(): JSX.Element {
   return (
     <div>
       <h2>AboutUs</h2>

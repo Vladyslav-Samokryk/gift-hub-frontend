@@ -7,10 +7,7 @@ export const baseApi = createApi({
     prepareHeaders: (headers, { getState, endpoint }) => {
       const token = (getState() as RootState).user.token;
 
-      const listOfRequiredJWTEndpoints = [
-        "login",
-        "logout",
-      ];
+      const listOfRequiredJWTEndpoints = ["login", "logout"];
       if (token && listOfRequiredJWTEndpoints.includes(endpoint)) {
         headers.set("Authorization", `Bearer ${token}`);
       }
