@@ -2,34 +2,50 @@ import type { ProductCardType } from "@shared";
 import { baseApi } from "./base";
 
 interface Range {
-  from: number;
-  to: number;
+  range: {
+    from: number;
+    to: number;
+  };
+  lang: string;
 }
 
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getPopularProducts: builder.query({
-      query: () => ({
+      query: (lang) => ({
         url: "shop/guest_user/popular",
         method: "GET",
+        headers: {
+          "Accept-Language": lang,
+        },
       }),
     }),
     getNewProducts: builder.query({
-      query: () => ({
+      query: (lang) => ({
         url: "shop/guest_user/new-products",
         method: "GET",
+        headers: {
+          "Accept-Language": lang,
+        },
       }),
     }),
     getRandomProducts: builder.query<ProductCardType[], Range>({
       query: (arg) => {
-        const { from, to } = arg;
+        const { range, lang } = arg;
         return {
-          url: `shop/guest_user/random-gifts/?from=${from}&to=${to}&quantity=5`,
+          url: `shop/guest_user/random-gifts/?from=${range.from}&to=${range.to}&quantity=5`,
           method: "GET",
+          headers: {
+            "Accept-Language": lang,
+          },
         };
       },
     }),
   }),
 });
 
-export const { useGetNewProductsQuery, useGetPopularProductsQuery, useGetRandomProductsQuery } = productsApi;
+export const {
+  useGetNewProductsQuery,
+  useGetPopularProductsQuery,
+  useGetRandomProductsQuery,
+} = productsApi;

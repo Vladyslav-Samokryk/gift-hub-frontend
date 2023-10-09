@@ -1,49 +1,103 @@
 export const en: AllLocalesType = {
   translation: {
-    categories: ["Equipment", "Dishes", "Sweets", "Knowledge", "Clothes", "Accessories", "Office", "Games"],
-    subcategories: [
-      ["Keyboards", "Headphones", "Powerbanks", "Lamps", "Massagers"],
-      ["Mugs", "Termomugs", "Lunchboxes", "Bottles"],
-      ["Candies", "Secret cookies", "Tea", "Coffee", "Mixtures for cocktails"],
-      ["Books", "Courses"],
-      ["Socks", "T-shirts", "Hoodies", "Plaids", "Slippers"],
-      ["Backpacks", "Laptop cases", "Phone cases", "Shoppers", "Keychaines"],
-      ["Notebooks", "Datebooks", "Magnetic boards", "Pens"],
-      ["3D puzzles", "BoardGames", "Puzzles"],
-    ],
-    aboutAs: "About us",
-    contacts: "Contacts",
-    catalog: "Catalog",
-    secretPresent: "Secret present",
-    search: "Search",
-    goToSale: "Get my sales",
-    aboutSecterPresent: "FIND OUT ABOUT THE SECRET PRESENT",
-    follow_us: "Follow us",
-    contact_us: "Contact us",
-    contact_us_messengers: "We are in touch in messengers",
-    frequentlyAskedQuestion: "Frequently asked question",
-    offerContract: "Offer contract",
-    paymentAndDelivery: "Payment and delivery",
-    returnConditions: "Return conditions",
-    privacyPolicy: "Privacy Policy",
-    copyrightText: "GIFTHUB.ua, 2023-2023 Internet-shop",
-    randomPresent: {
-      headers: ["Still don't know what to choose as a gift for an IT professional?", "Our randomizer will choose it for you!"],
-      steps: ["Choose a price segment for your gift", "Click \"Randomize a present\" button to start", "Get a gift chosen by a randomizer"],
+    footer_sections: {
+      follow_us: "Follow us",
+      contact_us: "Contact us",
+      copyright: "GIFTHUB.ua, 2023-2023 Internet-shop",
+      help: "Help",
     },
-    winTitle: "Here you go, the random gift:",
-    knowMore: "Get to know more",
-    tryAgain: "Try one more time",
-    makeOrder: "Make the order",
-    getRandomPresent: "Randomize a present",
-    seeMore: "Show more products",
-    contacts_header: "Call us or write us in messengers:",
-    contacts_email: "Write to us via mail",
-    contacts_telegram: "Write us on Telegram",
-    help: "Help",
-    en: "ENG",
-    uk: "UA",
-    popularProductSection: "POPULAR PRODUCTS",
-    newProductSection: "NEW PRODUCTS",
+
+    help_section: {
+      faq: "Frequently asked question",
+      offer_contract: "Offer contract",
+      payment_delivery: "Payment and delivery",
+      return_conditions: "Return conditions",
+      privacy_policy: "Privacy Policy",
+    },
+
+    header_links: {
+      secret_present: "Secret present",
+      about: "About us",
+      contacts: "Contacts",
+      catalog: "Catalog",
+    },
+
+    contacts_popup: {
+      header: "Call us or write us in messengers:",
+      email: "Write to us via mail",
+      telegram: "Write us on Telegram",
+    },
+
+    product_sections: {
+      popular: "POPULAR PRODUCTS",
+      new: "NEW PRODUCTS",
+    },
+
+    random_present: {
+      headers: [
+        "Still don't know what to choose as a gift for an IT professional?",
+        "Our randomizer will choose it for you!",
+      ],
+      steps: [
+        "Choose a price segment for your gift",
+        "Click 'Randomize a present' button to start",
+        "Get a gift chosen by a randomizer",
+      ],
+      btn_get_present: "Randomize a present",
+    },
+
+    win_random_section: {
+      title: "Here you go, the random gift:",
+      btn_try_again: "Try one more time",
+    },
+
+    person: {
+      name: "Name",
+      last_name: "Surname",
+    },
+
+    lang: {
+      en: "ENG",
+      ua: "UA",
+    },
+
+    login_popup: {
+      header: "Log in",
+      btn: "Log in",
+      wishlist_error: "The wish list is only available to registered members!",
+    },
+
+    input_password: {
+      ph: "Password",
+      ph_create: "Create password",
+      ph_repeat: "Repeat password",
+      remind_password: "Remind password",
+      rules: [
+        "Minimum 7 characters",
+        "Upper case",
+        "Low case",
+        "Numbers and symbols",
+      ],
+    },
+
+    registr_popup: {
+      header: "Register",
+      btn: "Register",
+    },
+
+    ph_email: "E-mail",
+    ph_search: "Search",
+    tricked_line_text: "FIND OUT ABOUT THE SECRET PRESENT",
+
+    btn_go_sale: "Get my sales",
+    btn_make_order: "Make the order",
+    btn_show_more: "Show more products",
+    btn_know_more: "Get to know more",
+
+    enter_as_header: "Log in as",
+
+    checkbox_remember_person: "Remember me",
+
+    or: "or",
   },
 };
