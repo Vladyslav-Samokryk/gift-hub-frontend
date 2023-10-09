@@ -100,5 +100,22 @@ export const ua: AllLocalesType = {
     checkbox_remember_person: "Запам'ятай мене",
 
     or: "або",
+
+    filters_title: "ОСНОВНІ ФІЛЬТРИ",
+    filters: {
+      sale: "Зі знижкою",
+      pending: "В очікуванні",
+      available: "Є в наявності",
+    },
+    rate: "РЕЙТИНГ",
+    price: "ЦІНА",
+    sorts_title: "Показати спочатку:",
+    sorts: {
+      cheap: "дешеві",
+      expensive: "дорогі",
+      new: "новинки",
+      popular: "популярні",
+      rate: "за рейтингом",
+    },
   },
 };
