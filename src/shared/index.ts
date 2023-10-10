@@ -58,6 +58,7 @@ export type {
   TRLang,
   TRRandomPresent,
 } from "./types/Translation";
+export type { Categories } from "./types/Categories";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
@@ -78,4 +79,5 @@ export { default as ProductSection } from "./UI/ProductSection";
 export { default as RangePrice } from "./UI/RangePrice";
 export { default as RandomStep } from "./UI/RandomStep";
 export { default as Checkbox } from "./UI/Checkbox";
-export { default as GoToSaleButton } from "./UI/GoToSaleButton";
+export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";
+export { default as CategoryButton } from "./UI/Buttons/CategoryButton";

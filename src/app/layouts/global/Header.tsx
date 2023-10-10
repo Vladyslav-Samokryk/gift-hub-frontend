@@ -11,6 +11,7 @@ import {
 } from "@shared";
 import {
   LanguageToggle,
+  Category,
   LoginPopUp,
   NavigationByRole,
   RegistrationPopUp,
