@@ -57,6 +57,8 @@ export type {
   TRHelp,
   TRLang,
   TRRandomPresent,
+  TRFilters,
+  TRSorts,
 } from "./types/Translation";
 export type { Categories } from "./types/Categories";
 
@@ -76,7 +78,8 @@ export { default as ModalHeader } from "./UI/ModalHeader";
 export { default as InputContainer } from "./UI/InputContainer";
 export { default as InputPassword } from "./UI/InputPassword";
 export { default as ProductSection } from "./UI/ProductSection";
-export { default as RangePrice } from "./UI/RangePrice";
+export { default as RangePriceRandom } from "./UI/Range/RangePriceRandom";
+export { default as RangeWithInputs } from "./UI/Range/RangeWithInputs";
 export { default as RandomStep } from "./UI/RandomStep";
 export { default as Checkbox } from "./UI/Checkbox";
 export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";

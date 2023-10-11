@@ -62,7 +62,7 @@ export default function LoginPopUp({
           </div>
 
           <div className="flex flex-col-reverse justify-between md:flex-row">
-            <Checkbox title={t("remember_person")} />
+            <Checkbox title={t("checkbox_remember_person")} />
             <a
               href="#"
               className="additional mb-3 text-blue-800 underline md:mb-0"

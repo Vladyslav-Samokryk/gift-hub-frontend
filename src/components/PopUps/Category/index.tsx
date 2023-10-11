@@ -2,6 +2,7 @@ import { useGetCategoriesQuery } from "@src/app/api/categories";
 import { CategoryButton, useGetCurrentLang } from "@src/shared";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface CategoryProps {
   visible: boolean;
@@ -11,21 +12,26 @@ interface CategoryProps {
 interface SubcategoryCardProps {
   subTitle: string;
   subImg: string;
+  subUrl: string;
 }
 
 function SubcategoryCard({
   subTitle,
   subImg,
+  subUrl,
 }: SubcategoryCardProps): JSX.Element {
   return (
-    <div className="mb-2 ml-7 flex w-full items-center md:block md:w-36 md:text-center">
+    <Link
+      to={"/catalog/" + subUrl}
+      className="mb-2 ml-7 flex w-full items-center md:block md:w-36 md:text-center"
+    >
       <img
         src={subImg}
         alt={subTitle}
         className="mr-2 h-12 w-12 md:h-36 md:w-full"
       />
       <p className="additional">{subTitle}</p>
-    </div>
+    </Link>
   );
 }
 
@@ -68,6 +74,7 @@ export default function Category({
                   key={index}
                   subTitle={sub.name}
                   subImg={sub.img}
+                  subUrl={sub.url}
                 />
               ))}
             </div>

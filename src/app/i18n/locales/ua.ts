@@ -94,6 +94,7 @@ export const ua: AllLocalesType = {
     btn_make_order: "Оформити замовлення",
     btn_show_more: "Показати ще",
     btn_know_more: "Дізнатись більше",
+    btn_add_to_basket: " Додати в кошик",
 
     enter_as_header: "Увійти як користувач",
 
@@ -109,6 +110,7 @@ export const ua: AllLocalesType = {
     },
     rate: "РЕЙТИНГ",
     price: "ЦІНА",
+
     sorts_title: "Показати спочатку:",
     sorts: {
       cheap: "дешеві",

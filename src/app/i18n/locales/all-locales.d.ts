@@ -81,6 +81,7 @@ interface AllLocalesType {
     btn_make_order: string;
     btn_show_more: string;
     btn_know_more: string;
+    btn_add_to_basket: string;
 
     enter_as_header: string;
 
@@ -97,6 +98,7 @@ interface AllLocalesType {
     rate: string;
     price: string;
     sorts_title: string;
+
     sorts: {
       cheap: string;
       expensive: string;

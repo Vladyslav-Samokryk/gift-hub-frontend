@@ -1,5 +1,6 @@
 import { CURRENCY } from "@config";
 import { SCREEN, useScreenWidth } from "@src/shared";
+import classNames from "classnames";
 import { type Dispatch, type SetStateAction } from "react";
 
 import ReactSlider from "react-slider";
@@ -50,7 +51,7 @@ function RangeInput({ value }: RangeInputProps): JSX.Element {
   );
 }
 
-export default function RangePrice({
+export default function RangePriceRandom({
   permission,
   from,
   to,
@@ -68,9 +69,9 @@ export default function RangePrice({
         renderTrack={(props, state) => (
           <div
             {...props}
-            className={
-              state.index === 1 ? "h-2 bg-primary-linear" : "h-2 bg-blue-300"
-            }
+            className={classNames("h-2 rounded-full bg-blue-300", {
+              "bg-primary-linear": state.index === 1,
+            })}
           />
         )}
         renderThumb={(props, state) => (

@@ -93,6 +93,7 @@ export const en: AllLocalesType = {
     btn_make_order: "Make the order",
     btn_show_more: "Show more products",
     btn_know_more: "Get to know more",
+    btn_add_to_basket: "Add to basket",
 
     enter_as_header: "Log in as",
 
@@ -108,6 +109,7 @@ export const en: AllLocalesType = {
     },
     rate: "RATE",
     price: "PRICE",
+
     sorts_title: "Show first:",
     sorts: {
       cheap: "cheap",

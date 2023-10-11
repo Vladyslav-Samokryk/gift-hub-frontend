@@ -30,3 +30,17 @@ export interface TRRandomPresent {
   steps: string[];
   btn_get_present: string;
 }
+
+export interface TRFilters {
+  sale: string;
+  pending: string;
+  available: string;
+}
+
+export interface TRSorts {
+  cheap: string;
+  expensive: string;
+  new: string;
+  popular: string;
+  rate: string;
+}

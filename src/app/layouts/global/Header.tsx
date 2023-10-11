@@ -15,7 +15,6 @@ import {
   LoginPopUp,
   NavigationByRole,
   RegistrationPopUp,
-  Category,
 } from "@components";
 import { useTranslation } from "react-i18next";
 
