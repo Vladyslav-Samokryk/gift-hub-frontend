@@ -13,7 +13,8 @@ export default function ProductCard({
 }: ProductCardType): JSX.Element {
   const [imgLoad, setImgLoad] = useState(false);
   return (
-    <div className="m-2 h-card w-80 rounded-lg border-2 border-black">
+    // eslint-disable-next-line prettier/prettier
+    <div className="w-card m-2 h-card rounded-lg border-2 border-black bg-white">
       <div className="relative">
         <Link to={"/catalog"}>
           <picture>
@@ -43,7 +44,7 @@ export default function ProductCard({
         <Link to={"/catalog"}>
           <h2 className="primary-bold">{name}</h2>
         </Link>
-        <div className="absolute bottom-0">
+        <div className="absolute bottom-0 w-[95%]">
           <Link to={"/catalog"}>
             <h3 className="additional text-gray-900">{category}</h3>
           </Link>

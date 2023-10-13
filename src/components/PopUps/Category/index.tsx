@@ -2,10 +2,37 @@ import { useGetCategoriesQuery } from "@src/app/api/categories";
 import { CategoryButton, useGetCurrentLang } from "@src/shared";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 interface CategoryProps {
   visible: boolean;
   setVisible: (value: boolean | ((prev: boolean) => boolean)) => void;
+}
+
+interface SubcategoryCardProps {
+  subTitle: string;
+  subImg: string;
+  subUrl: string;
+}
+
+function SubcategoryCard({
+  subTitle,
+  subImg,
+  subUrl,
+}: SubcategoryCardProps): JSX.Element {
+  return (
+    <Link
+      to={"/catalog/" + subUrl}
+      className="mb-2 ml-7 flex w-full items-center md:block md:w-36 md:text-center"
+    >
+      <img
+        src={subImg}
+        alt={subTitle}
+        className="mr-2 h-12 w-12 md:h-36 md:w-full"
+      />
+      <p className="additional">{subTitle}</p>
+    </Link>
+  );
 }
 
 export default function Category({
@@ -43,17 +70,12 @@ export default function Category({
             </div>
             <div className="flex flex-wrap content-start">
               {data[categoryIndex].sub.map((sub, index: number) => (
-                <div
+                <SubcategoryCard
                   key={index}
-                  className="mb-2 ml-7 flex w-full items-center md:block md:w-36 md:text-center"
-                >
-                  <img
-                    src={sub.img}
-                    alt={sub.name}
-                    className="mr-2 h-12 w-12 md:h-36 md:w-full"
-                  />
-                  <p className="additional">{sub.name}</p>
-                </div>
+                  subTitle={sub.name}
+                  subImg={sub.img}
+                  subUrl={sub.url}
+                />
               ))}
             </div>
           </motion.div>

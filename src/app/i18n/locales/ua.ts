@@ -94,11 +94,72 @@ export const ua: AllLocalesType = {
     btn_make_order: "Оформити замовлення",
     btn_show_more: "Показати ще",
     btn_know_more: "Дізнатись більше",
+    btn_add_to_basket: " Додати в кошик",
 
     enter_as_header: "Увійти як користувач",
 
     checkbox_remember_person: "Запам'ятай мене",
 
     or: "або",
+
+    filters_title: "ОСНОВНІ ФІЛЬТРИ",
+    filters: {
+      sale: "Зі знижкою",
+      pending: "В очікуванні",
+      available: "Є в наявності",
+    },
+    rate: "РЕЙТИНГ",
+    price: "ЦІНА",
+
+    sorts_title: "Показати спочатку:",
+    sorts: {
+      cheap: "дешеві",
+      expensive: "дорогі",
+      new: "новинки",
+      popular: "популярні",
+      rate: "за рейтингом",
+    },
+
+    main_page: "Головна",
+
+    bc: {
+      by_category: "За категорією",
+      by_search_name: "За назвою",
+    },
+
+    categories: {
+      backpack: "Backpack",
+      keychain: "Keychain",
+      laptopBackpack: "Laptop Backpack",
+      shopper: "Shoppers",
+      hoodies: "Hoodies",
+      plaids: "Plaids",
+      slippers: "Slippers",
+      socks: "Socks",
+      tshirts: "T-shirts",
+      bottles: "Bottles",
+      lunchboxes: "Lunch boxes",
+      mugs: "Mugs",
+      termomugs: "Termomugs",
+      candies: "Candies",
+      cocktails: "Cocktails",
+      coffee: "Coffee",
+      secret_cookies: "Secret cookies",
+      tea: "Tea",
+      TDpuzzles: "3D puzzles",
+      boardGames: "Board Games",
+      puzzles: "Puzzles",
+      books: "Books",
+      courses: "Courses",
+      datebook: "Datebook",
+      magboard: "Magboard",
+      notebooks: "Notebooks",
+      pens: "Pens",
+      headphones: "Headphones",
+      keyboards: "Keyboards",
+      lamps: "Lamps",
+      massagers: "Massagers",
+      powerbanks: "Powerbanks",
+    },
   },
 };

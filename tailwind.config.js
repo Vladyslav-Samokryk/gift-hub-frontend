@@ -16,7 +16,7 @@ export const theme = {
         700: "#0047FF",
         900: "#222D4A",
       },
-            purple: {
+      purple: {
         100: "#E5E9FD",
         900: "#6F57FF",
       },
@@ -29,7 +29,7 @@ export const theme = {
         blue: "#4495ff",
       },
       background: {
-        main: "#F7F7FF",
+        main: "#F6F7FF",
       },
       star: "#FFD805",
     },
@@ -42,7 +42,7 @@ export const theme = {
       "randomize-result": "-2px 26px 100px 18px #EBEEF4",
       main: "0 4px 20px rgba(50, 64, 161, 0.5)",
       "drop-2": "0px 4px 15px 0px #80808080",
-      "drop":"0px 4px 4px rgba(0, 0, 0, 0.25)",
+      drop: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     },
     height: {
       card: "472px",
@@ -50,7 +50,8 @@ export const theme = {
       hr: "2px",
     },
     width: {
-      cardImg: "317px",
+      card: "340px",
+      cardImg: "335px",
     },
   },
   fontFamily: {

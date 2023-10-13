@@ -93,11 +93,72 @@ export const en: AllLocalesType = {
     btn_make_order: "Make the order",
     btn_show_more: "Show more products",
     btn_know_more: "Get to know more",
+    btn_add_to_basket: "Add to basket",
 
     enter_as_header: "Log in as",
 
     checkbox_remember_person: "Remember me",
 
     or: "or",
+
+    filters_title: "MAIN FILTERS",
+    filters: {
+      sale: "Sale",
+      pending: "Pending",
+      available: "Available",
+    },
+    rate: "RATE",
+    price: "PRICE",
+
+    sorts_title: "Show first:",
+    sorts: {
+      cheap: "cheap",
+      expensive: "expensive",
+      new: "new",
+      popular: "popular",
+      rate: "by rate",
+    },
+
+    main_page: "Main",
+
+    bc: {
+      by_category: "By the category",
+      by_search_name: "By the name",
+    },
+
+    categories: {
+      backpack: "Backpack",
+      keychain: "Keychain",
+      laptopBackpack: "Laptop Backpack",
+      shopper: "Shoppers",
+      hoodies: "Hoodies",
+      plaids: "Plaids",
+      slippers: "Slippers",
+      socks: "Socks",
+      tshirts: "T-shirts",
+      bottles: "Bottles",
+      lunchboxes: "Lunch boxes",
+      mugs: "Mugs",
+      termomugs: "Termomugs",
+      candies: "Candies",
+      cocktails: "Cocktails",
+      coffee: "Coffee",
+      secret_cookies: "Secret cookies",
+      tea: "Tea",
+      TDpuzzles: "3D puzzles",
+      boardGames: "Board Games",
+      puzzles: "Puzzles",
+      books: "Books",
+      courses: "Courses",
+      datebook: "Datebook",
+      magboard: "Magboard",
+      notebooks: "Notebooks",
+      pens: "Pens",
+      headphones: "Headphones",
+      keyboards: "Keyboards",
+      lamps: "Lamps",
+      massagers: "Massagers",
+      powerbanks: "Powerbanks",
+    },
   },
 };
