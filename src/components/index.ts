@@ -11,4 +11,4 @@ export { default as Category } from "./PopUps/Category";
 export { default as BuyTogetherSection } from "./BuyTogetherSection";
 export { default as FiltersCatalog } from "./FiltersCatalog";
 export { default as SortCatalog } from "./SortCatalog";
-export { default as NavigationPath } from "./NavigationPath";
+export { default as Breadcrumbs } from "./Breadcrumbs";

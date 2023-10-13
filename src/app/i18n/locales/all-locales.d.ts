@@ -106,6 +106,48 @@ interface AllLocalesType {
       popular: string;
       rate: string;
     };
+
+    main_page: string;
+
+    bc: {
+      by_category: string;
+      by_search_name: string;
+    };
+
+    categories: {
+      backpack: string;
+      keychain: string;
+      laptopBackpack: string;
+      shopper: string;
+      hoodies: string;
+      plaids: string;
+      slippers: string;
+      socks: string;
+      tshirts: string;
+      bottles: string;
+      lunchboxes: string;
+      mugs: string;
+      termomugs: string;
+      candies: string;
+      cocktails: string;
+      coffee: string;
+      secret_cookies: string;
+      tea: string;
+      TDpuzzles: string;
+      boardGames: string;
+      puzzles: string;
+      books: string;
+      courses: string;
+      datebook: string;
+      magboard: string;
+      notebooks: string;
+      pens: string;
+      headphones: string;
+      keyboards: string;
+      lamps: string;
+      massagers: string;
+      powerbanks: string;
+    };
   };
 }
 

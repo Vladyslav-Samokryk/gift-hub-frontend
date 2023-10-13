@@ -1,7 +1,7 @@
 import {
   BuyTogetherSection,
   FiltersCatalog,
-  NavigationPath,
+  Breadcrumbs,
   ProductCard,
   SortCatalog,
 } from "@src/components";
@@ -15,9 +15,9 @@ export default function Catalog(): JSX.Element {
 
   return (
     <div className="m-auto p-5">
-      <NavigationPath />
+      <Breadcrumbs />
 
-      <section className="grid grid-cols-[260px_1fr] gap-6">
+      <section className="grid grid-cols-[230px_1fr] gap-6">
         <FiltersCatalog />
         <div>
           <SortCatalog />

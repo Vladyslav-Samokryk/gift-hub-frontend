@@ -3,7 +3,7 @@ import ReactSlider from "react-slider";
 export default function RangeWithInputs(): JSX.Element {
   return (
     <div>
-      <div className="flex items-center justify-between">
+      <div className="secondary flex items-center justify-between">
         <input type="number" className="input h-6 w-14" />
         <span>&#9473;</span>
         <input type="number" className="input h-6 w-14" />

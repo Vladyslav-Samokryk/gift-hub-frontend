@@ -1,5 +1,10 @@
 import type { TRFilters } from "@src/shared";
-import { Checkbox, StarRate, RangeWithInputs } from "@src/shared";
+import {
+  Checkbox,
+  StarRate,
+  RangeWithInputs,
+  ListContainer,
+} from "@src/shared";
 import { useTranslation } from "react-i18next";
 
 export default function FiltersCatalog(): JSX.Element {
@@ -7,16 +12,14 @@ export default function FiltersCatalog(): JSX.Element {
   const filters: TRFilters = t("filters", { returnObjects: true });
 
   return (
-    <section className="h-max divide-y-2 rounded-md bg-white px-3 py-2 shadow-drop">
-      <div>
-        <h3>{t("filters_title")}</h3>
+    <section className="secondary flex h-max flex-col gap-6 divide-y-2 rounded-md bg-white px-3 py-2 font-bold shadow-drop">
+      <ListContainer title={t("filters_title")}>
         {Object.values(filters).map((filter, i) => (
           <Checkbox key={i} title={filter} />
         ))}
-      </div>
+      </ListContainer>
 
-      <div>
-        <h3>{t("rate")}</h3>
+      <ListContainer title={t("rate")}>
         <div className="flex">
           <Checkbox title="" />
           <StarRate rate={5} />
@@ -26,12 +29,11 @@ export default function FiltersCatalog(): JSX.Element {
           <Checkbox title="" />
           <StarRate rate={4} />
         </div>
-      </div>
+      </ListContainer>
 
-      <div>
-        <h3>{t("price")}</h3>
+      <ListContainer title={t("price")}>
         <RangeWithInputs />
-      </div>
+      </ListContainer>
     </section>
   );
 }

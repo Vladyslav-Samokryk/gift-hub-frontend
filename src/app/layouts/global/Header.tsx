@@ -17,6 +17,7 @@ import {
   RegistrationPopUp,
 } from "@components";
 import { useTranslation } from "react-i18next";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ export default function Header(): JSX.Element {
   const [categoryVisible, setCategoryVisible] = useState(false);
   const [loginPopUp, setLoginPopUp] = useState(false);
   const [registrPopUp, setRegistrPopUp] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <header>
       <section className="flex w-full items-center justify-between bg-white px-5 pb-6 shadow-main lg:px-20">
@@ -44,14 +45,21 @@ export default function Header(): JSX.Element {
         </button>
 
         <section className="group absolute -bottom-4 left-1/2 flex w-80 translate-x-[-50%] items-center rounded-lg border border-black p-1 text-center lg:static lg:w-96 lg:translate-x-0">
-          <Search />
+          <Link to={"/search/" + search}>
+            <Search />
+          </Link>
           <input
-            className="grow p-1 outline-none"
+            className="grow bg-transparent p-1 outline-none"
             placeholder={t("ph_search")}
             type="text"
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
+            onKeyDown={(e) =>
+              e.code === "Enter" &&
+              search.trim() !== "" &&
+              navigate("/search/" + search)
+            }
           />
           {search ? (
             <button onClick={() => setSearch("")} className="pr-1">
