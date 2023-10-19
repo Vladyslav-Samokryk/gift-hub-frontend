@@ -87,6 +87,14 @@ interface AllLocalesType {
     checkbox_remember_person: string;
 
     or: string;
+
+    secret_gift: {
+      title: string;
+      subtitles: string[];
+      process_header: string;
+      process_steps: string[];
+      try_button: string;
+    };
   };
 }
 

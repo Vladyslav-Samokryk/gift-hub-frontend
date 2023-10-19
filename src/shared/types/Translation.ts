@@ -30,3 +30,10 @@ export interface TRRandomPresent {
   steps: string[];
   btn_get_present: string;
 }
+export interface TRSecretGift {
+  title: string;
+  subtitles: string[];
+  process_header: string;
+  process_steps: string[];
+  try_button: string;
+}
