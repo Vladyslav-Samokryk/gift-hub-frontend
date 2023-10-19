@@ -15,7 +15,7 @@ export default function SecretGift(): JSX.Element {
 
   const navigate = useNavigate();
   return (
-    <div className="m-0 mx-auto  mb-24 flex w-full flex-col items-center">
+    <div className="m-0 mx-auto  mb-24 flex w-full flex-col items-center text-black">
       <section className="flex h-28 w-full items-start justify-between px-10 lg:mb-1 lg:h-fit">
         <div className="flex items-center justify-start gap-1">
           <button
@@ -48,23 +48,23 @@ export default function SecretGift(): JSX.Element {
         </div>
         <div className="flex max-w-[963px] flex-col items-start justify-start">
           <h4 className="h4 primary-linear mb-3">{secretGift.title}</h4>
-          <p className="primary text-[24px] leading-[29px] text-black">
+          <p className="primary text-[24px] leading-[29px]">
             {secretGift.subtitles[0]}
           </p>
         </div>
       </section>
       <section className="mt-36 flex max-w-[1330px] flex-col items-center justify-center">
-        <p className="primary text-2xl font-normal text-black">
+        <p className="primary text-2xl font-normal">
           {secretGift.process_header}
         </p>
-        <ul className="primary mt-10 grid list-decimal grid-cols-3 gap-14 text-2xl font-light leading-[24px] text-black">
-          <li className="after:content-firstBobble relative z-20 max-w-[347px] after:absolute after:left-[-34px] after:top-0 after:z-[-1] after:h-[30px] after:w-[30px]">
+        <ul className="primary mt-10 grid list-decimal grid-cols-3 gap-14 text-2xl font-light leading-[24px]">
+          <li className="after:content-firstBobble  list-item max-w-[347px]">
             {secretGift.process_steps[0]}
           </li>
-          <li className=" after:content-secondBobble relative z-20 max-w-[421px] after:absolute after:left-[-34px] after:top-0 after:z-[-1] after:h-[30px] after:w-[30px]">
+          <li className="after:content-secondBobble list-item max-w-[421px]">
             {secretGift.process_steps[1]}
           </li>
-          <li className=" after:content-thirdBobble relative z-20 max-w-[432px] after:absolute after:left-[-34px] after:top-0 after:z-[-1] after:h-[30px] after:w-[30px]">
+          <li className="after:content-thirdBobble list-item  max-w-[432px]">
             {secretGift.process_steps[2]}
           </li>
         </ul>

@@ -112,6 +112,10 @@ input[type=number] {
 
    }
 
+   .list-item {
+      @apply relative z-20 max-w-[347px] after:absolute after:left-[-34px] after:top-0 after:z-[-1] after:h-[30px] after:w-[30px];
+    }
+
 }
 
 @layer utilities {
