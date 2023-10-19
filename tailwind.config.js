@@ -16,7 +16,7 @@ export const theme = {
         700: "#0047FF",
         900: "#222D4A",
       },
-            purple: {
+      purple: {
         100: "#E5E9FD",
         900: "#6F57FF",
       },
@@ -42,7 +42,7 @@ export const theme = {
       "randomize-result": "-2px 26px 100px 18px #EBEEF4",
       main: "0 4px 20px rgba(50, 64, 161, 0.5)",
       "drop-2": "0px 4px 15px 0px #80808080",
-      "drop":"0px 4px 4px rgba(0, 0, 0, 0.25)",
+      drop: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     },
     height: {
       card: "472px",
@@ -56,6 +56,14 @@ export const theme = {
   fontFamily: {
     exo2: ["Exo2", "sans-serif"],
     rubik: ["Rubik", "sans-serif"],
+  },
+  content: {
+    // eslint-disable-next-line prettier/prettier
+    firstBobble: "url(\"src/shared/assets/img/secretGift/first_bobble.svg\")",
+    // eslint-disable-next-line prettier/prettier
+    secondBobble: "url(\"src/shared/assets/img/secretGift/second_bobble.svg\")",
+    // eslint-disable-next-line prettier/prettier
+    thirdBobble: "url(\"src/shared/assets/img/secretGift/third_bobble.svg\")",
   },
 };
 export const plugins = [];

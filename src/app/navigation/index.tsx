@@ -10,6 +10,7 @@ import {
   ShoppingCart,
   Product,
   AboutUs,
+  SecretGift,
 } from "@pages";
 import { Layout } from "@layouts";
 import { useAppSelector } from "../store";
@@ -52,6 +53,10 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "shopping-cart",
           element: <ShoppingCart />,
+        },
+        {
+          path: "secret-gift",
+          element: <SecretGift />,
         },
         {
           path: "*",

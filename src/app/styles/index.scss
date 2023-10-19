@@ -107,6 +107,11 @@ input[type=number] {
    .mobile-font {
       @apply font-rubik font-normal text-[12px]
    }
+   .primary-linear {
+      @apply inline-block bg-[linear-gradient(89.86deg,#303F9F_0.12%,#9747FF_99.92%)] text-transparent bg-clip-text
+
+   }
+
 }
 
 @layer utilities {
