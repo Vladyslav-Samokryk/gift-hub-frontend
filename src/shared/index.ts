@@ -66,6 +66,13 @@ export type { Categories } from "./types/Categories";
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
 export { SCREEN } from "./constants/screens";
 export { DIRECTION } from "./constants/direction";
+export {
+  MAX_DEFAULT,
+  MAX_PRICE,
+  MIN_DEFAULT,
+  DIFFER,
+  MIN_PRICE,
+} from "./constants/price";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";

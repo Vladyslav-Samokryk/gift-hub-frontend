@@ -2,7 +2,6 @@ import { useRoutes } from "react-router";
 import { Navigate } from "react-router-dom";
 
 import {
-  Catalog,
   FAQ,
   Settings,
   Contacts,
@@ -10,6 +9,8 @@ import {
   ShoppingCart,
   Product,
   AboutUs,
+  CatalogBySearch,
+  CatalogByCategory,
 } from "@pages";
 import { Layout } from "@layouts";
 import { useAppSelector } from "../store";
@@ -27,13 +28,13 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "catalog",
-          element: <Catalog />,
-          children: [{ path: ":id", element: <Catalog /> }],
+          element: <CatalogByCategory />,
+          children: [{ path: ":id", element: <CatalogByCategory /> }],
         },
         {
           path: "search",
-          element: <Catalog />,
-          children: [{ path: ":q", element: <Catalog /> }],
+          element: <CatalogBySearch />,
+          children: [{ path: ":q", element: <CatalogBySearch /> }],
         },
         {
           path: "product",
@@ -82,7 +83,7 @@ const useManagerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "catalog-for-manager",
-          element: <Catalog />,
+          element: <CatalogByCategory />,
         },
         {
           path: "*",
@@ -107,7 +108,7 @@ const useAdminRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "catalog-for-admin",
-          element: <Catalog />,
+          element: <CatalogByCategory />,
         },
       ],
     },

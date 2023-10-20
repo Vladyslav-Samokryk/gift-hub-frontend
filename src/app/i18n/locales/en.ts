@@ -103,9 +103,8 @@ export const en: AllLocalesType = {
 
     filters_title: "MAIN FILTERS",
     filters: {
-      sale: "Sale",
-      pending: "Pending",
-      available: "Available",
+      sale: "sale",
+      available: "available",
     },
     rate: "RATE",
     price: "PRICE",

@@ -1,18 +1,16 @@
+import type { Children } from "@src/shared";
 import {
-  BuyTogetherSection,
-  FiltersCatalog,
   Breadcrumbs,
-  ProductCard,
+  FiltersCatalog,
   SortCatalog,
-} from "@src/components";
-import { productCardMock } from "@src/mock";
-import type { ProductCardType } from "@src/shared";
+  BuyTogetherSection,
+} from "@components";
 
-import { useParams } from "react-router-dom";
-
-export default function Catalog(): JSX.Element {
-  const { id } = useParams();
-
+export default function CatalogLayout({
+  children,
+}: {
+  children: Children;
+}): JSX.Element {
   return (
     <div className="m-auto p-5">
       <Breadcrumbs />
@@ -23,9 +21,7 @@ export default function Catalog(): JSX.Element {
           <SortCatalog />
           <div>
             <div className="mt-3 flex flex-wrap justify-between gap-7">
-              {productCardMock.map((product: ProductCardType) => {
-                return <ProductCard key={product.id} {...product} />;
-              })}
+              {children}
             </div>
             <div>pagination</div>
           </div>

@@ -92,7 +92,6 @@ interface AllLocalesType {
     filters_title: string;
     filters: {
       sale: string;
-      pending: string;
       available: string;
     };
     rate: string;

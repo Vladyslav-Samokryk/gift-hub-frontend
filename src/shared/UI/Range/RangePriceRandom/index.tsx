@@ -1,5 +1,5 @@
 import { CURRENCY } from "@config";
-import { SCREEN, useScreenWidth } from "@src/shared";
+import { DIFFER, MAX_PRICE, SCREEN, useScreenWidth } from "@src/shared";
 import classNames from "classnames";
 import { type Dispatch, type SetStateAction } from "react";
 
@@ -19,12 +19,9 @@ interface RangeInputProps {
   value: number;
 }
 
-const differ = 200;
-const MAX_STEP = 2000;
-
 function getDiffer(width: number, value: number): number {
   const THUMB = 24;
-  const px = width / MAX_STEP;
+  const px = width / MAX_PRICE;
   return value * px - THUMB;
 }
 
@@ -64,7 +61,7 @@ export default function RangePriceRandom({
         thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7"
         defaultValue={[200, 700]}
         value={[from, to]}
-        max={MAX_STEP}
+        max={MAX_PRICE}
         pearling
         renderTrack={(props, state) => (
           <div
@@ -80,7 +77,7 @@ export default function RangePriceRandom({
             <div {...props} /> <RangeInput value={state.valueNow} />
           </div>
         )}
-        minDistance={differ}
+        minDistance={DIFFER}
         disabled={permission}
         onChange={(value) => setRange({ from: value[0], to: value[1] })}
       />

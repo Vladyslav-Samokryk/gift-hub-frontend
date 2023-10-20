@@ -10,7 +10,7 @@ function getPathArray(pathname: string): string[] {
     pathArray[2] = "categories." + pathArray[2];
   } else {
     pathArray[1] = "bc.by_search_name";
-    pathArray[2] = pathArray[2][0].toUpperCase() + pathArray[2].slice(1);
+    pathArray.pop();
   }
   return pathArray;
 }
@@ -23,19 +23,18 @@ export default function Breadcrumbs(): JSX.Element {
     <section className="mb-8 flex">
       {pathArray.map((path, index) => {
         return (
-          <>
+          <div key={path}>
             <Link
               className={classNames("secondary mx-1 font-light", {
                 "font-semibold text-blue-700": index === pathArray.length - 1,
                 "text-gray-900": index < pathArray.length - 1,
               })}
-              key={path}
               to={index === 0 ? "/" : pathname}
             >
               {t(path)}
             </Link>
             {index < pathArray.length - 1 && <span>&gt;</span>}
-          </>
+          </div>
         );
       })}
     </section>
