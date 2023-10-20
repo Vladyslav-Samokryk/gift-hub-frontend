@@ -54,10 +54,11 @@ export default function RangePrice({
   permission,
   from,
   to,
+  style,
   setRange,
 }: RangeProp): JSX.Element {
   return (
-    <div className="relative mb-20 mt-10 w-[70%] md:w-[50%]">
+    <div className="relative mb-20 mt-10 w-[70%] md:w-[50%]" style={style}>
       <ReactSlider
         className="h-2"
         thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7"
