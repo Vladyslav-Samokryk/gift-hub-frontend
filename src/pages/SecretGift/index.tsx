@@ -14,6 +14,7 @@ import type { TRSecretGift } from "@src/shared/types/Translation";
 import { useRef, useState } from "react";
 import { SelectSecretGift } from "@src/components";
 import { useGetCategoriesQuery } from "@src/app/api/categories";
+import classNames from "classnames";
 
 export default function SecretGift(): JSX.Element {
   const { t } = useTranslation();
@@ -43,7 +44,16 @@ export default function SecretGift(): JSX.Element {
   }>;
 
   return (
-    <div className="m-0 mx-auto  mb-24 flex w-full flex-col items-center text-black">
+    <div
+      className={classNames(
+        "m-0 mx-auto  flex w-full flex-col items-center pb-24 text-black",
+        {
+          "bg-[url('src/shared/assets/img/secretGift/animation.svg')]":
+            isVisibleSelect,
+          "bg-white": !isVisibleSelect,
+        },
+      )}
+    >
       <section className="flex h-28 w-full items-start justify-between px-10 lg:mb-1 lg:h-fit">
         <div className="flex items-center justify-start gap-1">
           <button
@@ -68,7 +78,7 @@ export default function SecretGift(): JSX.Element {
       </section>
       {!isVisibleSelect ? (
         <>
-          <section className="relative mt-20 flex items-center justify-center gap-2 pl-[19rem]">
+          <section className="relative mt-20 flex items-center justify-center gap-2 pl-[19rem] ">
             <div className="absolute left-[-10px] top-[-102px]">
               <img
                 className=" w-full max-w-full object-cover"
@@ -123,27 +133,27 @@ export default function SecretGift(): JSX.Element {
         </>
       ) : (
         <section
-          className="mt-5 flex flex-col items-center justify-center rounded-[20px] p-5"
+          className="mt-5 flex max-w-[650px] flex-col items-center justify-center rounded-[20px] bg-white/40 px-4 py-6"
           ref={sectionRef}
         >
           <form className="flex flex-col items-center justify-center ">
             <div className="">
-              <h5 className="h5  mb-3">Обери категорію подарунка:</h5>
+              <h5 className="h5  mb-5">Обери категорію подарунка:</h5>
               <SelectSecretGift options={options} />
             </div>
-            <div className="mt-10 w-full">
-              <h5 className="h5  mb-3">Обери ціновий діапазон:</h5>
+            <div className="mt-24 w-full">
+              <h5 className="h5  mb-3 text-center">Обери ціновий діапазон:</h5>
               <RangePrice
                 permission={false}
                 setRange={setRange}
                 elementRef={sectionRef}
                 {...range}
-                className="md:w-[100%]"
+                className="md:w-[593px]"
               />
             </div>
             <button
               type="submit"
-              className="btn btn-effect mt-10 px-9 py-5 font-rubik text-[16px] leading-6"
+              className="btn btn-effect mt-16 px-7 py-4 font-rubik text-[16px] leading-6"
             >
               Старт
             </button>

@@ -33,7 +33,7 @@ function getDiffer(width: number, value: number): number {
 
 function adaptWidth(width: number): number {
   if (width < SCREEN.SM) {
-    return width * 0.86;
+    return width * 0.9;
   }
   return width < SCREEN.MD ? width * 0.36 : width * 0.45;
 }
