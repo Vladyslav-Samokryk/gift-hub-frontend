@@ -11,15 +11,15 @@ import TechnyRubiksCubePuzzle from "@src/shared/assets/img/secretGift/TechnyRubi
 import TechnyBigGiftBox from "@src/shared/assets/img/secretGift/TechnyBigGiftBox.svg";
 import { useTranslation } from "react-i18next";
 import type { TRSecretGift } from "@src/shared/types/Translation";
-import { useEffect, useState } from "react";
+import { useRef, useState } from "react";
 import { SelectSecretGift } from "@src/components";
 import { useGetCategoriesQuery } from "@src/app/api/categories";
-import className from "classnames";
 
 export default function SecretGift(): JSX.Element {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [isVisibleSelect, setIsVisibleSelect] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
   const [range, setRange] = useState({
     from: 200,
     to: 700,
@@ -88,13 +88,13 @@ export default function SecretGift(): JSX.Element {
               {secretGift.process_header}
             </p>
             <ul className="primary mt-10 grid list-decimal grid-cols-3 gap-14 text-2xl font-light leading-[24px]">
-              <li className="after:content-firstBobble  list-item max-w-[347px]">
+              <li className="list-item  max-w-[347px] after:content-firstBobble">
                 {secretGift.process_steps[0]}
               </li>
-              <li className="after:content-secondBobble list-item max-w-[421px]">
+              <li className="list-item max-w-[421px] after:content-secondBobble">
                 {secretGift.process_steps[1]}
               </li>
-              <li className="after:content-thirdBobble list-item  max-w-[432px]">
+              <li className="list-item max-w-[432px]  after:content-thirdBobble">
                 {secretGift.process_steps[2]}
               </li>
             </ul>
@@ -122,7 +122,10 @@ export default function SecretGift(): JSX.Element {
           </button>
         </>
       ) : (
-        <section className="mt-5 flex flex-col items-center justify-center rounded-[20px] p-5">
+        <section
+          className="mt-5 flex flex-col items-center justify-center rounded-[20px] p-5"
+          ref={sectionRef}
+        >
           <form className="flex flex-col items-center justify-center ">
             <div className="">
               <h5 className="h5  mb-3">Обери категорію подарунка:</h5>
@@ -133,8 +136,9 @@ export default function SecretGift(): JSX.Element {
               <RangePrice
                 permission={false}
                 setRange={setRange}
+                elementRef={sectionRef}
                 {...range}
-                style={{ width: "100%" }}
+                className="md:w-[100%]"
               />
             </div>
             <button

@@ -17,6 +17,7 @@ import {
   RegistrationPopUp,
 } from "@components";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ export default function Header(): JSX.Element {
   const [categoryVisible, setCategoryVisible] = useState(false);
   const [loginPopUp, setLoginPopUp] = useState(false);
   const [registrPopUp, setRegistrPopUp] = useState(false);
-
+  const navigate = useNavigate();
   return (
     <header>
       <section className="flex w-full items-center justify-between bg-white px-5 pb-6 shadow-main lg:px-20">
@@ -64,7 +65,7 @@ export default function Header(): JSX.Element {
           <p className="lg:h6 additional pr-1 group-hover:text-accent-turkus">
             {t("header_links.secret_present")}
           </p>
-          <button className="group">
+          <button className="group" onClick={() => navigate("secret-gift")}>
             <Present />
           </button>
         </section>
