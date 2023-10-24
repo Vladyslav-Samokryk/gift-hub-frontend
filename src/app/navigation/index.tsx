@@ -15,6 +15,7 @@ import {
 import { Layout } from "@layouts";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "@src/shared";
+import { CatalogLayout } from "@src/components";
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
@@ -28,17 +29,18 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "catalog",
-          element: <CatalogByCategory />,
+          element: <CatalogLayout />,
           children: [{ path: ":id", element: <CatalogByCategory /> }],
         },
         {
           path: "search",
-          element: <CatalogBySearch />,
+          element: <CatalogLayout />,
           children: [{ path: ":q", element: <CatalogBySearch /> }],
         },
         {
           path: "product",
           element: <Product />,
+          children: [{ path: ":id", element: <Product /> }],
         },
         {
           path: "contacts",

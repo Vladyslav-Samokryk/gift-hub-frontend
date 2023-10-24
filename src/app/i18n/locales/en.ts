@@ -125,6 +125,8 @@ export const en: AllLocalesType = {
       by_search_name: "By the name",
     },
 
+    buy_together_section: "Also buy",
+
     categories: {
       backpack: "Backpack",
       keychain: "Keychain",

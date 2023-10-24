@@ -45,13 +45,12 @@ export const theme = {
       drop: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     },
     height: {
-      card: "472px",
-      cardImg: "300px",
+      card: "30vw",
+      cardImg: "18vw",
       hr: "2px",
     },
     width: {
-      card: "340px",
-      cardImg: "335px",
+      card: "20vw",
     },
   },
   fontFamily: {

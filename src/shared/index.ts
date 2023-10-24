@@ -92,3 +92,4 @@ export { default as Checkbox } from "./UI/Checkbox";
 export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";
 export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
 export { default as ListContainer } from "./UI/ListContainer";
+export { default as ImgWithPreloader } from "./UI/ImgWithPreloader";

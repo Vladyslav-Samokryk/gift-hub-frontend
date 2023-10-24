@@ -1,7 +1,7 @@
 import type { TRSorts } from "@src/shared";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { useSortContext } from "@src/pages/CatalogByCategory/context";
+import { useSortContext } from "../CatalogLayout/context";
 
 export default function SortCatalog(): JSX.Element {
   const { t } = useTranslation();
@@ -13,10 +13,7 @@ export default function SortCatalog(): JSX.Element {
       {Object.keys(sorts).map((sort, i) => (
         <button
           key={i}
-          onClick={() => {
-            console.log(sortParams);
-            setSortParams(sort);
-          }}
+          onClick={() => setSortParams(sort)}
           className={classNames("px-1", {
             "rounded-full bg-purple-100": sortParams === sort,
           })}

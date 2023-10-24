@@ -1,4 +1,3 @@
-import { useFilterContext } from "@src/pages/CatalogByCategory/context";
 import type { TRFilters } from "@src/shared";
 import {
   Checkbox,
@@ -6,8 +5,8 @@ import {
   RangeWithInputs,
   ListContainer,
 } from "@src/shared";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useFilterContext } from "../CatalogLayout/context";
 
 export default function FiltersCatalog(): JSX.Element {
   const { t } = useTranslation();

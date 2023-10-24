@@ -126,6 +126,8 @@ export const ua: AllLocalesType = {
       by_search_name: "За назвою",
     },
 
+    buy_together_section: "Часто купують разом",
+
     categories: {
       backpack: "Рюкзаки",
       keychain: "Брелоки",

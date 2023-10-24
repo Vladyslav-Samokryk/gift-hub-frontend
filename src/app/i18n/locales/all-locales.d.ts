@@ -113,6 +113,8 @@ interface AllLocalesType {
       by_search_name: string;
     };
 
+    buy_together_section: string;
+
     categories: {
       backpack: string;
       keychain: string;
