@@ -49,7 +49,7 @@ export const en: AllLocalesType = {
     secret_gift: {
       title: "Secret Gift",
       subtitles: [
-        "Secret Gift is an exciting way of choosing and receiving a gift that preserves an element of surprise and mystery until the moment of reveal.",
+        "Secret Gift - is an exciting way of choosing and receiving a gift that preserves an element of surprise and mystery until the moment of reveal.",
         "The most important moment is that the user will only find out what was chosen for them when the gift is delivered or opened.",
       ],
       process_header: "On our website, this process is simple and interesting",

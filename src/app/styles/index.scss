@@ -113,7 +113,7 @@ input[type=number] {
    }
 
    .list-item {
-      @apply relative z-20 max-w-[347px] after:absolute after:left-[-34px] after:top-0 after:z-[-1] after:h-[30px] after:w-[30px];
+      @apply md:text-2xl md:font-light md:leading-[24px] relative z-20 max-w-[347px] text-lg leading-5 after:absolute after:left-[-27px] after:top-[-2px]  md:after:left-[-34px] md:after:top-0 after:z-[-1] after:h-[30px] after:w-[30px];
     }
 
 }
@@ -129,3 +129,4 @@ input[type=number] {
      }
 
  }
+
