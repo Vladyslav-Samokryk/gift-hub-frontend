@@ -7,6 +7,7 @@ interface Range {
     to: number;
   };
   lang: string;
+  categoryId?: string;
 }
 
 export const productsApi = baseApi.injectEndpoints({
@@ -31,9 +32,9 @@ export const productsApi = baseApi.injectEndpoints({
     }),
     getRandomProducts: builder.query<ProductCardType[], Range>({
       query: (arg) => {
-        const { range, lang } = arg;
+        const { range, lang, categoryId = "" } = arg;
         return {
-          url: `shop/guest_user/random-gifts/?from=${range.from}&to=${range.to}&quantity=5`,
+          url: `shop/guest_user/random-gifts/?categoryId=${categoryId}from=${range.from}&to=${range.to}&quantity=5`,
           method: "GET",
           headers: {
             "Accept-Language": lang,
