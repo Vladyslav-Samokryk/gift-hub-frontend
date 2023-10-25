@@ -34,10 +34,10 @@ export default function CatalogLayout(): JSX.Element {
     >
       <FilterParamsContext.Provider value={{ filterParams, setFilterParams }}>
         <SortParamsContext.Provider value={{ sortParams, setSortParams }}>
-          <div className="m-auto p-5">
+          <div className="m-auto p-5 px-10">
             <Breadcrumbs />
 
-            <section className="grid grid-cols-[230px_1fr] gap-6">
+            <section className="grid grid-cols-[230px_1fr] gap-3">
               <FiltersCatalog />
               <div>
                 <SortCatalog />

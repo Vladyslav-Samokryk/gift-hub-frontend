@@ -14,7 +14,7 @@ const PaginationSection = (): JSX.Element => {
   const { page, setPage, setProductNum } = usePaginationParamsContext();
   const { t } = useTranslation();
   return (
-    <div className="flex">
+    <div className="my-6 flex">
       {windowWidth >= SCREEN.LG && (
         <Select
           options={PAGE_OPTIONS}

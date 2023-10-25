@@ -5,7 +5,7 @@ const Pagination = (): JSX.Element => {
   const { count, productNum, setPage, page } = usePaginationParamsContext();
   const pages = Math.ceil(count / productNum);
   return (
-    <div>
+    <div className="flex gap-3">
       {Array.from({ length: pages }, (_el, p) => (
         <button
           key={p}
