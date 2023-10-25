@@ -1,7 +1,10 @@
-import React, { useState } from "react";
 import Select from "react-select";
+import type { Category } from "@src/pages/SecretGift";
+
 interface SelectSecretGiftProps {
   options: option[];
+  category: Category | null;
+  setCategory: (category: Category | null) => void;
 }
 export interface option {
   value: string;
@@ -32,12 +35,13 @@ const customStyles = {
 };
 export default function SelectSecretGift({
   options,
+  category,
+  setCategory,
 }: SelectSecretGiftProps): JSX.Element {
-  const [selectedOption, setSelectedOption] = useState(null);
   return (
     <Select
-      defaultValue={selectedOption}
-      onChange={setSelectedOption}
+      defaultValue={category}
+      onChange={(category: Category | null) => setCategory(category)}
       options={options}
       autoFocus={true}
       classNamePrefix="myselect"

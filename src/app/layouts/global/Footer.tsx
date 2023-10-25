@@ -14,7 +14,7 @@ import {
   FacebookLogo,
   InstagramLogo,
 } from "@shared";
-import { CONTACT_INFO } from "@config";
+import { CONTACT_INFO } from "@src/app/api/config";
 import { useTranslation } from "react-i18next";
 
 const helpSection: Array<{

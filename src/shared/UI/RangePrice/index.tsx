@@ -1,4 +1,4 @@
-import { CURRENCY } from "@config";
+import { CURRENCY } from "@src/app/api/config";
 import { SCREEN, useScreenWidth } from "@src/shared";
 import { type Dispatch, type SetStateAction } from "react";
 import clsx from "clsx";

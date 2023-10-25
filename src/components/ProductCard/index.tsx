@@ -1,5 +1,5 @@
 import { StarRate, Wishlist, Basket, type ProductCardType } from "@shared";
-import { CURRENCY } from "@config";
+import { CURRENCY } from "@src/app/api/config";
 import classNames from "classnames";
 import { useState } from "react";
 import { Link } from "react-router-dom";

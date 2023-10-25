@@ -34,7 +34,9 @@ export const productsApi = baseApi.injectEndpoints({
       query: (arg) => {
         const { range, lang, categoryId = "" } = arg;
         return {
-          url: `shop/guest_user/random-gifts/?categoryId=${categoryId}from=${range.from}&to=${range.to}&quantity=5`,
+          url: `shop/guest_user/random-gifts/?categoryId=${
+            categoryId || ""
+          }&from=${range.from}&to=${range.to}&quantity=1`,
           method: "GET",
           headers: {
             "Accept-Language": lang,
