@@ -1,7 +1,7 @@
 import type { ProductCardType } from "@shared";
 import { baseApi } from "./base";
 
-interface Range {
+export interface Range {
   range: {
     from: number;
     to: number;

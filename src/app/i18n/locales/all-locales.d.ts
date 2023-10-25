@@ -89,6 +89,7 @@ interface AllLocalesType {
     or: string;
 
     secret_gift: {
+      header_link: string;
       title: string;
       subtitles: string[];
       process_header: string;

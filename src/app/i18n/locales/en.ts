@@ -47,6 +47,7 @@ export const en: AllLocalesType = {
     },
 
     secret_gift: {
+      header_link: "Main",
       title: "Secret Gift",
       subtitles: [
         "Secret Gift - is an exciting way of choosing and receiving a gift that preserves an element of surprise and mystery until the moment of reveal.",

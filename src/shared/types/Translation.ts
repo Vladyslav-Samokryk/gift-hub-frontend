@@ -31,6 +31,7 @@ export interface TRRandomPresent {
   btn_get_present: string;
 }
 export interface TRSecretGift {
+  header_link: string;
   title: string;
   subtitles: string[];
   process_header: string;

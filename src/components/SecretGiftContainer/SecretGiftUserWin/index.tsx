@@ -1,10 +1,10 @@
+import type { Range } from "@src/app/api/products";
 import { useGetRandomProductsQuery } from "@src/app/api/products";
-import type { ProductCardType } from "@src/shared";
 import { Link } from "react-router-dom";
 
 interface SecretGiftUserWinProps {
   setUserWin: (value: boolean) => void;
-  query: ProductCardType | null;
+  query: Range | null;
 }
 
 export default function SecretGiftUserWin({
@@ -17,18 +17,33 @@ export default function SecretGiftUserWin({
   };
 
   const { data, error } = useGetRandomProductsQuery(query);
-
+  console.log("data", data);
   return (
-    <section className="mt-10 flex flex-col items-center justify-center">
-      <h3 className="h3 mb-5">Воу, ми обрали для тебе щось цікавеньке!</h3>
-      <div className="mb-5 h-[60px] w-[600px]">Prise</div>
+    <section className="mt-10 flex max-w-full flex-col items-center justify-center">
+      <h3 className="md:h3 bold mb-5 text-center text-[24px] leading-8 ">
+        Воу, ми обрали для тебе щось цікавеньке!
+      </h3>
+      <div className="mb-5 flex h-[240px] w-[240px]  items-center justify-center object-contain object-center md:h-[600px] md:w-[600px]">
+        {!data ? (
+          <p>Prsent</p>
+        ) : (
+          <img
+            src={data[0].img}
+            alt={data[0].name}
+            className=" -rotate-6 bg-white shadow-2xl shadow-white/30  md:h-full md:w-full md:max-w-full"
+          />
+        )}
+      </div>
       <button
-        className="btn btn-effect mb-5 mt-16 px-7 py-4 font-rubik text-[16px] leading-6"
+        className="btn btn-effect mb-5 mt-16 px-7 py-4 font-rubik text-[14px] leading-4"
         onClick={handleClick}
       >
         Додати в кошик
       </button>
-      <Link className="additional text-black underline" to="/shopping-cart">
+      <Link
+        className="md:additional text-base text-black underline"
+        to="/shopping-cart"
+      >
         Перейти до оформлення замовлення
       </Link>
     </section>
