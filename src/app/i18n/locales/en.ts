@@ -126,6 +126,7 @@ export const en: AllLocalesType = {
     },
 
     buy_together_section: "Also buy",
+    select_productNum: "Show by",
 
     categories: {
       backpack: "Backpack",

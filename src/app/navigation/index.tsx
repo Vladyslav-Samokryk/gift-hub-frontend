@@ -12,10 +12,9 @@ import {
   CatalogBySearch,
   CatalogByCategory,
 } from "@pages";
-import { Layout } from "@layouts";
+import { Layout, CatalogLayout } from "@layouts";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "@src/shared";
-import { CatalogLayout } from "@src/components";
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([

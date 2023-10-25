@@ -1,7 +1,7 @@
-import type { TRSorts } from "@src/shared";
+import type { TRSorts } from "@shared";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { useSortContext } from "../CatalogLayout/context";
+import { useSortContext } from "@context/catalogContext";
 
 export default function SortCatalog(): JSX.Element {
   const { t } = useTranslation();

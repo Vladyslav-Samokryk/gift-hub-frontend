@@ -1,5 +1,5 @@
-import { useFilterContext } from "@src/components/CatalogLayout/context";
-import { MAX_PRICE, MIN_PRICE } from "@src/shared";
+import { MAX_PRICE, MIN_PRICE } from "@shared";
+import { useFilterContext } from "@context/catalogContext";
 import React, { useState } from "react";
 import ReactSlider from "react-slider";
 

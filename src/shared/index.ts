@@ -73,6 +73,7 @@ export {
   DIFFER,
   MIN_PRICE,
 } from "./constants/price";
+export { PAGE_OPTIONS } from "./constants/pageOptions";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
@@ -93,3 +94,5 @@ export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";
 export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
 export { default as ListContainer } from "./UI/ListContainer";
 export { default as ImgWithPreloader } from "./UI/ImgWithPreloader";
+export { default as Pagination } from "./UI/Pagination";
+export { default as Select } from "./UI/Select";

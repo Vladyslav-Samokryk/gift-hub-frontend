@@ -114,6 +114,7 @@ interface AllLocalesType {
     };
 
     buy_together_section: string;
+    select_productNum: string;
 
     categories: {
       backpack: string;

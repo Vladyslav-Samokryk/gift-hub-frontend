@@ -18,6 +18,8 @@ interface Category {
   priceTo?: number;
   sort?: string;
   rate?: number[] | [];
+  page: number;
+  productNum: number;
 }
 
 interface Search {
@@ -28,6 +30,8 @@ interface Search {
   priceTo?: number;
   sort?: string;
   rate?: number[] | [];
+  page: number;
+  productNum: number;
 }
 
 interface OneProduct {
@@ -37,6 +41,7 @@ interface OneProduct {
 
 interface Catalog {
   results: ProductCardType[];
+  count: number;
 }
 
 export const productsApi = baseApi.injectEndpoints({
@@ -50,6 +55,8 @@ export const productsApi = baseApi.injectEndpoints({
         priceFrom = 0,
         priceTo = 2000,
         sort = "popular",
+        page,
+        productNum,
       }) => {
         const globalRate =
           Array.isArray(rate) && rate.length > 0
@@ -60,7 +67,7 @@ export const productsApi = baseApi.injectEndpoints({
             ? main.map((val) => "&main=" + val).join("")
             : "";
         return {
-          url: `shop/guest_user/category/${categoryId}/products?${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}`,
+          url: `shop/guest_user/category/${categoryId}/products?${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
           method: "GET",
           headers: {
             "Accept-Language": lang,
@@ -77,6 +84,8 @@ export const productsApi = baseApi.injectEndpoints({
         priceFrom = 0,
         priceTo = 2000,
         sort = "popular",
+        page,
+        productNum,
       }) => {
         const globalRate =
           Array.isArray(rate) && rate.length > 0
@@ -87,7 +96,7 @@ export const productsApi = baseApi.injectEndpoints({
             ? main.map((val) => "&main=" + val).join("")
             : "";
         return {
-          url: `shop/guest_user/search/?search=${q}${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}`,
+          url: `shop/guest_user/search/?search=${q}${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
           method: "GET",
           headers: {
             "Accept-Language": lang,

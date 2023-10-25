@@ -12,4 +12,4 @@ export { default as BuyTogetherSection } from "./BuyTogetherSection";
 export { default as FiltersCatalog } from "./FiltersCatalog";
 export { default as SortCatalog } from "./SortCatalog";
 export { default as Breadcrumbs } from "./Breadcrumbs";
-export { default as CatalogLayout } from "./CatalogLayout";
+export { default as PaginationSection } from "./PaginationSection";

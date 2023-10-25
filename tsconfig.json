@@ -57,6 +57,9 @@
       "@pages": [
         "src/pages"
       ],
+      "@context/*": [
+        "src/app/context/*"
+      ],
       "@public/*": [
         "public/*"
       ],

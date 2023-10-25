@@ -23,7 +23,7 @@ export default function BuyTogetherSection(): JSX.Element {
 
   return (
     <section>
-      <h4 className="primary-bold text-center lg:text-left">
+      <h4 className="primary-bold my-3 text-center lg:text-left">
         {t("buy_together_section")}
       </h4>
       <div className="flex flex-col items-center justify-between lg:flex-row">

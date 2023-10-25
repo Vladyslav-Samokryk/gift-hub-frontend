@@ -1,4 +1,4 @@
-import type { TRFilters } from "@src/shared";
+import type { TRFilters } from "@shared";
 import {
   Checkbox,
   StarRate,
@@ -6,7 +6,7 @@ import {
   ListContainer,
 } from "@src/shared";
 import { useTranslation } from "react-i18next";
-import { useFilterContext } from "../CatalogLayout/context";
+import { useFilterContext } from "@context/catalogContext";
 
 export default function FiltersCatalog(): JSX.Element {
   const { t } = useTranslation();
