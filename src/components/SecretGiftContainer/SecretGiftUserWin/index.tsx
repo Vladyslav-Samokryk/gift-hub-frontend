@@ -12,12 +12,11 @@ export default function SecretGiftUserWin({
   query,
 }: SecretGiftUserWinProps): JSX.Element {
   const handleClick = (): void => {
-    console.log(console.log("Add to cart"));
+    console.log("Add to cart");
     setUserWin(false);
   };
 
   const { data, error } = useGetRandomProductsQuery(query);
-  console.log("data", data);
   return (
     <section className="mt-10 flex max-w-full flex-col items-center justify-center">
       <h3 className="md:h3 bold mb-5 text-center text-[24px] leading-8 ">

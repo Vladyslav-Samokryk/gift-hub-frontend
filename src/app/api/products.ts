@@ -36,7 +36,7 @@ export const productsApi = baseApi.injectEndpoints({
         return {
           url: `shop/guest_user/random-gifts/?categoryId=${
             categoryId || ""
-          }&from=${range.from}&to=${range.to}&quantity=1`,
+          }&from=${range.from}&to=${range.to}&quantity=5`,
           method: "GET",
           headers: {
             "Accept-Language": lang,

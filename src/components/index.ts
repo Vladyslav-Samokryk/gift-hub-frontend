@@ -9,3 +9,5 @@ export { default as RegistrationPopUp } from "./PopUps/Registration";
 export { default as ContactDropDown } from "./ContactDropDown";
 export { default as Category } from "./PopUps/Category";
 export { default as SelectSecretGift } from "./SelectSecretGift";
+export { default as SecretGiftHeader } from "./SecretGiftHeader";
+export { default as SecretGiftDescription } from "./SecretGiftDescription";

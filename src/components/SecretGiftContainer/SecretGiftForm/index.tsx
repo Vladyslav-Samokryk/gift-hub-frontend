@@ -11,7 +11,6 @@ import type { TRSecretGift } from "@src/shared/types/Translation";
 export interface Category {
   value: string;
   label: string;
-  categoryId: string;
 }
 
 interface SecretGiftFormProps {
@@ -40,10 +39,12 @@ export default function SecretGiftForm({
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setUserWin(true);
-    const newQuery = { range, lang, categoryId: category?.categoryId };
+    const item = data?.find(
+      (item) => item.name.toLowerCase() === category?.value.toLowerCase(),
+    );
+    const newQuery = { range, lang, categoryId: item?.id };
     setQuery(newQuery);
   };
-
   if (!data || isLoading) {
     return <p>Loading...</p>;
   }
@@ -51,16 +52,15 @@ export default function SecretGiftForm({
   const options = useMemo(
     () =>
       data?.map((category) => ({
-        value: category.url,
+        value: category.name.toLowerCase(),
         label: category.name,
-        categoryId: category.id,
       })),
     [data],
   );
 
   return (
     <section
-      className="mt-5 flex max-w-[650px] flex-col items-center justify-center rounded-[20px] bg-white/40 p-5 px-4 py-6"
+      className="mt-5 flex max-w-[650px] flex-col items-center justify-center rounded-[20px] bg-white/40 p-5 px-4 py-10"
       ref={sectionRef}
     >
       <form
@@ -91,7 +91,7 @@ export default function SecretGiftForm({
         </div>
         <button
           type="submit"
-          className="md:btn btn-effect mt-16 w-[236px] py-4 font-rubik text-[16px] leading-6 md:w-[176px] md:px-7"
+          className="btn btn-effect mt-16 w-[236px] font-rubik text-[16px] leading-6 md:w-[176px] md:px-7 py-4"
         >
           Старт
         </button>
