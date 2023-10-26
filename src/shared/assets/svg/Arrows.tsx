@@ -91,3 +91,28 @@ export const GoMainPageArrow = (): JSX.Element => (
     />
   </svg>
 );
+export const ChevronDownIcon = (): JSX.Element => (
+  <svg
+    width="16"
+    height="10"
+    viewBox="0 0 16 10"
+    fill="transparent"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path d="M8 9.59961L16 -0.000391006H0L8 9.59961Z" fill="#13183A" />
+  </svg>
+);
+export const ChevronUpIcon = (): JSX.Element => (
+  <svg
+    width="16"
+    height="10"
+    viewBox="0 0 16 10"
+    fill="transparent"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1.41421 7.5L10.5858 7.5C11.4767 7.5 11.9229 6.42286 11.2929 5.79289L6.70711 1.20711C6.31658 0.816583 5.68342 0.816582 5.29289 1.20711L0.707107 5.79289C0.0771418 6.42286 0.523309 7.5 1.41421 7.5Z"
+      fill="#333333"
+    />
+  </svg>
+);

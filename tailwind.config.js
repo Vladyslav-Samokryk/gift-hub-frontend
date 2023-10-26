@@ -27,6 +27,8 @@ export const theme = {
         green: "#00BF13",
         turkus: "#00BCD4",
         blue: "#4495ff",
+        ocean: "#303F9F",
+        deepGray: "#607D8B",
       },
       background: {
         main: "#F7F7FF",

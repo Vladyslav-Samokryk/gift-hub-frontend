@@ -1,10 +1,12 @@
+import React, { useMemo, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
+
 import { useGetCategoriesQuery } from "@src/app/api/categories";
 import type { Range } from "@src/app/api/products";
 import { SelectSecretGift } from "@src/components";
 import { RangePrice, useGetCurrentLang } from "@src/shared";
+
 import type { TRSecretGift } from "@src/shared/types/Translation";
-import React, { useMemo, useRef, useState } from "react";
-import { useTranslation } from "react-i18next";
 
 export interface Category {
   value: string;
@@ -89,7 +91,7 @@ export default function SecretGiftForm({
         </div>
         <button
           type="submit"
-          className="md:btn btn-effect mt-16 w-[236px] md:w-[176px] py-4 font-rubik text-[16px] leading-6 md:px-7"
+          className="md:btn btn-effect mt-16 w-[236px] py-4 font-rubik text-[16px] leading-6 md:w-[176px] md:px-7"
         >
           Старт
         </button>
