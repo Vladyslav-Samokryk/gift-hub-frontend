@@ -71,7 +71,7 @@ export default function RangePrice({
     <div className={clsx("relative mb-20 mt-10 w-[70%] md:w-[50%]", className)}>
       <ReactSlider
         className="h-2"
-        thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7"
+        thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7 !z-0"
         defaultValue={[200, 700]}
         value={[from, to]}
         max={MAX_STEP}
