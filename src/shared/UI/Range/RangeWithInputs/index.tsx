@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import ReactSlider from "react-slider";
 
 const RangeWithInputs = (): JSX.Element => {
-  const [minValue, setMinValue] = useState(MIN_PRICE);
-  const [maxValue, setMaxValue] = useState(MAX_PRICE);
-  const [minRange, setMinRange] = useState(MIN_PRICE);
-  const [maxRange, setMaxRange] = useState(MAX_PRICE);
   const { filterParams, setFilterParams } = useFilterContext();
+  const [minValue, setMinValue] = useState(filterParams.priceFrom);
+  const [maxValue, setMaxValue] = useState(filterParams.priceTo);
+  const [minRange, setMinRange] = useState(filterParams.priceFrom);
+  const [maxRange, setMaxRange] = useState(filterParams.priceTo);
 
   const handleMinValueChange = (
     event: React.ChangeEvent<HTMLInputElement>,

@@ -20,7 +20,7 @@ export default function Breadcrumbs(): JSX.Element {
   const { t } = useTranslation();
   const pathArray = getPathArray(pathname);
   return (
-    <section className="mb-8 flex">
+    <section className="mb-8 flex pl-5 pt-3 lg:p-0">
       {pathArray.map((path, index) => {
         return (
           <div key={path}>

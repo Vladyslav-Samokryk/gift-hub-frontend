@@ -115,6 +115,11 @@ interface AllLocalesType {
 
     buy_together_section: string;
     select_productNum: string;
+    filter_popup_header: string;
+    sort_popup_header: string;
+
+    bth_reset: string;
+    btn_apply: string;
 
     categories: {
       backpack: string;

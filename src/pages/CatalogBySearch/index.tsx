@@ -3,7 +3,11 @@ import {
   useGetProductsBySearchQuery,
 } from "@src/app/api/products";
 import { ProductCard } from "@components";
-import { useGetCurrentLang, type ProductCardType } from "@src/shared";
+import {
+  useGetCurrentLang,
+  type ProductCardType,
+  PAGINATION_LOAD,
+} from "@src/shared";
 
 import { useParams } from "react-router-dom";
 import {
@@ -18,9 +22,10 @@ export default function CatalogBySearch(): JSX.Element {
   const { filterParams } = useFilterContext();
   const { sortParams } = useSortContext();
   const lang = useGetCurrentLang();
-  const { setCount, page, productNum } = usePaginationParamsContext();
+  const { setCount, page, productNum, paginationLoad } =
+    usePaginationParamsContext();
 
-  const { data, isLoading } = useGetProductsBySearchQuery(
+  const { data } = useGetProductsBySearchQuery(
     {
       q: q ?? "",
       sort: sortParams,
@@ -34,14 +39,23 @@ export default function CatalogBySearch(): JSX.Element {
     },
   );
 
+  const [results, setResults] = useState<ProductCardType[]>();
+
   useEffect(() => {
-    if (data) setCount(data?.count);
+    if (data) {
+      setCount(data?.count);
+      if (paginationLoad === PAGINATION_LOAD.PAGE) {
+        setResults(data.results);
+      } else {
+        setResults((prev) => (prev ? [...prev, ...data.results] : prev));
+      }
+    }
   }, [data]);
 
   return (
     <>
-      {!isLoading && data ? (
-        data.results.map((product: ProductCardType) => {
+      {results ? (
+        results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (

@@ -13,3 +13,5 @@ export { default as FiltersCatalog } from "./FiltersCatalog";
 export { default as SortCatalog } from "./SortCatalog";
 export { default as Breadcrumbs } from "./Breadcrumbs";
 export { default as PaginationSection } from "./PaginationSection";
+export { default as SortPopUp } from "./PopUps/Sort";
+export { default as FilterPopUp } from "./PopUps/Filter";

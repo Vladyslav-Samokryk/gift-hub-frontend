@@ -7,10 +7,14 @@ import {
   usePaginationParamsContext,
   useSortContext,
 } from "@context/catalogContext";
-import { useGetCurrentLang, type ProductCardType } from "@shared";
+import {
+  useGetCurrentLang,
+  type ProductCardType,
+  PAGINATION_LOAD,
+} from "@shared";
 
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 function CatalogByCategory(): JSX.Element {
   const { id } = useParams();
@@ -18,8 +22,9 @@ function CatalogByCategory(): JSX.Element {
   const { data: categoryId } = useGetCategoryIdQuery(id ?? "");
   const { filterParams } = useFilterContext();
   const { sortParams } = useSortContext();
-  const { setCount, page, productNum } = usePaginationParamsContext();
-  const { data, isLoading, error } = useGetProductsByCategoryQuery(
+  const { setCount, page, productNum, paginationLoad } =
+    usePaginationParamsContext();
+  const { data, error } = useGetProductsByCategoryQuery(
     {
       categoryId: categoryId ?? "",
       sort: sortParams,
@@ -32,9 +37,17 @@ function CatalogByCategory(): JSX.Element {
       skip: !categoryId ?? false,
     },
   );
+  const [results, setResults] = useState<ProductCardType[]>();
 
   useEffect(() => {
-    if (data) setCount(data?.count);
+    if (data) {
+      setCount(data?.count);
+      if (paginationLoad === PAGINATION_LOAD.PAGE) {
+        setResults(data.results);
+      } else {
+        setResults((prev) => (prev ? [...prev, ...data.results] : prev));
+      }
+    }
   }, [data]);
 
   if (error) {
@@ -42,8 +55,8 @@ function CatalogByCategory(): JSX.Element {
   }
   return (
     <>
-      {!isLoading && data ? (
-        data.results.map((product: ProductCardType) => {
+      {results ? (
+        results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (

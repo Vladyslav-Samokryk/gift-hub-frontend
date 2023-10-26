@@ -1,4 +1,4 @@
-import { MIN_PRICE, MAX_PRICE } from "@src/shared";
+import { MIN_PRICE, MAX_PRICE, PAGINATION_LOAD } from "@src/shared";
 import { createContext, useContext } from "react";
 
 export interface Filters {
@@ -22,9 +22,11 @@ interface PaginationContext {
   page: number;
   productNum: number;
   count: number;
-  setPage: (_value: number) => void;
+  setPage: (newValue: number | ((prevValue: number) => number)) => void;
   setProductNum: (_value: number) => void;
   setCount: (_value: number) => void;
+  paginationLoad: string;
+  setPaginationLoad: (_value: string) => void;
 }
 
 export const FilterParamsContext = createContext<FilterContext>({
@@ -49,6 +51,8 @@ export const PaginationParamsContext = createContext<PaginationContext>({
   setPage: (val) => val,
   setProductNum: (val) => val,
   setCount: (val) => val,
+  paginationLoad: PAGINATION_LOAD.PAGE,
+  setPaginationLoad: (val) => val,
 });
 
 export const useFilterContext = (): FilterContext =>

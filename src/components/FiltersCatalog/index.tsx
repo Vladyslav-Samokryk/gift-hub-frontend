@@ -14,7 +14,7 @@ export default function FiltersCatalog(): JSX.Element {
   const { filterParams, setFilterParams } = useFilterContext();
 
   return (
-    <section className="secondary flex h-max flex-col gap-6 divide-y-2 rounded-md bg-white px-3 py-2 font-bold shadow-drop">
+    <section className="secondary flex h-max w-60 flex-col gap-6 divide-y-2 rounded-md bg-white px-3 py-2 font-bold lg:w-full lg:shadow-drop">
       <ListContainer title={t("filters_title")}>
         {Object.keys(filters).map((filter, i) => (
           <Checkbox
@@ -28,6 +28,7 @@ export default function FiltersCatalog(): JSX.Element {
                   : filterParams.main.filter((main) => main !== filter),
               });
             }}
+            checked={filterParams.main.includes(filter)}
           />
         ))}
       </ListContainer>
@@ -44,6 +45,7 @@ export default function FiltersCatalog(): JSX.Element {
                   : filterParams.rate.filter((rate) => rate !== 5),
               });
             }}
+            checked={filterParams.rate.includes(5)}
           />
           <StarRate rate={5} />
         </div>
@@ -59,6 +61,7 @@ export default function FiltersCatalog(): JSX.Element {
                   : filterParams.rate.filter((rate) => rate !== 4),
               });
             }}
+            checked={filterParams.rate.includes(4)}
           />
           <StarRate rate={4} />
         </div>

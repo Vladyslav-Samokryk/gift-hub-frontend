@@ -127,6 +127,11 @@ export const en: AllLocalesType = {
 
     buy_together_section: "Also buy",
     select_productNum: "Show by",
+    filter_popup_header: "Filters",
+    sort_popup_header: "Sort by",
+
+    bth_reset: "Reset",
+    btn_apply: "Apply",
 
     categories: {
       backpack: "Backpack",
