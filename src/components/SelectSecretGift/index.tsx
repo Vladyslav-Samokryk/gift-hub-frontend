@@ -6,7 +6,7 @@ import { ChevronDownIcon, ChevronUpIcon } from "@src/shared/assets/svg/Arrows";
 import type { Category } from "../SecretGiftContainer/SecretGiftForm";
 
 interface SelectSecretGiftProps {
-  options: option[];
+  options?: option[];
   category: Category | null;
   setCategory: (category: option) => void;
 }
