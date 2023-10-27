@@ -10,8 +10,11 @@ interface FilterProps {
 const FilterPopUp = ({ visible, setVisible }: FilterProps): JSX.Element => {
   const { t } = useTranslation();
   return (
-    <ModalContainer visible={visible} setVisible={setVisible}>
-      <ModalHeader title={t("filter_popup_header")} setVisible={setVisible} />
+    <ModalContainer visible={visible} onClose={() => setVisible(false)}>
+      <ModalHeader
+        title={t("filter_popup_header")}
+        onClose={() => setVisible(false)}
+      />
       <FiltersCatalog />
     </ModalContainer>
   );

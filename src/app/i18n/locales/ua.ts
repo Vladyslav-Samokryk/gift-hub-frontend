@@ -135,6 +135,8 @@ export const ua: AllLocalesType = {
     bth_reset: "Зняти всі",
     btn_apply: "Застосувати",
 
+    all_categories: "Всі категорії",
+
     categories: {
       backpack: "Рюкзаки",
       keychain: "Брелоки",

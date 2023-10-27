@@ -121,6 +121,8 @@ interface AllLocalesType {
     bth_reset: string;
     btn_apply: string;
 
+    all_categories: string;
+
     categories: {
       backpack: string;
       keychain: string;

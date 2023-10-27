@@ -28,8 +28,11 @@ export default function LoginPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible} setVisible={setVisible}>
-      <ModalHeader title={t("login_popup.header")} setVisible={setVisible}>
+    <ModalContainer visible={visible} onClose={() => setVisible(false)}>
+      <ModalHeader
+        title={t("login_popup.header")}
+        onClose={() => setVisible(false)}
+      >
         {error ? (
           <p className="additional text-accent-bOrange">
             {t("login_popup.wishlist_error")}

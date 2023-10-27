@@ -34,6 +34,7 @@ export { LoginIcon, RegistrationIcon } from "./assets/svg/ModalAuth";
 export { PasswordHide, PasswordShow } from "./assets/svg/PasswordIcons";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
 export { Plus } from "./assets/svg/Plus";
+export { FilterIcon } from "./assets/svg/Filter";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -60,7 +61,7 @@ export type {
   TRFilters,
   TRSorts,
 } from "./types/Translation";
-export type { Categories } from "./types/Categories";
+export type { Categories, CatalogSub } from "./types/Categories";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
@@ -98,3 +99,4 @@ export { default as ImgWithPreloader } from "./UI/ImgWithPreloader";
 export { default as Pagination } from "./UI/Pagination";
 export { default as Select } from "./UI/Select";
 export { default as RadioButton } from "./UI/RadioButton";
+export { default as ButtonWithIcon } from "./UI/Buttons/ButtonWithIcon";

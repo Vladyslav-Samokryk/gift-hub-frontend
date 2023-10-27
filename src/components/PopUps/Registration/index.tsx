@@ -26,8 +26,11 @@ export default function RegistrationPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible} setVisible={setVisible}>
-      <ModalHeader title={t("registr_popup.header")} setVisible={setVisible} />
+    <ModalContainer visible={visible} onClose={() => setVisible(false)}>
+      <ModalHeader
+        title={t("registr_popup.header")}
+        onClose={() => setVisible(false)}
+      />
 
       <div className="grid md:grid-cols-[2fr_40px_1fr]">
         <div className="mt-6 grid grid-cols-1 justify-around gap-4 md:mr-5 md:gap-8">

@@ -20,7 +20,7 @@ export default function ProductCard({
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
   return (
-    <div className="h-card-sm w-card-sm m-2 rounded-lg border-2 border-black bg-white lg:h-card lg:w-card">
+    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:w-card">
       <div className="relative">
         <Link to={`product/${id}`}>
           <ImgWithPreloader

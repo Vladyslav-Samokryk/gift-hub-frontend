@@ -1,4 +1,7 @@
 import {
+  ButtonWithIcon,
+  DropDown,
+  FilterIcon,
   MAX_PRICE,
   MIN_PRICE,
   PAGINATION_LOAD,
@@ -73,19 +76,21 @@ export default function CatalogLayout(): JSX.Element {
               {windowWidth > SCREEN.LG ? (
                 <FiltersCatalog />
               ) : (
-                <div className="flex">
-                  <button
+                <div className="flex w-full items-center justify-center">
+                  <ButtonWithIcon
+                    text={t("filter_popup_header")}
                     onClick={() => setIsFilterModalActive(true)}
-                    className="additional m-2 w-40 rounded-md border-2 border-gray-600 p-1"
+                    className="additional m-2 w-40 rounded-md border-2 border-gray-600 bg-white p-1"
                   >
-                    {t("filter_popup_header")}
-                  </button>
-                  <button
+                    <FilterIcon />
+                  </ButtonWithIcon>
+                  <ButtonWithIcon
+                    text={t("sort_popup_header")}
                     onClick={() => setIsSortModalActive(true)}
-                    className="additional m-2 w-40 rounded-md border-2 border-gray-600 p-1"
+                    className="additional m-2 w-40 rounded-md border-2 border-gray-600 bg-white p-1"
                   >
-                    {t("sort_popup_header")}
-                  </button>
+                    <DropDown />
+                  </ButtonWithIcon>
                 </div>
               )}
               <div>

@@ -20,6 +20,7 @@ const PaginationSection = (): JSX.Element => {
     const firstItem = (page - 1) * productNum + 1;
     setPage(Math.ceil(firstItem / e));
     setProductNum(e);
+    setPaginationLoad(PAGINATION_LOAD.PAGE);
   }
 
   return (

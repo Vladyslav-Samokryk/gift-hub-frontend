@@ -133,6 +133,8 @@ export const en: AllLocalesType = {
     bth_reset: "Reset",
     btn_apply: "Apply",
 
+    all_categories: "All categories",
+
     categories: {
       backpack: "Backpack",
       keychain: "Keychain",
