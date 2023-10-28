@@ -17,11 +17,13 @@ interface SecretGiftFormProps {
   setUserWin: (value: boolean) => void;
   setQuery: (value: Range | null) => void;
   setIsAnimation: (value: boolean) => void;
+  time: number;
 }
 export default function SecretGiftForm({
   setUserWin,
   setQuery,
   setIsAnimation,
+  time,
 }: SecretGiftFormProps): JSX.Element {
   const lang = useGetCurrentLang();
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -41,7 +43,7 @@ export default function SecretGiftForm({
     const item = findItem();
     const newQuery = { range, lang, categoryId: item?.id ?? "" };
     setQuery(newQuery);
-    // handleAnimation();
+    setTimeout(() => handleAnimation(), time);
   };
 
   function handleAnimation(): void {
