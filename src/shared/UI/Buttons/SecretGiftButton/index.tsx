@@ -1,18 +1,25 @@
+import clsx from "clsx";
+
 interface SecretGiftTryButtonProps {
   type: "submit" | "reset" | "button";
   children: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
+  className?: string;
 }
 
 export default function SecretGiftTryButton({
   type,
   children,
   onClick,
+  className = "",
 }: SecretGiftTryButtonProps): JSX.Element {
   return (
     <button
       type={type}
-      className="btn btn-effect mt-10 bg-[#6F57FF] px-32 py-5 font-rubik text-[16px]  leading-6 md:px-9"
+      className={clsx(
+        "btn btn-effect bg-[#6F57FF] font-rubik text-[16px]  leading-6",
+        className,
+      )}
       onClick={onClick}
     >
       {children}

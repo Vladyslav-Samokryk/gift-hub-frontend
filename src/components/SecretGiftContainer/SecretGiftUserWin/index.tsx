@@ -1,5 +1,6 @@
 import type { Range } from "@src/app/api/products";
 import { useGetRandomProductsQuery } from "@src/app/api/products";
+import { SecretGiftButton } from "@src/shared";
 import { Link } from "react-router-dom";
 
 interface SecretGiftUserWinProps {
@@ -33,12 +34,13 @@ export default function SecretGiftUserWin({
           />
         )}
       </div>
-      <button
-        className="btn btn-effect mb-5 px-7  py-4 font-rubik text-[14px] leading-4 md:mt-16"
+      <SecretGiftButton
+        type="submit"
+        className="mb-5 mt-2 px-7 py-4 font-rubik text-[14px] leading-4 md:mt-8"
         onClick={handleClick}
       >
         Додати в кошик
-      </button>
+      </SecretGiftButton>
       <Link
         className="md:additional text-base text-black underline"
         to="/shopping-cart"

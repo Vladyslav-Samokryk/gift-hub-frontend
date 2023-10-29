@@ -1,9 +1,8 @@
-import React from "react";
 import TechnyRubiksCubePuzzle from "@src/shared/assets/img/secretGift/TechnyRubiksCubePuzzle.svg";
 import TechnyBigGiftBox from "@src/shared/assets/img/secretGift/TechnyBigGiftBox.svg";
 import { useTranslation } from "react-i18next";
 import type { TRSecretGift } from "@src/shared/types/Translation";
-import { SecretGiftTryButton } from "@src/shared";
+import { SecretGiftButton } from "@src/shared";
 
 interface SecretGiftDescriptionProps {
   setIsVisibleSelect: (prev: boolean) => void;
@@ -65,12 +64,13 @@ export default function SecretGiftDescription({
           />
         </div>
       </section>
-      <SecretGiftTryButton
+      <SecretGiftButton
         onClick={() => setIsVisibleSelect(true)}
         type="button"
+        className="mt-10 px-32 py-5 md:px-9"
       >
         {secretGift.try_button}
-      </SecretGiftTryButton>
+      </SecretGiftButton>
     </>
   );
 }

@@ -3,10 +3,11 @@ import SecretGiftForm from "./SecretGiftForm";
 import SecretGiftUserWin from "./SecretGiftUserWin";
 import SecretGiftAnimation from "./SecrtGiftAnimation";
 import { getRandomNumber } from "../RandomPresent/RandomWheel/helpers";
+import type { Range } from "@src/app/api/products";
 
 export default function SecretGiftContainer(): JSX.Element {
   const [userWin, setUserWin] = useState(false);
-  const [query, setQuery] = useState<any | null>(null);
+  const [query, setQuery] = useState<Range | null>(null);
   const [isAnimation, setIsAnimation] = useState(false);
   const time = getRandomNumber();
   const boxAnimation = {
