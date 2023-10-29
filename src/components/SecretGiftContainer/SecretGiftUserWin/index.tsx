@@ -16,10 +16,10 @@ export default function SecretGiftUserWin({
     setUserWin(false);
   };
   if (!query) return <></>;
-  const { data, error } = useGetRandomProductsQuery(query);
+  const { data } = useGetRandomProductsQuery(query);
   return (
     <section className="mt-10 flex max-w-full flex-col items-center justify-center">
-      <h3 className="md:h3 bold text-center text-[24px] leading-8 ">
+      <h3 className="md:h3 text-center text-[24px] leading-8 ">
         Воу, ми обрали для тебе щось цікавеньке!
       </h3>
       <div className="mt-3 flex h-[240px] w-[240px] items-center  justify-center object-contain object-center md:mt-5 md:h-[600px] md:w-[600px]">
@@ -34,7 +34,7 @@ export default function SecretGiftUserWin({
         )}
       </div>
       <button
-        className="btn btn-effect mt:5 mb-5 px-7  py-4 font-rubik text-[14px] leading-4 md:mt-16"
+        className="btn btn-effect mb-5 px-7  py-4 font-rubik text-[14px] leading-4 md:mt-16"
         onClick={handleClick}
       >
         Додати в кошик

@@ -11,7 +11,7 @@ export default function SecretGiftHeader(): JSX.Element {
     returnObjects: true,
   });
   return (
-    <section className="mb:px-10 flex w-full items-start justify-between md:first-line:h-28 lg:mb-1 lg:h-fit">
+    <section className="relative mb-6 mt-8 flex h-28 w-full items-start justify-between px-5 lg:mb-1 lg:h-fit">
       <div className="flex items-center justify-start gap-1">
         <button
           className="group top-[10px] m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-700"

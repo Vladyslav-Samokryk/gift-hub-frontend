@@ -3,6 +3,7 @@ import TechnyRubiksCubePuzzle from "@src/shared/assets/img/secretGift/TechnyRubi
 import TechnyBigGiftBox from "@src/shared/assets/img/secretGift/TechnyBigGiftBox.svg";
 import { useTranslation } from "react-i18next";
 import type { TRSecretGift } from "@src/shared/types/Translation";
+import { SecretGiftTryButton } from "@src/shared";
 
 interface SecretGiftDescriptionProps {
   setIsVisibleSelect: (prev: boolean) => void;
@@ -64,13 +65,12 @@ export default function SecretGiftDescription({
           />
         </div>
       </section>
-      <button
-        type="button"
-        className="btn btn-effect mt-10 px-32 py-5 font-rubik text-[16px]  leading-6 md:px-9"
+      <SecretGiftTryButton
         onClick={() => setIsVisibleSelect(true)}
+        type="button"
       >
         {secretGift.try_button}
-      </button>
+      </SecretGiftTryButton>
     </>
   );
 }

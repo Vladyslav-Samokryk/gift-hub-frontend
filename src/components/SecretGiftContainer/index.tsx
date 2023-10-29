@@ -1,10 +1,8 @@
-import type { ProductCardType } from "@src/shared";
 import { useState } from "react";
 import SecretGiftForm from "./SecretGiftForm";
 import SecretGiftUserWin from "./SecretGiftUserWin";
 import SecretGiftAnimation from "./SecrtGiftAnimation";
 import { getRandomNumber } from "../RandomPresent/RandomWheel/helpers";
-import { timeLog } from "console";
 
 export default function SecretGiftContainer(): JSX.Element {
   const [userWin, setUserWin] = useState(false);

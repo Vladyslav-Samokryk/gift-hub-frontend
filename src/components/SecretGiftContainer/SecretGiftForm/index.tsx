@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import React, { useMemo, useRef, useState } from "react";
 
 import { useGetCategoriesQuery } from "@src/app/api/categories";
 import type { Range } from "@src/app/api/products";

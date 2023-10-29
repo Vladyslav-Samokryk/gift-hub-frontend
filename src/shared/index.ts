@@ -13,6 +13,9 @@ export {
   DownStep,
   RightArrow,
   CategoryArrow,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  GoMainPageArrow,
 } from "./assets/svg/Arrows";
 export {
   ApplePayLogo,
@@ -79,3 +82,4 @@ export { default as RangePrice } from "./UI/RangePrice";
 export { default as RandomStep } from "./UI/RandomStep";
 export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";
 export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
+export { default as SecretGiftTryButton } from "./UI/Buttons/SecretGiftTryButton";
