@@ -40,7 +40,7 @@ export default function SecretGiftUserWin({
 
   return (
     <>
-      {isAnimation && !present ? (
+      {isAnimation ? (
         <SecretGiftAnimation
           initial={boxAnimation.initial}
           animate={boxAnimation.animate}

@@ -44,7 +44,7 @@ export default function SecretGiftForm({
     const item = findItem();
     const newQuery = { range, lang, categoryId: item?.id ?? "" };
     setQuery(newQuery);
-    setTimeout(() => handleAnimation(), time);
+    handleAnimation();
   };
 
   function handleAnimation(): void {

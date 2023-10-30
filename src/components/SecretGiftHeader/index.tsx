@@ -14,12 +14,12 @@ export default function SecretGiftHeader(): JSX.Element {
     <section className="mb:1 mt:1 relative flex w-full items-start justify-between md:mb-6 md:mt-8 md:h-28 md:px-5 lg:mb-1 lg:h-fit">
       <div className="flex items-center justify-start gap-1">
         <button
-          className="group top-[10px] m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-700"
+          className="group top-3 m-1 flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-700"
           onClick={() => navigate("/")}
         >
           <GoMainPageArrow />
         </button>
-        <h6 className="h6 text-sm leading-6">{secretGift.header_link}</h6>
+        <h6 className="md:h6 text-sm leading-6">{secretGift.header_link}</h6>
       </div>
       <section className="flex w-36 justify-between self-center">
         <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900">

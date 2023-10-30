@@ -12,7 +12,7 @@ import {
   SmallPresentBox,
 } from "@src/shared/assets/svg/SecretGift";
 import { motion } from "framer-motion";
-
+import QuestionMark from "@src/shared/assets/img/secretGift/techny-question-mark.png";
 interface SecretGiftAnimationProps {
   initial: { y: number; opacity: number };
   animate: { y: number; opacity: number };
@@ -85,7 +85,42 @@ export default function SecretGiftAnimation({
       >
         <SemiSmallPresentBox />
       </motion.div>
-
+      <motion.div
+        className="absolute left-[300px] top-[330px] h-[230px] w-[150px]  rotate-[0deg] transform-gpu object-contain object-center"
+        initial={initial}
+        animate={animate}
+        transition={fastTransition}
+      >
+        <img
+          src={QuestionMark}
+          alt="question mark "
+          className="w-full max-w-full"
+        />
+      </motion.div>
+      <motion.div
+        className="absolute right-[540px] top-[400px] h-[300px] w-[200px]  rotate-[0deg] transform-gpu object-contain object-center"
+        initial={initial}
+        animate={animate}
+        transition={slowTransition}
+      >
+        <img
+          src={QuestionMark}
+          alt="question mark"
+          className="w-full max-w-full"
+        />
+      </motion.div>
+      <motion.div
+        className="absolute right-[140px] top-[400px] h-[150px] w-[100px]  rotate-[0deg] transform-gpu object-contain object-center"
+        initial={initial}
+        animate={animate}
+        transition={mediumTransition}
+      >
+        <img
+          src={QuestionMark}
+          alt="question mark"
+          className="w-full max-w-full"
+        />
+      </motion.div>
       <div className=" absolute right-[380px] top-[50px] object-contain object-center">
         <Accessories />
       </div>

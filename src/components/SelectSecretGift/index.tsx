@@ -20,7 +20,7 @@ const controlStyles = {
   focus: "border-[#607D8B] ring-1 ring-primary-500",
   nonFocus: "border-gray-300 hover:border-gray-400",
 };
-const placeholderStyles = "text-black secondary leading-[22px] pl-1 py-0.5";
+const placeholderStyles = "text-black secondary leading-[22px] leading-5 pl-1 py-0.5";
 const selectInputStyles = "pl-1 py-0.5";
 const valueContainerStyles = "p-1 gap-1";
 const singleValueStyles = "leading-7";
@@ -57,8 +57,8 @@ export default function SelectSecretGift({
       defaultValue={category}
       onChange={(category: option) => setCategory(category)}
       options={options}
-      closeMenuOnSelect={false}
-      hideSelectedOptions={false}
+      closeMenuOnSelect={true}
+      hideSelectedOptions={true}
       unstyled
       onMenuOpen={() => setIsSelectOpen(true)}
       onMenuClose={() => setIsSelectOpen(false)}
