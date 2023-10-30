@@ -14,12 +14,12 @@ interface RangeProp extends Range {
   permission: boolean;
   setRange: Dispatch<SetStateAction<Range>>;
   className?: string;
-  elementRef?: React.RefObject<any>;
+  elementRef?: React.RefObject<HTMLDivElement>;
 }
 
 interface RangeInputProps {
   value: number;
-  elementRef?: any;
+  elementRef?: React.RefObject<HTMLDivElement>;
 }
 
 const differ = 200;
