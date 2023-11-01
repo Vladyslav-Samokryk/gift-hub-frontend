@@ -2,8 +2,6 @@ import {
   ButtonWithIcon,
   DropDown,
   FilterIcon,
-  MAX_PRICE,
-  MIN_PRICE,
   PAGINATION_LOAD,
   SCREEN,
   useScreenWidth,
