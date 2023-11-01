@@ -34,7 +34,7 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "search",
           element: <CatalogLayout />,
-          children: [{ path: ":q", element: <CatalogBySearch /> }],
+          children: [{ path: "", element: <CatalogBySearch /> }],
         },
         {
           path: "product",

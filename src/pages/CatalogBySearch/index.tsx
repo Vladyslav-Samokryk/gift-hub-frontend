@@ -1,43 +1,34 @@
-import {
-  productsApi,
-  useGetProductsBySearchQuery,
-} from "@src/app/api/products";
+import { useGetProductsBySearchQuery } from "@src/app/api/products";
 import { ProductCard } from "@components";
 import {
   useGetCurrentLang,
   type ProductCardType,
   PAGINATION_LOAD,
+  handleQueryParamArray,
+  prepareQueryParam,
 } from "@src/shared";
 
-import { useParams } from "react-router-dom";
-import {
-  useFilterContext,
-  usePaginationParamsContext,
-  useSortContext,
-} from "@context/catalogContext";
+import { usePaginationParamsContext } from "@context/catalogContext";
 import { useState, useEffect } from "react";
+import { getSearchParams } from "@shared";
 
 export default function CatalogBySearch(): JSX.Element {
-  const { q } = useParams();
-  const { filterParams } = useFilterContext();
-  const { sortParams } = useSortContext();
   const lang = useGetCurrentLang();
   const { setCount, page, productNum, paginationLoad } =
     usePaginationParamsContext();
+  const searchParams = getSearchParams();
 
-  const { data } = useGetProductsBySearchQuery(
-    {
-      q: q ?? "",
-      sort: sortParams,
-      ...filterParams,
-      lang,
-      page,
-      productNum,
-    },
-    {
-      skip: !q ?? false,
-    },
-  );
+  const { data } = useGetProductsBySearchQuery({
+    main: handleQueryParamArray(searchParams.main),
+    rate: handleQueryParamArray(searchParams.rate),
+    priceFrom: prepareQueryParam(searchParams.priceFrom),
+    priceTo: prepareQueryParam(searchParams.priceTo),
+    sort: prepareQueryParam(searchParams.sort),
+    q: prepareQueryParam(searchParams.q),
+    lang,
+    page,
+    productNum,
+  });
 
   const [results, setResults] = useState<ProductCardType[]>();
 

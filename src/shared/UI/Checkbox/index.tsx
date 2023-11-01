@@ -1,6 +1,6 @@
 interface CheckboxProps {
   title: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
 }
 

@@ -16,3 +16,4 @@ export { default as PaginationSection } from "./PaginationSection";
 export { default as SortPopUp } from "./PopUps/Sort";
 export { default as FilterPopUp } from "./PopUps/Filter";
 export { default as CategoryPopUp } from "./PopUps/Category";
+export { default as SubcategoryCard } from "./SubCategoryCard";

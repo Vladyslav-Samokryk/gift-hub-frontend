@@ -28,7 +28,11 @@ export default function LoginPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible} onClose={() => setVisible(false)}>
+    <ModalContainer
+      visible={visible}
+      onClose={() => setVisible(false)}
+      top={100}
+    >
       <ModalHeader
         title={t("login_popup.header")}
         onClose={() => setVisible(false)}

@@ -1,11 +1,5 @@
 import type { CatalogSub } from "@src/shared";
-import {
-  ButtonWithIcon,
-  ModalContainer,
-  ModalHeader,
-  LeftArrow,
-} from "@src/shared";
-import { useEffect, useState } from "react";
+import { ButtonWithIcon, ModalContainer, ModalHeader } from "@src/shared";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
@@ -29,7 +23,7 @@ const CategoryPopUp = ({
   };
 
   return (
-    <ModalContainer visible={popUp.visible} onClose={onClose}>
+    <ModalContainer visible={popUp.visible} onClose={onClose} top={150}>
       <ModalHeader title={popUp.title} onClose={onClose} />
       <div className="flex w-60 flex-col gap-3 divide-y-2">
         <ButtonWithIcon

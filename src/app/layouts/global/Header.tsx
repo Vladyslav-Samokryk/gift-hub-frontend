@@ -19,7 +19,7 @@ import {
   RegistrationPopUp,
 } from "@components";
 import { useTranslation } from "react-i18next";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function Header(): JSX.Element {
   const { t } = useTranslation();
@@ -66,9 +66,13 @@ export default function Header(): JSX.Element {
         </button>
 
         <section className="group absolute -bottom-4 left-1/2 flex w-80 translate-x-[-50%] items-center rounded-lg border border-black bg-white p-1 text-center lg:static lg:w-96 lg:translate-x-0">
-          <Link to={"/search/" + search}>
+          <button
+            onClick={() =>
+              search.trim() !== "" && navigate("/search/" + search)
+            }
+          >
             <Search />
-          </Link>
+          </button>
           <input
             className="grow bg-transparent p-1 outline-none"
             placeholder={t("ph_search")}
@@ -79,7 +83,7 @@ export default function Header(): JSX.Element {
             onKeyDown={(e) =>
               e.code === "Enter" &&
               search.trim() !== "" &&
-              navigate("/search/" + search)
+              navigate("/search/?q=" + search)
             }
           />
           {search ? (

@@ -14,22 +14,22 @@ interface Category {
   lang: string;
   categoryId: string;
   main?: string[];
-  priceFrom?: number;
-  priceTo?: number;
+  priceFrom?: string;
+  priceTo?: string;
   sort?: string;
-  rate?: number[] | [];
+  rate?: string[] | [];
   page: number;
   productNum: number;
 }
 
 interface Search {
   lang: string;
-  q: string;
+  q?: string;
   main?: string[];
-  priceFrom?: number;
-  priceTo?: number;
+  priceFrom?: string;
+  priceTo?: string;
   sort?: string;
-  rate?: number[] | [];
+  rate?: string[] | [];
   page: number;
   productNum: number;
 }
@@ -95,8 +95,15 @@ export const productsApi = baseApi.injectEndpoints({
           Array.isArray(main) && main.length > 0
             ? main.map((val) => "&main=" + val).join("")
             : "";
+        console.log(
+          `shop/guest_user/search/?${
+            q ? "search=" + q : ""
+          }${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
+        );
         return {
-          url: `shop/guest_user/search/?search=${q}${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
+          url: `shop/guest_user/search/?${
+            q ? "search=" + q : ""
+          }${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
           method: "GET",
           headers: {
             "Accept-Language": lang,
@@ -106,7 +113,7 @@ export const productsApi = baseApi.injectEndpoints({
     }),
     getPopularProducts: builder.query({
       query: (lang) => ({
-        url: "shop/guest_user/popular",
+        url: "shop/guest_user/search/?sort=popular&rate=4&rate=5&page_size=4",
         method: "GET",
         headers: {
           "Accept-Language": lang,
@@ -115,7 +122,7 @@ export const productsApi = baseApi.injectEndpoints({
     }),
     getNewProducts: builder.query({
       query: (lang) => ({
-        url: "shop/guest_user/new-products",
+        url: "shop/guest_user/search/?sort=new5&page_size=4",
         method: "GET",
         headers: {
           "Accept-Language": lang,

@@ -26,7 +26,11 @@ export default function RegistrationPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible} onClose={() => setVisible(false)}>
+    <ModalContainer
+      visible={visible}
+      onClose={() => setVisible(false)}
+      top={80}
+    >
       <ModalHeader
         title={t("registr_popup.header")}
         onClose={() => setVisible(false)}

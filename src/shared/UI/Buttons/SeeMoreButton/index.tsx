@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 
 export default function SeeMoreButton({
   onClick,
-  isHidden,
+  isHidden = false,
 }: {
   onClick: () => void;
-  isHidden: boolean;
+  isHidden?: boolean;
 }): JSX.Element {
   const { t } = useTranslation();
   return (

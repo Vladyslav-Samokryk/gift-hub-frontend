@@ -10,6 +10,7 @@ import {
   useGetCurrentLang,
 } from "@shared";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom";
 
 type ProductSectionUnion = "new" | "popular";
 
@@ -25,6 +26,7 @@ export default function ProductSection({
       ? useGetNewProductsQuery(lang)
       : useGetPopularProductsQuery(lang);
   const scrollRef = useHorizontalScroll();
+  const navigate = useNavigate();
 
   if (isLoading || !data || error) return <></>;
 
@@ -44,7 +46,16 @@ export default function ProductSection({
           return <ProductCard key={product.id} {...product} />;
         })}
       </div>
-      <SeeMoreButton />
+      <SeeMoreButton
+        onClick={() => {
+          navigate(
+            section === "new"
+              ? "/search/?sort=new"
+              : "/search/?rate=4&rate=5&sort=popular",
+          );
+          window.scrollTo(0, 0);
+        }}
+      />
     </section>
   );
 }

@@ -7,7 +7,7 @@ import {
   SeeMoreButton,
   Select,
   useScreenWidth,
-} from "@src/shared";
+} from "@shared";
 import { useTranslation } from "react-i18next";
 
 const PaginationSection = (): JSX.Element => {
@@ -18,7 +18,8 @@ const PaginationSection = (): JSX.Element => {
 
   function handleSelect(e: number): void {
     const firstItem = (page - 1) * productNum + 1;
-    setPage(Math.ceil(firstItem / e));
+    const newPage = Math.ceil(firstItem / e);
+    setPage(newPage);
     setProductNum(e);
     setPaginationLoad(PAGINATION_LOAD.PAGE);
   }

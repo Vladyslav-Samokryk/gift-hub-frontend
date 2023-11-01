@@ -1,14 +1,17 @@
 import { useGetCategoriesQuery } from "@src/app/api/categories";
 import {
   CategoryButton,
+  ModalHeader,
   SCREEN,
   useGetCurrentLang,
   useScreenWidth,
 } from "@src/shared";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import type { CatalogSub } from "@src/shared";
+import { SubcategoryCard } from "@src/components";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 interface CatalogPopUpProps {
   visible: boolean;
@@ -16,35 +19,6 @@ interface CatalogPopUpProps {
   setCategoryVisible: (
     value: CatalogSub | ((prev: CatalogSub) => CatalogSub),
   ) => void;
-}
-
-interface SubcategoryCardProps {
-  subTitle: string;
-  subImg: string;
-  subUrl: string;
-  onClick: () => void;
-}
-
-function SubcategoryCard({
-  subTitle,
-  subImg,
-  subUrl,
-  onClick,
-}: SubcategoryCardProps): JSX.Element {
-  return (
-    <Link
-      to={"/catalog/" + subUrl}
-      className="mb-2 ml-7 flex w-full items-center md:block md:w-36 md:text-center"
-      onClick={onClick}
-    >
-      <img
-        src={subImg}
-        alt={subTitle}
-        className="mr-2 h-12 w-12 md:h-36 md:w-full"
-      />
-      <p className="additional">{subTitle}</p>
-    </Link>
-  );
 }
 
 export default function CatalogPopUp({
@@ -56,21 +30,35 @@ export default function CatalogPopUp({
   const [categoryIndex, setCategoryIndex] = useState(0);
   const { data, isLoading } = useGetCategoriesQuery(lang);
   const windowWidth = useScreenWidth();
+  const { t } = useTranslation();
 
   return (
     <AnimatePresence>
       {visible && !isLoading && data && (
         <>
           <motion.div
-            className="absolute left-0 top-0 z-40 h-full w-full"
+            className="absolute left-0 top-0 z-40 h-full w-full  bg-gray-900"
+            initial={{ opacity: 0 }}
+            animate={{
+              opacity: 0.25,
+            }}
+            exit={{
+              opacity: 0,
+            }}
             onClick={() => setVisible(false)}
           />
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-x-0 top-44 z-50 m-auto flex w-full rounded-md bg-white p-1 shadow-drop sm:w-[75%] md:p-3 lg:top-48"
+            className="absolute inset-x-0 top-44 z-50 m-auto w-60 rounded-md bg-white p-4 shadow-drop sm:w-1/2 md:top-48 md:flex md:w-3/4 md:p-3"
           >
+            {windowWidth < SCREEN.MD && (
+              <ModalHeader
+                title={t("header_links.catalog")}
+                onClose={() => setVisible(false)}
+              />
+            )}
             <div>
               {data.map((category, index: number) => (
                 <CategoryButton
@@ -80,19 +68,19 @@ export default function CatalogPopUp({
                   active={categoryIndex === index}
                   onClick={() => {
                     setCategoryIndex(index);
-                    if (windowWidth <= SCREEN.MD) {
+                    if (windowWidth < SCREEN.MD) {
                       setCategoryVisible({
                         visible: true,
                         sub: data[index].sub,
                         title: data[index].name,
                       });
+                      setVisible(false);
                     }
-                    setVisible(false);
                   }}
                 />
               ))}
             </div>
-            {windowWidth > SCREEN.MD ? (
+            {windowWidth >= SCREEN.MD ? (
               <div className="flex flex-wrap content-start">
                 {data[categoryIndex].sub.map((sub, index: number) => (
                   <SubcategoryCard

@@ -18,9 +18,9 @@ export default function CategoryButton({
     <button
       onClick={onClick}
       className={classNames(
-        "additional lg:primary flex h-12 w-40 items-center justify-between pl-2 lg:w-60",
+        "additional lg:primary flex h-12 w-full items-center justify-between md:w-56 md:pl-2",
         {
-          "bg-purple-100 font-semibold text-blue-700 ": active,
+          "font-semibold text-blue-700 lg:bg-purple-100 ": active,
         },
       )}
     >

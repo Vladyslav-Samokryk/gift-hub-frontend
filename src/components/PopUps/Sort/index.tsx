@@ -9,12 +9,10 @@ interface SortProps {
 
 const SortPopUp = ({ visible, setVisible }: SortProps): JSX.Element => {
   const { t } = useTranslation();
+  const onClose = (): void => setVisible(false);
   return (
-    <ModalContainer visible={visible} onClose={() => setVisible(false)}>
-      <ModalHeader
-        title={t("sort_popup_header")}
-        onClose={() => setVisible(false)}
-      />
+    <ModalContainer visible={visible} onClose={onClose} top={150}>
+      <ModalHeader title={t("sort_popup_header")} onClose={onClose} />
       <SortCatalog />
     </ModalContainer>
   );
