@@ -103,9 +103,8 @@ export const en: AllLocalesType = {
 
     filters_title: "MAIN FILTERS",
     filters: {
-      sale: "Sale",
-      pending: "Pending",
-      available: "Available",
+      sale: "sale",
+      available: "available",
     },
     rate: "RATE",
     price: "PRICE",
@@ -125,6 +124,16 @@ export const en: AllLocalesType = {
       by_category: "By the category",
       by_search_name: "By the name",
     },
+
+    buy_together_section: "Also buy",
+    select_productNum: "Show by",
+    filter_popup_header: "Filters",
+    sort_popup_header: "Sort by",
+
+    bth_reset: "Reset",
+    btn_apply: "Apply",
+
+    all_categories: "All categories",
 
     categories: {
       backpack: "Backpack",

@@ -92,7 +92,6 @@ interface AllLocalesType {
     filters_title: string;
     filters: {
       sale: string;
-      pending: string;
       available: string;
     };
     rate: string;
@@ -113,6 +112,16 @@ interface AllLocalesType {
       by_category: string;
       by_search_name: string;
     };
+
+    buy_together_section: string;
+    select_productNum: string;
+    filter_popup_header: string;
+    sort_popup_header: string;
+
+    bth_reset: string;
+    btn_apply: string;
+
+    all_categories: string;
 
     categories: {
       backpack: string;

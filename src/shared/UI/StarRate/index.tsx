@@ -3,6 +3,7 @@ import "./index.scss";
 
 interface StarRateProps {
   rate: number;
+  starSize?: number;
 }
 
 interface MeterCSSProperties extends React.CSSProperties {
@@ -11,11 +12,13 @@ interface MeterCSSProperties extends React.CSSProperties {
   "--stars-gap": string;
 }
 
-export default function StarRate({ rate }: StarRateProps): JSX.Element {
+export default function StarRate({
+  rate,
+  starSize = 25,
+}: StarRateProps): JSX.Element {
   const meterRef = useRef<HTMLMeterElement | null>(null);
   const maxStars = 5;
   const minStars = 0;
-  const starSize = 25;
   const starsGap = 6;
 
   const style: MeterCSSProperties = {

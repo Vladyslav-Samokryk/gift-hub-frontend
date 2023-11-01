@@ -1,15 +1,24 @@
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { Link } from "react-router-dom";
 
-export default function SeeMoreButton(): JSX.Element {
+export default function SeeMoreButton({
+  onClick,
+  isHidden = false,
+}: {
+  onClick: () => void;
+  isHidden?: boolean;
+}): JSX.Element {
   const { t } = useTranslation();
   return (
-    <div className="flex justify-center">
-      <Link to={"/catalog"}>
-        <p className="h6 w-fit hover:text-accent-turkus">
-          {t("btn_show_more")}
-        </p>
-      </Link>
+    <div className="flex w-full justify-center">
+      <p
+        onClick={onClick}
+        className={classNames("h6 w-fit hover:text-accent-turkus", {
+          hidden: isHidden,
+        })}
+      >
+        {t("btn_show_more")}
+      </p>
     </div>
   );
 }

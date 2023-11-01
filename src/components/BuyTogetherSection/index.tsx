@@ -1,36 +1,56 @@
 import { CURRENCY } from "@src/app/config";
-import { productCardMock } from "@src/mock";
 import type { ProductCardType } from "@src/shared";
-import { Plus } from "@src/shared";
+import { Plus, SCREEN, useGetCurrentLang, useScreenWidth } from "@src/shared";
 import { useTranslation } from "react-i18next";
-import { ProductCard } from "..";
+import { useGetRandomProductsQuery } from "@src/app/api/products";
+import { Fragment } from "react";
+import ProductCardLine from "../ProductCardLine";
+import ProductCard from "../ProductCard";
 
 export default function BuyTogetherSection(): JSX.Element {
   let total = 0;
   const { t } = useTranslation();
+  const lang = useGetCurrentLang();
+  const { data } = useGetRandomProductsQuery({
+    quantity: 3,
+    range: {
+      from: 0,
+      to: 2000,
+    },
+    lang,
+  });
+  const windowWidth = useScreenWidth();
 
   return (
     <section>
-      <h4 className="primary-bold">Buy together</h4>
-      <div className="flex items-center justify-between">
-        {productCardMock.map((product: ProductCardType, index: number) => {
-          total += product.price;
+      <h4 className="primary-bold my-3 text-center lg:text-left">
+        {t("buy_together_section")}
+      </h4>
+      <div className="flex flex-col items-center justify-between lg:flex-row">
+        {data?.map((product: ProductCardType, index: number) => {
+          total += +product.price;
           return (
-            <>
-              <ProductCard key={product.id} {...product} />
-              {index < productCardMock.length - 1 ? <Plus /> : null}
-            </>
+            <Fragment key={product.id}>
+              {windowWidth >= SCREEN.LG ? (
+                <ProductCard {...product} />
+              ) : (
+                <ProductCardLine {...product} />
+              )}
+              {index < data.length - 1 ? <Plus /> : null}
+            </Fragment>
           );
         })}
 
-        <div>
-          <h5 className="primary">
-            Total:
-            <span className="h5">
+        <div className="mt-6">
+          <h5 className="primary text-center lg:text-left">
+            Total:{" "}
+            <span className="lg:h5 primary  font-semibold ">
               {total} {CURRENCY}
             </span>
           </h5>
-          <button className="btn-effect btn">{t("btn_add_to_basket")}</button>
+          <button className="btn-effect btn mt-4 p-3 px-10">
+            {t("btn_add_to_basket")}
+          </button>
         </div>
       </div>
     </section>
