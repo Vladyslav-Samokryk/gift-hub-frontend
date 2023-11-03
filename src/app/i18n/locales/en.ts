@@ -47,7 +47,6 @@ export const en: AllLocalesType = {
     },
 
     secret_gift: {
-      header_link: "Main",
       title: "Secret Gift",
       subtitles: [
         "Secret Gift - is an exciting way of choosing and receiving a gift that preserves an element of surprise and mystery until the moment of reveal.",
@@ -60,11 +59,18 @@ export const en: AllLocalesType = {
         "After the user receives the recommended gift, they can proceed to place an order.",
       ],
       try_button: "Try",
+      btn_start: "Start",
+      select_price: "Choose a price range",
+      select_category: "Choose a category",
+      ph_select: "Select...",
+      win_title: "We choose secret present for you!",
     },
+
     win_random_section: {
-      title: "Твій рандомний подарунок:",
-      btn_try_again: "Спробувати ще",
+      title: "Here you go, the random gift:",
+      btn_try_again: "Try one more time",
     },
+
     person: {
       name: "Name",
       last_name: "Surname",

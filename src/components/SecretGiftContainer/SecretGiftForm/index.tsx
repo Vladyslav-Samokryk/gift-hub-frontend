@@ -1,13 +1,12 @@
 import type { Dispatch, SetStateAction } from "react";
-import React, { useMemo, useRef, useState } from "react";
+import React, { useMemo, useState } from "react";
 
 import { useGetCategoriesQuery } from "@src/app/api/categories";
 import type { Range } from "@src/app/api/products";
 import { SelectSecretGift } from "@src/components";
 import type { Categories } from "@src/shared";
-import { RangePrice, SecretGiftButton, useGetCurrentLang } from "@src/shared";
-
-import { getRandomNumber } from "@src/components/RandomPresent/RandomWheel/helpers";
+import { RangePriceRandom, useGetCurrentLang } from "@src/shared";
+import { useTranslation } from "react-i18next";
 
 export interface Category {
   value: string;
@@ -18,31 +17,29 @@ interface SecretGiftFormProps {
   setUserWin: Dispatch<SetStateAction<boolean>>;
   setQuery: Dispatch<SetStateAction<Range | null>>;
   setIsAnimation: Dispatch<SetStateAction<boolean>>;
-  time: number;
 }
 export default function SecretGiftForm({
   setUserWin,
   setQuery,
   setIsAnimation,
-  time,
 }: SecretGiftFormProps): JSX.Element {
   const lang = useGetCurrentLang();
-  const sectionRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const [range, setRange] = useState({
     from: 200,
     to: 700,
   });
-  const [category, setCategory] = useState<Category | null>(null);
 
   const { data } = useGetCategoriesQuery(lang);
+  const [category, setCategory] = useState<Category>();
 
   const handleFormSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setUserWin(true);
     setIsAnimation(true);
     const item = findItem();
-    const newQuery = { range, lang, categoryId: item?.id ?? "" };
+    const newQuery = { range, lang, categoryId: item?.id ?? "", quantity: 1 };
     setQuery(newQuery);
     handleAnimation();
   };
@@ -50,7 +47,7 @@ export default function SecretGiftForm({
   function handleAnimation(): void {
     setTimeout(() => {
       setIsAnimation(false);
-    }, getRandomNumber());
+    }, 5000);
   }
 
   function findItem(): Categories | undefined {
@@ -69,17 +66,14 @@ export default function SecretGiftForm({
   );
 
   return (
-    <section
-      className="mt-5 flex max-w-[650px] flex-col items-center justify-center rounded-[20px] bg-white/40 p-5 px-4 py-10"
-      ref={sectionRef}
-    >
+    <section className="my-10 flex w-[90%] flex-col items-center justify-center rounded-3xl bg-white/40 px-4 py-10 md:w-[650px]">
       <form
-        className="flex flex-col items-center justify-center "
+        className="flex flex-col items-center justify-center"
         onSubmit={handleFormSubmit}
       >
         <div>
-          <h5 className="md:h5 mb-5 text-2xl font-bold leading-6">
-            Обери категорію подарунка:
+          <h5 className="md:h5 secondary-bold mb-5 text-center">
+            {t("secret_gift.select_category")}
           </h5>
           <SelectSecretGift
             options={options}
@@ -87,24 +81,24 @@ export default function SecretGiftForm({
             setCategory={setCategory}
           />
         </div>
-        <div className="mt-10 flex w-full flex-col items-center justify-center md:mt-24">
-          <h5 className="md:h5  mb-3 text-center text-lg font-bold leading-6">
-            Обери ціновий діапазон:
+        <div className="mt-10 flex w-full flex-col items-center justify-center">
+          <h5 className="md:h5 secondary-bold mb-3 text-center">
+            {t("secret_gift.select_price")}
           </h5>
-          <RangePrice
+          <RangePriceRandom
             permission={false}
             setRange={setRange}
-            elementRef={sectionRef}
             {...range}
-            className="w-[90%] md:w-[593px]"
+            className="w-[90%] md:w-[500px]"
           />
         </div>
-        <SecretGiftButton
+        <button
           type="submit"
-          className="mt-5 w-[236px] py-4 leading-6 md:mt-7 md:w-[176px] md:px-7"
+          className="btn btn-effect mt-3 w-60 bg-purple-900 py-4"
+          disabled={!category}
         >
-          Старт
-        </SecretGiftButton>
+          {t("secret_gift.btn_start")}
+        </button>
       </form>
     </section>
   );

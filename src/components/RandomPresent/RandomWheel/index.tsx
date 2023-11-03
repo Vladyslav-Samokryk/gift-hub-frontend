@@ -91,7 +91,7 @@ export default function RandomWheel({
   }, [wheelRotate, data]);
 
   return (
-    <section className="relative m-3 rounded-2xl bg-purple-100 px-5 py-10">
+    <section className="relative m-3 mb-10 rounded-2xl bg-purple-100 px-5 py-10">
       <h2 className="primary md:h4 mb-5">{randomPresent.headers[0]}</h2>
       <h2 className="primary-bold md:h2 mb-5 bg-primary-linear bg-clip-text text-right text-transparent">
         {randomPresent.headers[1]}

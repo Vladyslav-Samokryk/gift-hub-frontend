@@ -1,37 +1,32 @@
 import type { DropdownIndicatorProps } from "react-select";
 import Select, { components } from "react-select";
 import clsx from "clsx";
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@src/shared/assets/svg/Arrows";
-import type { Category } from "../SecretGiftContainer/SecretGiftForm";
+import { useTranslation } from "react-i18next";
 
 interface SelectSecretGiftProps {
-  options?: option[];
-  category: Category | null;
-  setCategory: (category: option) => void;
+  options?: Category[];
+  category: Category | undefined;
+  setCategory: Dispatch<SetStateAction<Category | undefined>>;
 }
-export interface option {
+export interface Category {
   value: string;
   label: string;
 }
 
 const controlStyles = {
-  base: "border rounded-md text-black bg-[#A6B8E8] hover:cursor-pointer p-2",
+  base: "border rounded-md text-black bg-[#A6B8E8] hover:cursor-pointer p-2 w-[60vw] md:w-96",
   focus: "border-[#607D8B] ring-1 ring-primary-500",
   nonFocus: "border-gray-300 hover:border-gray-400",
 };
-const placeholderStyles = "text-black secondary leading-[22px] leading-5 pl-1 py-0.5";
-const selectInputStyles = "pl-1 py-0.5";
-const valueContainerStyles = "p-1 gap-1";
-const singleValueStyles = "leading-7";
-const indicatorSeparatorStyles = "bg-transparent";
-const dropdownIndicatorStyles = "p-1 rounded-md bg-[#A6B8E8]";
 const menuStyles = "mt-2 border border-gray-200 bg-white rounded-lg";
 const optionStyles = {
   base: "hover:cursor-pointer px-3 py-3 hover:bg-[#607D8B]/30 hover:text-black text-accent-deepGray",
   focus:
-    "text-accent-ocean border-l-[4px] border-l-[#00BCD4] bg-[rgba(96, 125, 139, 0.15)]",
-  selected: "text-blue-500 border-l-[4px] border-l-[#00BCD4] bg-[#607D8B]/30",
+    "text-accent-ocean border-l-4 border-l-blue-700 bg-[rgba(96, 125, 139, 0.15)]",
+  selected: "text-blue-500 border-l-4 border-l-blue-700 bg-[#607D8B]/30",
 };
 const noOptionsMessageStyles =
   "text-gray-500 p-2 bg-gray-50 border border-dashed border-gray-200 rounded-sm";
@@ -42,8 +37,9 @@ export default function SelectSecretGift({
   setCategory,
 }: SelectSecretGiftProps): JSX.Element {
   const [isSelectOpen, setIsSelectOpen] = useState(false);
+  const { t } = useTranslation();
   const DropdownIndicator = (
-    props: DropdownIndicatorProps<option>,
+    props: DropdownIndicatorProps<Category>,
   ): JSX.Element => {
     return (
       <components.DropdownIndicator {...props}>
@@ -51,15 +47,17 @@ export default function SelectSecretGift({
       </components.DropdownIndicator>
     );
   };
+
   return (
     <Select
       components={{ DropdownIndicator }}
       defaultValue={category}
-      onChange={(category: option) => setCategory(category)}
+      placeholder={t("secret_gift.ph_select")}
+      onChange={(newValue) => setCategory(newValue as Category)}
       options={options}
       closeMenuOnSelect={true}
-      hideSelectedOptions={true}
       unstyled
+      isSearchable={false}
       onMenuOpen={() => setIsSelectOpen(true)}
       onMenuClose={() => setIsSelectOpen(false)}
       styles={{
@@ -85,12 +83,6 @@ export default function SelectSecretGift({
             isFocused ? controlStyles.focus : controlStyles.nonFocus,
             controlStyles.base,
           ),
-        placeholder: () => placeholderStyles,
-        input: () => selectInputStyles,
-        valueContainer: () => valueContainerStyles,
-        singleValue: () => singleValueStyles,
-        indicatorSeparator: () => indicatorSeparatorStyles,
-        dropdownIndicator: () => dropdownIndicatorStyles,
         menu: () => menuStyles,
         option: ({ isFocused, isSelected }) =>
           clsx(

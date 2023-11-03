@@ -97,12 +97,16 @@ export const ChevronDownIcon = (): JSX.Element => (
     width="16"
     height="10"
     viewBox="0 0 16 10"
-    fill="transparent"
+    fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <path d="M8 9.59961L16 -0.000391006H0L8 9.59961Z" fill="#13183A" />
+    <path
+      d="M10.5858 0.5H1.41421C0.523309 0.5 0.0771403 1.57714 0.707105 2.20711L5.29289 6.79289C5.68342 7.18342 6.31658 7.18342 6.70711 6.79289L11.2929 2.20711C11.9229 1.57714 11.4767 0.5 10.5858 0.5Z"
+      fill="#333333"
+    />
   </svg>
 );
+
 export const ChevronUpIcon = (): JSX.Element => (
   <svg
     width="16"

@@ -7,7 +7,7 @@ import {
   useScreenWidth,
   SCREEN,
 } from "@shared";
-import { CURRENCY } from "@config";
+import { CURRENCY } from "@src/app/api/config";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({

@@ -1,4 +1,4 @@
-import { CURRENCY } from "@src/app/config";
+import { CURRENCY } from "@src/app/api/config";
 import type { ProductCardType } from "@src/shared";
 import { Plus, SCREEN, useGetCurrentLang, useScreenWidth } from "@src/shared";
 import { useTranslation } from "react-i18next";
@@ -22,7 +22,7 @@ export default function BuyTogetherSection(): JSX.Element {
   const windowWidth = useScreenWidth();
 
   return (
-    <section>
+    <section className="mb-10">
       <h4 className="primary-bold my-3 text-center lg:text-left">
         {t("buy_together_section")}
       </h4>

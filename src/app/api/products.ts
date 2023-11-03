@@ -8,7 +8,7 @@ export interface Range {
   };
   lang: string;
   categoryId?: string;
-  quantity: number;
+  quantity?: number;
 }
 
 interface Category {

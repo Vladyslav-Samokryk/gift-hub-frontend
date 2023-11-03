@@ -1,9 +1,7 @@
-import { CURRENCY } from "@config";
-import { DIFFER, MAX_PRICE, SCREEN, useScreenWidth } from "@src/shared";
-import classNames from "classnames";
+import { CURRENCY } from "@src/app/api/config";
+import { DIFFER, MAX_PRICE } from "@shared";
 import { type Dispatch, type SetStateAction } from "react";
-import clsx from "clsx";
-
+import classNames from "classnames";
 import ReactSlider from "react-slider";
 
 interface Range {
@@ -15,38 +13,26 @@ interface RangeProp extends Range {
   permission: boolean;
   setRange: Dispatch<SetStateAction<Range>>;
   className?: string;
-  elementRef?: React.RefObject<HTMLDivElement>;
 }
 
 interface RangeInputProps {
   value: number;
-  elementRef?: React.RefObject<HTMLDivElement>;
+  left: string;
 }
 
-function getDiffer(width: number, value: number): number {
-  const THUMB = 24;
-  const px = width / MAX_PRICE;
-  return value * px - THUMB;
+function adaptWidth(left: string): number {
+  const inputSize = 25;
+  return parseInt(left, 10) - inputSize;
 }
 
-function adaptWidth(width: number): number {
-  if (width < SCREEN.SM) {
-    return width * 0.9;
-  }
-  return width < SCREEN.MD ? width * 0.36 : width * 0.45;
-}
-
-function RangeInput({ value, elementRef }: RangeInputProps): JSX.Element {
-  const windowWidth = elementRef
-    ? useScreenWidth(elementRef)
-    : useScreenWidth();
-  const width = adaptWidth(windowWidth);
+function RangeInput({ value, left }: RangeInputProps): JSX.Element {
+  const leftRange = adaptWidth(left);
   return (
     <div
       className="secondary absolute top-8 flex h-7 w-20 items-center justify-center rounded-full bg-white"
       style={{
         filter: "drop-shadow(0px 4px 2px rgba(0, 0, 0, 0.2))",
-        left: `${getDiffer(width, value)}px`,
+        left: `${leftRange}px`,
       }}
     >
       <p>
@@ -61,12 +47,16 @@ export default function RangePriceRandom({
   permission,
   from,
   to,
-  className = "",
   setRange,
-  elementRef,
+  className = "",
 }: RangeProp): JSX.Element {
   return (
-    <div className={clsx("relative mb-20 mt-10 w-[70%] md:w-[50%]", className)}>
+    <div
+      className={classNames(
+        "relative mb-20 mt-10 w-[70%] md:w-[50%]",
+        className,
+      )}
+    >
       <ReactSlider
         className="h-2"
         thumbClassName="rounded-full bg-blue-700 border-8 top-1 -translate-y-1/2 border-white w-7 h-7 !z-0"
@@ -82,11 +72,15 @@ export default function RangePriceRandom({
             })}
           />
         )}
-        renderThumb={(props, state) => (
+        renderThumb={(props: { style?: React.CSSProperties }, state) => (
           <div key={state.index} className="relative">
-            {" "}
             <div {...props} />
-            <RangeInput value={state.valueNow} elementRef={elementRef} />
+            {props.style && (
+              <RangeInput
+                value={state.valueNow}
+                left={props.style.left as string}
+              />
+            )}
           </div>
         )}
         minDistance={DIFFER}

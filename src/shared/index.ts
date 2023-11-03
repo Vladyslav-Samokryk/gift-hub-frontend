@@ -38,6 +38,23 @@ export { PasswordHide, PasswordShow } from "./assets/svg/PasswordIcons";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
 export { Plus } from "./assets/svg/Plus";
 export { FilterIcon } from "./assets/svg/Filter";
+export {
+  SecretGift,
+  TechnyBigGiftBox,
+  TechnyRubiksCubePuzzle,
+  QuestionMark,
+  LargePresentBox,
+  MidlePresentBox,
+  SmallPresentBox,
+  SemiSmallPresentBox,
+  Cup,
+  Books,
+  Technique,
+  Food,
+  Accessories,
+  Knowledge,
+  Cloths,
+} from "./assets/svg/SecretGift";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -104,7 +121,6 @@ export { default as ProductSection } from "./UI/ProductSection";
 export { default as RangePriceRandom } from "./UI/Range/RangePriceRandom";
 export { default as RangeWithInputs } from "./UI/Range/RangeWithInputs";
 export { default as RandomStep } from "./UI/RandomStep";
-export { default as SecretGiftButton } from "./UI/Buttons/SecretGiftTryButton";
 export { default as Checkbox } from "./UI/Checkbox";
 export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";
 export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
