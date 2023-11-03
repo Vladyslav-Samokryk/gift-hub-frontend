@@ -30,6 +30,7 @@ export interface TRRandomPresent {
   steps: string[];
   btn_get_present: string;
 }
+
 export interface TRSecretGift {
   header_link: string;
   title: string;

@@ -107,14 +107,6 @@ input[type=number] {
    .mobile-font {
       @apply font-rubik font-normal text-[12px]
    }
-   .primary-linear {
-      @apply inline-block bg-[linear-gradient(89.86deg,#303F9F_0.12%,#9747FF_99.92%)] text-transparent bg-clip-text
-
-   }
-
-   .list-item {
-      @apply md:text-2xl md:font-light md:leading-[24px] relative z-20 max-w-[347px] text-lg leading-5 after:absolute after:left-[-27px] after:top-[-2px]  md:after:left-[-34px] md:after:top-0 after:z-[-1] after:h-[30px] after:w-[30px];
-    }
 
 }
 

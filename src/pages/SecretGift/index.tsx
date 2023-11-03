@@ -1,8 +1,6 @@
 import { useState } from "react";
 import classNames from "classnames";
-import SecretGiftDescription from "@src/components/SecretGiftDescription";
-import SecretGiftHeader from "@src/components/SecretGiftHeader";
-import SecretGiftContainer from "@src/components/SecretGiftContainer";
+import { SecretGiftDescription, SecretGiftContainer } from "@components";
 
 export default function SecretGift(): JSX.Element {
   const [isVisibleSelect, setIsVisibleSelect] = useState(false);
@@ -17,7 +15,6 @@ export default function SecretGift(): JSX.Element {
         })}
       >
         <div className="relative flex w-full flex-col items-center justify-center px-5 pb-24  text-black backdrop-blur-md">
-          <SecretGiftHeader />
           {!isVisibleSelect ? (
             <SecretGiftDescription setIsVisibleSelect={setIsVisibleSelect} />
           ) : (

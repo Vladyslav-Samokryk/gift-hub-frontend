@@ -77,7 +77,7 @@ export const CategoryArrow = (): JSX.Element => (
   </svg>
 );
 
-export const GoMainPageArrow = (): JSX.Element => (
+export const RightBigArrow = (): JSX.Element => (
   <svg
     width="24"
     height="25"
@@ -91,6 +91,7 @@ export const GoMainPageArrow = (): JSX.Element => (
     />
   </svg>
 );
+
 export const ChevronDownIcon = (): JSX.Element => (
   <svg
     width="16"

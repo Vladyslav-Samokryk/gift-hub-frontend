@@ -15,7 +15,7 @@ export {
   CategoryArrow,
   ChevronDownIcon,
   ChevronUpIcon,
-  GoMainPageArrow,
+  RightBigArrow,
 } from "./assets/svg/Arrows";
 export {
   ApplePayLogo,
@@ -59,6 +59,7 @@ export type {
   TRHelp,
   TRLang,
   TRRandomPresent,
+  TRSecretGift,
 } from "./types/Translation";
 export type { Categories } from "./types/Categories";
 

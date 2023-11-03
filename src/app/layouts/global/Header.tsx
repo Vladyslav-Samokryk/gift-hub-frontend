@@ -15,6 +15,7 @@ import {
   LoginPopUp,
   NavigationByRole,
   RegistrationPopUp,
+  UserSection,
 } from "@components";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -26,6 +27,7 @@ export default function Header(): JSX.Element {
   const [loginPopUp, setLoginPopUp] = useState(false);
   const [registrPopUp, setRegistrPopUp] = useState(false);
   const navigate = useNavigate();
+
   return (
     <header>
       <section className="flex w-full items-center justify-between bg-white px-5 pb-6 shadow-main lg:px-20">
@@ -62,10 +64,13 @@ export default function Header(): JSX.Element {
         </section>
 
         <section className="group absolute left-1/2 top-0 flex w-max translate-x-[-50%] items-center lg:static lg:translate-x-0">
-          <p className="lg:h6 additional pr-1 group-hover:text-accent-turkus">
-            {t("header_links.secret_present")}
-          </p>
-          <button className="group" onClick={() => navigate("secret-gift")}>
+          <button
+            className="group flex"
+            onClick={() => navigate("/secret-gift")}
+          >
+            <p className="lg:h6 additional pr-1 group-hover:text-accent-turkus">
+              {t("header_links.secret_present")}
+            </p>
             <Present />
           </button>
         </section>
@@ -80,20 +85,7 @@ export default function Header(): JSX.Element {
           setVisible={setRegistrPopUp}
         />
 
-        <section className="flex w-36 justify-between self-center">
-          <button
-            className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900"
-            onClick={() => setLoginPopUp((prev) => !prev)}
-          >
-            <UserAccount />
-          </button>
-          <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900">
-            <Wishlist />
-          </button>
-          <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900">
-            <Basket type="sm" className="fill-black group-hover:fill-white" />
-          </button>
-        </section>
+        <UserSection accountClick={() => setLoginPopUp((prev) => !prev)} />
       </section>
     </header>
   );

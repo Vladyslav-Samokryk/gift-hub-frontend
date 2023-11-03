@@ -60,12 +60,10 @@ export const theme = {
     rubik: ["Rubik", "sans-serif"],
   },
   content: {
-    // eslint-disable-next-line prettier/prettier
-    firstBobble: "url(\"src/shared/assets/img/secretGift/first_bobble.svg\")",
-    // eslint-disable-next-line prettier/prettier
-    secondBobble: "url(\"src/shared/assets/img/secretGift/second_bobble.svg\")",
-    // eslint-disable-next-line prettier/prettier
-    thirdBobble: "url(\"src/shared/assets/img/secretGift/third_bobble.svg\")",
+    /* eslint-disable @typescript-eslint/quotes */
+    bobble1: 'url("src/shared/assets/img/secretGift/first_bobble.svg")',
+    bobble2: 'url("src/shared/assets/img/secretGift/second_bobble.svg")',
+    bobble3: 'url("src/shared/assets/img/secretGift/third_bobble.svg")',
   },
 };
 export const plugins = [];

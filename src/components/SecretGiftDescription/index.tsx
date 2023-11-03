@@ -1,8 +1,9 @@
 import TechnyRubiksCubePuzzle from "@src/shared/assets/img/secretGift/TechnyRubiksCubePuzzle.svg";
 import TechnyBigGiftBox from "@src/shared/assets/img/secretGift/TechnyBigGiftBox.svg";
 import { useTranslation } from "react-i18next";
-import type { TRSecretGift } from "@src/shared/types/Translation";
-import { SecretGiftButton } from "@src/shared";
+import type { TRSecretGift } from "@shared";
+import { SecretGiftButton } from "@shared";
+import classNames from "classnames";
 
 interface SecretGiftDescriptionProps {
   setIsVisibleSelect: (prev: boolean) => void;
@@ -17,57 +18,60 @@ export default function SecretGiftDescription({
   });
   return (
     <>
-      <section className="relative flex flex-col items-center justify-between gap-2 md:mt-[-20px] md:flex-row md:justify-center md:gap-14  ">
-        <div className="">
-          <img
-            className=" w-full max-w-full object-cover"
-            src={TechnyRubiksCubePuzzle}
-            alt="TechnyRubiksCubePuzzle"
-          />
-        </div>
-        <div className="flex max-w-full flex-col items-start justify-start md:relative md:ml-[-50px] md:max-w-[60%]">
-          <h4 className="md:h4 primary-linear mb-3 w-full text-center text-2xl leading-8 md:text-start">
+      <section className="flex flex-col items-center justify-around gap-2 md:flex-row">
+        <img
+          className="h-80 w-72"
+          src={TechnyRubiksCubePuzzle}
+          alt="TechnyRubiksCubePuzzle"
+        />
+        <div className="flex flex-col items-start justify-start md:max-w-[60%] ">
+          <h4 className="md:h4 h6 mb-3 w-full bg-primary-linear bg-clip-text text-center text-transparent md:text-start">
             {secretGift.title}
           </h4>
-          <p className="md:primary text-lg font-normal leading-[21.6px] md:text-[24px] md:leading-[29px]">
-            {secretGift.subtitles[0]}
-          </p>
+          <p className="md:primary secondary">{secretGift.subtitles[0]}</p>
         </div>
       </section>
-      <section className="mt-10 flex max-w-[1330px] flex-col items-center justify-center md:mt-10">
-        <p className="primary text-2xl font-normal leading-6">
-          {secretGift.process_header}
-        </p>
-        <ul className="primary mt-8 grid w-full list-decimal  grid-cols-1 grid-rows-3 gap-5 pl-8  md:mt-10 md:grid-cols-3 md:grid-rows-1 md:gap-14 ">
-          <li className="list-item  max-w-full pl-6 after:content-firstBobble md:max-w-[347px] ">
-            {secretGift.process_steps[0]}
-          </li>
-          <li className="list-item max-w-full pl-6 after:content-secondBobble md:max-w-[421px]">
-            {secretGift.process_steps[1]}
-          </li>
-          <li className="list-item max-w-full  pl-6 after:content-thirdBobble md:max-w-[432px]">
-            {secretGift.process_steps[2]}
-          </li>
+
+      <section className="primary mt-10 flex flex-col items-center justify-center md:mt-10">
+        <p>{secretGift.process_header}</p>
+        <ul className="mt-8 grid w-full list-decimal grid-cols-1 grid-rows-3 gap-5 pl-8 md:mt-10 md:grid-cols-3 md:grid-rows-1 md:gap-14">
+          {secretGift.process_steps.map((step, index) => {
+            return (
+              <li
+                key={index}
+                className={classNames(
+                  "relative z-20 pl-6 after:absolute after:left-[-27px]  after:top-[-2px] after:z-[-1] after:h-[30px] after:w-[30px] md:after:left-[-34px] md:after:top-0",
+                  {
+                    "after:content-bobble1": index === 0,
+                    "after:content-bobble2": index === 1,
+                    "after:content-bobble3": index === 2,
+                  },
+                )}
+              >
+                {step}
+              </li>
+            );
+          })}
         </ul>
       </section>
-      <section className="mt-10 flex w-full max-w-[1283px] flex-col  items-center justify-between gap-5 md:mt-28 md:flex-row md:gap-2">
-        <div className="order-2 max-w-[943px] md:order-1">
-          <p className="primary primary-linear mt-3 text-start text-[18px] leading-[21.6px] md:mt-0 md:text-center md:text-[24px] md:leading-[24px]">
+
+      <section className="mt-10 flex w-full flex-col-reverse items-center justify-between gap-5 md:mt-10 md:flex-row md:gap-2">
+        <div>
+          <p className="primary md:h6 mt-3 bg-primary-linear bg-clip-text text-start text-transparent md:mt-0 md:text-center">
             {secretGift.subtitles[1]}
           </p>
         </div>
-        <div className="order-1 w-full max-w-[220px] md:order-2 md:h-[325px] md:max-w-[300px]">
-          <img
-            className=" w-full max-w-full object-cover"
-            src={TechnyBigGiftBox}
-            alt="TechnyBigGiftBox"
-          />
-        </div>
+        <img
+          className="h-80 w-72"
+          src={TechnyBigGiftBox}
+          alt="TechnyBigGiftBox"
+        />
       </section>
+
       <SecretGiftButton
         onClick={() => setIsVisibleSelect(true)}
         type="button"
-        className="mt-10 px-32 py-5 md:px-9"
+        className="mt-10 px-32 py-5"
       >
         {secretGift.try_button}
       </SecretGiftButton>
