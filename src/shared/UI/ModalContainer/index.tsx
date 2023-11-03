@@ -1,18 +1,19 @@
-import { useScreenWidth, type Children } from "@src/shared";
+import { type Children } from "@src/shared";
 import { AnimatePresence, motion } from "framer-motion";
 
 interface ChildrenProps {
   visible: boolean;
+  top: number;
   children: Children;
-  setVisible: (value: boolean | ((prev: boolean) => boolean)) => void;
+  onClose: () => void;
 }
 
 export default function ModalContainer({
   visible,
-  setVisible,
+  onClose,
   children,
+  top,
 }: ChildrenProps): JSX.Element {
-  const windowWidth = useScreenWidth();
   return (
     <AnimatePresence>
       {visible && (
@@ -20,7 +21,7 @@ export default function ModalContainer({
           <motion.div
             initial={{ y: 200, opacity: 0 }}
             animate={{
-              y: windowWidth > 648 ? 100 : 30,
+              y: top,
               opacity: 1,
             }}
             exit={{
@@ -41,7 +42,7 @@ export default function ModalContainer({
               opacity: 0,
             }}
             transition={{ type: "spring", bounce: 0, duration: 0.2 }}
-            onClick={() => setVisible(false)}
+            onClick={onClose}
             className="fixed left-0 top-0 z-0 flex h-full w-full items-center justify-center bg-gray-900 px-5"
           />
         </div>

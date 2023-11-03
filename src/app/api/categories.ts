@@ -12,7 +12,13 @@ export const categoriesApi = baseApi.injectEndpoints({
         },
       }),
     }),
+    getCategoryId: builder.query<string, string>({
+      query: (url) => ({
+        url: `shop/guest_user/category/url/${url}`,
+        method: "GET",
+      }),
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery } = categoriesApi;
+export const { useGetCategoriesQuery, useGetCategoryIdQuery } = categoriesApi;

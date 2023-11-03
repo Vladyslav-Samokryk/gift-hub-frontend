@@ -4,6 +4,7 @@ import {
   InputContainer,
   ModalHeader,
   InputPassword,
+  Checkbox,
 } from "@src/shared";
 import EnterAsSection from "../EnterAsSection";
 import { useState } from "react";
@@ -27,8 +28,15 @@ export default function LoginPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={visible} setVisible={setVisible}>
-      <ModalHeader title={t("login_popup.header")} setVisible={setVisible}>
+    <ModalContainer
+      visible={visible}
+      onClose={() => setVisible(false)}
+      top={100}
+    >
+      <ModalHeader
+        title={t("login_popup.header")}
+        onClose={() => setVisible(false)}
+      >
         {error ? (
           <p className="additional text-accent-bOrange">
             {t("login_popup.wishlist_error")}
@@ -61,14 +69,7 @@ export default function LoginPopUp({
           </div>
 
           <div className="flex flex-col-reverse justify-between md:flex-row">
-            <div className="flex items-center">
-              <input
-                id="remember"
-                type="checkbox"
-                className="mr-3 h-5 w-5 accent-green-600"
-              />
-              <label htmlFor="remember">{t("checkbox_remember_person")}</label>
-            </div>
+            <Checkbox title={t("checkbox_remember_person")} />
             <a
               href="#"
               className="additional mb-3 text-blue-800 underline md:mb-0"

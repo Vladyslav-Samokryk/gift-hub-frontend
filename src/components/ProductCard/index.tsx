@@ -1,7 +1,13 @@
-import { StarRate, Wishlist, Basket, type ProductCardType } from "@shared";
-import { CURRENCY } from "@src/app/api/config";
-import classNames from "classnames";
-import { useState } from "react";
+import {
+  StarRate,
+  Wishlist,
+  Basket,
+  type ProductCardType,
+  ImgWithPreloader,
+  useScreenWidth,
+  SCREEN,
+} from "@shared";
+import { CURRENCY } from "@config";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({
@@ -10,28 +16,18 @@ export default function ProductCard({
   category,
   price,
   global_rating,
+  id,
 }: ProductCardType): JSX.Element {
-  const [imgLoad, setImgLoad] = useState(false);
+  const windowWidth = useScreenWidth();
   return (
-    <div className="m-2 h-card w-80 rounded-lg border-2 border-black">
+    <div className="h-card-sm w-card-sm lg:w-card m-2 rounded-lg border-2 border-black bg-white lg:h-card">
       <div className="relative">
-        <Link to={"/catalog"}>
-          <picture>
-            <div
-              className={classNames("h-cardImg w-cardImg rounded-t-lg", {
-                "animate-pulse bg-slate-300": !imgLoad,
-              })}
-            >
-              <img
-                className={classNames("visible h-full w-full rounded-t-lg", {
-                  invisible: !imgLoad,
-                })}
-                src={img}
-                alt={name}
-                onLoad={() => setImgLoad(true)}
-              />
-            </div>
-          </picture>
+        <Link to={`product/${id}`}>
+          <ImgWithPreloader
+            className="h-cardImg-sm w-full rounded-t-lg lg:h-cardImg"
+            img={img}
+            name={name}
+          />
         </Link>
         <button className="group absolute right-2 top-2">
           <Wishlist />
@@ -39,21 +35,31 @@ export default function ProductCard({
       </div>
       <hr className="h-hr bg-black" />
 
-      <div className="relative h-40 p-2">
-        <Link to={"/catalog"}>
-          <h2 className="primary-bold">{name}</h2>
+      <div className="p-2 lg:relative lg:h-40">
+        <Link to={`product/${id}`}>
+          <h2 className="additional lg:primary-bold h-12 w-full overflow-hidden text-ellipsis font-semibold lg:h-20">
+            {name}
+          </h2>
         </Link>
-        <div className="absolute bottom-0">
-          <Link to={"/catalog"}>
-            <h3 className="additional text-gray-900">{category}</h3>
+        <div className="w-[95%] lg:absolute lg:bottom-0">
+          <Link to={`product/${id}`}>
+            <h3 className="lg:additional text-[12px] text-gray-900">
+              {category}
+            </h3>
           </Link>
-          <data className="primary" value={price}>
+          <data className="additional lg:primary font-semibold" value={price}>
             {price} {CURRENCY}
           </data>
-          <div className="mr-2 flex w-72 items-center justify-between">
-            <StarRate rate={global_rating} />
+          <div className="mr-2 flex w-full items-center justify-between">
+            <StarRate
+              starSize={windowWidth < SCREEN.LG ? 16 : 25}
+              rate={global_rating}
+            />
             <button>
-              <Basket type="lg" className="fill-blue-700" />
+              <Basket
+                type={windowWidth >= SCREEN.LG ? "lg" : "sm"}
+                className="fill-blue-700"
+              />
             </button>
           </div>
         </div>

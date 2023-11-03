@@ -31,7 +31,7 @@ export const theme = {
         deepGray: "#607D8B",
       },
       background: {
-        main: "#F7F7FF",
+        main: "#F6F7FF",
       },
       star: "#FFD805",
     },
@@ -49,10 +49,13 @@ export const theme = {
     height: {
       card: "472px",
       cardImg: "300px",
+      "card-sm": "262px",
+      "cardImg-sm": "130px",
       hr: "2px",
     },
     width: {
-      cardImg: "317px",
+      card: "320px",
+      "card-sm": "168px",
     },
   },
   fontFamily: {

@@ -15,7 +15,7 @@ import {
   DownStep,
   LeftStep,
   useInterval,
-  RangePrice,
+  RangePriceRandom,
   useScreenWidth,
   DIRECTION,
   SCREEN,
@@ -108,7 +108,7 @@ export default function RandomWheel({
             >
               <RandomStep index={index + 1} step={step} />
               {index === 0 && windowWidth < SCREEN.MD && (
-                <RangePrice
+                <RangePriceRandom
                   permission={wheelRotate}
                   setRange={setRange}
                   {...range}
@@ -121,7 +121,11 @@ export default function RandomWheel({
       </div>
       <div className="my-3 flex flex-col items-center justify-center">
         {windowWidth >= SCREEN.MD && (
-          <RangePrice permission={wheelRotate} setRange={setRange} {...range} />
+          <RangePriceRandom
+            permission={wheelRotate}
+            setRange={setRange}
+            {...range}
+          />
         )}
         <button
           onClick={() => setWheelRotate(true)}

@@ -36,6 +36,8 @@ export {
 export { LoginIcon, RegistrationIcon } from "./assets/svg/ModalAuth";
 export { PasswordHide, PasswordShow } from "./assets/svg/PasswordIcons";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
+export { Plus } from "./assets/svg/Plus";
+export { FilterIcon } from "./assets/svg/Filter";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -46,6 +48,15 @@ export { useHideOnScroll } from "./hooks/useHideOnScroll";
 export { useHorizontalScroll } from "./hooks/useHorizontalScroll";
 export { useScreenWidth } from "./hooks/useScreenWidth";
 export { useGetCurrentLang } from "./hooks/useGetCurrentLang";
+
+/** Helpers */
+export {
+  getSearchParams,
+  setSearchParam,
+  removeSearchParam,
+  handleQueryParamArray,
+  prepareQueryParam,
+} from "./helpers/url";
 
 /** Types */
 export type { User, RoleUnion } from "./types/User";
@@ -60,13 +71,24 @@ export type {
   TRLang,
   TRRandomPresent,
   TRSecretGift,
+  TRFilters,
+  TRSorts,
 } from "./types/Translation";
-export type { Categories } from "./types/Categories";
+export type { Categories, CatalogSub } from "./types/Categories";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";
 export { SCREEN } from "./constants/screens";
 export { DIRECTION } from "./constants/direction";
+export {
+  MAX_DEFAULT,
+  MAX_PRICE,
+  MIN_DEFAULT,
+  DIFFER,
+  MIN_PRICE,
+} from "./constants/price";
+export { PAGE_OPTIONS } from "./constants/pageOptions";
+export { PAGINATION_LOAD } from "./constants/pagination";
 
 /** UI  */
 export { default as Preloader } from "./UI/Preloader";
@@ -79,8 +101,16 @@ export { default as ModalHeader } from "./UI/ModalHeader";
 export { default as InputContainer } from "./UI/InputContainer";
 export { default as InputPassword } from "./UI/InputPassword";
 export { default as ProductSection } from "./UI/ProductSection";
-export { default as RangePrice } from "./UI/RangePrice";
+export { default as RangePriceRandom } from "./UI/Range/RangePriceRandom";
+export { default as RangeWithInputs } from "./UI/Range/RangeWithInputs";
 export { default as RandomStep } from "./UI/RandomStep";
+export { default as SecretGiftButton } from "./UI/Buttons/SecretGiftTryButton";
+export { default as Checkbox } from "./UI/Checkbox";
 export { default as GoToSaleButton } from "./UI/Buttons/GoToSaleButton";
 export { default as CategoryButton } from "./UI/Buttons/CategoryButton";
-export { default as SecretGiftButton } from "./UI/Buttons/SecretGiftTryButton";
+export { default as ListContainer } from "./UI/ListContainer";
+export { default as ImgWithPreloader } from "./UI/ImgWithPreloader";
+export { default as Pagination } from "./UI/Pagination";
+export { default as Select } from "./UI/Select";
+export { default as RadioButton } from "./UI/RadioButton";
+export { default as ButtonWithIcon } from "./UI/Buttons/ButtonWithIcon";

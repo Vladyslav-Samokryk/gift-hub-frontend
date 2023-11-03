@@ -1,4 +1,4 @@
-import { useScreenWidth } from "@src/shared";
+import { SCREEN, useScreenWidth } from "@src/shared";
 import { useTranslation } from "react-i18next";
 
 export default function EnterAsSection({
@@ -21,7 +21,7 @@ export default function EnterAsSection({
         <h5>{t("enter_as_header")}</h5>
         <button>Google</button>
         <button>Facebook</button>
-        {windowWidth > 648 ? icon : null}
+        {windowWidth > SCREEN.MD ? icon : null}
       </div>
     </>
   );

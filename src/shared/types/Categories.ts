@@ -15,3 +15,12 @@ export interface Categories {
     },
   ];
 }
+
+export interface CatalogSub {
+  visible: boolean;
+  sub: Array<{
+    name: string;
+    url: string;
+  }>;
+  title: string;
+}

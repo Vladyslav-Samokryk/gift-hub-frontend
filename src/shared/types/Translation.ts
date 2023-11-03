@@ -39,3 +39,17 @@ export interface TRSecretGift {
   process_steps: string[];
   try_button: string;
 }
+
+export interface TRFilters {
+  sale: string;
+  pending: string;
+  available: string;
+}
+
+export interface TRSorts {
+  cheap: string;
+  expensive: string;
+  new: string;
+  popular: string;
+  rate: string;
+}

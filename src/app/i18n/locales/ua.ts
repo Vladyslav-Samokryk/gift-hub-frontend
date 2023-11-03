@@ -109,11 +109,82 @@ export const ua: AllLocalesType = {
     btn_make_order: "Оформити замовлення",
     btn_show_more: "Показати ще",
     btn_know_more: "Дізнатись більше",
+    btn_add_to_basket: " Додати в кошик",
 
     enter_as_header: "Увійти як користувач",
 
     checkbox_remember_person: "Запам'ятай мене",
 
     or: "або",
+
+    filters_title: "ОСНОВНІ ФІЛЬТРИ",
+    filters: {
+      sale: "зі знижкою",
+      available: "є в наявності",
+    },
+    rate: "РЕЙТИНГ",
+    price: "ЦІНА",
+
+    sorts_title: "Показати спочатку:",
+    sorts: {
+      cheap: "дешеві",
+      expensive: "дорогі",
+      new: "новинки",
+      popular: "популярні",
+      rate: "за рейтингом",
+    },
+
+    main_page: "Головна",
+
+    bc: {
+      by_category: "За категорією",
+      by_search_name: "За назвою",
+    },
+
+    buy_together_section: "Часто купують разом",
+    select_productNum: "Показувати по",
+
+    filter_popup_header: "Фільтри",
+    sort_popup_header: "Сортувати",
+
+    bth_reset: "Зняти всі",
+    btn_apply: "Застосувати",
+
+    all_categories: "Всі категорії",
+
+    categories: {
+      backpack: "Рюкзаки",
+      keychain: "Брелоки",
+      laptopBackpack: "Чохли для ноутбуків",
+      shopper: "Шопери",
+      hoodies: "Худі",
+      plaids: "Пледи з рукавами",
+      slippers: "Тапці",
+      socks: "Шкарпетки",
+      tshirts: "Футболки",
+      bottles: "Пляшки для води",
+      lunchboxes: "Ланч бокси",
+      mugs: "Чашки",
+      termomugs: "Термокружки",
+      candies: "Цукерки",
+      cocktails: "Суміші для коктелів",
+      coffee: "Кава",
+      secret_cookies: "Печиво з передбаченням",
+      tea: "Чай",
+      TDpuzzles: "3D пазли",
+      boardGames: "Настільні ігри",
+      puzzles: "Пазли",
+      books: "Книги",
+      courses: "Курси",
+      datebook: "Планери",
+      magboard: "Магнітні дошки",
+      notebooks: "Блокноти",
+      pens: "Ручки",
+      headphones: "Навушники",
+      keyboards: "Клавіатура",
+      lamps: "Настільні лампи",
+      massagers: "Масажери",
+      powerbanks: "Павербанки",
+    },
   },
 };

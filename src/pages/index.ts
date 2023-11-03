@@ -1,4 +1,5 @@
-export { default as Catalog } from "./Catalog";
+export { CatalogByCategory } from "./CatalogByCategory";
+export { default as CatalogBySearch } from "./CatalogBySearch";
 export { default as Contacts } from "./Contacts";
 export { default as Main } from "./Main";
 export { default as NotFound } from "./NotFound";
