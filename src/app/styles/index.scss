@@ -107,6 +107,7 @@ input[type=number] {
    .mobile-font {
       @apply font-rubik font-normal text-[12px]
    }
+
 }
 
 @layer utilities {
@@ -120,3 +121,10 @@ input[type=number] {
      }
 
  }
+
+ html,
+body,
+#root,
+.app {
+   background: #F6F7FF;
+}

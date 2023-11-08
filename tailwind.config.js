@@ -27,9 +27,11 @@ export const theme = {
         green: "#00BF13",
         turkus: "#00BCD4",
         blue: "#4495ff",
+        ocean: "#303F9F",
+        deepGray: "#607D8B",
       },
       background: {
-        main: "#F7F7FF",
+        main: "#F6F7FF",
       },
       star: "#FFD805",
     },
@@ -42,19 +44,29 @@ export const theme = {
       "randomize-result": "-2px 26px 100px 18px #EBEEF4",
       main: "0 4px 20px rgba(50, 64, 161, 0.5)",
       "drop-2": "0px 4px 15px 0px #80808080",
+      drop: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     },
     height: {
       card: "472px",
       cardImg: "300px",
+      "card-sm": "262px",
+      "cardImg-sm": "130px",
       hr: "2px",
     },
     width: {
-      cardImg: "317px",
+      card: "320px",
+      "card-sm": "168px",
     },
   },
   fontFamily: {
     exo2: ["Exo2", "sans-serif"],
     rubik: ["Rubik", "sans-serif"],
+  },
+  content: {
+    /* eslint-disable @typescript-eslint/quotes */
+    bobble1: 'url("src/shared/assets/img/secretGift/first_bobble.svg")',
+    bobble2: 'url("src/shared/assets/img/secretGift/second_bobble.svg")',
+    bobble3: 'url("src/shared/assets/img/secretGift/third_bobble.svg")',
   },
 };
 export const plugins = [];

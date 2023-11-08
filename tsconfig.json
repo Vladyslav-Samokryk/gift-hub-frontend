@@ -31,7 +31,7 @@
         "src/app/api"
       ],
       "@config": [
-        "src/app/config"
+        "src/app/api/config"
       ],
       "@i18n": [
         "src/app/i18n/index.ts"
@@ -56,6 +56,9 @@
       ],
       "@pages": [
         "src/pages"
+      ],
+      "@context/*": [
+        "src/app/context/*"
       ],
       "@public/*": [
         "public/*"

@@ -18,6 +18,7 @@ const stylesDir = resolve(appDir, "./styles/index.scss");
 const navigationDir = resolve(appDir, "./navigation");
 const storeDir = resolve(appDir, "./store");
 const layoutsDir = resolve(appDir, "./layouts");
+const contextDir = resolve(appDir, "./context");
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -35,6 +36,7 @@ export default defineConfig({
       "@store": storeDir,
       "@components": componentsDir,
       "@shared": sharedDir,
+      "@context": contextDir,
       "@pages": pagesDir,
       "@styles": stylesDir,
     },

@@ -81,12 +81,96 @@ interface AllLocalesType {
     btn_make_order: string;
     btn_show_more: string;
     btn_know_more: string;
+    btn_add_to_basket: string;
 
     enter_as_header: string;
 
     checkbox_remember_person: string;
 
     or: string;
+
+    secret_gift: {
+      title: string;
+      subtitles: string[];
+      process_header: string;
+      process_steps: string[];
+      try_button: string;
+      btn_start: string;
+      select_price: string;
+      select_category: string;
+      ph_select: string;
+      win_title: string;
+    };
+
+    filters_title: string;
+    filters: {
+      sale: string;
+      available: string;
+    };
+
+    rate: string;
+    price: string;
+    sorts_title: string;
+
+    sorts: {
+      cheap: string;
+      expensive: string;
+      new: string;
+      popular: string;
+      rate: string;
+    };
+
+    main_page: string;
+
+    bc: {
+      by_category: string;
+      by_search_name: string;
+    };
+
+    buy_together_section: string;
+    select_productNum: string;
+    filter_popup_header: string;
+    sort_popup_header: string;
+
+    bth_reset: string;
+    btn_apply: string;
+
+    all_categories: string;
+
+    categories: {
+      backpack: string;
+      keychain: string;
+      laptopBackpack: string;
+      shopper: string;
+      hoodies: string;
+      plaids: string;
+      slippers: string;
+      socks: string;
+      tshirts: string;
+      bottles: string;
+      lunchboxes: string;
+      mugs: string;
+      termomugs: string;
+      candies: string;
+      cocktails: string;
+      coffee: string;
+      secret_cookies: string;
+      tea: string;
+      TDpuzzles: string;
+      boardGames: string;
+      puzzles: string;
+      books: string;
+      courses: string;
+      datebook: string;
+      magboard: string;
+      notebooks: string;
+      pens: string;
+      headphones: string;
+      keyboards: string;
+      lamps: string;
+      massagers: string;
+      powerbanks: string;
+    };
   };
 }
 

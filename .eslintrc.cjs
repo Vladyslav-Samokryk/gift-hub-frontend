@@ -63,6 +63,8 @@ module.exports = {
           "btn-effect",
           "dots",
           "rating",
+          "primary-linear",
+          "list-item"
         ],
       },
     ],
