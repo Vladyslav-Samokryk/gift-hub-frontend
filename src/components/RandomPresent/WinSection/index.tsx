@@ -20,8 +20,8 @@ export default function WinSection({
     return <p>{present}</p>;
   } else {
     return (
-      <div
-        className="relative m-3 flex h-screen flex-col items-center justify-between rounded-2xl bg-cover bg-center px-5 py-10 text-center text-white"
+      <section
+        className="relative m-3 mb-10 flex h-screen flex-col items-center justify-between rounded-2xl bg-cover bg-center px-5 py-10 text-center text-white"
         style={{
           backgroundImage: "url('src/shared/assets/img/RandomPresentBg.svg')",
         }}
@@ -59,7 +59,7 @@ export default function WinSection({
             <p className="ml-2">{t("win_random_section.btn_try_again")}</p>
           </button>
         </div>
-      </div>
+      </section>
     );
   }
 }

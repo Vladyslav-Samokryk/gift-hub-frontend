@@ -5,6 +5,7 @@ import {
   removeSearchParam,
   setSearchParam,
 } from "@shared";
+import { usePaginationParamsContext } from "@src/app/context/catalogContext";
 import React, { useEffect, useState } from "react";
 import ReactSlider from "react-slider";
 
@@ -19,6 +20,7 @@ const RangeWithInputs = (): JSX.Element => {
     priceTo: "2000",
   });
   const searchParams = getSearchParams();
+  const { setTrigger } = usePaginationParamsContext();
 
   const [minValue, setMinValue] = useState("0");
   const [maxValue, setMaxValue] = useState("2000");
@@ -71,6 +73,7 @@ const RangeWithInputs = (): JSX.Element => {
       removeSearchParam("priceTo");
       setSearchParam("priceFrom", minValue);
       setSearchParam("priceTo", maxValue);
+      setTrigger((prevTrigger) => prevTrigger + 1);
 
       setMinRange(minValue);
       setMaxRange(maxValue);

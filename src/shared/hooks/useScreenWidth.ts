@@ -1,18 +1,30 @@
+import type { RefObject } from "react";
 import { useEffect, useState } from "react";
 
-export const useScreenWidth = (): number => {
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
-
+export const useScreenWidth = (ref?: RefObject<HTMLElement>): number => {
+  const [windowWidth, setWindowWidth] = useState(0);
   useEffect(() => {
-    const windowSizeHandler = (): void => {
-      setWindowWidth(window.innerWidth);
+    const updateWidth = (): void => {
+      if (ref?.current) {
+        setWindowWidth(ref.current.offsetWidth);
+      } else {
+        setWindowWidth(window.innerWidth);
+      }
     };
-    window.addEventListener("resize", windowSizeHandler);
+
+    // Initial width calculation
+    updateWidth();
+
+    const handleResize = (): void => {
+      updateWidth();
+    };
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener("resize", windowSizeHandler);
+      window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [ref]);
 
   return windowWidth;
 };

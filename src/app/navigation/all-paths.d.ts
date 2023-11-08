@@ -8,4 +8,5 @@ type PathUnion =
   | "/faq"
   | "/settings"
   | "/shopping-cart"
-  | "/about-us";
+  | "/about-us"
+  | "/secret-gift";

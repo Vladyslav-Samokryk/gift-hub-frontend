@@ -25,6 +25,7 @@ export default function CatalogLayout(): JSX.Element {
   const [productNum, setProductNum] = useState(9);
   const [count, setCount] = useState(0);
   const [paginationLoad, setPaginationLoad] = useState(PAGINATION_LOAD.PAGE);
+  const [trigger, setTrigger] = useState(0);
 
   const [isSortModalActive, setIsSortModalActive] = useState(false);
   const [isFilterModalActive, setIsFilterModalActive] = useState(false);
@@ -37,6 +38,8 @@ export default function CatalogLayout(): JSX.Element {
         page,
         productNum,
         count,
+        trigger,
+        setTrigger,
         setPage,
         setProductNum,
         setCount,

@@ -31,6 +31,15 @@ export interface TRRandomPresent {
   btn_get_present: string;
 }
 
+export interface TRSecretGift {
+  header_link: string;
+  title: string;
+  subtitles: string[];
+  process_header: string;
+  process_steps: string[];
+  try_button: string;
+}
+
 export interface TRFilters {
   sale: string;
   pending: string;

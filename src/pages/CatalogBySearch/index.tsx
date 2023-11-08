@@ -14,7 +14,7 @@ import { getSearchParams } from "@shared";
 
 export default function CatalogBySearch(): JSX.Element {
   const lang = useGetCurrentLang();
-  const { setCount, page, productNum, paginationLoad } =
+  const { setCount, page, productNum, paginationLoad, trigger } =
     usePaginationParamsContext();
   const searchParams = getSearchParams();
 
@@ -41,7 +41,7 @@ export default function CatalogBySearch(): JSX.Element {
         setResults((prev) => (prev ? [...prev, ...data.results] : prev));
       }
     }
-  }, [data]);
+  }, [data, trigger]);
 
   return (
     <>

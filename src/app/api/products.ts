@@ -1,13 +1,14 @@
 import type { ProductCardType } from "@shared";
 import { baseApi } from "./base";
 
-interface Range {
+export interface Range {
   range: {
     from: number;
     to: number;
   };
   lang: string;
-  quantity: number;
+  categoryId?: string;
+  quantity?: number;
 }
 
 interface Category {
@@ -95,11 +96,6 @@ export const productsApi = baseApi.injectEndpoints({
           Array.isArray(main) && main.length > 0
             ? main.map((val) => "&main=" + val).join("")
             : "";
-        console.log(
-          `shop/guest_user/search/?${
-            q ? "search=" + q : ""
-          }${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
-        );
         return {
           url: `shop/guest_user/search/?${
             q ? "search=" + q : ""
@@ -130,9 +126,11 @@ export const productsApi = baseApi.injectEndpoints({
       }),
     }),
     getRandomProducts: builder.query<ProductCardType[], Range>({
-      query: ({ range, lang, quantity = 5 }) => {
+      query: ({ range, lang, quantity = 5, categoryId = "" }) => {
         return {
-          url: `shop/guest_user/random-gifts/?from=${range.from}&to=${range.to}&quantity=${quantity}`,
+          url: `shop/guest_user/random-gifts/?from=${range.from}&to=${
+            range.to
+          }&quantity=${quantity}&categoryId=${categoryId || ""}`,
           method: "GET",
           headers: {
             "Accept-Language": lang,

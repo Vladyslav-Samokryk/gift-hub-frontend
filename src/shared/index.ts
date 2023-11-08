@@ -13,6 +13,9 @@ export {
   DownStep,
   RightArrow,
   CategoryArrow,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  RightBigArrow,
 } from "./assets/svg/Arrows";
 export {
   ApplePayLogo,
@@ -35,6 +38,23 @@ export { PasswordHide, PasswordShow } from "./assets/svg/PasswordIcons";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
 export { Plus } from "./assets/svg/Plus";
 export { FilterIcon } from "./assets/svg/Filter";
+export {
+  SecretGift,
+  TechnyBigGiftBox,
+  TechnyRubiksCubePuzzle,
+  QuestionMark,
+  LargePresentBox,
+  MidlePresentBox,
+  SmallPresentBox,
+  SemiSmallPresentBox,
+  Cup,
+  Books,
+  Technique,
+  Food,
+  Accessories,
+  Knowledge,
+  Cloths,
+} from "./assets/svg/SecretGift";
 
 /** Hooks */
 export { useNetwork } from "./hooks/useNetwork";
@@ -67,6 +87,7 @@ export type {
   TRHelp,
   TRLang,
   TRRandomPresent,
+  TRSecretGift,
   TRFilters,
   TRSorts,
 } from "./types/Translation";

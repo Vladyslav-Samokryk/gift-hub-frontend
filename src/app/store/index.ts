@@ -8,7 +8,7 @@ import {
 } from "react-redux";
 import { createLogger } from "redux-logger";
 
-import { isDevEnv } from "@config";
+import { isDevEnv } from "@src/app/api/config";
 import rootReducer from "./rootReducer";
 import { productsApi, bannerApi, baseApi, authApi } from "../api";
 

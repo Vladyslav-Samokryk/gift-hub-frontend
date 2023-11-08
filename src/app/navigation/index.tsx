@@ -9,6 +9,7 @@ import {
   ShoppingCart,
   Product,
   AboutUs,
+  SecretGift,
   CatalogBySearch,
   CatalogByCategory,
 } from "@pages";
@@ -60,6 +61,10 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "shopping-cart",
           element: <ShoppingCart />,
+        },
+        {
+          path: "secret-gift",
+          element: <SecretGift />,
         },
         {
           path: "*",

@@ -8,3 +8,4 @@ export { default as Settings } from "./Settings";
 export { default as ShoppingCart } from "./ShoppingCart";
 export { default as Product } from "./Product";
 export { default as AboutUs } from "./AboutUs";
+export { default as SecretGift } from "./SecretGift";

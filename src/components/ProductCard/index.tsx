@@ -7,7 +7,7 @@ import {
   useScreenWidth,
   SCREEN,
 } from "@shared";
-import { CURRENCY } from "@config";
+import { CURRENCY } from "@src/app/api/config";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({
@@ -20,7 +20,7 @@ export default function ProductCard({
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
   return (
-    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:w-card">
+    <div className="h-card-sm w-card-sm lg:w-card m-2 rounded-lg border-2 border-black bg-white lg:h-card">
       <div className="relative">
         <Link to={`product/${id}`}>
           <ImgWithPreloader

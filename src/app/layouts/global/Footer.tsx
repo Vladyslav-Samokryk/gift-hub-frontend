@@ -14,7 +14,7 @@ import {
   FacebookLogo,
   InstagramLogo,
 } from "@shared";
-import { CONTACT_INFO } from "@config";
+import { CONTACT_INFO } from "@src/app/api/config";
 import { useTranslation } from "react-i18next";
 
 const helpSection: Array<{
@@ -125,7 +125,7 @@ export default function Footer(): JSX.Element {
   });
 
   return (
-    <footer className="divide-gray-400 bg-white px-10 pt-8 font-rubik shadow-main lg:grid lg:grid-cols-3 lg:divide-x lg:px-12 mt-10">
+    <footer className="divide-gray-400 bg-white px-10 pt-8 font-rubik shadow-main lg:grid lg:grid-cols-3 lg:divide-x lg:px-12">
       <section className="flex flex-col pb-5 lg:items-center">
         <div className="self-center">
           <Logo />

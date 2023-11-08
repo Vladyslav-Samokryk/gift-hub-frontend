@@ -89,11 +89,25 @@ interface AllLocalesType {
 
     or: string;
 
+    secret_gift: {
+      title: string;
+      subtitles: string[];
+      process_header: string;
+      process_steps: string[];
+      try_button: string;
+      btn_start: string;
+      select_price: string;
+      select_category: string;
+      ph_select: string;
+      win_title: string;
+    };
+
     filters_title: string;
     filters: {
       sale: string;
       available: string;
     };
+
     rate: string;
     price: string;
     sorts_title: string;

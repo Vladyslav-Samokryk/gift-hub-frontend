@@ -27,6 +27,8 @@ export const theme = {
         green: "#00BF13",
         turkus: "#00BCD4",
         blue: "#4495ff",
+        ocean: "#303F9F",
+        deepGray: "#607D8B",
       },
       background: {
         main: "#F6F7FF",
@@ -59,6 +61,12 @@ export const theme = {
   fontFamily: {
     exo2: ["Exo2", "sans-serif"],
     rubik: ["Rubik", "sans-serif"],
+  },
+  content: {
+    /* eslint-disable @typescript-eslint/quotes */
+    bobble1: 'url("src/shared/assets/img/secretGift/first_bobble.svg")',
+    bobble2: 'url("src/shared/assets/img/secretGift/second_bobble.svg")',
+    bobble3: 'url("src/shared/assets/img/secretGift/third_bobble.svg")',
   },
 };
 export const plugins = [];
