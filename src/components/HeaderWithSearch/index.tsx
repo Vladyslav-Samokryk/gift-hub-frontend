@@ -51,7 +51,8 @@ const HeaderWithSearch = ({
         <section className="group absolute -bottom-4 left-1/2 flex w-80 translate-x-[-50%] items-center rounded-lg border border-black bg-white p-1 text-center lg:static lg:w-96 lg:translate-x-0">
           <button
             onClick={() =>
-              search.trim() !== "" && navigate("/search/" + search)
+              search.trim() !== "" &&
+              navigate(`/search/?q=${search}&sort=popular`)
             }
           >
             <Search />
@@ -66,7 +67,7 @@ const HeaderWithSearch = ({
             onKeyDown={(e) =>
               e.code === "Enter" &&
               search.trim() !== "" &&
-              navigate("/search/?q=" + search)
+              navigate(`/search/?q=${search}&sort=popular`)
             }
           />
           {search ? (

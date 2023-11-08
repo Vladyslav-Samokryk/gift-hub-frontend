@@ -10,12 +10,14 @@ import {
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useEffect, useState } from "react";
+import { usePaginationParamsContext } from "@src/app/context/catalogContext";
 
 export default function SortCatalog(): JSX.Element {
   const { t } = useTranslation();
   const sorts: TRSorts = t("sorts", { returnObjects: true });
   const windowWidth = useScreenWidth();
   const [selectedSort, setSelectedSort] = useState("");
+  const { setTrigger } = usePaginationParamsContext();
 
   useEffect(() => {
     const searchParams = getSearchParams();
@@ -29,6 +31,7 @@ export default function SortCatalog(): JSX.Element {
   const handleRadioButtonClick = (sort: string): void => {
     removeSearchParam("sort");
     setSearchParam("sort", sort);
+    setTrigger((prevTrigger) => prevTrigger + 1);
     setSelectedSort(sort);
   };
 
@@ -41,6 +44,7 @@ export default function SortCatalog(): JSX.Element {
         return windowWidth > SCREEN.LG ? (
           <button
             key={i}
+            type="submit"
             onClick={() => handleRadioButtonClick(sort)}
             className={classNames("px-1", {
               "rounded-full bg-purple-100": selectedSort === sort,

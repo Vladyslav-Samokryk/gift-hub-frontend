@@ -96,11 +96,6 @@ export const productsApi = baseApi.injectEndpoints({
           Array.isArray(main) && main.length > 0
             ? main.map((val) => "&main=" + val).join("")
             : "";
-        console.log(
-          `shop/guest_user/search/?${
-            q ? "search=" + q : ""
-          }${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
-        );
         return {
           url: `shop/guest_user/search/?${
             q ? "search=" + q : ""

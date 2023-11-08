@@ -11,6 +11,7 @@ import {
 import { useTranslation } from "react-i18next";
 
 import { useEffect, useState } from "react";
+import { usePaginationParamsContext } from "@src/app/context/catalogContext";
 
 interface Filters {
   main: string[] | string;
@@ -25,6 +26,7 @@ export default function FiltersCatalog(): JSX.Element {
     rate: [],
   });
   const searchParams = getSearchParams();
+  const { setTrigger } = usePaginationParamsContext();
 
   useEffect(() => {
     setSelectedFilters({
@@ -56,7 +58,7 @@ export default function FiltersCatalog(): JSX.Element {
         : [filterArray];
       updatedFilters[filterType] = newValue.concat(value);
     }
-
+    setTrigger((prevTrigger) => prevTrigger + 1);
     setSelectedFilters(updatedFilters);
   };
 
