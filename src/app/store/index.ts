@@ -1,3 +1,12 @@
+import {
+  persistStore,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import { configureStore } from "@reduxjs/toolkit";
 import type { AnyAction, Dispatch, Middleware } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/dist/query";
@@ -34,7 +43,13 @@ export const setupStore = (): ReturnType<typeof configureStore> => {
   return configureStore({
     reducer: rootReducer,
     middleware: (getDefaultMiddleware) =>
-      (getDefaultMiddleware() as GetDefaultMiddlewareType).concat(
+      (
+        getDefaultMiddleware({
+          serializableCheck: {
+            ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+          },
+        }) as GetDefaultMiddlewareType
+      ).concat(
         ...middleware,
         baseApi.middleware as MiddlewarePointType,
         authApi.middleware as MiddlewarePointType,
@@ -50,5 +65,6 @@ export const useAppDispatch = (): AppDispatch => useDispatch<AppDispatch>();
 export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
 
 export const store = setupStore();
+export const persistor = persistStore(store);
 
 setupListeners(store.dispatch);
