@@ -33,6 +33,7 @@
     "react-select": "^5.7.7",
     "react-slider": "^2.0.6",
     "redux": "^4.2.1",
+    "redux-persist": "^6.0.0",
     "sass": "^1.64.2"
   },
   "devDependencies": {

@@ -8,6 +8,8 @@ import {
   SCREEN,
 } from "@shared";
 import { CURRENCY } from "@src/app/api/config";
+import { addToCart } from "@src/app/store/cart/cartSlice";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({
@@ -19,8 +21,23 @@ export default function ProductCard({
   id,
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
+  const dispatch = useDispatch();
+
+  const handleAddToCart = (): void => {
+    dispatch(
+      addToCart({
+        img,
+        name,
+        category,
+        price,
+        global_rating,
+        id,
+      }),
+    );
+  };
+
   return (
-    <div className="h-card-sm w-card-sm lg:w-card m-2 rounded-lg border-2 border-black bg-white lg:h-card">
+    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:w-card">
       <div className="relative">
         <Link to={`product/${id}`}>
           <ImgWithPreloader
@@ -55,7 +72,7 @@ export default function ProductCard({
               starSize={windowWidth < SCREEN.LG ? 16 : 25}
               rate={global_rating}
             />
-            <button>
+            <button onClick={handleAddToCart}>
               <Basket
                 type={windowWidth >= SCREEN.LG ? "lg" : "sm"}
                 className="fill-blue-700"
