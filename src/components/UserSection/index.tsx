@@ -11,12 +11,12 @@ const UserSection = ({ accountClick }: UserSectionProps): JSX.Element => {
   return (
     <section className="flex w-36 justify-between self-center">
       <button
-        className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900"
+        className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-800"
         onClick={accountClick}
       >
         <UserAccount />
       </button>
-      <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900">
+      <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-800">
         <Wishlist />
       </button>
       <button className="group relative flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900">

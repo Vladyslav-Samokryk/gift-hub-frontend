@@ -13,7 +13,7 @@ export default function NavigationByRole(): JSX.Element {
         <nav>
           <Link
             to={"/catalog-for-manager"}
-            className="secondary hover:text-accent-turkus"
+            className="secondary hover:text-blue-700"
           >
             {t("header_links.catalog")}
           </Link>
@@ -26,7 +26,7 @@ export default function NavigationByRole(): JSX.Element {
         <nav>
           <Link
             to={"/catalog-for-admin"}
-            className="secondary hover:text-accent-turkus"
+            className="secondary hover:text-blue-700"
           >
             {t("header_links.catalog")}
           </Link>
@@ -37,7 +37,7 @@ export default function NavigationByRole(): JSX.Element {
     default: {
       return (
         <nav className="mobile-font md:secondary flex w-52 items-center justify-between px-5 pt-5 md:w-80 md:grow-0">
-          <Link to={"/about-us"} className="hover:text-accent-turkus">
+          <Link to={"/about-us"} className="hover:text-blue-700">
             {t("header_links.about")}
           </Link>
           <ContactDropDown />
