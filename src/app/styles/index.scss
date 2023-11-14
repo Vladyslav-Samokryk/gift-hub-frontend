@@ -29,11 +29,11 @@ input[type=number] {
       @apply w-max rounded-sm bg-blue-700 px-8 py-1 text-xl font-semibold text-white
    }
     .btn-effect {
-        &:hover {
-            @apply bg-CTA-gradient;
+        &:hover:enabled {
+            @apply bg-blue-800;
         }
 
-        &:active {
+        &:active:enabled {
             @apply bg-blue-900;
         }
 

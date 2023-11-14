@@ -8,63 +8,63 @@ export const Catalog = (): JSX.Element => (
   >
     <rect width="24" height="24" fill="white" />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="4"
       cy="4"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="12"
       cy="4"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="20"
       cy="4"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="4"
       cy="12"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="12"
       cy="12"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="20"
       cy="12"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="4"
       cy="20"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="12"
       cy="20"
       r="3"
       fill="#13183A"
     />
     <circle
-      className="group-hover:fill-accent-turkus"
+      className="group-hover:fill-blue-700"
       cx="20"
       cy="20"
       r="3"

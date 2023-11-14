@@ -42,9 +42,7 @@ export default function ContactDropDown(): JSX.Element {
       )}
       <div className="relative">
         <button className="flex items-center" onClick={() => toggleMenu()}>
-          <h3 className="hover:text-accent-turkus">
-            {t("header_links.contacts")}
-          </h3>
+          <h3 className="hover:text-blue-700">{t("header_links.contacts")}</h3>
           {isVisible ? <DropUp /> : <DropDown />}
         </button>
 
