@@ -1,5 +1,11 @@
-import type { TRRandomPresent, StylePropType, ProductCardType } from "@shared";
+import type {
+  TRRandomPresent,
+  StylePropType,
+  ProductCardType,
+  Range,
+} from "@shared";
 
+import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
 import { useGetRandomProductsQuery } from "@src/app/api/products";
 import {
@@ -28,6 +34,8 @@ interface RandomWheelProps {
   setWheelRotate: (value: boolean) => void;
   wheelRotate: boolean;
   setPresent: (value: ProductCardType | null) => void;
+  range: Range;
+  setRange: Dispatch<SetStateAction<Range>>;
 }
 
 export default function RandomWheel({
@@ -35,11 +43,9 @@ export default function RandomWheel({
   setWheelRotate,
   wheelRotate,
   setPresent,
+  range,
+  setRange,
 }: RandomWheelProps): JSX.Element {
-  const [range, setRange] = useState({
-    from: 200,
-    to: 700,
-  });
   const { t } = useTranslation();
 
   const randomPresent: TRRandomPresent = t("random_present", {

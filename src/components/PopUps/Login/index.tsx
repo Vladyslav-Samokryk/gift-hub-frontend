@@ -9,35 +9,24 @@ import {
 import EnterAsSection from "../EnterAsSection";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-
-interface LoginType {
-  error?: boolean;
-  visible: boolean;
-  setVisible: (value: boolean | ((prev: boolean) => boolean)) => void;
-  goToRegistr: (value: boolean | ((prev: boolean) => boolean)) => void;
-}
+import { useModals } from "@src/app/context/modalContext/useModals";
+import { MODALS } from "@src/app/context/modalContext/modals";
+import type { ModalDialogProps } from "@src/shared/types/Modals";
 
 export default function LoginPopUp({
-  visible,
-  setVisible,
-  goToRegistr,
-  error = false,
-}: LoginType): JSX.Element {
+  isOpen,
+  onClose,
+  data,
+}: ModalDialogProps): JSX.Element {
+  const { onOpen } = useModals();
   const { t } = useTranslation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer
-      visible={visible}
-      onClose={() => setVisible(false)}
-      top={100}
-    >
-      <ModalHeader
-        title={t("login_popup.header")}
-        onClose={() => setVisible(false)}
-      >
-        {error ? (
+    <ModalContainer visible={isOpen} onClose={onClose} top={100}>
+      <ModalHeader title={t("login_popup.header")} onClose={onClose}>
+        {data?.error ? (
           <p className="additional text-accent-bOrange">
             {t("login_popup.wishlist_error")}
           </p>
@@ -82,8 +71,10 @@ export default function LoginPopUp({
             <button
               className="additional mt-3 text-blue-600 underline"
               onClick={() => {
-                setVisible(false);
-                goToRegistr(true);
+                if (onClose) {
+                  onClose();
+                  onOpen({ name: MODALS.REGISTR });
+                }
               }}
             >
               {t("registr_popup.header")}

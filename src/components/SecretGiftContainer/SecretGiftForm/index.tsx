@@ -2,7 +2,7 @@ import type { Dispatch, SetStateAction } from "react";
 import React, { useMemo, useState } from "react";
 
 import { useGetCategoriesQuery } from "@src/app/api/categories";
-import type { Range } from "@src/app/api/products";
+import type { RangeT } from "@src/app/api/products";
 import { SelectSecretGift } from "@src/components";
 import type { Categories } from "@src/shared";
 import { RangePriceRandom, useGetCurrentLang } from "@src/shared";
@@ -15,7 +15,7 @@ export interface Category {
 
 interface SecretGiftFormProps {
   setUserWin: Dispatch<SetStateAction<boolean>>;
-  setQuery: Dispatch<SetStateAction<Range | null>>;
+  setQuery: Dispatch<SetStateAction<RangeT | null>>;
   setIsAnimation: Dispatch<SetStateAction<boolean>>;
 }
 export default function SecretGiftForm({

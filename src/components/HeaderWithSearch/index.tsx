@@ -1,48 +1,23 @@
-import type { CatalogSub } from "@src/shared";
 import { Search, BlueClose, Present, Catalog } from "@src/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { CatalogPopUp, CategoryPopUp, UserSection } from "..";
+import { UserSection } from "..";
 import { useNavigate } from "react-router-dom";
+import { useModals } from "@src/app/context/modalContext/useModals";
+import { MODALS } from "@src/app/context/modalContext/modals";
 
-interface HeaderWithSearchProps {
-  accountClick?: () => void;
-}
-
-const HeaderWithSearch = ({
-  accountClick,
-}: HeaderWithSearchProps): JSX.Element => {
+const HeaderWithSearch = (): JSX.Element => {
   const { t } = useTranslation();
   const [search, setSearch] = useState("");
-  const [catalogVisible, setCatalogVisible] = useState(false);
-  const [categoryVisible, setCategoryVisible] = useState<CatalogSub>({
-    visible: false,
-    title: "",
-    sub: [],
-  });
+  const { onOpen } = useModals();
+
   const navigate = useNavigate();
   return (
     <>
-      <CatalogPopUp
-        visible={catalogVisible}
-        setVisible={setCatalogVisible}
-        setCategoryVisible={setCategoryVisible}
-      />
-      <CategoryPopUp
-        popUp={categoryVisible}
-        setPopUp={setCategoryVisible}
-        onBack={() => {
-          setCatalogVisible(true);
-          setCategoryVisible((prev) => {
-            return { ...prev, visible: false };
-          });
-        }}
-      />
-
       <section className="relative mb-6 mt-8 flex h-28 items-start justify-between px-10 lg:mb-1 lg:h-fit">
         <button
           className="group flex items-center self-center"
-          onClick={() => setCatalogVisible(true)}
+          onClick={() => onOpen({ name: MODALS.CATALOG })}
         >
           <Catalog />
           <p className="lg:h6 additional pl-1">{t("header_links.catalog")}</p>
@@ -79,7 +54,7 @@ const HeaderWithSearch = ({
 
         <section className="group absolute left-1/2 top-0 flex w-max translate-x-[-50%] items-center lg:static lg:translate-x-0">
           <button
-            className="group flex"
+            className="group flex items-center"
             onClick={() => navigate("/secret-gift")}
           >
             <p className="lg:h6 additional pr-1 group-hover:text-accent-turkus">
@@ -88,7 +63,7 @@ const HeaderWithSearch = ({
             <Present />
           </button>
         </section>
-        <UserSection accountClick={accountClick} />
+        <UserSection />
       </section>
     </>
   );
