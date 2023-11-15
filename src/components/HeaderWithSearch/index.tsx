@@ -1,4 +1,10 @@
-import { Search, BlueClose, Present, Catalog } from "@src/shared";
+import {
+  Search,
+  BlueClose,
+  Present,
+  Catalog,
+  setSearchParam,
+} from "@src/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { UserSection } from "..";
@@ -12,6 +18,18 @@ const HeaderWithSearch = (): JSX.Element => {
   const { onOpen } = useModals();
 
   const navigate = useNavigate();
+
+  const navigateSearch = (): void => {
+    const searchParams = window.location.search;
+    let newUrl = "";
+    if (search.trim() !== "") {
+      newUrl = `/search/?q=${search}&sort=popular`;
+      if (searchParams.length) {
+        newUrl = setSearchParam("q", search, false);
+      }
+      navigate(newUrl);
+    }
+  };
   return (
     <>
       <section className="relative mb-6 mt-8 flex h-28 items-start justify-between px-10 lg:mb-1 lg:h-fit">
@@ -24,12 +42,7 @@ const HeaderWithSearch = (): JSX.Element => {
         </button>
 
         <section className="group absolute -bottom-4 left-1/2 flex w-80 translate-x-[-50%] items-center rounded-lg border border-black bg-white p-1 text-center lg:static lg:w-96 lg:translate-x-0">
-          <button
-            onClick={() =>
-              search.trim() !== "" &&
-              navigate(`/search/?q=${search}&sort=popular`)
-            }
-          >
+          <button onClick={navigateSearch}>
             <Search />
           </button>
           <input
@@ -39,11 +52,7 @@ const HeaderWithSearch = (): JSX.Element => {
             name="search"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            onKeyDown={(e) =>
-              e.code === "Enter" &&
-              search.trim() !== "" &&
-              navigate(`/search/?q=${search}&sort=popular`)
-            }
+            onKeyDown={(e) => e.code === "Enter" && navigateSearch()}
           />
           {search ? (
             <button onClick={() => setSearch("")} className="pr-1">

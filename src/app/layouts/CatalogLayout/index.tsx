@@ -12,8 +12,6 @@ import {
   SortCatalog,
   BuyTogetherSection,
   PaginationSection,
-  FilterPopUp,
-  SortPopUp,
 } from "@components";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
@@ -27,7 +25,6 @@ export default function CatalogLayout(): JSX.Element {
   const [productNum, setProductNum] = useState(9);
   const [count, setCount] = useState(0);
   const [paginationLoad, setPaginationLoad] = useState(PAGINATION_LOAD.PAGE);
-  const [trigger, setTrigger] = useState(0);
   const { onOpen } = useModals();
 
   const windowWidth = useScreenWidth();
@@ -38,8 +35,6 @@ export default function CatalogLayout(): JSX.Element {
         page,
         productNum,
         count,
-        trigger,
-        setTrigger,
         setPage,
         setProductNum,
         setCount,
@@ -48,7 +43,7 @@ export default function CatalogLayout(): JSX.Element {
       }}
     >
       <div className="m-auto lg:p-5 lg:px-10">
-        <Breadcrumbs />
+        {windowWidth > SCREEN.LG && <Breadcrumbs />}
 
         <section className="grid grid-cols-1 gap-3 lg:grid-cols-[230px_1fr]">
           {windowWidth > SCREEN.LG ? (
