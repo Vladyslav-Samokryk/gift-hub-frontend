@@ -189,5 +189,12 @@ export const en: AllLocalesType = {
       massagers: "Massagers",
       powerbanks: "Powerbanks",
     },
+    basket: {
+      heading: "Basket",
+      priceText: "Price:",
+      discountText: "Discount:",
+      totalPriceText: "Total price:",
+      orderButtonText: "Make an order",
+    },
   },
 };

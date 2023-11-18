@@ -12,4 +12,6 @@ export interface ProductCardType {
   global_rating: number;
   /** Discount */
   discount: number;
+  //  Count of a product in a basket
+  count: number;
 }
