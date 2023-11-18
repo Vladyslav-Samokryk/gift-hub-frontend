@@ -15,7 +15,7 @@ import {
   useSelector,
   type TypedUseSelectorHook,
 } from "react-redux";
-import logger, { createLogger } from "redux-logger";
+import { createLogger } from "redux-logger";
 
 import { isDevEnv } from "@src/app/api/config";
 import rootReducer from "./rootReducer";
@@ -55,7 +55,6 @@ export const setupStore = (): ReturnType<typeof configureStore> => {
         authApi.middleware as MiddlewarePointType,
         bannerApi.middleware as MiddlewarePointType,
         productsApi.middleware as MiddlewarePointType,
-        ...(isDevEnv ? [logger] : []),
       ),
     devTools: isDevEnv,
     preloadedState: {},
