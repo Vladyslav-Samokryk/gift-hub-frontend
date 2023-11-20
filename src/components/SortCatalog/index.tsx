@@ -32,7 +32,9 @@ export default function SortCatalog(): JSX.Element {
             type="submit"
             onClick={() => handleRadioButtonClick(sort)}
             className={classNames("px-1", {
-              "rounded-full bg-purple-100": searchParams.has("sort", sort),
+              "rounded-full bg-purple-100": searchParams
+                .getAll("sort")
+                .includes(sort),
             })}
           >
             {sorts[sort as keyof TRSorts]}
@@ -46,7 +48,7 @@ export default function SortCatalog(): JSX.Element {
               handleRadioButtonClick(sort);
             }}
             className={"pt-3"}
-            checked={searchParams.has("sort", sort)}
+            checked={searchParams.getAll("sort").includes(sort)}
           />
         );
       })}

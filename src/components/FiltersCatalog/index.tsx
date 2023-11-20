@@ -27,7 +27,7 @@ export default function FiltersCatalog(): JSX.Element {
     value: string,
   ): void => {
     let newUrl = "";
-    if (searchParams.has(filterType, value)) {
+    if (searchParams.getAll(filterType).includes(value)) {
       newUrl = removeSearchParam(filterType, value);
     } else {
       newUrl = setSearchParam(filterType, value, true);
@@ -43,7 +43,7 @@ export default function FiltersCatalog(): JSX.Element {
             key={i}
             title={filters[filter as keyof TRFilters]}
             onChange={() => handleCheckboxClick("main", filter)}
-            checked={searchParams.has("main", filter)}
+            checked={searchParams.getAll("main").includes(filter)}
           />
         ))}
       </ListContainer>
@@ -53,7 +53,7 @@ export default function FiltersCatalog(): JSX.Element {
           <Checkbox
             title=""
             onChange={() => handleCheckboxClick("rate", "5")}
-            checked={searchParams.has("rate", "5")}
+            checked={searchParams.getAll("rate").includes("5")}
           />
           <StarRate rate={5} />
         </div>
@@ -62,7 +62,7 @@ export default function FiltersCatalog(): JSX.Element {
           <Checkbox
             title=""
             onChange={() => handleCheckboxClick("rate", "4")}
-            checked={searchParams.has("rate", "4")}
+            checked={searchParams.getAll("rate").includes("4")}
           />
           <StarRate rate={4} />
         </div>
