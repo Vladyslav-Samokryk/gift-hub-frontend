@@ -1,14 +1,15 @@
+import type { Dispatch, SetStateAction } from "react";
 import { createContext, useContext } from "react";
 
 interface PaginationContext {
   page: number;
   productNum: number;
   count: number;
-  setPage: (newValue: number | ((prevValue: number) => number)) => void;
-  setProductNum: (_value: number) => void;
-  setCount: (_value: number) => void;
+  setPage: Dispatch<SetStateAction<number>>;
+  setProductNum: Dispatch<SetStateAction<number>>;
+  setCount: Dispatch<SetStateAction<number>>;
   paginationLoad: string;
-  setPaginationLoad: (_value: string) => void;
+  setPaginationLoad: Dispatch<SetStateAction<string>>;
 }
 
 export const PaginationParamsContext = createContext<PaginationContext | null>(

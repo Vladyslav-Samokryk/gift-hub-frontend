@@ -14,8 +14,12 @@ import { getSearchParams } from "@shared";
 
 export default function CatalogBySearch(): JSX.Element {
   const lang = useGetCurrentLang();
-  const { setCount, page, productNum, paginationLoad, trigger } =
-    usePaginationParamsContext();
+  const paginationContext = usePaginationParamsContext();
+  if (!paginationContext) {
+    console.error("Pagination context is null");
+    return <></>;
+  }
+  const { setCount, page, productNum, paginationLoad } = paginationContext;
   const searchParams = getSearchParams();
 
   const { data } = useGetProductsBySearchQuery({
@@ -41,7 +45,7 @@ export default function CatalogBySearch(): JSX.Element {
         setResults((prev) => (prev ? [...prev, ...data.results] : prev));
       }
     }
-  }, [data, trigger]);
+  }, [data]);
 
   return (
     <>
