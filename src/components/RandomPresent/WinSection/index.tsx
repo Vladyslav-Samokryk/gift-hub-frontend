@@ -23,7 +23,8 @@ export default function WinSection({
       <section
         className="relative m-3 mb-10 flex h-screen flex-col items-center justify-between rounded-2xl bg-cover bg-center px-5 py-10 text-center text-white"
         style={{
-          backgroundImage: "url('src/shared/assets/img/RandomPresentBg.svg')",
+          backgroundImage:
+            "url('https://main--lighthearted-cocada-0d2e37.netlify.app/img/RandomPresentBg.svg')",
         }}
       >
         <button

@@ -9,7 +9,6 @@ export const productCardMock: ProductCardType[] = [
     price: 500,
     global_rating: 3,
     discount: 0,
-
   },
   {
     id: "12",
