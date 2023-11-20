@@ -108,51 +108,64 @@ VITE_NODE_ENV=###
 > Look at `.env.example` file in the root of the project for example.
 
 ## DBStructure
+
 See relationship between entities of db: [dbdiagram](https://dbdiagram.io/d/64ca041702bd1c4a5e192886)
 
 ## Documentation
+
 Main documentation of project: [Link](https://docs.google.com/spreadsheets/d/1bEgjMwZJkJobGGWi1EZnFu5k1PQ2FiLptJAAX-J4s_A/edit?usp=sharing)
 
 ## Designs
-Christina`s: [figma](https://www.figma.com/file/0BUH6xUUJe7dUfz1aV0yqD/GiftHub-online-shop)
 
-Ilona`s: [figma](https://www.figma.com/file/zDc7MmRInCyP0iNORar5Xk/Untitled)
+[figma](https://www.figma.com/file/1w6GqTuER8ORKXhooggrHx/Online-shop-%22GiftHub%22?type=design&mode=design&t=IrdoJtjClHUYbYxg-0)
 
 ## BackendApi
+
 Django REST API: [link](https://alex-online-store.fly.dev/api/v1/accounts/)
 Postman: [link](https://app.getpostman.com/join-team?invite_code=0c32f0b68818814f27012c8899cba06f&target_code=6f7cd67875a00cc6eefe3381c0610770)
-<!-- TODO: add link on swagger -->
+Swagger: [link](https://alex-online-store.fly.dev/)
 
 ## Survey
-Result of survey: [Link](https://docs.google.com/forms/d/e/1FAIpQLSd90hd9qvWqWTkMjjnyS4xLyUXHLuJSq_iJln3pB1YmtYGjew/viewform?usp=sharing  )
+
+Result of survey: [Link](https://docs.google.com/forms/d/e/1FAIpQLSd90hd9qvWqWTkMjjnyS4xLyUXHLuJSq_iJln3pB1YmtYGjew/viewform?usp=sharing)
 
 ## Contact
+
 If you have any questions or feedback regarding the project, feel free to contact:
 
 - Email: gift.hub@gmail.com
 - GitHub: [GiftHub](https://github.com/Vladyslav-Samokryk/gift-hub-frontend)
 
-
 ## Technologies:
-  #### Root
-  - vite
-  - react
-  - typescript
-  - i18next
-  - eslint
 
-  #### Styles
-  - scss
-  - tailwindcss
-  - framer-motion
-  - react-slider
+#### Root
 
-  #### State management
-  - @reduxjs/toolkit
+- vite
+- react
+- typescript
+- i18next
+- eslint
 
-  #### Package manager
-   - yarn
+### Tools
 
+- classnames
+
+#### Styles
+
+- scss
+- tailwindcss
+- framer-motion
+- react-slider
+- react-select
+- pure-react-carousel
+
+#### State management
+
+- @reduxjs/toolkit
+
+#### Package manager
+
+- yarn
 
 ## License
 

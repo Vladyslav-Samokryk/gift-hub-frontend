@@ -1,4 +1,4 @@
-import type { modalsList, MODALS } from "../../app/context/modalContext/modals";
+import type { MODALS } from "../../app/context/modalContext/modals";
 import type { CategorySub } from "./Categories";
 
 type ValueOf<T extends string> = `${T}`;

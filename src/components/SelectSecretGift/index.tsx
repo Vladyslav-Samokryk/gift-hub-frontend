@@ -1,10 +1,10 @@
 import type { DropdownIndicatorProps } from "react-select";
 import Select, { components } from "react-select";
-import clsx from "clsx";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "@src/shared/assets/svg/Arrows";
 import { useTranslation } from "react-i18next";
+import classNames from "classnames";
 
 interface SelectSecretGiftProps {
   options?: Category[];
@@ -79,13 +79,13 @@ export default function SelectSecretGift({
       }}
       classNames={{
         control: ({ isFocused }) =>
-          clsx(
+          classNames(
             isFocused ? controlStyles.focus : controlStyles.nonFocus,
             controlStyles.base,
           ),
         menu: () => menuStyles,
         option: ({ isFocused, isSelected }) =>
-          clsx(
+          classNames(
             isFocused && optionStyles.focus,
             isSelected && optionStyles.selected,
             optionStyles.base,
