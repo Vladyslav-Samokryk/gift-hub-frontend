@@ -1,11 +1,8 @@
-import type { ProductCardType } from "@shared";
+import type { ProductCardType, Range } from "@shared";
 import { baseApi } from "./base";
 
-export interface Range {
-  range: {
-    from: number;
-    to: number;
-  };
+export interface RangeT {
+  range: Range;
   lang: string;
   categoryId?: string;
   quantity?: number;
@@ -125,7 +122,7 @@ export const productsApi = baseApi.injectEndpoints({
         },
       }),
     }),
-    getRandomProducts: builder.query<ProductCardType[], Range>({
+    getRandomProducts: builder.query<ProductCardType[], RangeT>({
       query: ({ range, lang, quantity = 5, categoryId = "" }) => {
         return {
           url: `shop/guest_user/random-gifts/?from=${range.from}&to=${

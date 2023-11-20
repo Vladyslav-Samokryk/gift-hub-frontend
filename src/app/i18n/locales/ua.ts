@@ -92,7 +92,7 @@ export const ua: AllLocalesType = {
       ph: "Пароль",
       ph_create: "Придумайте пароль",
       ph_repeat: "Повторіть пароль",
-      remind_password: "Remind password",
+      remind_password: "Нагадати пароль",
       rules: [
         "Мінімум 7 символів",
         "Використовуйте літери і цифри",

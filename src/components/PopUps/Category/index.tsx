@@ -1,44 +1,35 @@
-import type { CatalogSub } from "@src/shared";
+import { useModals } from "@src/app/context/modalContext/useModals";
 import { ButtonWithIcon, ModalContainer, ModalHeader } from "@src/shared";
+import { MODALS } from "@src/app/context/modalContext/modals";
+import type { ModalDialogProps } from "@src/shared/types/Modals";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
-interface CategoryPopUpProps {
-  onBack: () => void;
-  popUp: CatalogSub;
-  setPopUp: (value: CatalogSub | ((prev: CatalogSub) => CatalogSub)) => void;
-}
-
 const CategoryPopUp = ({
-  onBack,
-  popUp,
-  setPopUp,
-}: CategoryPopUpProps): JSX.Element => {
+  isOpen,
+  onClose,
+  data,
+}: ModalDialogProps): JSX.Element => {
+  const { onOpen } = useModals();
   const { t } = useTranslation();
 
-  const onClose = (): void => {
-    setPopUp((prev) => {
-      return { ...prev, visible: false };
-    });
-  };
-
   return (
-    <ModalContainer visible={popUp.visible} onClose={onClose} top={150}>
-      <ModalHeader title={popUp.title} onClose={onClose} />
+    <ModalContainer visible={isOpen} onClose={onClose} top={150}>
+      <ModalHeader title={data?.title ?? ""} onClose={onClose} />
       <div className="flex w-60 flex-col gap-3 divide-y-2">
         <ButtonWithIcon
           text={t("all_categories")}
-          onClick={onBack}
+          onClick={() => onOpen({ name: MODALS.CATALOG })}
           className="secondary-bold mt-3 gap-2"
         >
           &lt;
         </ButtonWithIcon>
 
-        {popUp.sub.map((sub, index) => {
+        {data?.sub?.map((sub, index) => {
           return (
             <Link
               key={index}
-              to={"/catalog/" + sub.url}
+              to={`/catalog/${sub.url}`}
               className="w-full"
               onClick={onClose}
             >

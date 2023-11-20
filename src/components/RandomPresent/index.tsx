@@ -7,6 +7,10 @@ export default function RandomPresentSection(): JSX.Element {
   const [userWin, setUserWin] = useState(false);
   const [wheelRotate, setWheelRotate] = useState(false);
   const [present, setPresent] = useState<ProductCardType | null>(null);
+  const [range, setRange] = useState({
+    from: 200,
+    to: 700,
+  });
 
   return !userWin ? (
     <RandomWheel
@@ -14,6 +18,8 @@ export default function RandomPresentSection(): JSX.Element {
       setWheelRotate={setWheelRotate}
       wheelRotate={wheelRotate}
       setPresent={setPresent}
+      range={range}
+      setRange={setRange}
     />
   ) : (
     <WinSection
