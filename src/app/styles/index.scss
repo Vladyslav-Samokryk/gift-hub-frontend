@@ -128,3 +128,11 @@ body,
 .app {
    background: #F6F7FF;
 }
+
+.carousel__dot {
+    @apply m-1 h-4 w-4 rounded-full border-2 border-blue-700 
+}
+
+.carousel__dot--selected {
+    @apply bg-blue-700
+}

@@ -19,8 +19,12 @@ function CatalogByCategory(): JSX.Element {
   const { id } = useParams();
   const lang = useGetCurrentLang();
   const { data: categoryId } = useGetCategoryIdQuery(id ?? "");
-  const { setCount, page, productNum, paginationLoad } =
-    usePaginationParamsContext();
+  const paginationContext = usePaginationParamsContext();
+  if (!paginationContext) {
+    console.error("Pagination context is null");
+    return <></>;
+  }
+  const { setCount, page, productNum, paginationLoad } = paginationContext;
   const searchParams = getSearchParams();
   const { data, error } = useGetProductsByCategoryQuery(
     {

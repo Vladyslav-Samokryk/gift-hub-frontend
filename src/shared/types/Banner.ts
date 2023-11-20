@@ -7,8 +7,4 @@ export interface Banner {
   mobileImg: string;
   // link to specific catalog
   link: string;
-  // title of ad
-  title: string;
-  // some text about ad
-  description: string;
 }
