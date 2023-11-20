@@ -1,18 +1,13 @@
-import { useState } from "react";
 import { Logo } from "@shared";
 import {
   HeaderWithGoBack,
   HeaderWithSearch,
   LanguageToggle,
-  LoginPopUp,
   NavigationByRole,
-  RegistrationPopUp,
 } from "@components";
 import { useLocation } from "react-router-dom";
 
 export default function Header(): JSX.Element {
-  const [loginPopUp, setLoginPopUp] = useState(false);
-  const [registrPopUp, setRegistrPopUp] = useState(false);
   const location = useLocation();
 
   return (
@@ -28,13 +23,6 @@ export default function Header(): JSX.Element {
       ) : (
         <HeaderWithSearch />
       )}
-
-      <LoginPopUp
-        visible={loginPopUp}
-        setVisible={setLoginPopUp}
-        goToRegistr={setRegistrPopUp}
-      />
-      <RegistrationPopUp visible={registrPopUp} setVisible={setRegistrPopUp} />
     </header>
   );
 }

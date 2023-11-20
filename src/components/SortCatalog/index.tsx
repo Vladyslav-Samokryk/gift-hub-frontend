@@ -4,35 +4,20 @@ import {
   SCREEN,
   RadioButton,
   setSearchParam,
-  removeSearchParam,
-  getSearchParams,
 } from "@shared";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
-import { useEffect, useState } from "react";
-import { usePaginationParamsContext } from "@src/app/context/catalogContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SortCatalog(): JSX.Element {
   const { t } = useTranslation();
   const sorts: TRSorts = t("sorts", { returnObjects: true });
   const windowWidth = useScreenWidth();
-  const [selectedSort, setSelectedSort] = useState("");
-  const { setTrigger } = usePaginationParamsContext();
-
-  useEffect(() => {
-    const searchParams = getSearchParams();
-    setSelectedSort(
-      Array.isArray(searchParams.sort)
-        ? searchParams.sort[0]
-        : searchParams.sort,
-    );
-  }, []);
+  const navigate = useNavigate();
+  const searchParams = new URLSearchParams(window.location.search);
 
   const handleRadioButtonClick = (sort: string): void => {
-    removeSearchParam("sort");
-    setSearchParam("sort", sort);
-    setTrigger((prevTrigger) => prevTrigger + 1);
-    setSelectedSort(sort);
+    navigate(setSearchParam("sort", sort, false));
   };
 
   return (
@@ -47,7 +32,7 @@ export default function SortCatalog(): JSX.Element {
             type="submit"
             onClick={() => handleRadioButtonClick(sort)}
             className={classNames("px-1", {
-              "rounded-full bg-purple-100": selectedSort === sort,
+              "rounded-full bg-purple-100": searchParams.has("sort", sort),
             })}
           >
             {sorts[sort as keyof TRSorts]}
@@ -61,7 +46,7 @@ export default function SortCatalog(): JSX.Element {
               handleRadioButtonClick(sort);
             }}
             className={"pt-3"}
-            checked={selectedSort === sort}
+            checked={searchParams.has("sort", sort)}
           />
         );
       })}

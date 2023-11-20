@@ -1,12 +1,6 @@
-import {
-  MAX_PRICE,
-  MIN_PRICE,
-  getSearchParams,
-  removeSearchParam,
-  setSearchParam,
-} from "@shared";
-import { usePaginationParamsContext } from "@src/app/context/catalogContext";
+import { MAX_PRICE, MIN_PRICE, setSearchParam } from "@shared";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";
 
 interface Price {
@@ -15,28 +9,18 @@ interface Price {
 }
 
 const RangeWithInputs = (): JSX.Element => {
+  const searchParams = new URLSearchParams(window.location.search);
+
   const [price, setPrice] = useState<Price>({
-    priceFrom: "0",
-    priceTo: "2000",
+    priceFrom: searchParams.get("priceFrom") ?? "0",
+    priceTo: searchParams.get("priceTo") ?? "2000",
   });
-  const searchParams = getSearchParams();
-  const { setTrigger } = usePaginationParamsContext();
+  const navigate = useNavigate();
 
   const [minValue, setMinValue] = useState("0");
   const [maxValue, setMaxValue] = useState("2000");
   const [minRange, setMinRange] = useState("0");
   const [maxRange, setMaxRange] = useState("2000");
-
-  useEffect(() => {
-    setPrice({
-      priceFrom: Array.isArray(searchParams.priceFrom)
-        ? searchParams.priceFrom[0]
-        : searchParams.priceFrom ?? "0",
-      priceTo: Array.isArray(searchParams.priceTo)
-        ? searchParams.priceFrom[0]
-        : searchParams.priceTo ?? "2000",
-    });
-  }, []);
 
   useEffect(() => {
     setMaxValue(price.priceTo);
@@ -69,11 +53,8 @@ const RangeWithInputs = (): JSX.Element => {
         priceFrom: minValue,
         priceTo: maxValue,
       });
-      removeSearchParam("priceFrom");
-      removeSearchParam("priceTo");
-      setSearchParam("priceFrom", minValue);
-      setSearchParam("priceTo", maxValue);
-      setTrigger((prevTrigger) => prevTrigger + 1);
+      navigate(setSearchParam("priceFrom", minValue, false));
+      navigate(setSearchParam("priceTo", maxValue, false));
 
       setMinRange(minValue);
       setMaxRange(maxValue);

@@ -8,33 +8,26 @@ import {
 } from "@src/shared";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import type { CatalogSub } from "@src/shared";
 import { SubcategoryCard } from "@src/components";
-import { t } from "i18next";
 import { useTranslation } from "react-i18next";
-
-interface CatalogPopUpProps {
-  visible: boolean;
-  setVisible: (value: boolean | ((prev: boolean) => boolean)) => void;
-  setCategoryVisible: (
-    value: CatalogSub | ((prev: CatalogSub) => CatalogSub),
-  ) => void;
-}
+import { useModals } from "@src/app/context/modalContext/useModals";
+import { MODALS } from "@src/app/context/modalContext/modals";
+import type { ModalDialogProps } from "@src/shared/types/Modals";
 
 export default function CatalogPopUp({
-  visible,
-  setVisible,
-  setCategoryVisible,
-}: CatalogPopUpProps): JSX.Element {
+  isOpen,
+  onClose,
+}: ModalDialogProps): JSX.Element {
   const lang = useGetCurrentLang();
   const [categoryIndex, setCategoryIndex] = useState(0);
   const { data, isLoading } = useGetCategoriesQuery(lang);
   const windowWidth = useScreenWidth();
   const { t } = useTranslation();
+  const { onOpen } = useModals();
 
   return (
     <AnimatePresence>
-      {visible && !isLoading && data && (
+      {isOpen && !isLoading && data && (
         <>
           <motion.div
             className="absolute left-0 top-0 z-40 h-full w-full  bg-gray-900"
@@ -45,7 +38,7 @@ export default function CatalogPopUp({
             exit={{
               opacity: 0,
             }}
-            onClick={() => setVisible(false)}
+            onClick={onClose}
           />
           <motion.div
             initial={{ opacity: 0 }}
@@ -56,7 +49,7 @@ export default function CatalogPopUp({
             {windowWidth < SCREEN.MD && (
               <ModalHeader
                 title={t("header_links.catalog")}
-                onClose={() => setVisible(false)}
+                onClose={onClose}
               />
             )}
             <div>
@@ -69,12 +62,16 @@ export default function CatalogPopUp({
                   onClick={() => {
                     setCategoryIndex(index);
                     if (windowWidth < SCREEN.MD) {
-                      setCategoryVisible({
-                        visible: true,
-                        sub: data[index].sub,
-                        title: data[index].name,
-                      });
-                      setVisible(false);
+                      if (onClose) {
+                        onClose();
+                        onOpen({
+                          name: MODALS.CATEGORY,
+                          data: {
+                            sub: data[index].sub,
+                            title: data[index].name,
+                          },
+                        });
+                      }
                     }
                   }}
                 />
@@ -88,7 +85,7 @@ export default function CatalogPopUp({
                     subTitle={sub.name}
                     subImg={sub.img}
                     subUrl={sub.url}
-                    onClick={() => setVisible(false)}
+                    onClick={onClose}
                   />
                 ))}
               </div>

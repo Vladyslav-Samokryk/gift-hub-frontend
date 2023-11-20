@@ -29,11 +29,11 @@ input[type=number] {
       @apply w-max rounded-sm bg-blue-700 px-8 py-1 text-xl font-semibold text-white
    }
     .btn-effect {
-        &:hover {
-            @apply bg-CTA-gradient;
+        &:hover:enabled {
+            @apply bg-blue-800;
         }
 
-        &:active {
+        &:active:enabled {
             @apply bg-blue-900;
         }
 
@@ -127,4 +127,12 @@ body,
 #root,
 .app {
    background: #F6F7FF;
+}
+
+.carousel__dot {
+    @apply m-1 h-4 w-4 rounded-full border-2 border-blue-700 
+}
+
+.carousel__dot--selected {
+    @apply bg-blue-700
 }

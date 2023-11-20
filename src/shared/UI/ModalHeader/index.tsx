@@ -4,7 +4,7 @@ import { Close } from "@src/shared";
 interface HeaderProps {
   title: string;
   children?: Children | null;
-  onClose: () => void;
+  onClose: (() => void) | undefined;
 }
 
 export default function ModalHeader({

@@ -4,7 +4,7 @@ interface SubcategoryCardProps {
   subTitle: string;
   subImg: string;
   subUrl: string;
-  onClick: () => void;
+  onClick: (() => void) | undefined;
 }
 
 export default function SubcategoryCard({
