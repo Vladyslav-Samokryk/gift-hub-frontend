@@ -30,6 +30,10 @@ export const theme = {
         ocean: "#303F9F",
         deepGray: "#607D8B",
       },
+      secondary: {
+        100: "#EBEEF4",
+        900: "#B7BECF",
+      },
       background: {
         main: "#F6F7FF",
       },

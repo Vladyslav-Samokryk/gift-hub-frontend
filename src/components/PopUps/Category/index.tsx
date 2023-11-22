@@ -29,7 +29,7 @@ const CategoryPopUp = ({
           return (
             <Link
               key={index}
-              to={`/catalog/${sub.url}`}
+              to={`/catalog/${sub.url.toString()}`}
               className="w-full"
               onClick={onClose}
             >

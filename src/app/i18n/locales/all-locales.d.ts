@@ -171,12 +171,17 @@ interface AllLocalesType {
       massagers: string;
       powerbanks: string;
     };
+
     basket: {
       heading: string;
       priceText: string;
       discountText: string;
       totalPriceText: string;
       orderButtonText: string;
+      empty: {
+        heading: string;
+        description: string;
+      };
     };
   };
 }

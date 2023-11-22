@@ -191,12 +191,17 @@ export const ua: AllLocalesType = {
       massagers: "Масажери",
       powerbanks: "Павербанки",
     },
+
     basket: {
       heading: "Кошик",
       priceText: "Сума без знижки:",
       discountText: "Знижка:",
       totalPriceText: "Сума до сплати:",
       orderButtonText: "Оформити замовлення",
+      empty: {
+        heading: "Кошик порожній",
+        description: "Але це ніколи не пізно виправити :)",
+      },
     },
   },
 };

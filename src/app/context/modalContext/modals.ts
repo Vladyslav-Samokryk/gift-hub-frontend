@@ -20,11 +20,14 @@ const SortPopUp = React.lazy(
 const FilterPopUp = React.lazy(
   async () => await import("../../../components/PopUps/Filter/index"),
 );
+const BasketPopUP = React.lazy(
+  async () => await import("../../../components/PopUps/Basket/index"),
+);
 
 export const modalsList = [
   { name: MODALS.LOGIN, component: LoginPopUp },
   { name: MODALS.REGISTR, component: RegistrationPopUp },
-  // { name: MODALS.BASKET, component: Basket },
+  { name: MODALS.BASKET, component: BasketPopUP },
   { name: MODALS.CATALOG, component: CatalogPopUp },
   { name: MODALS.CATEGORY, component: CategoryPopUp },
   { name: MODALS.SORT, component: SortPopUp },
