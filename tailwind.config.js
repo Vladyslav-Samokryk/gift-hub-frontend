@@ -63,10 +63,13 @@ export const theme = {
     rubik: ["Rubik", "sans-serif"],
   },
   content: {
-    /* eslint-disable @typescript-eslint/quotes */
-    bobble1: 'url("src/shared/assets/img/secretGift/first_bobble.svg")',
-    bobble2: 'url("src/shared/assets/img/secretGift/second_bobble.svg")',
-    bobble3: 'url("src/shared/assets/img/secretGift/third_bobble.svg")',
+    bobble1:
+      /* eslint-disable  @typescript-eslint/quotes */
+      'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/first_bobble.svg")',
+    bobble2:
+      'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/second_bobble.svg")',
+    bobble3:
+      'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/third_bobble.svg")',
   },
 };
 export const plugins = [];

@@ -18,27 +18,36 @@ export function getSearchParams(): Record<string, string | string[]> {
   return params;
 }
 
-export function setSearchParam(key: string, value: string): void {
+export function setSearchParam(
+  key: string,
+  value: string,
+  multiple: boolean,
+): string {
   const searchParams = new URLSearchParams(window.location.search);
 
   if (searchParams.has(key)) {
     const existingValues = searchParams.getAll(key);
-    existingValues.push(value);
     searchParams.delete(key);
-    for (const val of existingValues) {
-      searchParams.append(key, val);
+
+    if (multiple) {
+      if (!existingValues.includes(value)) {
+        existingValues.push(value);
+      }
+
+      for (const val of existingValues) {
+        searchParams.append(key, val);
+      }
+    } else {
+      searchParams.append(key, value);
     }
   } else {
     searchParams.append(key, value);
   }
 
-  const newUrl = `${window.location.pathname}?${searchParams.toString()}${
-    window.location.hash
-  }`;
-  window.history.replaceState(null, "", newUrl);
+  return `${window.location.pathname}?${searchParams.toString()}`;
 }
 
-export function removeSearchParam(key: string, value?: string): void {
+export function removeSearchParam(key: string, value?: string): string {
   const searchParams = new URLSearchParams(window.location.search);
 
   if (searchParams.has(key)) {
@@ -57,12 +66,8 @@ export function removeSearchParam(key: string, value?: string): void {
     } else {
       searchParams.delete(key);
     }
-
-    const newUrl = `${window.location.pathname}?${searchParams.toString()}${
-      window.location.hash
-    }`;
-    window.history.replaceState(null, "", newUrl);
   }
+  return `${window.location.pathname}?${searchParams.toString()}`;
 }
 
 export const handleQueryParamArray = (

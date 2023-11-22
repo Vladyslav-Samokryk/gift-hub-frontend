@@ -1,31 +1,20 @@
-import { PAGINATION_LOAD } from "@src/shared";
+import type { Dispatch, SetStateAction } from "react";
 import { createContext, useContext } from "react";
 
 interface PaginationContext {
   page: number;
   productNum: number;
   count: number;
-  trigger: number;
-  setTrigger: (newValue: number | ((prevValue: number) => number)) => void;
-  setPage: (newValue: number | ((prevValue: number) => number)) => void;
-  setProductNum: (_value: number) => void;
-  setCount: (_value: number) => void;
+  setPage: Dispatch<SetStateAction<number>>;
+  setProductNum: Dispatch<SetStateAction<number>>;
+  setCount: Dispatch<SetStateAction<number>>;
   paginationLoad: string;
-  setPaginationLoad: (_value: string) => void;
+  setPaginationLoad: Dispatch<SetStateAction<string>>;
 }
 
-export const PaginationParamsContext = createContext<PaginationContext>({
-  page: 1,
-  productNum: 9,
-  count: 0,
-  trigger: 0,
-  setTrigger: (val) => val,
-  setPage: (val) => val,
-  setProductNum: (val) => val,
-  setCount: (val) => val,
-  paginationLoad: PAGINATION_LOAD.PAGE,
-  setPaginationLoad: (val) => val,
-});
+export const PaginationParamsContext = createContext<PaginationContext | null>(
+  null,
+);
 
-export const usePaginationParamsContext = (): PaginationContext =>
+export const usePaginationParamsContext = (): PaginationContext | null =>
   useContext(PaginationParamsContext);

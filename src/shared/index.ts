@@ -91,7 +91,8 @@ export type {
   TRFilters,
   TRSorts,
 } from "./types/Translation";
-export type { Categories, CatalogSub } from "./types/Categories";
+export type { Categories, CategorySub } from "./types/Categories";
+export type { Range } from "./types/Range";
 
 /** Constants */
 export { ADMIN, MANAGER, GUEST_USER, AUTH_USER } from "./constants/roles";

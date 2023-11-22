@@ -5,7 +5,7 @@ interface ChildrenProps {
   visible: boolean;
   top: number;
   children: Children;
-  onClose: () => void;
+  onClose: (() => void) | undefined;
 }
 
 export default function ModalContainer({

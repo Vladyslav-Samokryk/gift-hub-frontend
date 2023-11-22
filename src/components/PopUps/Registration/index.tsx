@@ -8,16 +8,12 @@ import {
 import EnterAsSection from "../EnterAsSection";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-
-interface RegistrType {
-  visible: boolean;
-  setVisible: (value: boolean | ((prev: boolean) => boolean)) => void;
-}
+import type { ModalDialogProps } from "@src/shared/types/Modals";
 
 export default function RegistrationPopUp({
-  visible,
-  setVisible,
-}: RegistrType): JSX.Element {
+  isOpen,
+  onClose,
+}: ModalDialogProps): JSX.Element {
   const { t } = useTranslation();
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -26,15 +22,8 @@ export default function RegistrationPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer
-      visible={visible}
-      onClose={() => setVisible(false)}
-      top={80}
-    >
-      <ModalHeader
-        title={t("registr_popup.header")}
-        onClose={() => setVisible(false)}
-      />
+    <ModalContainer visible={isOpen} onClose={onClose} top={80}>
+      <ModalHeader title={t("registr_popup.header")} onClose={onClose} />
 
       <div className="grid md:grid-cols-[2fr_40px_1fr]">
         <div className="mt-6 grid grid-cols-1 justify-around gap-4 md:mr-5 md:gap-8">

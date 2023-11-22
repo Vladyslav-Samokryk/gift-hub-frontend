@@ -12,8 +12,14 @@ import { useTranslation } from "react-i18next";
 
 const PaginationSection = (): JSX.Element => {
   const windowWidth = useScreenWidth();
+  const paginationContext = usePaginationParamsContext();
+  if (!paginationContext) {
+    console.error("Pagination context is null");
+    return <></>;
+  }
   const { page, setPage, setProductNum, count, productNum, setPaginationLoad } =
-    usePaginationParamsContext();
+    paginationContext;
+
   const { t } = useTranslation();
 
   function handleSelect(e: number): void {
