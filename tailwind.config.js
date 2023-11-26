@@ -57,6 +57,9 @@ export const theme = {
       card: "320px",
       "card-sm": "168px",
     },
+    borderRadius: {
+      main: "50px",
+    },
   },
   fontFamily: {
     exo2: ["Exo2", "sans-serif"],
