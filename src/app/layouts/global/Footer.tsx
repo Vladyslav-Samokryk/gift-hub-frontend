@@ -58,7 +58,7 @@ const contactUsSection: Array<{
   {
     key: "contactUsSection_2",
     path: "/",
-    logo: <EmailLogo />,
+    logo: <EmailLogo className="fill-blue-900" />,
     value: CONTACT_INFO.mail,
   },
   {
