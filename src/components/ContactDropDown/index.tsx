@@ -41,7 +41,10 @@ export default function ContactDropDown(): JSX.Element {
         />
       )}
       <div className="relative">
-        <button className="flex items-center" onClick={() => toggleMenu()}>
+        <button
+          className="group flex items-center"
+          onClick={() => toggleMenu()}
+        >
           <h3 className="hover:text-blue-700">{t("header_links.contacts")}</h3>
           {isVisible ? <DropUp /> : <DropDown />}
         </button>
@@ -67,20 +70,20 @@ export default function ContactDropDown(): JSX.Element {
             {t("contacts_popup.header")}
           </h3>
           <button className="group mb-3 flex items-center">
-            <EmailLogo />
+            <EmailLogo className="fill-blue-900 group-hover:fill-blue-700" />
             <a
               href="mailto:gifthub@gmail.com"
-              className="md:secondary pl-3 text-[10px] font-light group-hover:text-purple-900"
+              className="md:secondary pl-3 text-[10px] font-light text-blue-900 group-hover:text-blue-700"
             >
               {t("contacts_popup.email")}
             </a>
           </button>
           <button className="group flex items-center ">
-            <TelegramLogo className="fill-blue-900" />
+            <TelegramLogo className="fill-none stroke-blue-900 group-hover:stroke-blue-700" />
             <a
               href="https://telegram.me/share/url?url=gift_hub_channel"
               target="_blank"
-              className="md:secondary pl-3 text-[10px] font-light group-hover:text-purple-900"
+              className="md:secondary pl-3 text-[10px] font-light text-blue-900 group-hover:text-blue-700"
               rel="noreferrer"
             >
               {t("contacts_popup.telegram")}
