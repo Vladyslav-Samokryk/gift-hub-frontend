@@ -4,6 +4,4 @@ export default {
   trailingComma: "all",
   singleQuote: false,
   htmlWhitespaceSensitivity: "css",
-  plugins: ["prettier-plugin-tailwindcss"],
-  tailwindConfig: "./tailwind.config.js",
 };

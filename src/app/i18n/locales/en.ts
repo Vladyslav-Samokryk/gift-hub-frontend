@@ -31,6 +31,7 @@ export const en: AllLocalesType = {
     product_sections: {
       popular: "POPULAR PRODUCTS",
       new: "NEW PRODUCTS",
+      reviewed: "REVIEWED PRODUCTS",
     },
 
     random_present: {
@@ -189,5 +190,56 @@ export const en: AllLocalesType = {
       massagers: "Massagers",
       powerbanks: "Powerbanks",
     },
+
+
+    comments: {
+      header: "Comments",
+      all_comments: "All comments",
+      non_found: {
+        header: "This products does not have any comments",
+        description: "You can be first!",
+      },
+      write_comment: {
+        header: "Add comment",
+        description: "Tell us what you think about this product",
+      },
+      max_comment_length: "Maximum comment length is - 400 signs",
+      btn_add_comment: "Add comment",
+    },
+
+    global_rate: "Global rate",
+    rate_by_criteria: {
+      quality: "Quality",
+      photo_match: "Photo match",
+      description_match: "Description match",
+      price: "Price",
+    },
+
+    characteristics: {
+      description: "Description",
+      pay_deliver: "Payment and delivery",
+      faq: "FAQ",
+    },
+
+    availability: {
+      _true: "Available",
+      _false: "Not available",
+    },
+
+    btn_be_noticed: "Notify availability",
+    product_code: "Product code",
+
+    basket: {
+      heading: "Basket",
+      priceText: "Price:",
+      discountText: "Discount:",
+      totalPriceText: "Total price:",
+      orderButtonText: "Make an order",
+      empty: {
+        heading: "Basket is empty",
+        description: "But you always can change it :)",
+      },
+    },
+
   },
 };

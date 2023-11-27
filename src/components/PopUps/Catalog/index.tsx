@@ -44,7 +44,7 @@ export default function CatalogPopUp({
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="absolute inset-x-0 top-44 z-50 m-auto w-60 rounded-md bg-white p-4 shadow-drop sm:w-1/2 md:top-48 md:flex md:w-3/4 md:p-3"
+            className="absolute inset-x-0 top-44 z-50 m-auto w-auto rounded-md bg-white p-4 shadow-drop sm:w-[90%] md:top-48 md:flex md:p-3"
           >
             {windowWidth < SCREEN.MD && (
               <ModalHeader

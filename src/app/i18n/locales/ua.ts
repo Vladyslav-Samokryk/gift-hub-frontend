@@ -31,6 +31,7 @@ export const ua: AllLocalesType = {
     product_sections: {
       popular: "ПОПУЛЯРНІ ТОВАРИ",
       new: "НОВІ НАДХОДЖЕННЯ",
+      reviewed: "ПЕРЕГЛЯНУТО РАНІШЕ",
     },
 
     random_present: {
@@ -191,5 +192,57 @@ export const ua: AllLocalesType = {
       massagers: "Масажери",
       powerbanks: "Павербанки",
     },
+
+    comments: {
+      header: "Відгуки",
+      all_comments: "Всі відгуки",
+      non_found: {
+        header: "Поки що долний користувач не залишив свій відгук",
+        description: "Ти можеш стати першим!",
+      },
+      write_comment: {
+        header: "Написати відгук",
+        description:
+          "Розкажи нам, що ти думаєш про цей продукт і поділись своїм досвідом з іншими.",
+      },
+      max_comment_length:
+        "Максимальна кількість символів для одного коментаря - 400 знаків",
+      btn_add_comment: "Додати відгук",
+    },
+
+    global_rate: "Загальний рейтинг",
+    rate_by_criteria: {
+      quality: "Якість",
+      photo_match: "Відповідність фото",
+      description_match: "Віддповідність опису",
+      price: "Актуальність ціни",
+    },
+
+    characteristics: {
+      description: "Опис",
+      pay_deliver: "Оплата та доставка",
+      faq: "Часто задавані питання",
+    },
+
+    availability: {
+      _true: "Є в наявності",
+      _false: "Немає в наявності",
+    },
+
+    btn_be_noticed: "Повідомити про появу",
+    product_code: "Артикул",
+
+    basket: {
+      heading: "Кошик",
+      priceText: "Сума без знижки:",
+      discountText: "Знижка:",
+      totalPriceText: "Сума до сплати:",
+      orderButtonText: "Оформити замовлення",
+      empty: {
+        heading: "Кошик порожній",
+        description: "Але це ніколи не пізно виправити :)",
+      },
+    },
+
   },
 };
