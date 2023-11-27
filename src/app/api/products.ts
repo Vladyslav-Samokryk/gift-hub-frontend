@@ -37,6 +37,33 @@ interface OneProduct {
   lang: string;
 }
 
+interface ProductCommentsRequest {
+  id: string;
+  page: number;
+  page_size?: number;
+}
+
+interface ProductCommentsResponse {
+  count: number;
+  results: Array<{
+    // ім'я автора
+    author: string;
+    // дата написання (у форматі 12 вересня 2023)
+    date: string;
+    // глобальний рейтинг в зірочках
+    global_rate: number;
+    // сам текст коментаря
+    text: string;
+    // рейтинг за критеріями
+    rate_by_criteria: {
+      quality: number;
+      photo_match: number;
+      description_match: number;
+      price: number;
+    };
+  }>;
+}
+
 interface Catalog {
   results: ProductCardType[];
   count: number;
@@ -146,6 +173,17 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getOneProductComments: builder.query<
+      ProductCommentsResponse[],
+      ProductCommentsRequest
+    >({
+      query: ({ id, page, page_size = 3 }) => {
+        return {
+          url: `shop/guest_user/product/${id}/comments?page=${page}&page_size=${page_size}`,
+          method: "GET",
+        };
+      },
+    }),
   }),
 });
 
@@ -156,4 +194,5 @@ export const {
   useGetProductsByCategoryQuery,
   useGetProductsBySearchQuery,
   useGetOneProductQuery,
+  useGetOneProductCommentsQuery,
 } = productsApi;

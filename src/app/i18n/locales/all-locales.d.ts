@@ -31,6 +31,7 @@ interface AllLocalesType {
     product_sections: {
       popular: string;
       new: string;
+      reviewed: string;
     };
 
     random_present: {
@@ -172,6 +173,44 @@ interface AllLocalesType {
       powerbanks: string;
     };
 
+
+    comments: {
+      header: string;
+      all_comments: string;
+      non_found: {
+        header: string;
+        description: string;
+      };
+      write_comment: {
+        header: string;
+        description: string;
+      };
+      max_comment_length: string;
+      btn_add_comment: string;
+    };
+
+    global_rate: string;
+    rate_by_criteria: {
+      quality: string;
+      photo_match: string;
+      description_match: string;
+      price: string;
+    };
+
+    characteristics: {
+      description: string;
+      pay_deliver: string;
+      faq: string;
+    };
+
+    availability: {
+      _true: string;
+      _false: string;
+    };
+
+    btn_be_noticed: string;
+    product_code: string;
+
     basket: {
       heading: string;
       priceText: string;
@@ -183,6 +222,7 @@ interface AllLocalesType {
         description: string;
       };
     };
+
   };
 }
 
