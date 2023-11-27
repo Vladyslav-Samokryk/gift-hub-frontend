@@ -21,7 +21,8 @@ export default function WinSection({
   } else {
     return (
       <section
-        className=" rounded-main relative m-3 mb-10 flex h-[918px] flex-col items-center justify-between bg-cover bg-center px-3 text-center text-white md:h-[1080px] md:rounded-2xl"
+        // eslint-disable-next-line prettier/prettier
+        className="relative m-3 mb-10 flex h-screen flex-col items-center justify-between rounded-main bg-cover bg-center px-3 text-center text-white md:rounded-2xl"
         style={{
           backgroundImage:
             "url('https://main--lighthearted-cocada-0d2e37.netlify.app/img/RandomPresentBg.svg')",
@@ -34,16 +35,16 @@ export default function WinSection({
           <WhiteClose />
         </button>
 
-        <h3 className="h3 mt-44 w-3/4 text-center text-xl leading-[120%] md:mt-24 md:text-4xl">
+        <h3 className="h3 mt-20 w-3/4 text-center text-xl leading-tight md:text-4xl">
           {t("win_random_section.title")}
         </h3>
         <img
           src={present.img}
           alt={present.name}
-          className="absolute left-1/2 top-1/2 h-[229px] w-[286px] -translate-x-1/2 -translate-y-2/3 -rotate-6 bg-white shadow-2xl shadow-white/30 md:top-[40%] md:mt-16 md:h-[400px] md:w-[500px]"
+          className="absolute left-1/2 top-1/2 h-56 -translate-x-1/2 -translate-y-2/3 -rotate-6 bg-white shadow-2xl shadow-white/30 md:top-[40%] md:mt-16 md:h-60"
         />
-        <div className="mb-20 flex flex-col items-center justify-center gap-5 break-words md:mt-16">
-          <h4 className=" md:h4 mb-6 text-3xl md:text-5xl">{present.name}</h4>
+        <div className="mb-10 flex flex-col items-center justify-center break-words md:mt-16">
+          <h4 className="md:h4 mb-2 text-3xl md:text-5xl">{present.name}</h4>
           <Link to={"/"} className="additional text-blue-100 underline">
             {t("btn_know_more")}
           </Link>

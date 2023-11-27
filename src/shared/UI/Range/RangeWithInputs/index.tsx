@@ -1,4 +1,5 @@
 import { MAX_PRICE, MIN_PRICE, setSearchParam } from "@shared";
+import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";
@@ -92,7 +93,9 @@ const RangeWithInputs = (): JSX.Element => {
       <div className="secondary flex items-center justify-between">
         <input
           type="number"
-          className={`input h-6 w-16 ${error.min ? "border-red-500" : ""}`}
+          className={classNames("input h-6 w-16", {
+            "border-red-500": error.min,
+          })}
           min={MIN_PRICE}
           max={MAX_PRICE}
           value={minValue}
@@ -101,7 +104,9 @@ const RangeWithInputs = (): JSX.Element => {
         <span>&#9473;</span>
         <input
           type="number"
-          className={`input h-6 w-16 ${error.max ? "border-red-500" : ""}`}
+          className={classNames("input h-6 w-16", {
+            "border-red-500": error.min,
+          })}
           min={MIN_PRICE}
           max={MAX_PRICE}
           value={maxValue}

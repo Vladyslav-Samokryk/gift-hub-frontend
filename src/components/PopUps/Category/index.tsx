@@ -16,7 +16,7 @@ const CategoryPopUp = ({
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={150}>
       <ModalHeader title={data?.title ?? ""} onClose={onClose} />
-      <div className="flex w-60 flex-col gap-3 divide-y-2">
+      <div className="flex w-[80vw] flex-col gap-3 divide-y-2">
         <ButtonWithIcon
           text={t("all_categories")}
           onClick={() => onOpen({ name: MODALS.CATALOG })}
