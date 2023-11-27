@@ -3,7 +3,6 @@ import {
   InputPassword,
   ModalContainer,
   ModalHeader,
-  RegistrationIcon,
 } from "@src/shared";
 import EnterAsSection from "../EnterAsSection";
 import { useState } from "react";
@@ -92,7 +91,7 @@ export default function RegistrationPopUp({
             {t("registr_popup.btn")}
           </button>
         </div>
-        <EnterAsSection icon={<RegistrationIcon />} />
+        <EnterAsSection />
       </div>
     </ModalContainer>
   );

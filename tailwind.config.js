@@ -14,7 +14,7 @@ export const theme = {
         200: "#AAB5CF",
         600: "#006EFF",
         700: "#0047FF",
-        900: "#222D4A",
+        900: "#140285",
       },
       purple: {
         100: "#E5E9FD",
@@ -56,6 +56,9 @@ export const theme = {
     width: {
       card: "320px",
       "card-sm": "168px",
+    },
+    borderRadius: {
+      main: "50px",
     },
   },
   fontFamily: {

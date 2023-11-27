@@ -1,5 +1,4 @@
 import {
-  LoginIcon,
   ModalContainer,
   InputContainer,
   ModalHeader,
@@ -82,7 +81,7 @@ export default function LoginPopUp({
           </div>
         </div>
 
-        <EnterAsSection icon={<LoginIcon />} />
+        <EnterAsSection />
       </div>
     </ModalContainer>
   );
