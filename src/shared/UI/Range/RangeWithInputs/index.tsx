@@ -1,4 +1,5 @@
 import { MAX_PRICE, MIN_PRICE, setSearchParam } from "@shared";
+import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";
@@ -22,6 +23,8 @@ const RangeWithInputs = (): JSX.Element => {
   const [minRange, setMinRange] = useState("0");
   const [maxRange, setMaxRange] = useState("2000");
 
+  const [error, setError] = useState({ min: false, max: false });
+
   useEffect(() => {
     setMaxValue(price.priceTo);
     setMinValue(price.priceFrom);
@@ -30,16 +33,30 @@ const RangeWithInputs = (): JSX.Element => {
     setMinRange(price.priceFrom);
   }, [price]);
 
+  const validateInput = (value: string, type: "min" | "max"): void => {
+    if (
+      +value < MIN_PRICE ||
+      +value > MAX_PRICE ||
+      (type === "min" ? +value > +maxValue : +value < +minValue)
+    ) {
+      setError((prev) => ({ ...prev, [type]: true }));
+    } else {
+      setError((prev) => ({ ...prev, [type]: false }));
+    }
+  };
+
   const handleMinValueChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     setMinValue(event.target.value);
+    validateInput(event.target.value, "min");
   };
 
   const handleMaxValueChange = (
     event: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     setMaxValue(event.target.value);
+    validateInput(event.target.value, "max");
   };
 
   const handleClick = (): void => {
@@ -76,7 +93,9 @@ const RangeWithInputs = (): JSX.Element => {
       <div className="secondary flex items-center justify-between">
         <input
           type="number"
-          className="input h-6 w-16"
+          className={classNames("input h-6 w-16", {
+            "border-red-500": error.min,
+          })}
           min={MIN_PRICE}
           max={MAX_PRICE}
           value={minValue}
@@ -85,7 +104,9 @@ const RangeWithInputs = (): JSX.Element => {
         <span>&#9473;</span>
         <input
           type="number"
-          className="input h-6 w-16"
+          className={classNames("input h-6 w-16", {
+            "border-red-500": error.min,
+          })}
           min={MIN_PRICE}
           max={MAX_PRICE}
           value={maxValue}

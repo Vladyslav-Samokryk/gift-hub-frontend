@@ -173,6 +173,7 @@ interface AllLocalesType {
       powerbanks: string;
     };
 
+
     comments: {
       header: string;
       all_comments: string;
@@ -209,6 +210,19 @@ interface AllLocalesType {
 
     btn_be_noticed: string;
     product_code: string;
+
+    basket: {
+      heading: string;
+      priceText: string;
+      discountText: string;
+      totalPriceText: string;
+      orderButtonText: string;
+      empty: {
+        heading: string;
+        description: string;
+      };
+    };
+
   };
 }
 

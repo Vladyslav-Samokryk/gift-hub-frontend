@@ -191,6 +191,7 @@ export const en: AllLocalesType = {
       powerbanks: "Powerbanks",
     },
 
+
     comments: {
       header: "Comments",
       all_comments: "All comments",
@@ -227,5 +228,18 @@ export const en: AllLocalesType = {
 
     btn_be_noticed: "Notify availability",
     product_code: "Product code",
+
+    basket: {
+      heading: "Basket",
+      priceText: "Price:",
+      discountText: "Discount:",
+      totalPriceText: "Total price:",
+      orderButtonText: "Make an order",
+      empty: {
+        heading: "Basket is empty",
+        description: "But you always can change it :)",
+      },
+    },
+
   },
 };

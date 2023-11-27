@@ -33,7 +33,6 @@ export {
   InstagramLogo,
   EmailLogo,
 } from "./assets/svg/SocialMedia";
-export { LoginIcon, RegistrationIcon } from "./assets/svg/ModalAuth";
 export { PasswordHide, PasswordShow } from "./assets/svg/PasswordIcons";
 export { TryAgainIcon } from "./assets/svg/TryAgainIcon";
 export { Plus } from "./assets/svg/Plus";

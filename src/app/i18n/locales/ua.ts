@@ -231,5 +231,18 @@ export const ua: AllLocalesType = {
 
     btn_be_noticed: "Повідомити про появу",
     product_code: "Артикул",
+
+    basket: {
+      heading: "Кошик",
+      priceText: "Сума без знижки:",
+      discountText: "Знижка:",
+      totalPriceText: "Сума до сплати:",
+      orderButtonText: "Оформити замовлення",
+      empty: {
+        heading: "Кошик порожній",
+        description: "Але це ніколи не пізно виправити :)",
+      },
+    },
+
   },
 };

@@ -1,13 +1,7 @@
-import { SCREEN, useScreenWidth } from "@src/shared";
 import { useTranslation } from "react-i18next";
 
-export default function EnterAsSection({
-  icon,
-}: {
-  icon: JSX.Element;
-}): JSX.Element {
+export default function EnterAsSection(): JSX.Element {
   const { t } = useTranslation();
-  const windowWidth = useScreenWidth();
   return (
     <>
       <div className="relative my-3 w-full py-5 md:mx-2 md:h-[90%] md:w-[2px]">
@@ -21,7 +15,6 @@ export default function EnterAsSection({
         <h5>{t("enter_as_header")}</h5>
         <button>Google</button>
         <button>Facebook</button>
-        {windowWidth > SCREEN.MD ? icon : null}
       </div>
     </>
   );
