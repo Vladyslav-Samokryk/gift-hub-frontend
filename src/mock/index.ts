@@ -9,6 +9,7 @@ export const productCardMock: ProductCardType[] = [
     price: 500,
     global_rating: 3,
     discount: 0,
+    count: 1,
   },
   {
     id: "12",
@@ -18,6 +19,7 @@ export const productCardMock: ProductCardType[] = [
     price: 500,
     global_rating: 3,
     discount: 0,
+    count: 1,
   },
   {
     id: "123",
@@ -25,7 +27,8 @@ export const productCardMock: ProductCardType[] = [
     name: "Paper name",
     category: "Paper type",
     price: 500,
+    discount: 0.5,
     global_rating: 3,
-    discount: 0,
+    count: 1,
   },
 ];
