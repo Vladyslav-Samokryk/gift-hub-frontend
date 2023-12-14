@@ -191,7 +191,6 @@ export const en: AllLocalesType = {
       powerbanks: "Powerbanks",
     },
 
-
     comments: {
       header: "Comments",
       all_comments: "All comments",
@@ -240,6 +239,5 @@ export const en: AllLocalesType = {
         description: "But you always can change it :)",
       },
     },
-
   },
 };

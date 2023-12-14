@@ -2,6 +2,10 @@ import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 
+interface BreadcrumbsProps {
+  product?: string;
+}
+
 function getPathArray(pathname: string): string[] {
   const pathArray: string[] = pathname.split("/");
   pathArray[0] = "main_page";
@@ -15,12 +19,19 @@ function getPathArray(pathname: string): string[] {
   return pathArray;
 }
 
-export default function Breadcrumbs(): JSX.Element {
+export default function Breadcrumbs({
+  product,
+}: BreadcrumbsProps): JSX.Element {
   const { pathname } = useLocation();
   const { t } = useTranslation();
   const pathArray = getPathArray(pathname);
+
+  if (product) {
+    pathArray.push(product);
+  }
+
   return (
-    <section className="mb-8 flex pl-5 pt-3 lg:p-0">
+    <section className="my-5 flex pl-5 pt-3 lg:p-0">
       {pathArray.map((path, index) => {
         return (
           <div key={path}>

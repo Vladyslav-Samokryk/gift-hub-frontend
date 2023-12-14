@@ -1,3 +1,10 @@
+export interface TRCriteria {
+  quality: string;
+  photo_match: string;
+  description_match: string;
+  price: string;
+}
+
 export interface TRHeader {
   secret_present: string;
   about: string;

@@ -1,5 +1,6 @@
 import type { ProductCardType, Range } from "@shared";
 import { baseApi } from "./base";
+import type { ProductCardDetailedType } from "@src/shared/types/ProductTypes";
 
 export interface RangeT {
   range: Range;
@@ -162,7 +163,7 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
-    getOneProduct: builder.query<ProductCardType, OneProduct>({
+    getOneProduct: builder.query<ProductCardDetailedType, OneProduct>({
       query: ({ id, lang }) => {
         return {
           url: `shop/guest_user/product/${id}`,

@@ -214,7 +214,7 @@ export const ua: AllLocalesType = {
     rate_by_criteria: {
       quality: "Якість",
       photo_match: "Відповідність фото",
-      description_match: "Віддповідність опису",
+      description_match: "Відповідність опису",
       price: "Актуальність ціни",
     },
 
@@ -243,6 +243,5 @@ export const ua: AllLocalesType = {
         description: "Але це ніколи не пізно виправити :)",
       },
     },
-
   },
 };

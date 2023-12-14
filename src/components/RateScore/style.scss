@@ -1,0 +1,51 @@
+// Define variables for colors and line width
+$indicatorColor: #140285; // Change to your desired indicator color
+$backgroundColor: #B8C3E6; // Change to your desired background color
+$lineHeight: 20px; // Change to your desired line width
+
+// Style for the meter element
+meter {
+  height: $lineHeight; // Set the width of the meter container
+
+  // Style for the meter indicator
+  &::-webkit-meter-bar {
+    background-color: $backgroundColor;
+    border: 1px solid $backgroundColor; // Border color same as background to hide the default border
+  }
+
+  // Style for the meter indicator
+  &::-webkit-meter-optimum-value,
+  &::-webkit-meter-suboptimum-value,
+  &::-webkit-meter-even-less-good-value {
+    background-color: $indicatorColor;
+  }
+
+  // Style for the meter indicator in Firefox
+  &:-moz-meter-bar {
+    background-color: $backgroundColor;
+    border: 1px solid $backgroundColor; // Border color same as background to hide the default border
+  }
+
+  &:-moz-meter-optimum::-moz-meter-bar,
+  &:-moz-meter-sub-optimum::-moz-meter-bar,
+  &:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+    background-color: $indicatorColor;
+  }
+
+  // Style for the meter indicator in Edge and IE
+  &::-ms-fill {
+    background-color: $indicatorColor;
+  }
+
+  // Style for the meter indicator in Opera
+  &:-o-meter-bar {
+    background-color: $backgroundColor;
+    border: 1px solid $backgroundColor; // Border color same as background to hide the default border
+  }
+
+  &:-o-meter-optimum::-o-meter-bar,
+  &:-o-meter-suboptimum::-o-meter-bar,
+  &:-o-meter-even-less-good::-o-meter-bar {
+    background-color: $indicatorColor;
+  }
+}
