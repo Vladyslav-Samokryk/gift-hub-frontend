@@ -42,7 +42,7 @@ export default function Breadcrumbs({
               })}
               to={index === 0 ? "/" : pathname}
             >
-              {t(path)}
+              {product && index === pathArray.length - 1 ? path : t(path)}
             </Link>
             {index < pathArray.length - 1 && <span>&gt;</span>}
           </div>

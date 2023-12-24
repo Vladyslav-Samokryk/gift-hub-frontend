@@ -55,7 +55,7 @@ export default function BannerSlider(): JSX.Element {
       currentSlide={1}
       infinite
       isPlaying
-      className="relative m-auto mt-10 h-[530px] min-h-[240px] w-[90vw] sm:h-[25vw]"
+      className="relative m-auto mt-10 mb-20 h-[530px] min-h-[240px] w-[90vw] sm:h-[25vw]"
     >
       <Slider className="h-full w-full">{slides}</Slider>
       <DotGroup className="mt-3 flex justify-center" />

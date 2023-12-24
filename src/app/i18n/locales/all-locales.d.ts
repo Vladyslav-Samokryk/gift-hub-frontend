@@ -220,6 +220,14 @@ interface AllLocalesType {
         description: string;
       };
     };
+
+    faq: Array<{
+      question: string;
+      answer: string;
+    }>;
+
+    delivery: string[];
+    btn_to_basket: string;
   };
 }
 

@@ -175,7 +175,7 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     getOneProductComments: builder.query<
-      ProductCommentsResponse[],
+      ProductCommentsResponse,
       ProductCommentsRequest
     >({
       query: ({ id, page, page_size = 3 }) => {
