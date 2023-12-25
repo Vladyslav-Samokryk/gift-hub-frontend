@@ -1,8 +1,12 @@
+/* eslint-disable tailwindcss/classnames-order */
 import { CURRENCY } from "@src/app/api/config";
 import {
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
 } from "@src/app/api/products";
+import { MODALS } from "@src/app/context/modalContext/modals";
+import { useModals } from "@src/app/context/modalContext/useModals";
+import { addToCart } from "@src/app/store/cart/cartSlice";
 import { Breadcrumbs } from "@src/components";
 import DescriptionContainer from "@src/components/DecrtiptionContainer";
 import RateScore from "@src/components/RateScore";
@@ -19,8 +23,8 @@ import { CommentsNotFoundIcon } from "@src/shared/assets/svg/Comments";
 import { getRateWithStars } from "@src/shared/helpers/rate";
 import type { TRCriteria } from "@src/shared/types/Translation";
 import classNames from "classnames";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 
 export default function Product(): JSX.Element {
@@ -28,6 +32,9 @@ export default function Product(): JSX.Element {
   const lang = useGetCurrentLang();
   const { t } = useTranslation();
   const width = useScreenWidth();
+  const dispatch = useDispatch();
+  // const { onOpen } = useModals();
+  //  reviewedProducts;
 
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
@@ -52,6 +59,23 @@ export default function Product(): JSX.Element {
     },
   );
 
+  const handleAddToCart = (): void => {
+    if (data) {
+      dispatch(
+        addToCart({
+          img: data.img[0],
+          name: data.name,
+          category: data.category,
+          price: data.price,
+          global_rating: data.global_rating,
+          discount: data.discount,
+          quantity: data.quantity,
+          id: data.id,
+        }),
+      );
+    }
+  };
+
   if (!data) {
     return <p></p>;
   }
@@ -61,7 +85,7 @@ export default function Product(): JSX.Element {
       <section className="gap-5 grid grid-cols-1 lg:grid-cols-[1fr,45vw,1fr]">
         <div>
           <h1 className="lg:h5 h6">{data.name}</h1>
-          <div className="flex gap-10 lg:block">
+          <div className="flex gap-5 md:gap-10 lg:block">
             <p className="lg:h6 secondary font-light">
               {t("product_code")} {data.code}
             </p>
@@ -86,7 +110,12 @@ export default function Product(): JSX.Element {
             </p>
           </div>
           <div className="flex flex-row-reverse items-end gap-10 lg:flex-row lg:items-center">
-            <button className="btn btn-effect">{t("btn_to_basket")}</button>
+            <button
+              className="btn btn-effect"
+              onClick={() => handleAddToCart()}
+            >
+              {t("btn_to_basket")}
+            </button>
             <button className="h-8">
               <Wishlist />
             </button>
@@ -97,11 +126,15 @@ export default function Product(): JSX.Element {
       <section>
         <div className="flex justify-between">
           <h4 className="md:h5 h6">{t("comments.header")}</h4>
-          {/*           <button className="btn btn-effect">
+          {/*  <button
+            className="btn btn-effect"
+            onClick={() => onOpen({ name: MODALS.COMMENT })}
+          >
             {t("comments.write_comment.header")}
           </button> */}
         </div>
       </section>
+
       <section className="rounded-md bg-purple-100 p-4 md:p-10">
         <div className="flex w-72 items-start justify-between gap-5 border-b-2 border-blue-200 pb-3 md:pb-5">
           <div>
@@ -130,6 +163,7 @@ export default function Product(): JSX.Element {
           />
         </div>
       </section>
+
       <section>
         <h5 className="md:h6 primary">
           {t("comments.all_comments")}: ({comments?.count})
@@ -174,11 +208,12 @@ export default function Product(): JSX.Element {
           </div>
         )}
       </section>
-
-      {/*       <ProductSection
-        products={productCardMock}
-        title={t("product_sections.reviewed")}
-      /> */}
+      {/*       {reviewedProducts && (
+        <ProductSection
+          products={reviewedProducts}
+          title={t("product_sections.reviewed")}
+        />
+      )} */}
     </section>
   );
 }

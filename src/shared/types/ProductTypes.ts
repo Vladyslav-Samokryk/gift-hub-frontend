@@ -14,7 +14,7 @@ export interface ProductCardType {
   discount: number;
   //  Count of a product in a store
   quantity: number;
-  count: number;
+  count?: number;
 }
 
 export interface ProductCardDetailedType {

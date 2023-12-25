@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 import classNames from "classnames";
 import { Fragment } from "react";
 import "./style.scss";

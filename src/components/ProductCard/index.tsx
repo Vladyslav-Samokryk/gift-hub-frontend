@@ -18,6 +18,8 @@ export default function ProductCard({
   category,
   price,
   global_rating,
+  discount,
+  quantity,
   id,
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
@@ -31,6 +33,8 @@ export default function ProductCard({
         category,
         price,
         global_rating,
+        discount,
+        quantity,
         id,
       }),
     );

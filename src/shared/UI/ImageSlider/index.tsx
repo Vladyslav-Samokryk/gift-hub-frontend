@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+/* eslint-disable tailwindcss/classnames-order */
+import { useState } from "react";
 
 function ImageSlider({ images }: { images: string[] | string }): JSX.Element {
   const [activeImg, setActiveImg] = useState(0);

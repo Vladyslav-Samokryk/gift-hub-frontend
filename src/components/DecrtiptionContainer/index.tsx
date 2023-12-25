@@ -1,3 +1,4 @@
+/* eslint-disable tailwindcss/classnames-order */
 import ToggleBox from "@src/shared/UI/ToggleBox";
 import type { TRCharacteristics, TRFAQ } from "@src/shared/types/Translation";
 import classNames from "classnames";

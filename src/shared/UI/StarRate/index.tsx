@@ -30,6 +30,14 @@ export default function StarRate({
   return (
     <meter
       ref={meterRef}
+      /*       onClick={(e) => {
+        if (meterRef.current) {
+          const x = e.pageX - meterRef.current.offsetLeft;
+          const clickedValue =
+            (x * meterRef.current.max) / meterRef.current.offsetWidth;
+          setRangeValue(Math.floor(clickedValue) + 1);
+        }
+      }} */
       style={style}
       className="rating"
       min={minStars}

@@ -1,6 +1,6 @@
 import { DropDown } from "@src/shared";
 import classNames from "classnames";
-import React, { useState } from "react";
+import { useState } from "react";
 
 interface ToggleBoxProps {
   header: string;
