@@ -1,5 +1,7 @@
-import { StarRate, type ProductCardType, ImgWithPreloader } from "@shared";
-import { CURRENCY } from "@src/app/api/config";
+import StarRate from "shared/UI/StarRate";
+import type { ProductCardType } from "shared/types/ProductTypes";
+import ImgWithPreloader from "shared/UI/ImgWithPreloader";
+import { CURRENCY } from "app/api/config";
 import { Link } from "react-router-dom";
 
 export default function ProductCard({

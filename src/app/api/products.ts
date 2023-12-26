@@ -1,6 +1,10 @@
-import type { ProductCardType, Range } from "@shared";
+import type { Range } from "shared/types/Range";
+import type {
+  ProductCardType,
+  ProductCardDetailedType,
+} from "shared/types/ProductTypes";
+
 import { baseApi } from "./base";
-import type { ProductCardDetailedType } from "@src/shared/types/ProductTypes";
 
 export interface RangeT {
   range: Range;

@@ -1,7 +1,9 @@
-import { ModalContainer, ModalHeader, StarRate } from "@src/shared";
 import { t } from "i18next";
-import type { ModalDialogProps } from "@src/shared/types/Modals";
-import type { TRCriteria } from "@src/shared/types/Translation";
+import ModalContainer from "shared/UI/ModalContainer";
+import ModalHeader from "shared/UI/ModalHeader";
+import StarRate from "shared/UI/StarRate";
+import type { ModalDialogProps } from "shared/types/Modals";
+import type { TRCriteria } from "shared/types/Translation";
 
 function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {

@@ -1,11 +1,4 @@
 import {
-  LeftArrow,
-  RightArrow,
-  SCREEN,
-  useGetCurrentLang,
-  useScreenWidth,
-} from "@shared";
-import {
   CarouselProvider,
   Slider,
   Slide,
@@ -16,8 +9,12 @@ import {
 } from "pure-react-carousel";
 import "pure-react-carousel/dist/react-carousel.es.css";
 
-import { useGetBannersQuery } from "@src/app/api/banner";
+import { useGetBannersQuery } from "app/api/banner";
 import { useNavigate } from "react-router-dom";
+import { LeftArrow, RightArrow } from "shared/assets/svg/Arrows";
+import { SCREEN } from "shared/constants/screens";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
 
 export default function BannerSlider(): JSX.Element {
   const lang = useGetCurrentLang();
@@ -55,7 +52,7 @@ export default function BannerSlider(): JSX.Element {
       currentSlide={1}
       infinite
       isPlaying
-      className="relative m-auto mt-10 mb-20 h-[530px] min-h-[240px] w-[90vw] sm:h-[25vw]"
+      className="relative m-auto mb-20 mt-10 h-[530px] min-h-[240px] w-[90vw] sm:h-[25vw]"
     >
       <Slider className="h-full w-full">{slides}</Slider>
       <DotGroup className="mt-3 flex justify-center" />

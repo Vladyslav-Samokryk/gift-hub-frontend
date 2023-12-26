@@ -1,13 +1,6 @@
-import type {
-  TRRandomPresent,
-  StylePropType,
-  ProductCardType,
-  Range,
-} from "@shared";
-
 import type { Dispatch, SetStateAction } from "react";
 import { useEffect, useRef, useState } from "react";
-import { useGetRandomProductsQuery } from "@src/app/api/products";
+import { useGetRandomProductsQuery } from "app/api/products";
 import {
   getLeft,
   getSize,
@@ -15,19 +8,21 @@ import {
   getStyle,
   getPresent,
   getRandomNumber,
-} from "./helpers";
-import {
-  RandomStep,
-  DownStep,
-  LeftStep,
-  useInterval,
-  RangePriceRandom,
-  useScreenWidth,
-  DIRECTION,
-  SCREEN,
-  useGetCurrentLang,
-} from "@shared";
+} from "components/RandomPresent/RandomWheel/helpers";
+
 import { useTranslation } from "react-i18next";
+import type { StylePropType } from "shared/types/Styles";
+import type { ProductCardType } from "shared/types/ProductTypes";
+import type { TRRandomPresent } from "shared/types/Translation";
+import RandomStep from "shared/UI/RandomStep";
+import RangePriceRandom from "shared/UI/Range/RangePriceRandom";
+import { LeftStep, DownStep } from "shared/assets/svg/Arrows";
+import { DIRECTION } from "shared/constants/direction";
+import { SCREEN } from "shared/constants/screens";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useInterval } from "shared/hooks/useInterval";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import type { Range } from "shared/types/Range";
 
 interface RandomWheelProps {
   setUserWin: (value: boolean) => void;

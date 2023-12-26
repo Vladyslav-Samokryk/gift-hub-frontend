@@ -72,7 +72,6 @@ export const theme = {
   },
   content: {
     bobble1:
-      /* eslint-disable  @typescript-eslint/quotes */
       'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/first_bobble.svg")',
     bobble2:
       'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/second_bobble.svg")',

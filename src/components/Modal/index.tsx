@@ -2,8 +2,8 @@ import { createPortal } from "react-dom";
 
 import type { ReactPortal } from "react";
 
-import { modalsList } from "@src/app/context/modalContext/modals";
-import { useModals } from "@src/app/context/modalContext/useModals";
+import { modalsList } from "app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
 
 const Modals = (): ReactPortal | null => {
   const { modal, onClose } = useModals();

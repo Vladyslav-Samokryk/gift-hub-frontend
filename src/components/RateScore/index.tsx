@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/classnames-order */
 import classNames from "classnames";
 import { Fragment } from "react";
 import "./style.scss";
@@ -33,7 +32,7 @@ const RangeScore = ({
       {Object.keys(data).map((e, index) => {
         return (
           <Fragment key={index}>
-            <label className="whitespace-nowrap col-start-1 w-max">
+            <label className="col-start-1 w-max whitespace-nowrap">
               {labels[index]}
             </label>
             <meter

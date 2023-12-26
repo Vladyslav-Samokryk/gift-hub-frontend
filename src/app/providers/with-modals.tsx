@@ -1,7 +1,7 @@
 import { useMemo, useState, type ReactNode } from "react";
-import { ModalContext } from "../context/modalContext/modalContext";
-import { Modals } from "@components";
-import type { ModalDataT, ModalContextT } from "@src/shared/types/Modals";
+import Modals from "components/Modal";
+import type { ModalDataT, ModalContextT } from "shared/types/Modals";
+import { ModalContext } from "app/context/modalContext/modalContext";
 
 const initialModalData: ModalDataT = {
   name: "",

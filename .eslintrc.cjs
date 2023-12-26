@@ -29,6 +29,12 @@ module.exports = {
   },
   plugins: ["react", "@typescript-eslint", "tailwindcss", "prettier"],
   settings: {
+     "import/resolver": {
+        "node": {          
+          "paths": ["src"],
+          "extensions": [".ts", ".tsx"]
+        }
+      },
     react: {
       version: "detect",
     },
@@ -68,21 +74,6 @@ module.exports = {
         ],
       },
     ],
-    "@typescript-eslint/quotes": ["error", "double"],
-    /*"@typescript-eslint/indent": ["error", 2],
-       "@typescript-eslint/member-delimiter-style": [
-      "error",
-      {
-        multiline: {
-          delimiter: "semi",
-          requireLast: true,
-        },
-        singleline: {
-          delimiter: "semi",
-          requireLast: true,
-        },
-      },
-    ], */
     "@typescript-eslint/semi": ["error", "always"],
     "react/react-in-jsx-scope": "off",
     "@typescript-eslint/comma-dangle": ["error", "always-multiline"],

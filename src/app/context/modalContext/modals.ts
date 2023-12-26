@@ -1,5 +1,4 @@
 import React from "react";
-import { CatalogPopUp, LoginPopUp, RegistrationPopUp } from "@src/components";
 
 export enum MODALS {
   LOGIN = "login",
@@ -26,6 +25,15 @@ const BasketPopUp = React.lazy(
 );
 const CommentPopUp = React.lazy(
   async () => await import("../../../components/PopUps/Comment/index"),
+);
+const LoginPopUp = React.lazy(
+  async () => await import("../../../components/PopUps/Login/index"),
+);
+const RegistrationPopUp = React.lazy(
+  async () => await import("../../../components/PopUps/Registration/index"),
+);
+const CatalogPopUp = React.lazy(
+  async () => await import("../../../components/PopUps/Catalog/index"),
 );
 
 export const modalsList = [

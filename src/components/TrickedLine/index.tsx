@@ -1,4 +1,4 @@
-import { useInterval } from "@shared";
+import { useInterval } from "shared/hooks/useInterval";
 import { useLayoutEffect, useState } from "react";
 import {
   START_OFFSET,

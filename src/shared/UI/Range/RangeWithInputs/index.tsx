@@ -1,8 +1,9 @@
-import { MAX_PRICE, MIN_PRICE, setSearchParam } from "@shared";
 import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";
+import { MIN_PRICE, MAX_PRICE } from "shared/constants/price";
+import { setSearchParam } from "shared/helpers/url";
 
 interface Price {
   priceFrom: string;

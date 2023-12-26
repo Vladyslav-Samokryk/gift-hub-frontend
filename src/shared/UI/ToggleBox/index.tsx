@@ -1,4 +1,4 @@
-import { DropDown } from "@src/shared";
+import { DropDown } from "shared/assets/svg/Drops";
 import classNames from "classnames";
 import { useState } from "react";
 

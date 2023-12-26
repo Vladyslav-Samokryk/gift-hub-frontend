@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 export const en: AllLocalesType = {
   translation: {
     footer_sections: {

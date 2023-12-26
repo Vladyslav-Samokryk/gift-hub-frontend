@@ -1,21 +1,23 @@
 import { useRoutes } from "react-router";
 import { Navigate } from "react-router-dom";
 
-import {
-  FAQ,
-  Settings,
-  Contacts,
-  Main,
-  ShoppingCart,
-  Product,
-  AboutUs,
-  SecretGift,
-  CatalogBySearch,
-  CatalogByCategory,
-} from "@pages";
-import { Layout, CatalogLayout } from "@layouts";
 import { useAppSelector } from "../store";
-import { ADMIN, MANAGER } from "@src/shared";
+import { ADMIN, MANAGER } from "shared/constants/roles";
+import { lazy } from "react";
+
+const CatalogLayout = lazy(
+  async () => await import("../layouts/CatalogLayout"),
+);
+const Layout = lazy(async () => await import("app/layouts/global/Layout"));
+const AboutUs = lazy(async () => await import("pages/AboutUs"));
+const CatalogByCategory = lazy(
+  async () => await import("pages/CatalogByCategory"),
+);
+const CatalogBySearch = lazy(async () => await import("pages/CatalogBySearch"));
+const FAQ = lazy(async () => await import("pages/FAQ"));
+const Main = lazy(async () => await import("pages/Main"));
+const Product = lazy(async () => await import("pages/Product"));
+const SecretGift = lazy(async () => await import("pages/SecretGift"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
@@ -43,24 +45,12 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
           children: [{ path: ":id", element: <Product /> }],
         },
         {
-          path: "contacts",
-          element: <Contacts />,
-        },
-        {
           path: "about-us",
           element: <AboutUs />,
         },
         {
           path: "faq",
           element: <FAQ />,
-        },
-        {
-          path: "settings",
-          element: <Settings />,
-        },
-        {
-          path: "shopping-cart",
-          element: <ShoppingCart />,
         },
         {
           path: "secret-gift",

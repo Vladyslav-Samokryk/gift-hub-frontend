@@ -1,10 +1,13 @@
-import { BannerSlider, TrickedLine, RandomPresentSection } from "@components";
-import { ProductSection, useGetCurrentLang } from "@shared";
 import {
   useGetPopularProductsQuery,
   useGetNewProductsQuery,
-} from "@src/app/api/products";
+} from "app/api/products";
 import { useTranslation } from "react-i18next";
+import BannerSlider from "components/BannerSlider";
+import RandomPresentSection from "components/RandomPresent";
+import TrickedLine from "components/TrickedLine";
+import ProductSection from "shared/UI/ProductSection";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 
 export default function Main(): JSX.Element {
   const lang = useGetCurrentLang();

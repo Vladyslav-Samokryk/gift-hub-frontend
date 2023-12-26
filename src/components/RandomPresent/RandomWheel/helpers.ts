@@ -1,4 +1,7 @@
-import { type StylePropType, SCREEN, DIRECTION } from "@src/shared";
+import { DIRECTION } from "shared/constants/direction";
+import { SCREEN } from "shared/constants/screens";
+import type { StylePropType } from "shared/types/Styles";
+
 interface StyleType {
   left: string;
   height: string;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { SecretGiftDescription, SecretGiftContainer } from "@components";
+import SecretGiftContainer from "components/SecretGiftContainer";
+import SecretGiftDescription from "components/SecretGiftDescription";
 
 export default function SecretGift(): JSX.Element {
   const [isVisibleSelect, setIsVisibleSelect] = useState(false);

@@ -1,5 +1,5 @@
-import type { Children } from "@src/shared";
-import { Close } from "@src/shared";
+import type { Children } from "shared/types/CommonTypes";
+import { Close } from "shared/assets/svg/CloseIcons";
 
 interface HeaderProps {
   title: string;

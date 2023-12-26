@@ -1,15 +1,15 @@
-import { CURRENCY } from "@src/app/api/config";
+import { CURRENCY } from "app/api/config";
 import {
   incrementItem,
   decrementItem,
   removeFromCart,
-} from "@src/app/store/cart/cartSlice";
-import { Wishlist } from "@src/shared";
-import { CountMinus, CountPlus } from "@src/shared/assets/svg/BasketCounter";
-import Trash from "@src/shared/assets/svg/Trash";
-import { getTotalPrice } from "@src/shared/helpers/price";
-import type { BasketItemTypes } from "@src/shared/types/Basket";
-import type { SyntheticEvent } from "react";
+} from "app/store/cart/cartSlice";
+import { Wishlist } from "shared/assets/svg/Wishlist";
+import { CountMinus, CountPlus } from "shared/assets/svg/BasketCounter";
+import Trash from "shared/assets/svg/Trash";
+import { getTotalPrice } from "shared/helpers/price";
+import type { BasketItemTypes } from "shared/types/Basket";
+// import type { SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
 
 const BasketItem = ({
@@ -31,9 +31,9 @@ const BasketItem = ({
     dispatch(removeFromCart(id));
   };
 
-  const handleAddToWishlist = (e: SyntheticEvent): void => {
-    //  TODO: Adiing to wishlist
-  };
+  // const handleAddToWishlist = (e: SyntheticEvent): void => {
+  //  TODO: Adiing to wishlist
+  // };
 
   return (
     <li>
@@ -80,10 +80,7 @@ const BasketItem = ({
 
         <div className="flex flex-col justify-between">
           <div className="flex justify-end gap-6">
-            <button
-              className="group transition-all"
-              onClick={(e) => handleAddToWishlist(e)}
-            >
+            <button className="group transition-all">
               <Wishlist />
             </button>
             <button onClick={() => handleDeleteItem(product.id)}>

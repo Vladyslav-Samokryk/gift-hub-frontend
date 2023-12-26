@@ -1,11 +1,9 @@
-import { Logo } from "@shared";
-import {
-  HeaderWithGoBack,
-  HeaderWithSearch,
-  LanguageToggle,
-  NavigationByRole,
-} from "@components";
 import { useLocation } from "react-router-dom";
+import HeaderWithGoBack from "components/HeaderWithGoBack";
+import HeaderWithSearch from "components/HeaderWithSearch";
+import LanguageToggle from "components/LanguageToggle";
+import NavigationByRole from "components/NavigationByRole";
+import Logo from "shared/UI/Logo";
 
 export default function Header(): JSX.Element {
   const location = useLocation();

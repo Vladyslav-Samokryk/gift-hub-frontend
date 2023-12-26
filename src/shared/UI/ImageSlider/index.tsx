@@ -1,4 +1,3 @@
-/* eslint-disable tailwindcss/classnames-order */
 import { useState } from "react";
 
 function ImageSlider({ images }: { images: string[] | string }): JSX.Element {
@@ -19,7 +18,7 @@ function ImageSlider({ images }: { images: string[] | string }): JSX.Element {
                 src={src}
                 alt={src}
                 onClick={() => setActiveImg(index)}
-                className="w-20 h-20 rounded-md object-cover cursor-pointer"
+                className="h-20 w-20 cursor-pointer rounded-md object-cover"
               />
             ) : null;
           })}

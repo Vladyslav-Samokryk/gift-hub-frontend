@@ -1,5 +1,5 @@
-import { CURRENCY } from "@src/app/api/config";
-import { DIFFER, MAX_PRICE } from "@shared";
+import { CURRENCY } from "app/api/config";
+import { DIFFER, MAX_PRICE } from "shared/constants/price";
 import { type Dispatch, type SetStateAction } from "react";
 import classNames from "classnames";
 import ReactSlider from "react-slider";

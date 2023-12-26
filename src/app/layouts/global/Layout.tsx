@@ -2,9 +2,10 @@ import { Outlet } from "react-router-dom";
 
 import Header from "./Header";
 import Footer from "./Footer";
-import { UpArrow, useHideOnScroll } from "@src/shared";
+import { useHideOnScroll } from "shared/hooks/useHideOnScroll";
+import UpArrow from "shared/UI/Buttons/UpArrow";
 
-export const Layout = (): JSX.Element => {
+const Layout = (): JSX.Element => {
   const isVisible = useHideOnScroll();
   return (
     <>
@@ -17,3 +18,5 @@ export const Layout = (): JSX.Element => {
     </>
   );
 };
+
+export default Layout;

@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { InputContainer, PasswordHide, PasswordShow } from "@shared";
+import { PasswordHide, PasswordShow } from "shared/assets/svg/PasswordIcons";
+import InputContainer from "shared/UI/InputContainer";
 
 interface InputPasswordProps {
   label: string;

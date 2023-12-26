@@ -1,16 +1,15 @@
-import { useGetProductsBySearchQuery } from "@src/app/api/products";
-import { ProductCard } from "@components";
+import { useGetProductsBySearchQuery } from "app/api/products";
+import { useState, useEffect } from "react";
+import { usePaginationParamsContext } from "app/context/catalogContext";
+import ProductCard from "components/ProductCardLine";
+import { PAGINATION_LOAD } from "shared/constants/pagination";
 import {
-  useGetCurrentLang,
-  type ProductCardType,
-  PAGINATION_LOAD,
+  getSearchParams,
   handleQueryParamArray,
   prepareQueryParam,
-} from "@src/shared";
-
-import { usePaginationParamsContext } from "@context/catalogContext";
-import { useState, useEffect } from "react";
-import { getSearchParams } from "@shared";
+} from "shared/helpers/url";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 export default function CatalogBySearch(): JSX.Element {
   const lang = useGetCurrentLang();

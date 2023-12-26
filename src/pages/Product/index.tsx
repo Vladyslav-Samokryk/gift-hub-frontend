@@ -1,31 +1,26 @@
-/* eslint-disable tailwindcss/classnames-order */
-import { CURRENCY } from "@src/app/api/config";
+import { CURRENCY } from "app/api/config";
 import {
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
-} from "@src/app/api/products";
-import { MODALS } from "@src/app/context/modalContext/modals";
-import { useModals } from "@src/app/context/modalContext/useModals";
-import { addToCart } from "@src/app/store/cart/cartSlice";
-import { Breadcrumbs } from "@src/components";
-import DescriptionContainer from "@src/components/DecrtiptionContainer";
-import RateScore from "@src/components/RateScore";
-import {
-  ProductSection,
-  SCREEN,
-  StarRate,
-  Wishlist,
-  useGetCurrentLang,
-  useScreenWidth,
-} from "@src/shared";
-import ImageSlider from "@src/shared/UI/ImageSlider";
-import { CommentsNotFoundIcon } from "@src/shared/assets/svg/Comments";
-import { getRateWithStars } from "@src/shared/helpers/rate";
-import type { TRCriteria } from "@src/shared/types/Translation";
+} from "app/api/products";
+import { addToCart } from "app/store/cart/cartSlice";
+import DescriptionContainer from "components/DecrtiptionContainer";
+import RateScore from "components/RateScore";
+
+import ImageSlider from "shared/UI/ImageSlider";
+import { CommentsNotFoundIcon } from "shared/assets/svg/Comments";
+import { getRateWithStars } from "shared/helpers/rate";
+import type { TRCriteria } from "shared/types/Translation";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
+import Breadcrumbs from "components/Breadcrumbs";
+import StarRate from "shared/UI/StarRate";
+import { Wishlist } from "shared/assets/svg/Wishlist";
+import { SCREEN } from "shared/constants/screens";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
 
 export default function Product(): JSX.Element {
   const { id } = useParams();
@@ -82,7 +77,7 @@ export default function Product(): JSX.Element {
   return (
     <section className="flex flex-col justify-center gap-6 px-[2vw]">
       {width > SCREEN.LG && <Breadcrumbs product={data.name} />}
-      <section className="gap-5 grid grid-cols-1 lg:grid-cols-[1fr,45vw,1fr]">
+      <section className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr,45vw,1fr]">
         <div>
           <h1 className="lg:h5 h6">{data.name}</h1>
           <div className="flex gap-5 md:gap-10 lg:block">
@@ -201,7 +196,7 @@ export default function Product(): JSX.Element {
             })}
           </div>
         ) : (
-          <div className="flex w-full my-10 flex-col items-center text-center text-secondary-900">
+          <div className="my-10 flex w-full flex-col items-center text-center text-secondary-900">
             <CommentsNotFoundIcon />
             <p className="h6 font-light">{t("comments.non_found.header")}</p>
             <h4 className="h5">{t("comments.non_found.description")}</h4>

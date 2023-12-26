@@ -1,10 +1,10 @@
 import { useTranslation } from "react-i18next";
-import {
-  TechnyBigGiftBox,
-  TechnyRubiksCubePuzzle,
-  type TRSecretGift,
-} from "@shared";
 import classNames from "classnames";
+import {
+  TechnyRubiksCubePuzzle,
+  TechnyBigGiftBox,
+} from "shared/assets/svg/SecretGift";
+import type { TRSecretGift } from "shared/types/Translation";
 
 interface SecretGiftDescriptionProps {
   setIsVisibleSelect: (prev: boolean) => void;

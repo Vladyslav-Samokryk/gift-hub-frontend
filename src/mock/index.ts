@@ -1,4 +1,4 @@
-import type { ProductCardType } from "@src/shared";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 export const productCardMock: ProductCardType[] = [
   {

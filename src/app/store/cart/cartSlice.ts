@@ -1,6 +1,6 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import type { ProductCardType } from "@src/shared";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 export interface CartItem extends ProductCardType {
   count: number;

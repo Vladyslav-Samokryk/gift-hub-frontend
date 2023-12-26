@@ -1,6 +1,5 @@
-/* eslint-disable tailwindcss/classnames-order */
-import ToggleBox from "@src/shared/UI/ToggleBox";
-import type { TRCharacteristics, TRFAQ } from "@src/shared/types/Translation";
+import ToggleBox from "shared/UI/ToggleBox";
+import type { TRCharacteristics, TRFAQ } from "shared/types/Translation";
 import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
@@ -24,8 +23,8 @@ function DescriptionContainer({
   });
 
   return (
-    <section className="flex flex-col md:flex-row gap-3 md:divide-x-2 rounded-md border border-blue-200 bg-white px-5 py-3">
-      <div className="md:my-10 my-2 flex justify-between gap-2 items-center md:justify-normal md:gap-16 md:flex-col">
+    <section className="flex flex-col gap-3 rounded-md border border-blue-200 bg-white px-5 py-3 md:flex-row md:divide-x-2">
+      <div className="my-2 flex items-center justify-between gap-2 md:my-10 md:flex-col md:justify-normal md:gap-16">
         {Object.values(characteristics).map((el, i) => {
           return (
             <h5
@@ -45,7 +44,7 @@ function DescriptionContainer({
           );
         })}
       </div>
-      <div className="h-80 overflow-auto px-3 md:py-0 w-full">
+      <div className="h-80 w-full overflow-auto px-3 md:py-0">
         {activeDesc === 0 ? (
           <p>{description}</p>
         ) : activeDesc === 1 ? (

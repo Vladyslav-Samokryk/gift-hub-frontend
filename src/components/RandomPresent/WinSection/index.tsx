@@ -1,6 +1,8 @@
-import { type ProductCardType, WhiteClose, TryAgainIcon } from "@src/shared";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import { WhiteClose } from "shared/assets/svg/CloseIcons";
+import { TryAgainIcon } from "shared/assets/svg/TryAgainIcon";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 interface WinSectionProps {
   setUserWin: (value: boolean) => void;
@@ -21,7 +23,6 @@ export default function WinSection({
   } else {
     return (
       <section
-        // eslint-disable-next-line prettier/prettier
         className="relative m-3 mb-10 flex h-screen flex-col items-center justify-between rounded-main bg-cover bg-center px-3 text-center text-white md:rounded-2xl"
         style={{
           backgroundImage:

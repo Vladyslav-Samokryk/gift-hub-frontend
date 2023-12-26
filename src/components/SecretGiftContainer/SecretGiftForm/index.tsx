@@ -1,12 +1,13 @@
 import type { Dispatch, SetStateAction } from "react";
 import React, { useMemo, useState } from "react";
 
-import { useGetCategoriesQuery } from "@src/app/api/categories";
-import type { RangeT } from "@src/app/api/products";
-import { SelectSecretGift } from "@src/components";
-import type { Categories } from "@src/shared";
-import { RangePriceRandom, useGetCurrentLang } from "@src/shared";
+import { useGetCategoriesQuery } from "app/api/categories";
+import type { RangeT } from "app/api/products";
+import SelectSecretGift from "components/SelectSecretGift";
 import { useTranslation } from "react-i18next";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import type { Categories } from "shared/types/Categories";
+import RangePriceRandom from "shared/UI/Range/RangePriceRandom";
 
 export interface Category {
   value: string;
