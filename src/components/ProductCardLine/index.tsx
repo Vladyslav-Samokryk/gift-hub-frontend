@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import StarRate from "shared/UI/StarRate";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import ImgWithPreloader from "shared/UI/ImgWithPreloader";

@@ -11,7 +11,6 @@ import ImageSlider from "shared/UI/ImageSlider";
 import { CommentsNotFoundIcon } from "shared/assets/svg/Comments";
 import { getRateWithStars } from "shared/helpers/rate";
 import type { TRCriteria } from "shared/types/Translation";
-import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
@@ -21,6 +20,8 @@ import { Wishlist } from "shared/assets/svg/Wishlist";
 import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import * as classNames from "classnames";
+// import { useEffect } from "react";
 
 export default function Product(): JSX.Element {
   const { id } = useParams();
@@ -28,6 +29,23 @@ export default function Product(): JSX.Element {
   const { t } = useTranslation();
   const width = useScreenWidth();
   const dispatch = useDispatch();
+  /*   const reviewed: string[] | [] = JSON.parse(
+    localStorage.getItem("reviewed") ?? "[]",
+  );
+
+  useEffect(() => {
+    if (id) {
+      if (reviewed.length === 0) {
+        localStorage.setItem("reviewed", JSON.stringify([id]));
+      }
+
+      if (!reviewed.includes(id)) {
+        localStorage.setItem("reviewed", JSON.stringify([...reviewed, id]));
+      }
+    }
+  }, []);
+  console.log(reviewed); */
+
   // const { onOpen } = useModals();
   //  reviewedProducts;
 
@@ -151,7 +169,7 @@ export default function Product(): JSX.Element {
             labels={getRateWithStars(Object.keys(data.rate_by_stars))}
             data={data.rate_by_stars}
             max={Object.values(data.rate_by_stars).reduce(
-              (sum, el) => (sum += el),
+              (sum: number, el: number) => (sum += el),
               0,
             )}
             isStatic

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { CURRENCY } from "app/api/config";
 import { addToCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";

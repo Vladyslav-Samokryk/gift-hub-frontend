@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import * as classNames from "classnames";
 import { useTranslation } from "react-i18next";
 
 export default function SeeMoreButton({

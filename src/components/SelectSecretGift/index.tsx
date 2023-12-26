@@ -4,7 +4,7 @@ import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { ChevronDownIcon, ChevronUpIcon } from "shared/assets/svg/Arrows";
 import { useTranslation } from "react-i18next";
-import classNames from "classnames";
+import * as classNames from "classnames";
 
 interface SelectSecretGiftProps {
   options?: Category[];

@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import * as classNames from "classnames";
 import { Fragment } from "react";
 import "./style.scss";
 

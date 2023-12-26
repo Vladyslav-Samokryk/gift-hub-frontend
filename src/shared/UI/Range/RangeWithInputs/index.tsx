@@ -1,4 +1,4 @@
-import classNames from "classnames";
+import * as classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";

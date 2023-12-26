@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import classNames from "classnames";
+import * as classNames from "classnames";
 import {
   TechnyRubiksCubePuzzle,
   TechnyBigGiftBox,
