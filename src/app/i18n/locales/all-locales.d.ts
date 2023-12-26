@@ -172,8 +172,6 @@ interface AllLocalesType {
       massagers: string;
       powerbanks: string;
     };
-
-
     comments: {
       header: string;
       all_comments: string;
@@ -223,6 +221,13 @@ interface AllLocalesType {
       };
     };
 
+    faq: Array<{
+      question: string;
+      answer: string;
+    }>;
+
+    delivery: string[];
+    btn_to_basket: string;
   };
 }
 

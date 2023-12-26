@@ -1,5 +1,5 @@
-import { CategoryArrow } from "@src/shared";
-import classNames from "classnames";
+import { CategoryArrow } from "shared/assets/svg/Arrows";
+import * as classNames from "classnames";
 
 interface CategoryButtonProp {
   icon: string;

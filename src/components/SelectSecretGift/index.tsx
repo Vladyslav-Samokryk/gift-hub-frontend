@@ -2,9 +2,9 @@ import type { DropdownIndicatorProps } from "react-select";
 import Select, { components } from "react-select";
 import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
-import { ChevronDownIcon, ChevronUpIcon } from "@src/shared/assets/svg/Arrows";
+import { ChevronDownIcon, ChevronUpIcon } from "shared/assets/svg/Arrows";
 import { useTranslation } from "react-i18next";
-import classNames from "classnames";
+import * as classNames from "classnames";
 
 interface SelectSecretGiftProps {
   options?: Category[];

@@ -1,5 +1,5 @@
 import { baseApi } from "./base";
-import type { Banner } from "@shared";
+import type { Banner } from "shared/types/Banner";
 
 export const bannerApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({

@@ -17,9 +17,12 @@ import {
 } from "react-redux";
 import { createLogger } from "redux-logger";
 
-import { isDevEnv } from "@src/app/api/config";
-import rootReducer from "./rootReducer";
-import { productsApi, bannerApi, baseApi, authApi } from "../api";
+import { isDevEnv } from "app/api/config";
+import rootReducer from "app/store/rootReducer";
+import { authApi } from "app/api/auth";
+import { bannerApi } from "app/api/banner";
+import { baseApi } from "app/api/base";
+import { productsApi } from "app/api/products";
 
 type MiddlewarePointType = Middleware<
   Record<string, unknown>,

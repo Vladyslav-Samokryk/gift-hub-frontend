@@ -1,13 +1,11 @@
-import {
-  useScreenWidth,
-  type TRSorts,
-  SCREEN,
-  RadioButton,
-  setSearchParam,
-} from "@shared";
-import classNames from "classnames";
+import * as classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import RadioButton from "shared/UI/RadioButton";
+import { SCREEN } from "shared/constants/screens";
+import { setSearchParam } from "shared/helpers/url";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import type { TRSorts } from "shared/types/Translation";
 
 export default function SortCatalog(): JSX.Element {
   const { t } = useTranslation();

@@ -1,4 +1,5 @@
-import { type Children, Close } from "@src/shared";
+import { Close } from "shared/assets/svg/CloseIcons";
+import type { Children } from "shared/types/CommonTypes";
 
 interface InputProps {
   children: Children;

@@ -1,9 +1,11 @@
-import { useModals } from "@src/app/context/modalContext/useModals";
-import { ButtonWithIcon, ModalContainer, ModalHeader } from "@src/shared";
-import { MODALS } from "@src/app/context/modalContext/modals";
-import type { ModalDialogProps } from "@src/shared/types/Modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
+import type { ModalDialogProps } from "shared/types/Modals";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
+import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
+import ModalContainer from "shared/UI/ModalContainer";
+import ModalHeader from "shared/UI/ModalHeader";
 
 const CategoryPopUp = ({
   isOpen,

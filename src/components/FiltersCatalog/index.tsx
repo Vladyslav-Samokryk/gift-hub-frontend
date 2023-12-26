@@ -1,15 +1,12 @@
-import type { TRFilters } from "@shared";
-import {
-  Checkbox,
-  StarRate,
-  RangeWithInputs,
-  ListContainer,
-  setSearchParam,
-  removeSearchParam,
-} from "@shared";
 import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
+import Checkbox from "shared/UI/Checkbox";
+import ListContainer from "shared/UI/ListContainer";
+import RangeWithInputs from "shared/UI/Range/RangeWithInputs";
+import StarRate from "shared/UI/StarRate";
+import { removeSearchParam, setSearchParam } from "shared/helpers/url";
+import type { TRFilters } from "shared/types/Translation";
 
 interface Filters {
   main: string[] | string;

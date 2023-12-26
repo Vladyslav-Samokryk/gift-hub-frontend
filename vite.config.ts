@@ -1,46 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import { resolve } from "path";
+import tsconfigPaths from "vite-tsconfig-paths";
 
 const publicDir = resolve(__dirname, "./public");
-
-const root = resolve(__dirname, "./src");
-
-const appDir = resolve(root, "./app");
-const pagesDir = resolve(root, "./pages");
-const componentsDir = resolve(root, "./components");
-const sharedDir = resolve(root, "./shared");
-
-const i18nDir = resolve(appDir, "./i18n/index.ts");
-const configDir = resolve(appDir, "./config");
-const apiDir = resolve(appDir, "./api");
-const stylesDir = resolve(appDir, "./styles/index.scss");
-const navigationDir = resolve(appDir, "./navigation");
-const storeDir = resolve(appDir, "./store");
-const layoutsDir = resolve(appDir, "./layouts");
-const contextDir = resolve(appDir, "./context");
 
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir,
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@src": root,
-      "@app": appDir,
-      "@api": apiDir,
-      "@config": configDir,
-      "@i18n": i18nDir,
-      "@layouts": layoutsDir,
-      "@navigation": navigationDir,
-      "@store": storeDir,
-      "@components": componentsDir,
-      "@shared": sharedDir,
-      "@context": contextDir,
-      "@pages": pagesDir,
-      "@styles": stylesDir,
-    },
-  },
+  plugins: [react(), tsconfigPaths()],
   // dev new port
   server: {
     port: 3000,

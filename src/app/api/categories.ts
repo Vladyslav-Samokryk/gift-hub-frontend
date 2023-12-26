@@ -1,4 +1,4 @@
-import type { Categories } from "@shared";
+import type { Categories } from "shared/types/Categories";
 import { baseApi } from "./base";
 
 export const categoriesApi = baseApi.injectEndpoints({

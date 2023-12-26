@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { DropDown, DropUp, EmailLogo, TelegramLogo } from "@shared";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { DropUp, DropDown } from "shared/assets/svg/Drops";
+import { EmailLogo, TelegramLogo } from "shared/assets/svg/SocialMedia";
 
 export default function ContactDropDown(): JSX.Element {
   const [isVisible, setIsVisible] = useState(false);

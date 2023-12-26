@@ -1,24 +1,20 @@
-import {
-  ButtonWithIcon,
-  DropDown,
-  FilterIcon,
-  PAGINATION_LOAD,
-  SCREEN,
-  useScreenWidth,
-} from "@src/shared";
-import {
-  Breadcrumbs,
-  FiltersCatalog,
-  SortCatalog,
-  BuyTogetherSection,
-  PaginationSection,
-} from "@components";
 import { Outlet } from "react-router-dom";
 import { useState } from "react";
-import { PaginationParamsContext } from "@context/catalogContext";
+import { PaginationParamsContext } from "app/context/catalogContext";
 import { useTranslation } from "react-i18next";
-import { useModals } from "@src/app/context/modalContext/useModals";
-import { MODALS } from "@src/app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
+import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
+import { DropDown } from "shared/assets/svg/Drops";
+import { FilterIcon } from "shared/assets/svg/Filter";
+import { PAGINATION_LOAD } from "shared/constants/pagination";
+import { SCREEN } from "shared/constants/screens";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import Breadcrumbs from "components/Breadcrumbs";
+import BuyTogetherSection from "components/BuyTogetherSection";
+import FiltersCatalog from "components/FiltersCatalog";
+import PaginationSection from "components/PaginationSection";
+import SortCatalog from "components/SortCatalog";
 
 export default function CatalogLayout(): JSX.Element {
   const [page, setPage] = useState(1);

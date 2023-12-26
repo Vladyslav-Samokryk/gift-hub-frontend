@@ -1,4 +1,4 @@
-import type { Children } from "@src/shared";
+import type { Children } from "shared/types/CommonTypes";
 
 interface ButtonWithIconProps {
   text: string;

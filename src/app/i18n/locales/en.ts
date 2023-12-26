@@ -191,7 +191,6 @@ export const en: AllLocalesType = {
       powerbanks: "Powerbanks",
     },
 
-
     comments: {
       header: "Comments",
       all_comments: "All comments",
@@ -240,6 +239,47 @@ export const en: AllLocalesType = {
         description: "But you always can change it :)",
       },
     },
+    faq: [
+      {
+        question:
+          "Is it possible to return or exchange a gift if it does not suit the recipient?",
+        answer:
+          "Yes, we provide the option of returning or exchanging the gift if the recipient is not satisfied with it. Detailed information about the return policy can be found on our website.",
+      },
+      {
+        question: "Do you provide gift wrapping?",
+        answer:
+          "Yes, we provide gift wrapping. You can select the packaging option at checkout.",
+      },
+      {
+        question: "Will the goods arrive in one piece?",
+        answer:
+          "Yes, we provide gift wrapping. You can select the packaging option at checkout.",
+      },
+      {
+        question:
+          "How can I trust you? I am ordering from you for the first time.",
+        answer:
+          "All the products you see on our website are created by us, from the development of the concept to production, implementation, creation of photos and descriptions. We have been working for 3 years and always take care of our customers. Therefore, the products always correspond to the photos and description, presented on the website.",
+      },
+      {
+        question: "Is it possible to add a personal note to the gift?",
+        answer:
+          "Yes, you can add a personal note to your gift during checkout. We will be happy to help you convey your personal message.",
+      },
+      {
+        question: "What to do if I don't remember my password?",
+        answer:
+          "You can change your password using the 'Forgot your password?' on the site. It is available in the authorization/registration window. After clicking on the link, follow the further instructions step by step. The password recovery procedure will take a few minutes.",
+      },
+    ],
 
+    delivery: [
+      '"Nova Poshta" - delivery from UAH 50',
+      '"Ukrposhta" - delivery from UAH 20.',
+      '"Self-delivery" - the buyer picks up the goods himself, free of charge.',
+    ],
+
+    btn_to_basket: "To basket",
   },
 };

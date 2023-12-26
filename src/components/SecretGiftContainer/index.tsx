@@ -1,7 +1,7 @@
 import { useState } from "react";
 import SecretGiftForm from "./SecretGiftForm";
 import SecretGiftUserWin from "./SecretGiftUserWin";
-import type { RangeT } from "@src/app/api/products";
+import type { RangeT } from "app/api/products";
 
 export default function SecretGiftContainer(): JSX.Element {
   const [userWin, setUserWin] = useState(false);

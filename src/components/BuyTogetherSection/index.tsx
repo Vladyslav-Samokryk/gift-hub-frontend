@@ -1,11 +1,14 @@
-import { CURRENCY } from "@src/app/api/config";
-import type { ProductCardType } from "@src/shared";
-import { Plus, SCREEN, useGetCurrentLang, useScreenWidth } from "@src/shared";
+import { CURRENCY } from "app/api/config";
 import { useTranslation } from "react-i18next";
-import { useGetRandomProductsQuery } from "@src/app/api/products";
+import { useGetRandomProductsQuery } from "app/api/products";
 import { Fragment } from "react";
 import ProductCardLine from "../ProductCardLine";
 import ProductCard from "../ProductCard";
+import { Plus } from "shared/assets/svg/Plus";
+import { SCREEN } from "shared/constants/screens";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 export default function BuyTogetherSection(): JSX.Element {
   let total = 0;

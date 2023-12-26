@@ -1,4 +1,4 @@
-import type { CartItem } from "@src/app/store/cart/cartSlice";
+import type { CartItem } from "app/store/cart/cartSlice";
 
 export function getDiscount(items: CartItem[]): number {
   return items.reduce(

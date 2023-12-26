@@ -2,7 +2,7 @@ import { useState, type MouseEvent } from "react";
 import { changeLanguage } from "i18next";
 import className from "classnames";
 import { useTranslation } from "react-i18next";
-import type { TRLang } from "@src/shared";
+import type { TRLang } from "shared/types/Translation";
 
 export default function LanguageToggle(): JSX.Element {
   const { t } = useTranslation();

@@ -1,7 +1,7 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import { authApi } from "@api";
-import type { RoleUnion } from "@shared";
+import { authApi } from "app/api/auth";
+import type { RoleUnion } from "shared/types/User";
 
 interface UserState {
   isAuth: boolean;

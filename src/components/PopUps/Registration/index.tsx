@@ -1,13 +1,11 @@
-import {
-  InputContainer,
-  InputPassword,
-  ModalContainer,
-  ModalHeader,
-} from "@src/shared";
-import EnterAsSection from "../EnterAsSection";
+import EnterAsSection from "components/PopUps/EnterAsSection";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { ModalDialogProps } from "@src/shared/types/Modals";
+import type { ModalDialogProps } from "shared/types/Modals";
+import InputContainer from "shared/UI/InputContainer";
+import InputPassword from "shared/UI/InputPassword";
+import ModalContainer from "shared/UI/ModalContainer";
+import ModalHeader from "shared/UI/ModalHeader";
 
 export default function RegistrationPopUp({
   isOpen,

@@ -1,16 +1,14 @@
-import {
-  Search,
-  BlueClose,
-  Present,
-  Catalog,
-  setSearchParam,
-} from "@src/shared";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { UserSection } from "..";
+import UserSection from "components/UserSection";
 import { useNavigate } from "react-router-dom";
-import { useModals } from "@src/app/context/modalContext/useModals";
-import { MODALS } from "@src/app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
+import { BlueClose } from "shared/assets/svg/CloseIcons";
+import { Present } from "shared/assets/svg/Present";
+import { setSearchParam } from "shared/helpers/url";
+import { Catalog } from "shared/assets/svg/Catalog";
+import { Search } from "shared/assets/svg/Search";
 
 const HeaderWithSearch = (): JSX.Element => {
   const { t } = useTranslation();

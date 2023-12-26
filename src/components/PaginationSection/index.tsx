@@ -1,14 +1,13 @@
-import { usePaginationParamsContext } from "@src/app/context/catalogContext";
-import {
-  PAGE_OPTIONS,
-  PAGINATION_LOAD,
-  Pagination,
-  SCREEN,
-  SeeMoreButton,
-  Select,
-  useScreenWidth,
-} from "@shared";
+import { usePaginationParamsContext } from "app/context/catalogContext";
+
 import { useTranslation } from "react-i18next";
+import Select from "shared/UI/Select";
+import SeeMoreButton from "shared/UI/Buttons/SeeMoreButton";
+import Pagination from "shared/UI/Pagination";
+import { PAGE_OPTIONS } from "shared/constants/pageOptions";
+import { PAGINATION_LOAD } from "shared/constants/pagination";
+import { SCREEN } from "shared/constants/screens";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
 
 const PaginationSection = (): JSX.Element => {
   const windowWidth = useScreenWidth();

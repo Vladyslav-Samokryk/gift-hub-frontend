@@ -1,7 +1,8 @@
-import { FiltersCatalog } from "@src/components";
-import { ModalContainer, ModalHeader } from "@src/shared";
-import type { ModalDialogProps } from "@src/shared/types/Modals";
+import type { ModalDialogProps } from "shared/types/Modals";
 import { useTranslation } from "react-i18next";
+import FiltersCatalog from "components/FiltersCatalog";
+import ModalContainer from "shared/UI/ModalContainer";
+import ModalHeader from "shared/UI/ModalHeader";
 
 const FilterPopUp = ({ isOpen, onClose }: ModalDialogProps): JSX.Element => {
   const { t } = useTranslation();

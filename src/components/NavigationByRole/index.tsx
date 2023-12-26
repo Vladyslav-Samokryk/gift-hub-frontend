@@ -1,8 +1,8 @@
-import { useAppSelector } from "@store";
-import { ADMIN, MANAGER } from "@shared";
 import { Link } from "react-router-dom";
-import { ContactDropDown } from "@components";
 import { useTranslation } from "react-i18next";
+import { useAppSelector } from "app/store";
+import { MANAGER, ADMIN } from "shared/constants/roles";
+import ContactDropDown from "components/ContactDropDown";
 
 export default function NavigationByRole(): JSX.Element {
   const { t } = useTranslation();

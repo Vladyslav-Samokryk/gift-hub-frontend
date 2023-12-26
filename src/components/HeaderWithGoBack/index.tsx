@@ -1,7 +1,7 @@
-import { RightBigArrow } from "@shared";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import { UserSection } from "@components";
+import { RightBigArrow } from "shared/assets/svg/Arrows";
+import UserSection from "components/UserSection";
 
 export default function HeaderWithGoBack(): JSX.Element {
   const navigate = useNavigate();

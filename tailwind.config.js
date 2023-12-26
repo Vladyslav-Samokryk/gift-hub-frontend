@@ -12,6 +12,7 @@ export const theme = {
       blue: {
         100: "#CBCFDA",
         200: "#AAB5CF",
+        300: "#A6B8E8",
         600: "#006EFF",
         700: "#0047FF",
         900: "#140285",
@@ -71,7 +72,6 @@ export const theme = {
   },
   content: {
     bobble1:
-      /* eslint-disable  @typescript-eslint/quotes */
       'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/first_bobble.svg")',
     bobble2:
       'url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/second_bobble.svg")',

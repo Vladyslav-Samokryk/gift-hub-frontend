@@ -1,16 +1,15 @@
-import {
-  StarRate,
-  Wishlist,
-  Basket,
-  type ProductCardType,
-  ImgWithPreloader,
-  useScreenWidth,
-  SCREEN,
-} from "@shared";
-import { CURRENCY } from "@src/app/api/config";
-import { addToCart } from "@src/app/store/cart/cartSlice";
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+import { CURRENCY } from "app/api/config";
+import { addToCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import ImgWithPreloader from "shared/UI/ImgWithPreloader";
+import StarRate from "shared/UI/StarRate";
+import { Wishlist } from "shared/assets/svg/Wishlist";
+import { SCREEN } from "shared/constants/screens";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import type { ProductCardType } from "shared/types/ProductTypes";
+import { Basket } from "shared/assets/svg/Basket";
 
 export default function ProductCard({
   img,
@@ -18,6 +17,8 @@ export default function ProductCard({
   category,
   price,
   global_rating,
+  discount,
+  quantity,
   id,
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
@@ -31,6 +32,8 @@ export default function ProductCard({
         category,
         price,
         global_rating,
+        discount,
+        quantity,
         id,
       }),
     );

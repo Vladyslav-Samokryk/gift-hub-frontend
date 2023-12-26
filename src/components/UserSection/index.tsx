@@ -1,9 +1,11 @@
-import { useModals } from "@src/app/context/modalContext/useModals";
-import { useAppSelector } from "@src/app/store";
-import { selectCart } from "@src/app/store/cart/cartSlice";
-import { UserAccount, Wishlist, Basket } from "@src/shared";
+import { useModals } from "app/context/modalContext/useModals";
+import { useAppSelector } from "app/store";
+import { selectCart } from "app/store/cart/cartSlice";
 
-import { MODALS } from "@src/app/context/modalContext/modals";
+import { MODALS } from "app/context/modalContext/modals";
+import { UserAccount } from "shared/assets/svg/UserAccount";
+import { Wishlist } from "shared/assets/svg/Wishlist";
+import { Basket } from "shared/assets/svg/Basket";
 
 const UserSection = (): JSX.Element => {
   const { onOpen } = useModals();

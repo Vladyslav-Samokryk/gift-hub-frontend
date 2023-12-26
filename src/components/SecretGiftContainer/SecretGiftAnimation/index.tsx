@@ -11,7 +11,7 @@ import {
   SemiSmallPresentBox,
   SmallPresentBox,
   QuestionMark,
-} from "@shared";
+} from "shared/assets/svg/SecretGift";
 import { motion } from "framer-motion";
 interface SecretGiftAnimationProps {
   initial: { y: number; opacity: number };
