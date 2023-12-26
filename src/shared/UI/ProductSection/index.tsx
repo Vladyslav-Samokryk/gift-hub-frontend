@@ -1,61 +1,45 @@
-import {
-  useGetNewProductsQuery,
-  useGetPopularProductsQuery,
-} from "@src/app/api/products";
-import { ProductCard } from "@components";
-import {
-  SeeMoreButton,
-  type ProductCardType,
-  useHorizontalScroll,
-  useGetCurrentLang,
-} from "@shared";
-import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import ProductCard from "components/ProductCardLine";
+import { useHorizontalScroll } from "shared/hooks/useHorizontalScroll";
+import type { ProductCardType } from "shared/types/ProductTypes";
+import SeeMoreButton from "shared/UI/Buttons/SeeMoreButton";
 
-type ProductSectionUnion = "new" | "popular";
+interface ProductSectionProps {
+  linkPath?: string;
+  products: ProductCardType[];
+  title: string;
+}
 
 export default function ProductSection({
-  section,
-}: {
-  section: ProductSectionUnion;
-}): JSX.Element {
-  const { t } = useTranslation();
-  const lang = useGetCurrentLang();
-  const { data, isLoading, error } =
-    section === "new"
-      ? useGetNewProductsQuery(lang)
-      : useGetPopularProductsQuery(lang);
+  linkPath,
+  products,
+  title,
+}: ProductSectionProps): JSX.Element {
   const scrollRef = useHorizontalScroll();
   const navigate = useNavigate();
 
-  if (isLoading || !data || error) return <></>;
+  if (!products) return <></>;
 
   return (
-    <section className="my-20 w-full">
-      <h5 className="h5 text-center">
-        {section === "new"
-          ? t("product_sections.new")
-          : t("product_sections.popular")}
-      </h5>
+    <section className="my-10 w-full md:my-20">
+      <h5 className="md:h5 h6 text-center">{title}</h5>
       <div
         className="no-scrollbar my-10 flex overflow-scroll px-2 before:m-auto after:m-auto"
         ref={scrollRef}
         style={{ scrollbarWidth: "none" }}
       >
-        {data.results.map((product: ProductCardType) => {
+        {products.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })}
       </div>
-      <SeeMoreButton
-        onClick={() => {
-          navigate(
-            section === "new"
-              ? "/search/?sort=new"
-              : "/search/?rate=4&rate=5&sort=popular",
-          );
-          window.scrollTo(0, 0);
-        }}
-      />
+      {linkPath && (
+        <SeeMoreButton
+          onClick={() => {
+            navigate(linkPath);
+            window.scrollTo(0, 0);
+          }}
+        />
+      )}
     </section>
   );
 }

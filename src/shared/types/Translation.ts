@@ -1,3 +1,21 @@
+export interface TRCriteria {
+  quality: string;
+  photo_match: string;
+  description_match: string;
+  price: string;
+}
+
+export interface TRCharacteristics {
+  description: string;
+  pay_deliver: string;
+  faq: string;
+}
+
+export interface TRFAQ {
+  question: string;
+  answer: string;
+}
+
 export interface TRHeader {
   secret_present: string;
   about: string;

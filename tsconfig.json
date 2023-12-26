@@ -9,7 +9,7 @@
     ],
     "module": "ESNext",
     "skipLibCheck": true,
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
@@ -19,51 +19,12 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
-      "@src/*": [
-        "src/*"
-      ],
-      "@app/*": [
-        "src/app/*"
-      ],
-      "@api": [
-        "src/app/api"
-      ],
-      "@config": [
-        "src/app/api/config"
-      ],
-      "@i18n": [
-        "src/app/i18n/index.ts"
-      ],
-      "@layouts": [
-        "src/app/layouts"
-      ],
-      "@navigation": [
-        "src/app/navigation"
-      ],
-      "@store": [
-        "src/app/store"
-      ],
-      "@styles": [
-        "src/app/styles/index.scss"
-      ],
-      "@components": [
-        "src/components/index.ts"
-      ],
-      "@shared": [
-        "src/shared/index.ts"
-      ],
-      "@pages": [
-        "src/pages"
-      ],
-      "@context/*": [
-        "src/app/context/*"
-      ],
-      "@public/*": [
-        "public/*"
-      ],
-    }
+            "*": [
+                "src/*"
+            ]
+        }
   },
   "include": [
     "src",

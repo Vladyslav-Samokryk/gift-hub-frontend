@@ -1,25 +1,27 @@
 import { Link } from "react-router-dom";
-import type { TRHelp } from "@shared";
-import {
-  ApplePayLogo,
-  EmailLogo,
-  GooglePayLogo,
-  LocationPointLogo,
-  Logo,
-  MasterCardLogo,
-  TikTokLogo,
-  TweeterLogo,
-  VisaLogo,
-  WhatsAppLogo,
-  FacebookLogo,
-  InstagramLogo,
-} from "@shared";
-import { CONTACT_INFO } from "@src/app/api/config";
+import type { TRHelp } from "shared/types/Translation";
+import { CONTACT_INFO } from "app/api/config";
 import { useTranslation } from "react-i18next";
+import Logo from "shared/UI/Logo";
+import { LocationPointLogo } from "shared/assets/svg/LocationPointLogo";
+import {
+  VisaLogo,
+  MasterCardLogo,
+  GooglePayLogo,
+  ApplePayLogo,
+} from "shared/assets/svg/PaySystems";
+import {
+  WhatsAppLogo,
+  EmailLogo,
+  TweeterLogo,
+  FacebookLogo,
+  TikTokLogo,
+  InstagramLogo,
+} from "shared/assets/svg/SocialMedia";
 
 const helpSection: Array<{
   key: string;
-  path: PathUnion;
+  path: string;
 }> = [
   {
     key: "helpSection_1",
@@ -45,7 +47,7 @@ const helpSection: Array<{
 
 const contactUsSection: Array<{
   key: string;
-  path: PathUnion;
+  path: string;
   value: string;
   logo: JSX.Element;
 }> = [
@@ -93,7 +95,7 @@ const paymentSection: Array<{
 
 const followUsSection: Array<{
   key: string;
-  path: PathUnion;
+  path: string;
   logo: JSX.Element;
 }> = [
   {

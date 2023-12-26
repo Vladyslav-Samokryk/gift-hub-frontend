@@ -1,10 +1,11 @@
-import type { RangeT } from "@src/app/api/products";
-import { useGetRandomProductsQuery } from "@src/app/api/products";
-import { SecretGift, type ProductCardType } from "@src/shared";
+import type { RangeT } from "app/api/products";
+import { useGetRandomProductsQuery } from "app/api/products";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import SecretGiftAnimation from "@src/components/SecretGiftContainer/SecretGiftAnimation";
+import SecretGiftAnimation from "components/SecretGiftContainer/SecretGiftAnimation";
 import { useTranslation } from "react-i18next";
+import SecretGift from "pages/SecretGift";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 interface SecretGiftUserWinProps {
   setUserWin: (value: boolean) => void;

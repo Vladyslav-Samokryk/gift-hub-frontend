@@ -1,5 +1,5 @@
 import { baseApi } from "./base";
-import type { User } from "@shared";
+import type { User } from "shared/types/User";
 
 export interface UserResponse {
   user: User;

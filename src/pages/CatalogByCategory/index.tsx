@@ -1,21 +1,20 @@
-import { useGetCategoryIdQuery } from "@src/app/api/categories";
-import { useGetProductsByCategoryQuery } from "@src/app/api/products";
-
-import { ProductCard } from "@components";
-import { usePaginationParamsContext } from "@context/catalogContext";
-import {
-  useGetCurrentLang,
-  type ProductCardType,
-  PAGINATION_LOAD,
-  getSearchParams,
-  prepareQueryParam,
-  handleQueryParamArray,
-} from "@shared";
+import { useGetCategoryIdQuery } from "app/api/categories";
+import { useGetProductsByCategoryQuery } from "app/api/products";
 
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { usePaginationParamsContext } from "app/context/catalogContext";
+import ProductCard from "components/ProductCardLine";
+import { PAGINATION_LOAD } from "shared/constants/pagination";
+import {
+  getSearchParams,
+  handleQueryParamArray,
+  prepareQueryParam,
+} from "shared/helpers/url";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
-function CatalogByCategory(): JSX.Element {
+export default function CatalogByCategory(): JSX.Element {
   const { id } = useParams();
   const lang = useGetCurrentLang();
   const { data: categoryId } = useGetCategoryIdQuery(id ?? "");
@@ -70,5 +69,3 @@ function CatalogByCategory(): JSX.Element {
     </>
   );
 }
-
-export { CatalogByCategory };

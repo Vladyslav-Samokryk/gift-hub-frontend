@@ -1,18 +1,16 @@
-import { useGetCategoriesQuery } from "@src/app/api/categories";
-import {
-  CategoryButton,
-  ModalHeader,
-  SCREEN,
-  useGetCurrentLang,
-  useScreenWidth,
-} from "@src/shared";
+import { useGetCategoriesQuery } from "app/api/categories";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { SubcategoryCard } from "@src/components";
+import SubcategoryCard from "components/SubCategoryCard";
 import { useTranslation } from "react-i18next";
-import { useModals } from "@src/app/context/modalContext/useModals";
-import { MODALS } from "@src/app/context/modalContext/modals";
-import type { ModalDialogProps } from "@src/shared/types/Modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
+import type { ModalDialogProps } from "shared/types/Modals";
+import CategoryButton from "shared/UI/Buttons/CategoryButton";
+import ModalHeader from "shared/UI/ModalHeader";
+import { SCREEN } from "shared/constants/screens";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
 
 export default function CatalogPopUp({
   isOpen,

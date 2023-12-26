@@ -2,10 +2,13 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 
 import { combineReducers } from "@reduxjs/toolkit";
-import { productsApi, bannerApi, authApi, baseApi } from "@api";
 
 import { userReducer } from "./slices";
 import { cartReducer } from "./cart/cartSlice";
+import { authApi } from "app/api/auth";
+import { bannerApi } from "app/api/banner";
+import { baseApi } from "app/api/base";
+import { productsApi } from "app/api/products";
 
 const persistCartConfig = {
   key: "cart",

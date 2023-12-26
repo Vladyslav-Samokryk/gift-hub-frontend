@@ -1,17 +1,13 @@
-import { Close } from "@src/shared";
+import { Close } from "shared/assets/svg/CloseIcons";
 import { useTranslation } from "react-i18next";
 import BasketItem from "./BasketItem";
-import { useAppSelector } from "@src/app/store";
-import { selectCart } from "@src/app/store/cart/cartSlice";
-import {
-  getFullPrice,
-  getTotalPrice,
-  getDiscount,
-} from "@src/shared/helpers/price";
-import type { ModalDialogProps } from "@src/shared/types/Modals";
+import { useAppSelector } from "app/store";
+import { selectCart } from "app/store/cart/cartSlice";
+import { getFullPrice, getTotalPrice, getDiscount } from "shared/helpers/price";
+import type { ModalDialogProps } from "shared/types/Modals";
 import { motion } from "framer-motion";
-import { CURRENCY } from "@src/app/api/config";
-import { EmptyBasketIcon } from "@src/shared/assets/svg/Basket";
+import { CURRENCY } from "app/api/config";
+import { EmptyBasketIcon } from "shared/assets/svg/Basket";
 
 const BasketPopUp = ({ onClose }: ModalDialogProps): JSX.Element => {
   const { t } = useTranslation();
@@ -47,7 +43,6 @@ const BasketPopUp = ({ onClose }: ModalDialogProps): JSX.Element => {
                 <BasketItem key={el.id} product={el} count={el.count} />
               ))
             ) : (
-              // eslint-disable-next-line prettier/prettier
               <div className="flex flex-col items-center gap-2 text-secondary-900">
                 <EmptyBasketIcon />
                 <p className="primary-bold">{t("basket.empty.heading")}</p>

@@ -1,4 +1,4 @@
-import type { ModalContextT } from "@src/shared/types/Modals";
+import type { ModalContextT } from "shared/types/Modals";
 import { useContext } from "react";
 import { ModalContext } from "./modalContext";
 
