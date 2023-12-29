@@ -1,4 +1,4 @@
-import * as React from "react";
+import { lazy } from "react";
 
 export enum MODALS {
   LOGIN = "login",
@@ -11,28 +11,28 @@ export enum MODALS {
   COMMENT = "comment",
 }
 
-const CategoryPopUp = React.lazy(
+const CategoryPopUp = lazy(
   async () => await import("../../../components/PopUps/Category/index"),
 );
-const SortPopUp = React.lazy(
+const SortPopUp = lazy(
   async () => await import("../../../components/PopUps/Sort/index"),
 );
-const FilterPopUp = React.lazy(
+const FilterPopUp = lazy(
   async () => await import("../../../components/PopUps/Filter/index"),
 );
-const BasketPopUp = React.lazy(
+const BasketPopUp = lazy(
   async () => await import("../../../components/PopUps/Basket/index"),
 );
-const CommentPopUp = React.lazy(
+const CommentPopUp = lazy(
   async () => await import("../../../components/PopUps/Comment/index"),
 );
-const LoginPopUp = React.lazy(
+const LoginPopUp = lazy(
   async () => await import("../../../components/PopUps/Login/index"),
 );
-const RegistrationPopUp = React.lazy(
+const RegistrationPopUp = lazy(
   async () => await import("../../../components/PopUps/Registration/index"),
 );
-const CatalogPopUp = React.lazy(
+const CatalogPopUp = lazy(
   async () => await import("../../../components/PopUps/Catalog/index"),
 );
 

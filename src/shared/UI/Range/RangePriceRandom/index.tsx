@@ -1,7 +1,7 @@
 import { CURRENCY } from "app/api/config";
 import { DIFFER, MAX_PRICE } from "shared/constants/price";
 import { type Dispatch, type SetStateAction } from "react";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import ReactSlider from "react-slider";
 
 interface Range {

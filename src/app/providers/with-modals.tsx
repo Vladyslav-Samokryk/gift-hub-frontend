@@ -8,7 +8,7 @@ const initialModalData: ModalDataT = {
   data: undefined,
 };
 
-export const withModals = (WrappedComponent: () => ReactNode) => () => {
+export const withModals = (component: () => ReactNode) => () => {
   const [modalData, setModalData] = useState<ModalDataT>(initialModalData);
 
   const onClose = (): void => {
@@ -25,7 +25,7 @@ export const withModals = (WrappedComponent: () => ReactNode) => () => {
   );
   return (
     <ModalContext.Provider value={providerValue}>
-      <WrappedComponent />
+      {component()}
       <Modals />
     </ModalContext.Provider>
   );

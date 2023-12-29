@@ -20,7 +20,7 @@ import { Wishlist } from "shared/assets/svg/Wishlist";
 import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
-import * as classNames from "classnames";
+import classNames from "classnames";
 // import { useEffect } from "react";
 
 export default function Product(): JSX.Element {

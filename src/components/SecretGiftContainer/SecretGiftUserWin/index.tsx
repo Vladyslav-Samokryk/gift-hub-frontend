@@ -4,8 +4,10 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SecretGiftAnimation from "components/SecretGiftContainer/SecretGiftAnimation";
 import { useTranslation } from "react-i18next";
-import SecretGift from "pages/SecretGift";
+import { SecretGift } from "shared/assets/svg/SecretGift";
 import type { ProductCardType } from "shared/types/ProductTypes";
+import { useDispatch } from "react-redux";
+import { addToCart } from "app/store/cart/cartSlice";
 
 interface SecretGiftUserWinProps {
   setUserWin: (value: boolean) => void;
@@ -25,10 +27,13 @@ export default function SecretGiftUserWin({
   isAnimation,
 }: SecretGiftUserWinProps): JSX.Element {
   const [present, setPresent] = useState<ProductCardType | null>(null);
-  console.log("present", present);
+  const dispatch = useDispatch();
+
   const handleClick = (): void => {
-    console.log("Add to cart");
-    setUserWin(false);
+    if (present) {
+      dispatch(addToCart(present));
+      setUserWin(false);
+    }
   };
   if (!query) return <></>;
   const { data } = useGetRandomProductsQuery(query);

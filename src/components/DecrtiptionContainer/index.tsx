@@ -1,6 +1,6 @@
 import ToggleBox from "shared/UI/ToggleBox";
 import type { TRCharacteristics, TRFAQ } from "shared/types/Translation";
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { t } from "i18next";
 import { useState } from "react";
 
