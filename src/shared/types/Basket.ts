@@ -1,4 +1,4 @@
-import type { ProductCardType } from "..";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 export interface Basket {
   isBasketOpen: boolean;
