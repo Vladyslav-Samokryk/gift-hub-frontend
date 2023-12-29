@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
 import { CURRENCY } from "app/api/config";
 import { addToCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";
@@ -42,7 +41,7 @@ export default function ProductCard({
   return (
     <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:w-card">
       <div className="relative">
-        <Link to={`product/${id}`}>
+        <Link to={`/product/${id}`}>
           <ImgWithPreloader
             className="h-cardImg-sm w-full rounded-t-lg lg:h-cardImg"
             img={img}
@@ -56,13 +55,13 @@ export default function ProductCard({
       <hr className="h-hr bg-black" />
 
       <div className="p-2 lg:relative lg:h-40">
-        <Link to={`product/${id}`}>
+        <Link to={`/product/${id}`}>
           <h2 className="additional lg:primary-bold h-12 w-full overflow-hidden text-ellipsis font-semibold lg:h-20">
             {name}
           </h2>
         </Link>
         <div className="w-[95%] lg:absolute lg:bottom-0">
-          <Link to={`product/${id}`}>
+          <Link to={`/product/${id}`}>
             <h3 className="lg:additional text-[12px] text-gray-900">
               {category}
             </h3>
