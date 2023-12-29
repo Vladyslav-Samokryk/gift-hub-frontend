@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import ProductCard from "components/ProductCardLine";
+import ProductCard from "components/ProductCard";
 import { useHorizontalScroll } from "shared/hooks/useHorizontalScroll";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import SeeMoreButton from "shared/UI/Buttons/SeeMoreButton";

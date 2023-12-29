@@ -1,7 +1,7 @@
 import { useGetProductsBySearchQuery } from "app/api/products";
 import { useState, useEffect } from "react";
 import { usePaginationParamsContext } from "app/context/catalogContext";
-import ProductCard from "components/ProductCardLine";
+import ProductCard from "components/ProductCard";
 import { PAGINATION_LOAD } from "shared/constants/pagination";
 import {
   getSearchParams,
