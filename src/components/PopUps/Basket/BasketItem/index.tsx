@@ -89,7 +89,7 @@ const BasketItem = ({
           </div>
           <div className="flex justify-end gap-4 text-lg font-light">
             <p>
-              {getTotalPrice([product])} {CURRENCY}
+              {getTotalPrice([{ ...product, count }])} {CURRENCY}
             </p>
             {product.discount > 0 && (
               <p className="text-blue-200 line-through">
