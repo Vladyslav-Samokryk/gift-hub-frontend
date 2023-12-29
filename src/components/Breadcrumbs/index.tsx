@@ -1,4 +1,4 @@
-import * as classNames from "classnames";
+import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { Link, useLocation } from "react-router-dom";
 
