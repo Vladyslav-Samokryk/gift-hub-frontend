@@ -35,7 +35,7 @@ export default function BannerSlider(): JSX.Element {
           src={windowWidth > SCREEN.SM ? banner.img : banner.mobileImg}
           alt={banner.link}
           onClick={() => navigate(banner.link)}
-          className="h-[530px] min-h-[240px] w-[90vw] sm:h-[25vw]"
+          className="!h-fit !w-[90vw] object-cover"
           hasMasterSpinner
         />
       </Slide>
