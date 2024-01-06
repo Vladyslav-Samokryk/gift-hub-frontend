@@ -8,10 +8,30 @@ import type { ModalDialogProps } from "shared/types/Modals";
 import { motion } from "framer-motion";
 import { CURRENCY } from "app/api/config";
 import { EmptyBasketIcon } from "shared/assets/svg/Basket";
+import { useGetProductsByIdQuery } from "app/api/products";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useEffect, useState } from "react";
+import type { ProductCardType } from "shared/types/ProductTypes";
 
 const BasketPopUp = ({ onClose }: ModalDialogProps): JSX.Element => {
   const { t } = useTranslation();
-  const cart = useAppSelector(selectCart);
+  const cartItems = useAppSelector(selectCart);
+  const productIds = cartItems.map((obj) => obj.id);
+  const lang = useGetCurrentLang();
+  const [cart, setCart] = useState<ProductCardType[] | null>(null);
+
+  const { data } = useGetProductsByIdQuery({ productIds, lang });
+
+  useEffect(() => {
+    if (data) {
+      setCart(
+        data.map((obj) => {
+          const item = cartItems.find((el) => el.id === obj.id);
+          return { ...obj, count: item?.count };
+        }),
+      );
+    }
+  }, [data]);
 
   return (
     <>
@@ -38,10 +58,8 @@ const BasketPopUp = ({ onClose }: ModalDialogProps): JSX.Element => {
           </div>
           <hr />
           <ul className=" mt-9 flex h-full list-none flex-col gap-5 overflow-scroll p-0">
-            {cart.length ? (
-              cart.map((el) => (
-                <BasketItem key={el.id} product={el} count={el.count} />
-              ))
+            {cart?.length ? (
+              cart.map((el) => <BasketItem key={el.id} product={el} />)
             ) : (
               <div className="flex flex-col items-center gap-2 text-secondary-900">
                 <EmptyBasketIcon />
