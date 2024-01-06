@@ -18,6 +18,7 @@ const FAQ = lazy(async () => await import("pages/FAQ"));
 const Main = lazy(async () => await import("pages/Main"));
 const Product = lazy(async () => await import("pages/Product"));
 const SecretGift = lazy(async () => await import("pages/SecretGift"));
+const Checkout = lazy(async () => await import("pages/Checkout"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
@@ -55,6 +56,10 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "secret-gift",
           element: <SecretGift />,
+        },
+        {
+          path: "checkout",
+          element: <Checkout />,
         },
         {
           path: "*",

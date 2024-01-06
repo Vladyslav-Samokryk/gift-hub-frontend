@@ -284,5 +284,53 @@ export const ua: AllLocalesType = {
     ],
 
     btn_to_basket: "В кошик",
+
+    checkout: {
+      title: "ОФОРМЛЕННЯ ЗАМОВЛЕННЯ",
+      ph: {
+        surname: "Прізвище",
+        name: "Ім'я",
+        email: "Ел.пошта",
+        tel: "Телефон",
+        town: "Місто",
+        address: "Адреса",
+        building: "Будинок",
+        flat: "Квартира",
+        office: "Відділення",
+      },
+      section: {
+        info: "Особисті дані",
+        delivery: {
+          title: "Способи доставки",
+          self: "Самовивіз з магазину",
+          nova_poshta: '"Нова пошта"',
+          urk_poshta: '"Укрпошта"',
+          in_office: "На відділення",
+          by_courier: "Кур'єром",
+          price: {
+            free: "безкоштовно",
+            by_tariff: "за тарифами перевізника",
+          },
+        },
+        payment: {
+          title: "Способи оплати",
+          cash: "Готівкою при отриманні",
+          card: "Банківською картою на сайті",
+        },
+        additional: {
+          title: "Додаткові можливості",
+          add_comment: "Додати коментар",
+          comment_warning: "Коментар має сягати 300 символів",
+          not_recall: "Не телефонувати",
+          another_person: "Одержувач інша людина",
+          present: "Додати подарункове пакування",
+        },
+      },
+      bill: {
+        title: "Ваш чек",
+        total: "Разом",
+      },
+      btn: "Оформити замовлення",
+    },
   },
 };

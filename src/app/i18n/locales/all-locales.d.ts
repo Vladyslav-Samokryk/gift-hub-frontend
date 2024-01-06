@@ -228,6 +228,54 @@ interface AllLocalesType {
 
     delivery: string[];
     btn_to_basket: string;
+
+    checkout: {
+      title: string;
+      ph: {
+        surname: string;
+        name: string;
+        email: string;
+        tel: string;
+        town: string;
+        address: string;
+        building: string;
+        flat: string;
+        office: string;
+      };
+      section: {
+        info: string;
+        delivery: {
+          title: string;
+          self: string;
+          nova_poshta: string;
+          urk_poshta: string;
+          in_office: string;
+          by_courier: string;
+          price: {
+            free: string;
+            by_tariff: string;
+          };
+        };
+        payment: {
+          title: string;
+          cash: string;
+          card: string;
+        };
+        additional: {
+          title: string;
+          add_comment: string;
+          comment_warning: string;
+          not_recall: string;
+          another_person: string;
+          present: string;
+        };
+      };
+      bill: {
+        title: string;
+        total: string;
+      };
+      btn: string;
+    };
   };
 }
 

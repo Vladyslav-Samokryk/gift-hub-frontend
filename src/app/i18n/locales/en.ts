@@ -281,5 +281,53 @@ export const en: AllLocalesType = {
     ],
 
     btn_to_basket: "To basket",
+
+    checkout: {
+      title: "ORDER PROCESSING",
+      ph: {
+        surname: "Last Name",
+        name: "First Name",
+        email: "Email",
+        tel: "Phone",
+        town: "City",
+        address: "Address",
+        building: "Building",
+        flat: "Apartment",
+        office: "Post office",
+      },
+      section: {
+        info: "Personal Information",
+        delivery: {
+          title: "Delivery Methods",
+          self: "Pick up from the store",
+          nova_poshta: '"Nova Poshta"',
+          urk_poshta: '"Ukrposhta"',
+          in_office: "To the post office",
+          by_courier: "By courier",
+          price: {
+            free: "free",
+            by_tariff: "according to the carrier's tariffs",
+          },
+        },
+        payment: {
+          title: "Payment Methods",
+          cash: "Cash on delivery",
+          card: "By bank card on the website",
+        },
+        additional: {
+          title: "Additional Options",
+          add_comment: "Add a comment",
+          comment_warning: "Comment should be up to 300 characters",
+          not_recall: "Do not call",
+          another_person: "Recipient is another person",
+          present: "Add gift wrapping",
+        },
+      },
+      bill: {
+        title: "Your Receipt",
+        total: "Total",
+      },
+      btn: "Place Order",
+    },
   },
 };
