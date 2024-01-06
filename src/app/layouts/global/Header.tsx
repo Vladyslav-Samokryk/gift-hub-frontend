@@ -16,7 +16,8 @@ export default function Header(): JSX.Element {
         <LanguageToggle />
       </section>
 
-      {location.pathname.includes("/secret-gift") ? (
+      {location.pathname.includes("/secret-gift") ||
+      location.pathname.includes("/checkout") ? (
         <HeaderWithGoBack />
       ) : (
         <HeaderWithSearch />
