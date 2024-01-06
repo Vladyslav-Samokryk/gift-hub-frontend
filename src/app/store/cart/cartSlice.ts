@@ -1,8 +1,8 @@
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { createSlice } from "@reduxjs/toolkit";
-import type { ProductCardType } from "shared/types/ProductTypes";
 
-export interface CartItem extends ProductCardType {
+export interface CartItem {
+  id: string;
   count: number;
 }
 
@@ -18,14 +18,14 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addToCart: (state, action: PayloadAction<ProductCardType>) => {
-      const item = state.items.find((obj) => obj.id === action.payload.id);
+    addToCart: (state, action: PayloadAction<string>) => {
+      const item = state.items.find((obj) => obj.id === action.payload);
 
       if (item) {
         item.count++;
       } else {
         state.items.push({
-          ...action.payload,
+          id: action.payload,
           count: 1,
         });
       }

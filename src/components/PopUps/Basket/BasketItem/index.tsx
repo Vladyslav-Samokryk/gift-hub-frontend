@@ -12,11 +12,7 @@ import type { BasketItemTypes } from "shared/types/Basket";
 // import type { SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
 
-const BasketItem = ({
-  product,
-  options,
-  count,
-}: BasketItemTypes): JSX.Element => {
+const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
   const dispatch = useDispatch();
 
   const handleIncrementCounter = (id: string): void => {
@@ -69,7 +65,7 @@ const BasketItem = ({
           >
             <CountMinus />
           </button>
-          <span>{count}</span>
+          <span>{product?.count}</span>
           <button
             className="text-blue-700 hover:text-blue-800"
             onClick={() => handleIncrementCounter(product.id)}
@@ -89,11 +85,11 @@ const BasketItem = ({
           </div>
           <div className="flex justify-end gap-4 text-lg font-light">
             <p>
-              {getTotalPrice([{ ...product, count }])} {CURRENCY}
+              {getTotalPrice([product])} {CURRENCY}
             </p>
             {product.discount > 0 && (
               <p className="text-blue-200 line-through">
-                {product.price * count} {CURRENCY}
+                {product.price * (product?.count ?? 1)} {CURRENCY}
               </p>
             )}
           </div>

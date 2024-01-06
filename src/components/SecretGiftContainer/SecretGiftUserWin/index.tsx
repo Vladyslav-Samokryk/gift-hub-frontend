@@ -31,7 +31,7 @@ export default function SecretGiftUserWin({
 
   const handleClick = (): void => {
     if (present) {
-      dispatch(addToCart(present));
+      dispatch(addToCart(present.id));
       setUserWin(false);
     }
   };

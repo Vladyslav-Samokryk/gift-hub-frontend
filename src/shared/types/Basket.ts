@@ -7,6 +7,5 @@ export interface Basket {
 
 export interface BasketItemTypes {
   product: ProductCardType;
-  count: number;
   options?: Array<{ values: string[] }>;
 }
