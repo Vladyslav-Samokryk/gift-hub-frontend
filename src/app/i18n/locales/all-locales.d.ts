@@ -248,7 +248,7 @@ interface AllLocalesType {
           title: string;
           self: string;
           nova_poshta: string;
-          urk_poshta: string;
+          ukr_poshta: string;
           in_office: string;
           by_courier: string;
           price: {

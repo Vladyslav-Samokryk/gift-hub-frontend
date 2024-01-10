@@ -301,7 +301,7 @@ export const en: AllLocalesType = {
           title: "Delivery Methods",
           self: "Pick up from the store",
           nova_poshta: '"Nova Poshta"',
-          urk_poshta: '"Ukrposhta"',
+          ukr_poshta: '"Ukrposhta"',
           in_office: "To the post office",
           by_courier: "By courier",
           price: {

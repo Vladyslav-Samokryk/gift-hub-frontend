@@ -304,7 +304,7 @@ export const ua: AllLocalesType = {
           title: "Способи доставки",
           self: "Самовивіз з магазину",
           nova_poshta: '"Нова пошта"',
-          urk_poshta: '"Укрпошта"',
+          ukr_poshta: '"Укрпошта"',
           in_office: "На відділення",
           by_courier: "Кур'єром",
           price: {
