@@ -1,5 +1,6 @@
 import EnterAsSection from "components/PopUps/EnterAsSection";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { ModalDialogProps } from "shared/types/Modals";
 import InputContainer from "shared/UI/InputContainer";
@@ -88,7 +89,26 @@ export default function RegistrationPopUp({
           <button className="btn-effect btn m-auto">
             {t("registr_popup.btn")}
           </button>
+          <span className="text-gray-900">
+            By registering, you are up to date with the regulations{" "}
+            <Link
+              to="/privacy-policy"
+              className="text-blue-600"
+              onClick={onClose}
+            >
+              regarding the processing and protection of personal data
+            </Link>{" "}
+            for{" "}
+            <Link
+              to="/privacy-policy"
+              className="text-blue-600"
+              onClick={onClose}
+            >
+              the benefit of the client.
+            </Link>
+          </span>
         </div>
+
         <EnterAsSection />
       </div>
     </ModalContainer>
