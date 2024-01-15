@@ -228,6 +228,42 @@ interface AllLocalesType {
 
     delivery: string[];
     btn_to_basket: string;
+
+    offer_contract: {
+      main_title: string;
+      title: string;
+      subtitle: string[];
+      text: {
+        first: string[];
+        second: string[];
+        third: string[];
+        fourth: string[];
+        fifth: string[];
+        sixth: string[];
+      };
+      sub_text: {
+        first: string[];
+        second: string[];
+        third: string[];
+        fourth: string[];
+        fifth: string[];
+      };
+    };
+
+    payment_and_delivery: {
+      main_title: string;
+      text: string[];
+    };
+
+    return_conditions: {
+      main_title: string;
+      text: string[];
+    };
+
+    privacy_police: {
+      main_title: string;
+      text: string[];
+    };
   };
 }
 
