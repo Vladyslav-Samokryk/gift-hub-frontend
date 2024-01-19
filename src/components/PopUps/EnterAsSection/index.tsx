@@ -1,20 +1,43 @@
 import { useTranslation } from "react-i18next";
 
+import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
+import { Facebook } from "shared/assets/svg/Facebook";
+
+import { Google } from "shared/assets/svg/Google";
+
 export default function EnterAsSection(): JSX.Element {
   const { t } = useTranslation();
   return (
     <>
-      <div className="relative my-3 w-full py-5 md:mx-2 md:h-[90%] md:w-[2px]">
+      <div className="relative my-5 w-full  md:mx-2 md:h-[90%] md:w-[2px]">
         <div className=" h-[1.5px] w-full bg-gray-900 md:h-full md:w-[1.5px]" />
-        <p className="absolute left-1/2 top-[10%] -translate-x-1/2 bg-white md:top-[30%]">
+        <p className="absolute left-1/2 top-[10%] -translate-x-1/2 -translate-y-1/2 bg-white md:top-[97px]">
           {t("or")}
         </p>
       </div>
 
-      <div className="md:mt-6">
-        <h5>{t("enter_as_header")}</h5>
-        <button>Google</button>
-        <button>Facebook</button>
+      <div className="flex flex-col text-center md:mt-5">
+        <h5 className=" mb-5 md:mb-2">{t("enter_as_header")}</h5>
+        <div className=" flex justify-between md:block">
+          <ButtonWithIcon
+            text="Google"
+            className=" mb-11 h-11 w-[122px] items-center justify-center gap-3 rounded-md border border-solid border-gray-900 align-middle text-lg font-medium md:w-44"
+            onClick={() => {
+              ("");
+            }}
+          >
+            <Google />
+          </ButtonWithIcon>
+          <ButtonWithIcon
+            text="Facebook"
+            className=" mb-11 h-11 w-[122px] items-center justify-center gap-3 rounded-md border border-solid border-gray-900 align-middle text-lg font-medium md:w-44"
+            onClick={() => {
+              ("");
+            }}
+          >
+            <Facebook />
+          </ButtonWithIcon>
+        </div>
       </div>
     </>
   );
