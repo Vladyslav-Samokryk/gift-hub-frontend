@@ -1,11 +1,9 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import classNames from "classnames";
 import DeliveryInputGroup from "components/DeliveryInputGroup";
 import type { FormikHelpers } from "formik";
 import { Formik, Field, Form } from "formik";
 import { useTranslation } from "react-i18next";
 import FormikInput from "shared/UI/FormikInput";
-import InputContainer from "shared/UI/InputContainer";
 import ListBlock from "shared/UI/ListBlock";
 import { CheckoutSchema } from "shared/helpers/formValidate";
 import type { CheckoutValues } from "shared/types/Checkout";
@@ -21,8 +19,6 @@ function CheckoutForm(): JSX.Element {
         email: "",
         tel: "",
         delivery_type: "self",
-        payment_type: "cash",
-        is_payed: false,
         is_not_recall: false,
         is_another_person: false,
         is_comment: false,
@@ -51,7 +47,7 @@ function CheckoutForm(): JSX.Element {
         }, 500);
       }}
     >
-      {({ values, setFieldValue }) => (
+      {({ values, setFieldValue, handleBlur, errors }) => (
         <Form className="primary flex w-full flex-col gap-5 lg:w-[60%]">
           <ListBlock
             index="1"
@@ -64,6 +60,7 @@ function CheckoutForm(): JSX.Element {
               setFieldValue={setFieldValue}
               label={t("checkout.ph.name")}
               name="firstName"
+              onBlur={handleBlur}
             />
             <FormikInput
               value={values.lastName}
@@ -112,23 +109,6 @@ function CheckoutForm(): JSX.Element {
               setFieldValue={setFieldValue}
               type="ukr"
             />
-          </ListBlock>
-
-          <ListBlock
-            index="3"
-            indexStyle="after:content-bobble3"
-            title={t("checkout.section.payment.title")}
-            className="flex flex-col"
-          >
-            <label>
-              <Field type="radio" name="payment_type" value="cash" />
-              {t("checkout.section.payment.cash")}
-            </label>
-
-            <label>
-              <Field type="radio" name="payment_type" value="card" />
-              {t("checkout.section.payment.card")}
-            </label>
           </ListBlock>
 
           <ListBlock
@@ -200,7 +180,7 @@ function CheckoutForm(): JSX.Element {
                     label={t("checkout.ph.tel")}
                     name="another_person.tel"
                     type="tel"
-                  />{" "}
+                  />
                   <FormikInput
                     value={values?.another_person?.firstName ?? ""}
                     setFieldValue={setFieldValue}
@@ -222,7 +202,11 @@ function CheckoutForm(): JSX.Element {
               {t("checkout.section.additional.present")}
             </label>
           </ListBlock>
-          <button className="btn btn-effect mx-auto">
+          <button
+            className="btn btn-effect mx-auto"
+            type="submit"
+            onClick={() => console.log(errors)}
+          >
             {t("checkout.btn")}
           </button>
         </Form>

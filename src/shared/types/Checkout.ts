@@ -10,8 +10,6 @@ export interface CheckoutValues {
   building: string;
   flat: string;
   post_office: string;
-  payment_type: "cash" | "card";
-  is_payed: boolean;
   comment: string;
   is_not_recall: boolean;
   is_another_person: boolean;

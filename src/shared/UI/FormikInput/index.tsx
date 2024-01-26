@@ -9,11 +9,18 @@ interface FormikInputProps {
   label: string;
   name: string;
   type?: string;
+  onBlur?: {
+    (e: unknown): void;
+    <T = unknown>(
+      fieldOrEvent: T,
+    ): T extends string ? (e: unknown) => void : unknown;
+  };
 }
 
 function FormikInput({
   value,
   setFieldValue,
+  onBlur,
   label,
   name,
   type = "text",
@@ -31,6 +38,7 @@ function FormikInput({
         placeholder=""
         type={type}
         value={value}
+        onBlur={onBlur}
       />
     </InputContainer>
   );

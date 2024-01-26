@@ -17,7 +17,7 @@ export default function InputContainer({
   className = "",
 }: InputProps): JSX.Element {
   return (
-    <div className={"input relative flex items-center " + className}>
+    <div className={"input relative flex items-center bg-white " + className}>
       {children}
       {inputValue.length ? (
         <button

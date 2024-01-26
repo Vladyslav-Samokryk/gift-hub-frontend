@@ -9,14 +9,16 @@ const AnotherPersonSchema = yup.object().shape({
     .required("required"),
 });
 
+const noAnotherPersonSchema = yup.object().shape({
+  firstName: yup.string().trim().notRequired(),
+  lastName: yup.string().trim().notRequired(),
+  tel: yup
+    .string()
+    .matches(/\+380[0-9]{9}/)
+    .notRequired(),
+});
+
 export const CheckoutSchema = yup.object().shape({
-  is_payed: yup
-    .boolean()
-    .when("payment_type", ([payment_type]) =>
-      payment_type === "card"
-        ? yup.boolean().oneOf([true], "Field must be checked")
-        : yup.boolean(),
-    ),
   is_not_recall: yup.boolean(),
   is_another_person: yup.boolean(),
   is_comment: yup.boolean(),
@@ -32,59 +34,59 @@ export const CheckoutSchema = yup.object().shape({
     .string()
     .matches(/(self|nova|ukr)/)
     .required("required"),
-  delivery_option: yup.string().when("delivery_type", ([delivery_type]) =>
-    delivery_type !== "self"
-      ? yup
-          .string()
-          .matches(/(courier|post_office)/)
-          .required("required")
-      : yup.string().notRequired(),
-  ),
+  delivery_option: yup
+    .string()
+    .when("delivery_type", (delivery_type, schema) =>
+      !delivery_type.includes("self")
+        ? schema.matches(/(courier|post_office)/).required("required")
+        : schema.notRequired(),
+    ),
   another_person: yup
     .object()
-    .when("is_another_person", ([is_another_person]) =>
-      is_another_person ? AnotherPersonSchema : yup.object().notRequired(),
+    .when("is_another_person", (is_another_person) =>
+      is_another_person.includes(true)
+        ? AnotherPersonSchema
+        : noAnotherPersonSchema,
     ),
   comment: yup
     .string()
-    .when("is_comment", (_, schema) =>
-      schema.trim().min(10, "small comment").max(300, "big comment"),
+    .when("is_comment", (is_comment, schema) =>
+      is_comment
+        ? schema.min(10, "small comment").max(300, "big comment")
+        : schema.notRequired(),
     ),
-
   town: yup
     .string()
-    .when("delivery_option", ([delivery_option]) =>
-      delivery_option
+    .when("delivery_type", (delivery_type) =>
+      !delivery_type.includes("self")
         ? yup.string().trim().required("required")
         : yup.string().notRequired(),
     ),
-
   post_office: yup
     .string()
-    .when("delivery_option", ([delivery_option]) =>
-      delivery_option === "post_office"
+    .when("delivery_option", (delivery_option) =>
+      delivery_option.includes("post_office")
         ? yup.string().trim().required("required")
         : yup.string().notRequired(),
     ),
-
   address: yup
     .string()
-    .when("delivery_option", ([delivery_option]) =>
-      delivery_option === "courier"
+    .when("delivery_option", (delivery_option) =>
+      delivery_option.includes("courier")
         ? yup.string().trim().required("required")
         : yup.string().notRequired(),
     ),
   building: yup
     .string()
-    .when("delivery_option", ([delivery_option]) =>
-      delivery_option === "courier"
+    .when("delivery_option", (delivery_option) =>
+      delivery_option.includes("courier")
         ? yup.string().trim().required("required")
         : yup.string().notRequired(),
     ),
   flat: yup
     .string()
-    .when("delivery_option", ([delivery_option]) =>
-      delivery_option === "courier"
+    .when("delivery_option", (delivery_option) =>
+      delivery_option.includes("courier")
         ? yup.string().trim().required("required")
         : yup.string().notRequired(),
     ),
