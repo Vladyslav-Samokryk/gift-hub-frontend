@@ -17,11 +17,10 @@ export default function EnterAsSection(): JSX.Element {
       </div>
 
       <div className="flex flex-col text-center md:mt-5">
-        <h5 className=" mb-5 md:mb-2">{t("enter_as_header")}</h5>
-        <div className=" flex justify-between md:block">
+        <h5 className="mb-5 md:mb-2">{t("enter_as_header")}</h5>
+        <div className="flex w-full flex-col items-center justify-center">
           <ButtonWithIcon
             text="Google"
-            className=" mb-11 h-11 w-[122px] items-center justify-center gap-3 rounded-md border border-solid border-gray-900 align-middle text-lg font-medium md:w-44"
             onClick={() => {
               ("");
             }}
@@ -30,7 +29,6 @@ export default function EnterAsSection(): JSX.Element {
           </ButtonWithIcon>
           <ButtonWithIcon
             text="Facebook"
-            className=" mb-11 h-11 w-[122px] items-center justify-center gap-3 rounded-md border border-solid border-gray-900 align-middle text-lg font-medium md:w-44"
             onClick={() => {
               ("");
             }}
