@@ -20,10 +20,10 @@ export default function RegistrationPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={isOpen} onClose={onClose} top={80}>
+    <ModalContainer visible={isOpen} onClose={onClose} top={30}>
       <ModalHeader title={t("registr_popup.header")} onClose={onClose} />
 
-      <div className="grid md:grid-cols-[2fr_40px_1fr]">
+      <div className="grid md:grid-cols-[2fr_40px_1fr] lg:w-[40vw]">
         <div className="mt-6 grid grid-cols-1 justify-around gap-4 md:mr-5 md:gap-8">
           <InputContainer
             label={t("person.name")}

@@ -32,11 +32,11 @@ export default function AdditionalInfo({
     };
 
     return (
-      <section className="flex w-full flex-col items-center justify-center pb-24 lg:px-28 font-rubik">
-        <h2 className="mb-3 mt-6 uppercase font-medium text-black text-2xl md:text-4xl">
+      <section className="flex w-full flex-col items-center justify-center pb-24 font-rubik lg:px-28">
+        <h2 className="mb-3 mt-6 text-2xl font-medium uppercase text-black md:text-4xl">
           {data.main_title}
         </h2>
-        <section className="gap-9 flex flex-col text-2xl font-light w-[90%] lg:w-auto">
+        <section className="flex w-[90%] flex-col gap-9 text-2xl font-light lg:w-auto">
           <p>
             {firstPart}
             <Link to="/" className="text-blue-600">
@@ -47,7 +47,7 @@ export default function AdditionalInfo({
 
           {data.subtitle.map((subtitle, indexTitle) => (
             <div key={indexTitle}>
-              <h3 className="flex items-center justify-center text-blue-900 font-normal text-2xl md:text-4xl mb-3">
+              <h3 className="mb-3 flex items-center justify-center text-2xl font-normal text-blue-900 md:text-4xl">
                 {indexTitle + 1}. {subtitle}
               </h3>
               {textEntries[textKeys[indexTitle]].map((text, textIndex) => (
@@ -57,7 +57,7 @@ export default function AdditionalInfo({
                       <>
                         {indexTitle + 1}.{textIndex + 1}.{" "}
                         {text.split("{{link}}")[0]}
-                        <Link to="/" className="text-blue-600 undertext">
+                        <Link to="/" className="text-blue-600  underline">
                           https://main--lighthearted-cocada-0d2e37.netlify.app/
                         </Link>
                         {text.split("{{link}}")[1]}
@@ -108,11 +108,11 @@ export default function AdditionalInfo({
     );
   } else {
     return (
-      <section className="flex w-full flex-col items-center justify-center pb-24 lg:px-28 font-rubik">
-        <h2 className="mb-3 mt-6 uppercase font-medium text-black text-2xl md:text-4xl">
+      <section className="flex w-full flex-col items-center justify-center pb-24 font-rubik lg:px-28">
+        <h2 className="mb-3 mt-6 text-2xl font-medium uppercase text-black md:text-4xl">
           {data.main_title}
         </h2>
-        <section className="gap-9 flex flex-col text-2xl font-light w-[90%] lg:w-auto">
+        <section className="flex w-[90%] flex-col gap-9 text-2xl font-light lg:w-auto">
           {data.text.map((text: string, indexText: number) => (
             <p key={indexText}> {`${indexText + 1}. ${text}`}</p>
           ))}
