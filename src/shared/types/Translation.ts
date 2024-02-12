@@ -31,7 +31,6 @@ export interface TRFooter {
 }
 
 export interface TRHelp {
-  faq: string;
   offer_contract: string;
   payment_delivery: string;
   return_conditions: string;

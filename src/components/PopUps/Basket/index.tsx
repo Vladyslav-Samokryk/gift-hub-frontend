@@ -1,37 +1,24 @@
 import { Close } from "shared/assets/svg/CloseIcons";
 import { useTranslation } from "react-i18next";
 import BasketItem from "./BasketItem";
-import { useAppSelector } from "app/store";
-import { selectCart } from "app/store/cart/cartSlice";
 import { getFullPrice, getTotalPrice, getDiscount } from "shared/helpers/price";
 import type { ModalDialogProps } from "shared/types/Modals";
 import { motion } from "framer-motion";
 import { CURRENCY } from "app/api/config";
 import { EmptyBasketIcon } from "shared/assets/svg/Basket";
-import { useGetProductsByIdQuery } from "app/api/products";
-import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
-import { useEffect, useState } from "react";
-import type { ProductCardType } from "shared/types/ProductTypes";
+import useGetCartItems from "shared/hooks/useGetCartItems";
+import { useNavigate } from "react-router";
 
-const BasketPopUp = ({ onClose }: ModalDialogProps): JSX.Element => {
+// eslint-disable-next-line @typescript-eslint/no-empty-function
+const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
   const { t } = useTranslation();
-  const cartItems = useAppSelector(selectCart);
-  const productIds = cartItems.map((obj) => obj.id);
-  const lang = useGetCurrentLang();
-  const [cart, setCart] = useState<ProductCardType[] | null>(null);
+  const cart = useGetCartItems();
+  const navigate = useNavigate();
 
-  const { data } = useGetProductsByIdQuery({ productIds, lang });
-
-  useEffect(() => {
-    if (data) {
-      setCart(
-        data.map((obj) => {
-          const item = cartItems.find((el) => el.id === obj.id);
-          return { ...obj, count: item?.count };
-        }),
-      );
-    }
-  }, [data]);
+  function goToCheckout(): void {
+    navigate("/checkout");
+    onClose();
+  }
 
   return (
     <>
@@ -87,7 +74,11 @@ const BasketPopUp = ({ onClose }: ModalDialogProps): JSX.Element => {
                 <p className="h6">{getTotalPrice(cart)}₴</p>
               </div>
             </div>
-            <button className="btn btn-effect h-12">
+            <button
+              className="btn btn-effect h-12"
+              onClick={goToCheckout}
+              disabled={cart?.length === 0}
+            >
               {t("basket.orderButtonText")}
             </button>
           </div>

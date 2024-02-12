@@ -8,7 +8,6 @@ export const ua: AllLocalesType = {
     },
 
     help_section: {
-      faq: "Часті питання",
       offer_contract: "Договір оферти",
       payment_delivery: "Оплата і доставка",
       return_conditions: "Умови повернення",
@@ -285,6 +284,65 @@ export const ua: AllLocalesType = {
 
     btn_to_basket: "В кошик",
 
+    checkout: {
+      title: "ОФОРМЛЕННЯ ЗАМОВЛЕННЯ",
+      ph: {
+        surname: "Прізвище",
+        name: "Ім'я",
+        email: "Ел.пошта",
+        tel: "Телефон",
+        town: "Місто",
+        address: "Адреса",
+        building: "Будинок",
+        flat: "Квартира",
+        office: "Відділення",
+      },
+      section: {
+        info: "Особисті дані",
+        delivery: {
+          title: "Способи доставки",
+          self: "Самовивіз з магазину",
+          nova_poshta: '"Нова пошта"',
+          ukr_poshta: '"Укрпошта"',
+          in_office: "На відділення",
+          by_courier: "Кур'єром",
+          price: {
+            free: "безкоштовно",
+            by_tariff: "за тарифами",
+          },
+        },
+        payment: {
+          title: "Способи оплати",
+          cash: "Готівкою при отриманні",
+          card: "Банківською картою на сайті",
+        },
+        additional: {
+          title: "Додаткові можливості",
+          add_comment: "Додати коментар",
+          not_recall: "Не телефонувати",
+          another_person: "Одержувач інша людина",
+          present: "Додати подарункове пакування",
+        },
+      },
+      errors: {
+        required: "Обов'язкове поле!",
+        tel: "Валідний формат: +380123456789",
+        email: "Невалідна пошта!",
+        comment: {
+          small: "Мінімальний розмір коментаря - 10 символів!",
+          big: "Максимальний розмір коментаря - 300 символів!",
+        },
+      },
+      success: {
+        title: "Оформлення замовлення пройшло успішно!",
+        description: "Дякуємо за замовлення!",
+      },
+      bill: {
+        title: "Ваш чек",
+        total: "Разом",
+      },
+      btn: "Оформити замовлення",
+    },
     offer_contract: {
       main_title: "Договір оферти",
       title:

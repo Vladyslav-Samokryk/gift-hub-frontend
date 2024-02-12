@@ -206,6 +206,18 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    postOrder: builder.mutation({
+      query: ({ options, products }) => {
+        return {
+          url: `shop/guest_user/order_create/`,
+          method: "POST",
+          body: {
+            ...options,
+            items: [...products],
+          },
+        };
+      },
+    }),
   }),
 });
 
@@ -218,4 +230,5 @@ export const {
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
   useGetProductsByIdQuery,
+  usePostOrderMutation,
 } = productsApi;

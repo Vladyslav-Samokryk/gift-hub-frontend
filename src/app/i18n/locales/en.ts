@@ -8,7 +8,6 @@ export const en: AllLocalesType = {
     },
 
     help_section: {
-      faq: "Frequently asked question",
       offer_contract: "Offer contract",
       payment_delivery: "Payment and delivery",
       return_conditions: "Return conditions",
@@ -282,6 +281,65 @@ export const en: AllLocalesType = {
 
     btn_to_basket: "To basket",
 
+    checkout: {
+      title: "ORDER PROCESSING",
+      ph: {
+        surname: "Last Name",
+        name: "First Name",
+        email: "Email",
+        tel: "Phone",
+        town: "City",
+        address: "Address",
+        building: "Building",
+        flat: "Apartment",
+        office: "Post office",
+      },
+      section: {
+        info: "Personal Information",
+        delivery: {
+          title: "Delivery Methods",
+          self: "Pick up from the store",
+          nova_poshta: '"Nova Poshta"',
+          ukr_poshta: '"Ukrposhta"',
+          in_office: "To the post office",
+          by_courier: "By courier",
+          price: {
+            free: "free",
+            by_tariff: "tariff",
+          },
+        },
+        payment: {
+          title: "Payment Methods",
+          cash: "Cash on delivery",
+          card: "By bank card on the website",
+        },
+        additional: {
+          title: "Additional Options",
+          add_comment: "Add a comment",
+          not_recall: "Do not call",
+          another_person: "Recipient is another person",
+          present: "Add gift wrapping",
+        },
+      },
+      errors: {
+        required: "Field is required!",
+        tel: "Valid format is +380123456789!",
+        email: "Invalid email",
+        comment: {
+          small: "Minimum comment size is 10 characters!",
+          big: "Maximum comment size is 300 characters!",
+        },
+      },
+      success: {
+        title: "Order placement was successful!",
+        description: "Thank you for your order!",
+      },
+      bill: {
+        title: "Your Receipt",
+        total: "Total",
+      },
+      btn: "Place Order",
+    },
     offer_contract: {
       main_title: "Offer Agreement",
       title:
