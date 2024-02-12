@@ -9,7 +9,7 @@ interface ButtonWithIconProps {
 
 const ButtonWithIcon = ({
   text,
-  className = "",
+  className = "mb-5 h-11 w-[122px] items-center justify-center gap-3 rounded-md border border-solid border-gray-900 align-middle text-lg font-medium md:w-44",
   onClick,
   children,
 }: ButtonWithIconProps): JSX.Element => {

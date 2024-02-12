@@ -19,6 +19,14 @@ const Main = lazy(async () => await import("pages/Main"));
 const Product = lazy(async () => await import("pages/Product"));
 const SecretGift = lazy(async () => await import("pages/SecretGift"));
 const Checkout = lazy(async () => await import("pages/Checkout"));
+const OfferContract = lazy(async () => await import("pages/OfferContract"));
+const PaymentAndDelivery = lazy(
+  async () => await import("pages/PaymentAndDelivery"),
+);
+const ReturnConditions = lazy(
+  async () => await import("pages/ReturnConditions"),
+);
+const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
@@ -60,6 +68,22 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "checkout",
           element: <Checkout />,
+        },
+        {
+          path: "offer-contract",
+          element: <OfferContract />,
+        },
+        {
+          path: "payment-and-delivery",
+          element: <PaymentAndDelivery />,
+        },
+        {
+          path: "return-conditions",
+          element: <ReturnConditions />,
+        },
+        {
+          path: "privacy-policy",
+          element: <PrivacyPolicy />,
         },
         {
           path: "*",
