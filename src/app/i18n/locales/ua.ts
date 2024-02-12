@@ -309,7 +309,7 @@ export const ua: AllLocalesType = {
           by_courier: "Кур'єром",
           price: {
             free: "безкоштовно",
-            by_tariff: "за тарифами перевізника",
+            by_tariff: "за тарифами",
           },
         },
         payment: {
@@ -320,11 +320,23 @@ export const ua: AllLocalesType = {
         additional: {
           title: "Додаткові можливості",
           add_comment: "Додати коментар",
-          comment_warning: "Коментар має сягати 300 символів",
           not_recall: "Не телефонувати",
           another_person: "Одержувач інша людина",
           present: "Додати подарункове пакування",
         },
+      },
+      errors: {
+        required: "Обов'язкове поле!",
+        tel: "Валідний формат: +380123456789",
+        email: "Невалідна пошта!",
+        comment: {
+          small: "Мінімальний розмір коментаря - 10 символів!",
+          big: "Максимальний розмір коментаря - 300 символів!",
+        },
+      },
+      success: {
+        title: "Оформлення замовлення пройшло успішно!",
+        description: "Дякуємо за замовлення!",
       },
       bill: {
         title: "Ваш чек",

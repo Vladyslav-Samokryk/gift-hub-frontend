@@ -13,7 +13,7 @@ export interface CheckoutValues {
   comment: string;
   is_not_recall: boolean;
   is_another_person: boolean;
-  another_person?: {
+  another_person: {
     tel: string;
     firstName: string;
     lastName: string;

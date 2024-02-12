@@ -1,14 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-misused-promises */
+import { usePostOrderMutation } from "app/api/products";
+import { clearCart } from "app/store/cart/cartSlice";
+import classNames from "classnames";
 import DeliveryInputGroup from "components/DeliveryInputGroup";
-import type { FormikHelpers } from "formik";
 import { Formik, Field, Form } from "formik";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
 import FormikInput from "shared/UI/FormikInput";
 import ListBlock from "shared/UI/ListBlock";
 import { CheckoutSchema } from "shared/helpers/formValidate";
+import useGetCartItems from "shared/hooks/useGetCartItems";
 import type { CheckoutValues } from "shared/types/Checkout";
+import type { Setter } from "shared/types/CommonTypes";
 
-function CheckoutForm(): JSX.Element {
+interface CheckoutFormProps {
+  setCheckoutIsSuccess: Setter<boolean>;
+}
+
+function CheckoutForm({
+  setCheckoutIsSuccess,
+}: CheckoutFormProps): JSX.Element {
+  const cart = useGetCartItems();
+  const [postOrder] = usePostOrderMutation();
+  const dispatch = useDispatch();
+  const handleClearCart = (): void => {
+    dispatch(clearCart());
+  };
+
   const { t } = useTranslation();
 
   return (
@@ -37,36 +56,59 @@ function CheckoutForm(): JSX.Element {
         delivery_option: "",
       }}
       validationSchema={CheckoutSchema}
-      onSubmit={(
-        values: CheckoutValues,
-        { setSubmitting }: FormikHelpers<CheckoutValues>,
-      ) => {
-        setTimeout(() => {
-          console.log(values);
-          setSubmitting(false);
-        }, 500);
+      onSubmit={(values: CheckoutValues) => {
+        const options: Partial<CheckoutValues> = Object.entries(values).reduce<
+          Partial<CheckoutValues>
+        >((acc, [key, value]) => {
+          if (key === "another_person" && !values.is_another_person) {
+            return acc;
+          }
+          if (value !== "") {
+            acc[key as keyof CheckoutValues] = value;
+          }
+          return acc;
+        }, {});
+
+        postOrder({
+          options,
+          products: cart?.map((el) => {
+            return {
+              product: el.id,
+              quantity: el?.count,
+            };
+          }),
+        })
+          .unwrap()
+          .then(() => {
+            handleClearCart();
+            setCheckoutIsSuccess(true);
+          })
+          .catch(() => setCheckoutIsSuccess(false));
       }}
     >
-      {({ values, setFieldValue, handleBlur, errors }) => (
+      {({ values, setFieldValue, errors, touched }) => (
         <Form className="primary flex w-full flex-col gap-5 lg:w-[60%]">
           <ListBlock
             index="1"
             indexStyle="after:content-bobble1"
             title={t("checkout.section.info")}
-            className="grid grid-cols-2 gap-x-5 gap-y-8"
+            className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-y-8"
           >
             <FormikInput
               value={values.firstName}
               setFieldValue={setFieldValue}
               label={t("checkout.ph.name")}
               name="firstName"
-              onBlur={handleBlur}
+              isError={!!errors.firstName && touched.firstName}
+              errorMessage={errors.firstName}
             />
             <FormikInput
               value={values.lastName}
               setFieldValue={setFieldValue}
               label={t("checkout.ph.surname")}
               name="lastName"
+              isError={!!errors.lastName && touched.lastName}
+              errorMessage={errors.lastName}
             />
             <FormikInput
               value={values.email}
@@ -74,6 +116,8 @@ function CheckoutForm(): JSX.Element {
               label={t("checkout.ph.email")}
               name="email"
               type="email"
+              isError={!!errors.email && touched.email}
+              errorMessage={errors.email}
             />
             <FormikInput
               value={values.tel}
@@ -81,6 +125,8 @@ function CheckoutForm(): JSX.Element {
               label={t("checkout.ph.tel")}
               name="tel"
               type="tel"
+              isError={!!errors.tel && touched.tel}
+              errorMessage={errors.tel}
             />
           </ListBlock>
 
@@ -103,11 +149,15 @@ function CheckoutForm(): JSX.Element {
               values={values}
               setFieldValue={setFieldValue}
               type="nova"
+              errors={errors}
+              touched={touched}
             />
             <DeliveryInputGroup
               values={values}
               setFieldValue={setFieldValue}
               type="ukr"
+              errors={errors}
+              touched={touched}
             />
           </ListBlock>
 
@@ -136,13 +186,20 @@ function CheckoutForm(): JSX.Element {
                   <Field
                     as="textarea"
                     row={10}
-                    className="h-[200px] w-full rounded-md border border-blue-300 bg-blue-300/[.08] p-3"
+                    className={classNames(
+                      "h-[200px] w-full rounded-md border border-blue-300 bg-blue-300/[.08] p-3",
+                      {
+                        "border-accent-red": !!errors?.comment,
+                      },
+                    )}
                     placeholder={t("checkout.section.additional.add_comment")}
                     name="comment"
                   />
-                  <p className="secondary text-right text-gray-600">
-                    {t("checkout.section.additional.comment_warning")}
-                  </p>
+                  {!!errors?.comment && (
+                    <p className="secondary text-right text-accent-red">
+                      {t(errors.comment)}
+                    </p>
+                  )}
                 </div>
               )}
             </div>
@@ -180,18 +237,33 @@ function CheckoutForm(): JSX.Element {
                     label={t("checkout.ph.tel")}
                     name="another_person.tel"
                     type="tel"
+                    isError={
+                      !!errors?.another_person?.tel &&
+                      touched?.another_person?.tel
+                    }
+                    errorMessage={errors?.another_person?.tel ?? ""}
                   />
                   <FormikInput
                     value={values?.another_person?.firstName ?? ""}
                     setFieldValue={setFieldValue}
                     label={t("checkout.ph.name")}
                     name="another_person.firstName"
+                    isError={
+                      !!errors?.another_person?.firstName &&
+                      touched?.another_person?.firstName
+                    }
+                    errorMessage={errors?.another_person?.firstName ?? ""}
                   />
                   <FormikInput
                     value={values?.another_person?.lastName ?? ""}
                     setFieldValue={setFieldValue}
                     label={t("checkout.ph.surname")}
                     name="another_person.lastName"
+                    isError={
+                      !!errors?.another_person?.lastName &&
+                      touched?.another_person?.lastName
+                    }
+                    errorMessage={errors?.another_person?.lastName ?? ""}
                   />
                 </div>
               )}
@@ -202,11 +274,7 @@ function CheckoutForm(): JSX.Element {
               {t("checkout.section.additional.present")}
             </label>
           </ListBlock>
-          <button
-            className="btn btn-effect mx-auto"
-            type="submit"
-            onClick={() => console.log(errors)}
-          >
+          <button className="btn btn-effect mx-auto my-5" type="submit">
             {t("checkout.btn")}
           </button>
         </Form>

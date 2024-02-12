@@ -264,11 +264,23 @@ interface AllLocalesType {
         additional: {
           title: string;
           add_comment: string;
-          comment_warning: string;
           not_recall: string;
           another_person: string;
           present: string;
         };
+      };
+      errors: {
+        required: string;
+        tel: string;
+        email: string;
+        comment: {
+          small: string;
+          big: string;
+        };
+      };
+      success: {
+        title: string;
+        description: string;
       };
       bill: {
         title: string;

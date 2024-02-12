@@ -306,7 +306,7 @@ export const en: AllLocalesType = {
           by_courier: "By courier",
           price: {
             free: "free",
-            by_tariff: "according to the carrier's tariffs",
+            by_tariff: "tariff",
           },
         },
         payment: {
@@ -317,11 +317,23 @@ export const en: AllLocalesType = {
         additional: {
           title: "Additional Options",
           add_comment: "Add a comment",
-          comment_warning: "Comment should be up to 300 characters",
           not_recall: "Do not call",
           another_person: "Recipient is another person",
           present: "Add gift wrapping",
         },
+      },
+      errors: {
+        required: "Field is required!",
+        tel: "Valid format is +380123456789!",
+        email: "Invalid email",
+        comment: {
+          small: "Minimum comment size is 10 characters!",
+          big: "Maximum comment size is 300 characters!",
+        },
+      },
+      success: {
+        title: "Order placement was successful!",
+        description: "Thank you for your order!",
       },
       bill: {
         title: "Your Receipt",

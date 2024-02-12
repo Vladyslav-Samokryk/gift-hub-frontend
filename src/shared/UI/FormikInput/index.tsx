@@ -4,32 +4,30 @@ import InputContainer from "../InputContainer";
 
 interface FormikInputProps {
   value: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setFieldValue: (field: string, value: any) => void;
+  setFieldValue: (field: string, value: string) => void;
   label: string;
   name: string;
+  isError?: boolean;
+  errorMessage?: string;
   type?: string;
-  onBlur?: {
-    (e: unknown): void;
-    <T = unknown>(
-      fieldOrEvent: T,
-    ): T extends string ? (e: unknown) => void : unknown;
-  };
 }
 
 function FormikInput({
   value,
   setFieldValue,
-  onBlur,
   label,
   name,
   type = "text",
+  isError = false,
+  errorMessage = "",
 }: FormikInputProps): JSX.Element {
   return (
     <InputContainer
       label={label}
       inputValue={value}
       setInputValue={async () => setFieldValue(name, "")}
+      isError={isError}
+      errorMessage={errorMessage}
     >
       <Field
         className="h-full w-full pr-8 focus:outline-none"
@@ -38,7 +36,6 @@ function FormikInput({
         placeholder=""
         type={type}
         value={value}
-        onBlur={onBlur}
       />
     </InputContainer>
   );

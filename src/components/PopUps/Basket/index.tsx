@@ -74,7 +74,11 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
                 <p className="h6">{getTotalPrice(cart)}₴</p>
               </div>
             </div>
-            <button className="btn btn-effect h-12" onClick={goToCheckout}>
+            <button
+              className="btn btn-effect h-12"
+              onClick={goToCheckout}
+              disabled={cart?.length === 0}
+            >
               {t("basket.orderButtonText")}
             </button>
           </div>

@@ -10,12 +10,18 @@ interface DeliveryInputGroupProps {
   type: "ukr" | "nova";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setFieldValue: (field: string, value: any) => void;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  errors: any;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  touched: any;
 }
 
 export default function DeliveryInputGroup({
   values,
   type,
   setFieldValue,
+  errors,
+  touched,
 }: DeliveryInputGroupProps): JSX.Element {
   const { t } = useTranslation();
   return (
@@ -47,6 +53,8 @@ export default function DeliveryInputGroup({
                 label={t("checkout.ph.town")}
                 inputValue={values?.town ?? ""}
                 setInputValue={async () => setFieldValue("town", "")}
+                isError={!!errors.town && touched.town}
+                errorMessage={errors.town}
               >
                 <Field
                   className="h-full w-full pr-8 focus:outline-none"
@@ -59,6 +67,8 @@ export default function DeliveryInputGroup({
                 label={t("checkout.ph.office")}
                 inputValue={values.post_office ?? ""}
                 setInputValue={async () => setFieldValue("post_office", "")}
+                isError={!!errors.post_office && touched.post_office}
+                errorMessage={errors.post_office}
               >
                 <Field
                   className="h-full w-full pr-8 focus:outline-none"
@@ -79,6 +89,8 @@ export default function DeliveryInputGroup({
                 label={t("checkout.ph.town")}
                 inputValue={values?.town ?? ""}
                 setInputValue={async () => setFieldValue("town", "")}
+                isError={!!errors.town && touched.town}
+                errorMessage={errors.town}
               >
                 <Field
                   className="h-full w-full pr-8 focus:outline-none"
@@ -91,6 +103,8 @@ export default function DeliveryInputGroup({
                 label={t("checkout.ph.address")}
                 inputValue={values.address ?? ""}
                 setInputValue={async () => setFieldValue("address", "")}
+                isError={!!errors.address && touched.address}
+                errorMessage={errors.address}
               >
                 <Field
                   className="h-full w-full pr-8 focus:outline-none"
@@ -104,6 +118,8 @@ export default function DeliveryInputGroup({
                   label={t("checkout.ph.building")}
                   inputValue={values.building ?? ""}
                   setInputValue={async () => setFieldValue("building", "")}
+                  isError={!!errors.building && touched.building}
+                  errorMessage={errors.building}
                 >
                   <Field
                     className="h-full w-full pr-8 focus:outline-none"
@@ -116,6 +132,8 @@ export default function DeliveryInputGroup({
                   label={t("checkout.ph.flat")}
                   inputValue={values.flat ?? ""}
                   setInputValue={async () => setFieldValue("flat", "")}
+                  isError={!!errors.flat && touched.flat}
+                  errorMessage={errors.flat}
                 >
                   <Field
                     className="h-full w-full pr-8 focus:outline-none"
