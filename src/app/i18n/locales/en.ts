@@ -8,7 +8,6 @@ export const en: AllLocalesType = {
     },
 
     help_section: {
-      faq: "Frequently asked question",
       offer_contract: "Offer contract",
       payment_delivery: "Payment and delivery",
       return_conditions: "Return conditions",

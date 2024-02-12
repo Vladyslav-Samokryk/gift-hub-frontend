@@ -8,7 +8,6 @@ export const ua: AllLocalesType = {
     },
 
     help_section: {
-      faq: "Часті питання",
       offer_contract: "Договір оферти",
       payment_delivery: "Оплата і доставка",
       return_conditions: "Умови повернення",

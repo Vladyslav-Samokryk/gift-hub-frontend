@@ -24,10 +24,6 @@ const helpSection: Array<{
   path: string;
 }> = [
   {
-    key: "helpSection_1",
-    path: "/",
-  },
-  {
     key: "helpSection_2",
     path: "/offer-contract",
   },

@@ -8,7 +8,6 @@ interface AllLocalesType {
     };
 
     help_section: {
-      faq: string;
       offer_contract: string;
       payment_delivery: string;
       return_conditions: string;
