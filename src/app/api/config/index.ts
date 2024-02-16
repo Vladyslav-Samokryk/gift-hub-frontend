@@ -15,7 +15,7 @@ export const isProdEnv = NODE_ENV === "production";
 export const CONTACT_INFO = {
   number: "+380991235678",
   mail: "gifthub@gmail.com",
-  location: "м.Київ; вулиця Олеся Гончара",
+  location: "м.Київ, вулиця Олеся Гончара",
 };
 
 export const CURRENCY = "₴";
