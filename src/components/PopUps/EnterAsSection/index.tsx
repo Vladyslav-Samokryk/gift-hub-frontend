@@ -1,9 +1,7 @@
 import { useTranslation } from "react-i18next";
 
 import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
-import { Facebook } from "shared/assets/svg/Facebook";
-
-import { Google } from "shared/assets/svg/Google";
+import { FacebookLogin, GoogleLogin } from "shared/assets/svg/SocialMedia";
 
 export default function EnterAsSection(): JSX.Element {
   const { t } = useTranslation();
@@ -25,7 +23,7 @@ export default function EnterAsSection(): JSX.Element {
               ("");
             }}
           >
-            <Google />
+            <GoogleLogin />
           </ButtonWithIcon>
           <ButtonWithIcon
             text="Facebook"
@@ -33,7 +31,7 @@ export default function EnterAsSection(): JSX.Element {
               ("");
             }}
           >
-            <Facebook />
+            <FacebookLogin />
           </ButtonWithIcon>
         </div>
       </div>
