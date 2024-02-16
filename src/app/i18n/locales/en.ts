@@ -49,10 +49,10 @@ export const en: AllLocalesType = {
     secret_gift: {
       title: "Secret Gift",
       subtitles: [
-        "Secret Gift - is an exciting way of choosing and receiving a gift that preserves an element of surprise and mystery until the moment of reveal.",
+        "Secret Gift is an exciting way of choosing and receiving a gift that preserves an element of surprise and mystery until the moment of reveal.",
         "The most important moment is that the user will only find out what was chosen for them when the gift is delivered or opened.",
       ],
-      process_header: "On our website, this process is simple and interesting",
+      process_header: "On our website this process is simple and intriguing.",
       process_steps: [
         "The user selects the gift category and price range according to their preferences.",
         "Our website randomly selects a gift based on these parameters.",
@@ -63,7 +63,7 @@ export const en: AllLocalesType = {
       select_price: "Choose a price range",
       select_category: "Choose a category",
       ph_select: "Select...",
-      win_title: "We choose secret present for you!",
+      win_title: "Wow, we've chosen something interesting for you!",
     },
 
     win_random_section: {

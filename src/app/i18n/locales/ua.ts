@@ -196,7 +196,7 @@ export const ua: AllLocalesType = {
       header: "Відгуки",
       all_comments: "Всі відгуки",
       non_found: {
-        header: "Поки що долний користувач не залишив свій відгук",
+        header: "Поки що жодний користувач не залишив свій відгук",
         description: "Ти можеш стати першим!",
       },
       write_comment: {
