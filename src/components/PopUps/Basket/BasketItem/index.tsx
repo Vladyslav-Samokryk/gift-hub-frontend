@@ -85,7 +85,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
             </button>
           </div>
         ) : (
-          <span>{product?.count}</span>
+          <span>{product.count}</span>
         )}
 
         <div className="flex flex-col justify-between">
@@ -105,7 +105,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
             </p>
             {product.discount > 0 && (
               <p className="text-blue-200 line-through">
-                {product.price * (product?.count ?? 1)} {CURRENCY}
+                {product.price * product.count} {CURRENCY}
               </p>
             )}
           </div>
