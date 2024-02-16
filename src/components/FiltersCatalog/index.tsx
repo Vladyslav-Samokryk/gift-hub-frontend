@@ -38,6 +38,7 @@ export default function FiltersCatalog(): JSX.Element {
         {Object.keys(filters).map((filter, i) => (
           <Checkbox
             key={i}
+            id={filter}
             title={filters[filter as keyof TRFilters]}
             onChange={() => handleCheckboxClick("main", filter)}
             checked={searchParams.getAll("main").includes(filter)}
@@ -49,6 +50,7 @@ export default function FiltersCatalog(): JSX.Element {
         <div className="flex">
           <Checkbox
             title=""
+            id="rate5"
             onChange={() => handleCheckboxClick("rate", "5")}
             checked={searchParams.getAll("rate").includes("5")}
           />
@@ -58,6 +60,7 @@ export default function FiltersCatalog(): JSX.Element {
         <div className="flex">
           <Checkbox
             title=""
+            id="rate4"
             onChange={() => handleCheckboxClick("rate", "4")}
             checked={searchParams.getAll("rate").includes("4")}
           />
