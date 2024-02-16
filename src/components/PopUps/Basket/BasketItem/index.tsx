@@ -13,6 +13,7 @@ import type { BasketItemTypes } from "shared/types/Basket";
 import { useDispatch } from "react-redux";
 import { SecretGiftBasket } from "shared/assets/svg/SecretGift";
 import { useTranslation } from "react-i18next";
+import classNames from "classnames";
 
 const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
   const dispatch = useDispatch();
@@ -69,15 +70,21 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
         {!product.isSecretPresent ? (
           <div className="flex h-6 gap-2">
             <button
-              className="text-blue-700 hover:text-blue-800"
+              className={classNames("text-blue-700 hover:text-blue-800", {
+                "text-blue-800": product.count === 1,
+              })}
               onClick={() => handleDecrementCounter(product.id)}
+              disabled={product.count === 1}
             >
               <CountMinus />
             </button>
             <span>{product.count}</span>
             <button
-              className="text-blue-700 hover:text-blue-800"
+              className={classNames("text-blue-700 hover:text-blue-800", {
+                "text-blue-800": product.count >= product.quantity,
+              })}
               onClick={() => handleIncrementCounter(product.id)}
+              disabled={product.count >= product.quantity}
             >
               <CountPlus />
             </button>
