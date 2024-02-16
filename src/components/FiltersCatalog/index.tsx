@@ -1,3 +1,4 @@
+import { usePaginationParamsContext } from "app/context/catalogContext";
 import { useTranslation } from "react-i18next";
 
 import { useNavigate } from "react-router-dom";
@@ -18,6 +19,12 @@ export default function FiltersCatalog(): JSX.Element {
   const filters: TRFilters = t("filters", { returnObjects: true });
   const searchParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
+  const paginationContext = usePaginationParamsContext();
+  if (!paginationContext) {
+    console.error("Pagination context is null");
+    return <></>;
+  }
+  const { setPage } = paginationContext;
 
   const handleCheckboxClick = (
     filterType: keyof Filters,
@@ -29,6 +36,7 @@ export default function FiltersCatalog(): JSX.Element {
     } else {
       newUrl = setSearchParam(filterType, value, true);
     }
+    setPage(1);
     navigate(newUrl);
   };
 
