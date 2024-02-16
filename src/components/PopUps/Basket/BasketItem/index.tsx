@@ -34,11 +34,9 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
   //  TODO: Adiing to wishlist
   // };
 
-  console.log(product);
-
   return (
     <li>
-      <div className="grid h-fit grid-cols-[5fr_1fr_2fr] gap-2">
+      <div className="grid h-fit grid-cols-[4fr_1fr_2fr] gap-2">
         <div className="flex h-fit gap-3">
           {product.isSecretPresent ? (
             <SecretGiftBasket />
@@ -76,7 +74,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
             >
               <CountMinus />
             </button>
-            <span>{product?.count}</span>
+            <span>{product.count}</span>
             <button
               className="text-blue-700 hover:text-blue-800"
               onClick={() => handleIncrementCounter(product.id)}
@@ -105,7 +103,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
             </p>
             {product.discount > 0 && (
               <p className="text-blue-200 line-through">
-                {product.price * product.count} {CURRENCY}
+                {(product.price * product.count).toFixed(2)} {CURRENCY}
               </p>
             )}
           </div>

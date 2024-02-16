@@ -26,7 +26,7 @@ export default function useGetCartItems(): CartFullItem[] | null {
         }),
       );
     }
-  }, [data]);
+  }, [data, cartItems]);
 
   return cart;
 }
