@@ -12,7 +12,7 @@ export default function SecretGiftContainer({
   const [query, setQuery] = useState<RangeT | null>(null);
   const [isAnimation, setIsAnimation] = useState(false);
 
-  if (isVisibleSelect) {
+  if (!isVisibleSelect) {
     return <></>;
   }
 

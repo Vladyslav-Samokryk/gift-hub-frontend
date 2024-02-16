@@ -1,7 +1,8 @@
 import { CURRENCY } from "app/api/config";
 import CheckoutForm from "components/CheckoutForm";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 import CheckoutCard from "shared/UI/CheckoutCard";
 import { CheckoutIcon } from "shared/assets/svg/CheckoutIcon";
 import { getTotalPrice } from "shared/helpers/price";
@@ -13,6 +14,13 @@ function Checkout(): JSX.Element {
     boolean | undefined
   >(false);
   const { t } = useTranslation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (cart?.length === 0) {
+      navigate("/");
+    }
+  }, [cart]);
 
   return (
     <div>
@@ -23,11 +31,7 @@ function Checkout(): JSX.Element {
             <CheckoutForm setCheckoutIsSuccess={setCheckoutIsSuccess} />
             <div className="flex h-fit w-full flex-col gap-5 rounded-md bg-white p-4 lg:w-[40%]">
               <h6 className="h6">{t("checkout.bill.title")}</h6>
-              {cart ? (
-                cart.map((item) => <CheckoutCard key={item.id} {...item} />)
-              ) : (
-                <></>
-              )}
+              {cart?.map((item) => <CheckoutCard key={item.id} {...item} />)}
               <div className="primary-bold flex justify-between text-blue-700">
                 <p>{t("checkout.bill.total")}</p>
                 <p>

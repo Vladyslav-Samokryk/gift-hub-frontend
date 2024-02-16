@@ -59,10 +59,10 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
 
           <div className="flex justify-between">
             <div className="flex gap-5">
-              <div className="flex flex-col gap-2">
-                <p className="primary">{t("basket.priceText")}</p>
-                <p className="primary">{t("basket.discountText")}</p>
-                <p className="h6">{t("basket.totalPriceText")}</p>
+              <div className="primary flex flex-col gap-2">
+                <p>{t("basket.priceText")}</p>
+                <p>{t("basket.discountText")}</p>
+                <p>{t("basket.totalPriceText")}</p>
               </div>
               <div className="flex flex-col justify-between font-light">
                 <p>
@@ -75,9 +75,9 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
               </div>
             </div>
             <button
-              className="btn btn-effect h-12"
+              className="btn btn-effect h-fit"
               onClick={goToCheckout}
-              disabled={cart?.length === 0}
+              disabled={!cart || cart?.length === 0}
             >
               {t("basket.orderButtonText")}
             </button>

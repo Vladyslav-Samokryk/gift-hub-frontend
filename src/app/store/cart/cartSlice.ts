@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface CartItem {
   id: string;
   count: number;
+  isSecretPresent: boolean;
 }
 
 export interface CartState {
@@ -26,10 +27,20 @@ const cartSlice = createSlice({
       } else {
         state.items.push({
           id: action.payload,
+          isSecretPresent: false,
           count: 1,
         });
       }
     },
+
+    addSecretToCart: (state, action: PayloadAction<string>) => {
+      state.items.push({
+        id: action.payload,
+        isSecretPresent: true,
+        count: 1,
+      });
+    },
+
     incrementItem(state, action: PayloadAction<string>) {
       const item = state.items.find((obj) => obj.id === action.payload);
 
@@ -59,6 +70,7 @@ const cartSlice = createSlice({
 
 export const {
   addToCart,
+  addSecretToCart,
   incrementItem,
   decrementItem,
   removeFromCart,

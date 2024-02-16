@@ -11,9 +11,13 @@ import { getTotalPrice } from "shared/helpers/price";
 import type { BasketItemTypes } from "shared/types/Basket";
 // import type { SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
+import { SecretGiftBasket } from "shared/assets/svg/SecretGift";
+import { useTranslation } from "react-i18next";
+import classNames from "classnames";
 
 const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
   const handleIncrementCounter = (id: string): void => {
     dispatch(incrementItem(id));
@@ -33,15 +37,21 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
 
   return (
     <li>
-      <div className="grid h-fit grid-cols-[5fr_1fr_2fr] gap-2">
+      <div className="grid h-fit grid-cols-[4fr_1fr_2fr] gap-2">
         <div className="flex h-fit gap-3">
-          <img
-            src={product.img}
-            className="h-28 w-28 shrink-0 rounded-xl border border-black"
-            alt={product.name}
-          />
+          {product.isSecretPresent ? (
+            <SecretGiftBasket />
+          ) : (
+            <img
+              src={product.img}
+              className="h-28 w-28 shrink-0 rounded-xl border border-black"
+              alt={product.name}
+            />
+          )}
           <div className="flex flex-col items-center justify-between">
-            <p className="primary">{product.name}</p>
+            <p className="primary">
+              {product.isSecretPresent ? t("secret_gift.title") : product.name}
+            </p>
             {options && (
               <ul className="flex flex-col items-center justify-between">
                 {options.map((option, index) => (
@@ -57,28 +67,39 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
             )}
           </div>
         </div>
-
-        <div className="flex h-6 gap-2">
-          <button
-            className="text-blue-700 hover:text-blue-800"
-            onClick={() => handleDecrementCounter(product.id)}
-          >
-            <CountMinus />
-          </button>
-          <span>{product?.count}</span>
-          <button
-            className="text-blue-700 hover:text-blue-800"
-            onClick={() => handleIncrementCounter(product.id)}
-          >
-            <CountPlus />
-          </button>
-        </div>
+        {!product.isSecretPresent ? (
+          <div className="flex h-6 gap-2">
+            <button
+              className={classNames("text-blue-700 hover:text-blue-800", {
+                "text-blue-800": product.count === 1,
+              })}
+              onClick={() => handleDecrementCounter(product.id)}
+              disabled={product.count === 1}
+            >
+              <CountMinus />
+            </button>
+            <span>{product.count}</span>
+            <button
+              className={classNames("text-blue-700 hover:text-blue-800", {
+                "text-blue-800": product.count >= product.quantity,
+              })}
+              onClick={() => handleIncrementCounter(product.id)}
+              disabled={product.count >= product.quantity}
+            >
+              <CountPlus />
+            </button>
+          </div>
+        ) : (
+          <span>{product.count}</span>
+        )}
 
         <div className="flex flex-col justify-between">
           <div className="flex justify-end gap-6">
-            <button className="group transition-all">
-              <Wishlist />
-            </button>
+            {!product.isSecretPresent && (
+              <button className="group transition-all">
+                <Wishlist />
+              </button>
+            )}
             <button onClick={() => handleDeleteItem(product.id)}>
               <Trash />
             </button>
@@ -89,7 +110,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
             </p>
             {product.discount > 0 && (
               <p className="text-blue-200 line-through">
-                {product.price * (product?.count ?? 1)} {CURRENCY}
+                {(product.price * product.count).toFixed(2)} {CURRENCY}
               </p>
             )}
           </div>
