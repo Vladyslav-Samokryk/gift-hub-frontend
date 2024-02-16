@@ -16,7 +16,7 @@ const UserSection = (): JSX.Element => {
 
   useEffect(() => {
     setCount(cart.length);
-  }, [cart]);
+  });
 
   return (
     <section className="relative flex w-36 justify-between self-center">

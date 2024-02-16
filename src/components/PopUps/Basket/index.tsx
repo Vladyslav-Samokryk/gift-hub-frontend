@@ -77,7 +77,7 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
             <button
               className="btn btn-effect h-fit"
               onClick={goToCheckout}
-              disabled={cart?.length === 0}
+              disabled={!cart || cart?.length === 0}
             >
               {t("basket.orderButtonText")}
             </button>
