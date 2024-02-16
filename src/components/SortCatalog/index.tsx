@@ -1,3 +1,4 @@
+import { usePaginationParamsContext } from "app/context/catalogContext";
 import classNames from "classnames";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
@@ -13,9 +14,16 @@ export default function SortCatalog(): JSX.Element {
   const windowWidth = useScreenWidth();
   const navigate = useNavigate();
   const searchParams = new URLSearchParams(window.location.search);
+  const paginationContext = usePaginationParamsContext();
+  if (!paginationContext) {
+    console.error("Pagination context is null");
+    return <></>;
+  }
+  const { setPage } = paginationContext;
 
   const handleRadioButtonClick = (sort: string): void => {
     navigate(setSearchParam("sort", sort, false));
+    setPage(1);
   };
 
   return (
