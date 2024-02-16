@@ -23,7 +23,7 @@ export default function WinSection({
   } else {
     return (
       <section
-        className="relative m-3 mb-10 flex h-screen flex-col items-center justify-between rounded-main bg-cover bg-center px-3 text-center text-white md:rounded-2xl"
+        className="relative m-auto mb-10 flex h-screen flex-col items-center justify-between rounded-main bg-cover bg-center px-3 text-center text-white md:w-[85vw] md:rounded-2xl"
         style={{
           backgroundImage:
             "url('https://main--lighthearted-cocada-0d2e37.netlify.app/img/RandomPresentBg.svg')",

@@ -34,10 +34,10 @@ export function getSize({ left, size, direction }: StylePropType): number {
 }
 
 export function getDirection({ left, direction }: StylePropType): string {
-  if (direction === DIRECTION.FORWARD && left >= 75) {
+  if (direction === DIRECTION.FORWARD && left >= 65) {
     return DIRECTION.BACK;
   }
-  if (direction === DIRECTION.BACK && left <= 5) {
+  if (direction === DIRECTION.BACK && left <= -5) {
     return DIRECTION.FORWARD;
   }
   return direction;
