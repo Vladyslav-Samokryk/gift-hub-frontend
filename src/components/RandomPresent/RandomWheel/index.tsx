@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useGetRandomProductsQuery } from "app/api/products";
 import {
   getLeft,
@@ -103,11 +103,8 @@ export default function RandomWheel({
           const stepIcon =
             windowWidth >= SCREEN.MD ? <LeftStep /> : <DownStep />;
           return (
-            <>
-              <div
-                key={index}
-                className="flex flex-col items-center justify-center md:flex-row"
-              >
+            <Fragment key={index}>
+              <div className="flex flex-col items-center justify-center md:flex-row">
                 <RandomStep index={index + 1} step={step} />
                 {index === 0 && windowWidth < SCREEN.MD && (
                   <RangePriceRandom
@@ -118,7 +115,7 @@ export default function RandomWheel({
                 )}
               </div>
               {index < randomPresent.steps.length - 1 && stepIcon}
-            </>
+            </Fragment>
           );
         })}
       </div>
