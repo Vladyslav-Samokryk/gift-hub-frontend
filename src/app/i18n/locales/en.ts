@@ -281,5 +281,10 @@ export const en: AllLocalesType = {
     ],
 
     btn_to_basket: "To basket",
+    EmptyCatalogMsgs: [
+      "Oops, there are currently no products in this category",
+      "But we are doing our best to fix it as soon as possible!",
+      "We invite you to view other categories",
+    ],
   },
 };
