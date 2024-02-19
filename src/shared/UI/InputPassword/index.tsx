@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { PasswordHide, PasswordShow } from "shared/assets/svg/PasswordIcons";
 import InputContainer from "shared/UI/InputContainer";
@@ -5,7 +6,7 @@ import InputContainer from "shared/UI/InputContainer";
 interface InputPasswordProps {
   label: string;
   password: string;
-  setPassword: (arg: string) => void;
+  setPassword: Dispatch<SetStateAction<string>>;
 }
 
 export default function InputPassword({
@@ -16,19 +17,18 @@ export default function InputPassword({
   const [inputType, setInputType] = useState<"password" | "text">("password");
 
   return (
-    <div className="flex w-[90%] justify-between">
+    <div className="flex justify-between gap-5">
       <InputContainer
         label={label}
         inputValue={password}
         setInputValue={setPassword}
-        className="w-[90%]"
       >
         <input
           type={inputType}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder=" "
-          className="h-full w-full pr-8 focus:outline-none"
+          className="h-full w-full focus:outline-none"
           required
         />
       </InputContainer>

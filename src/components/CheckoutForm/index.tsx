@@ -9,7 +9,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import FormikInput from "shared/UI/FormikInput";
 import ListBlock from "shared/UI/ListBlock";
-import { CheckoutSchema } from "shared/helpers/formValidate";
+import { CheckoutSchema } from "shared/helpers/checkoutFormValidate";
 import useGetCartItems from "shared/hooks/useGetCartItems";
 import type { CheckoutValues } from "shared/types/Checkout";
 import type { Setter } from "shared/types/CommonTypes";

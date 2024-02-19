@@ -1,14 +1,19 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import EnterAsSection from "components/PopUps/EnterAsSection";
-import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
 import type { ModalDialogProps } from "shared/types/Modals";
 import Checkbox from "shared/UI/Checkbox";
-import InputContainer from "shared/UI/InputContainer";
-import InputPassword from "shared/UI/InputPassword";
 import ModalContainer from "shared/UI/ModalContainer";
 import ModalHeader from "shared/UI/ModalHeader";
+import { Form, Formik } from "formik";
+import { LoginSchema } from "shared/helpers/authFormValidate";
+import type { LoginValue } from "shared/types/Auth";
+import { useLoginMutation } from "app/api/auth";
+import FormikInput from "shared/UI/FormikInput";
+import FormikPasswordInput from "shared/UI/FormikPassportInput";
+import { useState } from "react";
 
 export default function LoginPopUp({
   isOpen,
@@ -17,8 +22,8 @@ export default function LoginPopUp({
 }: ModalDialogProps): JSX.Element {
   const { onOpen } = useModals();
   const { t } = useTranslation();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [login] = useLoginMutation();
+  const [isSavedUser, setIsSavedUser] = useState(true);
 
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
@@ -27,58 +32,83 @@ export default function LoginPopUp({
           <p className="additional text-accent-bOrange">
             {t("login_popup.wishlist_error")}
           </p>
-        ) : null}
+        ) : (
+          <></>
+        )}
       </ModalHeader>
 
       <div className="grid md:grid-cols-[2fr_40px_1fr]">
-        <div className="mt-6 grid grid-cols-1 justify-around gap-3 md:mr-5 md:gap-6">
-          <div className="grid gap-6">
-            <InputContainer
-              label={t("ph_email")}
-              inputValue={email}
-              setInputValue={setEmail}
-            >
-              <input
-                type="email"
-                placeholder=" "
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-full w-full pr-8 focus:outline-none"
-              />
-            </InputContainer>
-
-            <InputPassword
-              label={t("input_password.ph")}
-              password={password}
-              setPassword={setPassword}
-            />
-          </div>
-
-          <div className="flex flex-col-reverse justify-between md:flex-row">
-            <Checkbox title={t("checkbox_remember_person")} />
-            <a
-              href="#"
-              className="additional mb-3 text-blue-800 underline md:mb-0"
-            >
-              {t("input_password.remind_password")}
-            </a>
-          </div>
-          <div className="m-auto flex flex-col items-center">
-            <button className="btn-effect btn">{t("login_popup.btn")}</button>
-            <button
-              className="additional mt-3 text-blue-600 underline"
-              onClick={() => {
+        <Formik
+          initialValues={{
+            email: "",
+            password: "",
+          }}
+          validationSchema={LoginSchema}
+          onSubmit={async (values: LoginValue) => {
+            await login(values)
+              .then(() => {
                 if (onClose) {
                   onClose();
-                  onOpen({ name: MODALS.REGISTR });
                 }
-              }}
-            >
-              {t("registr_popup.header")}
-            </button>
-          </div>
-        </div>
+              })
+              .catch((e) => console.log(e));
+          }}
+        >
+          {({ values, setFieldValue, errors, touched }) => (
+            <Form className="mt-6 flex flex-col justify-around gap-3 md:mr-5 md:gap-6">
+              <FormikInput
+                label={t("ph_email")}
+                type="email"
+                value={values.email}
+                setFieldValue={setFieldValue}
+                isError={!!errors.email && touched.email}
+                errorMessage={errors.email}
+                name="email"
+              />
 
+              <FormikPasswordInput
+                name="password"
+                label={t("input_password.ph")}
+                value={values.password}
+                setFieldValue={setFieldValue}
+                isError={!!errors.password && touched.password}
+                errorMessage={errors.password}
+              />
+
+              <div className="flex flex-col-reverse justify-between md:flex-row">
+                <Checkbox
+                  title={t("checkbox_remember_person")}
+                  id="remember_person"
+                  checked={isSavedUser}
+                  onChange={() => setIsSavedUser((prev) => !prev)}
+                />
+                <a
+                  href="#"
+                  className="additional mb-3 text-blue-800 underline md:mb-0"
+                >
+                  {t("input_password.remind_password")}
+                </a>
+              </div>
+              <div className="m-auto flex flex-col items-center">
+                <button type="submit" className="btn-effect btn">
+                  {t("login_popup.btn")}
+                </button>
+                <button
+                  type="button"
+                  className="additional mt-3 text-blue-600 underline"
+                  onClick={() => {
+                    if (onClose) {
+                      onClose();
+                      onOpen({ name: MODALS.REGISTR });
+                    }
+                  }}
+                >
+                  {t("registr_popup.header")}
+                </button>
+              </div>
+            </Form>
+          )}
+        </Formik>
         <EnterAsSection />
       </div>
     </ModalContainer>

@@ -6,12 +6,14 @@ import type { RoleUnion } from "shared/types/User";
 interface UserState {
   isAuth: boolean;
   role: RoleUnion;
+  user_id: string | null;
   first_name: string | null;
   last_name: string | null;
   token: string | null;
 }
 
 const initialState: UserState = {
+  user_id: null,
   isAuth: false,
   role: "guest_user",
   first_name: null,
@@ -44,13 +46,7 @@ const userSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.login.matchFulfilled,
       (state, { payload }) => {
-        const { token, user } = payload;
-        const { role, first_name, last_name } = user;
-
-        state.token = token;
-        state.role = role;
-        state.first_name = first_name;
-        state.last_name = last_name;
+        state.user_id = payload.user_id;
       },
     );
   },
