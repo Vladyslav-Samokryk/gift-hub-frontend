@@ -228,7 +228,7 @@ interface AllLocalesType {
 
     delivery: string[];
     btn_to_basket: string;
-    EmptyCatalogMsgs: string[];
+    empty_catalog: string[];
   };
 }
 
