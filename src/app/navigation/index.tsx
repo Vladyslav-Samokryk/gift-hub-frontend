@@ -6,7 +6,7 @@ import { ADMIN, MANAGER } from "shared/constants/roles";
 import { lazy } from "react";
 
 const CatalogLayout = lazy(
-  async () => await import("../layouts/CatalogLayout"),
+  async () => await import("app/layouts/CatalogLayout"),
 );
 const Layout = lazy(async () => await import("app/layouts/global/Layout"));
 const AboutUs = lazy(async () => await import("pages/AboutUs"));

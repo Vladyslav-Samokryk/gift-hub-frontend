@@ -1,6 +1,7 @@
-import { usePaginationParamsContext } from "app/context/catalogContext";
+import { setPage } from "app/store/slices/catalog";
 import classNames from "classnames";
 import React, { useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";
 import { MIN_PRICE, MAX_PRICE } from "shared/constants/price";
@@ -13,12 +14,7 @@ interface Price {
 
 const RangeWithInputs = (): JSX.Element => {
   const searchParams = new URLSearchParams(window.location.search);
-  const paginationContext = usePaginationParamsContext();
-  if (!paginationContext) {
-    console.error("Pagination context is null");
-    return <></>;
-  }
-  const { setPage } = paginationContext;
+  const dispatch = useDispatch();
 
   const [price, setPrice] = useState<Price>({
     priceFrom: searchParams.get("priceFrom") ?? "0",
@@ -81,7 +77,7 @@ const RangeWithInputs = (): JSX.Element => {
       navigate(setSearchParam("priceFrom", minValue, false));
       navigate(setSearchParam("priceTo", maxValue, false));
 
-      setPage(1);
+      dispatch(setPage(1));
 
       setMinRange(minValue);
       setMaxRange(maxValue);
