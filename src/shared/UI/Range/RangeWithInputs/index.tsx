@@ -1,3 +1,4 @@
+import { usePaginationParamsContext } from "app/context/catalogContext";
 import classNames from "classnames";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +13,12 @@ interface Price {
 
 const RangeWithInputs = (): JSX.Element => {
   const searchParams = new URLSearchParams(window.location.search);
+  const paginationContext = usePaginationParamsContext();
+  if (!paginationContext) {
+    console.error("Pagination context is null");
+    return <></>;
+  }
+  const { setPage } = paginationContext;
 
   const [price, setPrice] = useState<Price>({
     priceFrom: searchParams.get("priceFrom") ?? "0",
@@ -73,6 +80,8 @@ const RangeWithInputs = (): JSX.Element => {
       });
       navigate(setSearchParam("priceFrom", minValue, false));
       navigate(setSearchParam("priceTo", maxValue, false));
+
+      setPage(1);
 
       setMinRange(minValue);
       setMaxRange(maxValue);

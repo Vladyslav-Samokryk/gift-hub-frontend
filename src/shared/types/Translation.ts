@@ -31,7 +31,6 @@ export interface TRFooter {
 }
 
 export interface TRHelp {
-  faq: string;
   offer_contract: string;
   payment_delivery: string;
   return_conditions: string;
@@ -70,4 +69,40 @@ export interface TRSorts {
   new: string;
   popular: string;
   rate: string;
+}
+
+export interface TROfferContact {
+  main_title: string;
+  title: string;
+  subtitle: string[];
+  text: {
+    first: string[];
+    second: string[];
+    third: string[];
+    fourth: string[];
+    fifth: string[];
+    sixth: string[];
+  };
+  sub_text: {
+    first: string[];
+    second: string[];
+    third: string[];
+    fourth: string[];
+    fifth: string[];
+  };
+}
+
+export interface TRPaymantAndDelivery {
+  main_title: string;
+  text: string[];
+}
+
+export interface TRReturnConditions {
+  main_title: string;
+  text: string[];
+}
+
+export interface TRPrivacyPolice {
+  main_title: string;
+  text: string[];
 }

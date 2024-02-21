@@ -1,8 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { WhiteClose } from "shared/assets/svg/CloseIcons";
 import { TryAgainIcon } from "shared/assets/svg/TryAgainIcon";
 import type { ProductCardType } from "shared/types/ProductTypes";
+import { useDispatch } from "react-redux";
+import { addToCart } from "app/store/cart/cartSlice";
 
 interface WinSectionProps {
   setUserWin: (value: boolean) => void;
@@ -18,12 +20,29 @@ export default function WinSection({
   present,
 }: WinSectionProps): JSX.Element {
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handleGoToCheckout = (): void => {
+    if (present) {
+      dispatch(addToCart(present.id));
+      navigate("/checkout");
+    }
+    resetWheel();
+  };
+
+  const resetWheel = (): void => {
+    setWheelRotate(true);
+    setPresent(null);
+    setUserWin(false);
+  };
+
   if (present === null) {
     return <p>{present}</p>;
   } else {
     return (
       <section
-        className="relative m-3 mb-10 flex h-screen flex-col items-center justify-between rounded-main bg-cover bg-center px-3 text-center text-white md:rounded-2xl"
+        className="relative m-auto mb-10 flex h-screen flex-col items-center justify-between rounded-main bg-cover bg-center px-3 text-center text-white md:w-[85vw] md:rounded-2xl"
         style={{
           backgroundImage:
             "url('https://main--lighthearted-cocada-0d2e37.netlify.app/img/RandomPresentBg.svg')",
@@ -46,20 +65,19 @@ export default function WinSection({
         />
         <div className="mb-10 flex flex-col items-center justify-center break-words md:mt-16">
           <h4 className="md:h4 mb-2 text-3xl md:text-5xl">{present.name}</h4>
-          <Link to={"/"} className="additional text-blue-100 underline">
+          <Link
+            to={`/product/${present.id}`}
+            className="additional text-blue-100 underline"
+          >
             {t("btn_know_more")}
           </Link>
-          <button className="btn btn-effect secondary-bold my-2 h-12 w-max rounded-md bg-blue-700 px-8 text-white lg:w-96">
+          <button
+            className="btn btn-effect secondary-bold my-2 h-12 w-max rounded-md bg-blue-700 px-8 text-white lg:w-96"
+            onClick={handleGoToCheckout}
+          >
             {t("btn_make_order")}
           </button>
-          <button
-            className="flex"
-            onClick={() => {
-              setWheelRotate(true);
-              setPresent(null);
-              setUserWin(false);
-            }}
-          >
+          <button className="flex" onClick={resetWheel}>
             <TryAgainIcon />
             <p className="ml-2">{t("win_random_section.btn_try_again")}</p>
           </button>

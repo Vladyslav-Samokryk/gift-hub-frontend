@@ -13,6 +13,7 @@ import {
 } from "shared/helpers/url";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import type { ProductCardType } from "shared/types/ProductTypes";
+import EmptyCatalog from "shared/UI/EmptyCatalog";
 
 export default function CatalogByCategory(): JSX.Element {
   const { id } = useParams();
@@ -64,7 +65,7 @@ export default function CatalogByCategory(): JSX.Element {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (
-        <p></p>
+        <EmptyCatalog />
       )}
     </>
   );

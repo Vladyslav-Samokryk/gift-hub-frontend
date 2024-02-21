@@ -1,5 +1,5 @@
 import type { Dispatch, SetStateAction } from "react";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { useGetRandomProductsQuery } from "app/api/products";
 import {
   getLeft,
@@ -57,11 +57,11 @@ export default function RandomWheel({
   );
 
   const [style, setStyle] = useState<StylePropType[]>([
-    { left: 5, size: 21, direction: DIRECTION.FORWARD },
-    { left: 20, size: 23, direction: DIRECTION.FORWARD },
-    { left: 37, size: 27, direction: DIRECTION.FORWARD },
-    { left: 58, size: 23, direction: DIRECTION.FORWARD },
-    { left: 75, size: 21, direction: DIRECTION.BACK },
+    { left: -5, size: 21, direction: DIRECTION.FORWARD },
+    { left: 10, size: 23, direction: DIRECTION.FORWARD },
+    { left: 27, size: 27, direction: DIRECTION.FORWARD },
+    { left: 48, size: 23, direction: DIRECTION.FORWARD },
+    { left: 65, size: 21, direction: DIRECTION.BACK },
   ]);
   const styleRef = useRef(style);
 
@@ -92,7 +92,7 @@ export default function RandomWheel({
   }, [wheelRotate, data]);
 
   return (
-    <section className="relative m-3 mb-10 rounded-2xl bg-purple-100 px-5 py-10">
+    <section className="relative m-auto mb-10 w-[85vw] rounded-2xl bg-purple-100 p-5 md:p-10">
       <h2 className="primary md:h4 mb-5">{randomPresent.headers[0]}</h2>
       <h2 className="primary-bold md:h2 mb-5 bg-primary-linear bg-clip-text text-right text-transparent">
         {randomPresent.headers[1]}
@@ -103,20 +103,19 @@ export default function RandomWheel({
           const stepIcon =
             windowWidth >= SCREEN.MD ? <LeftStep /> : <DownStep />;
           return (
-            <div
-              key={index}
-              className="flex flex-col items-center justify-center md:flex-row"
-            >
-              <RandomStep index={index + 1} step={step} />
-              {index === 0 && windowWidth < SCREEN.MD && (
-                <RangePriceRandom
-                  permission={wheelRotate}
-                  setRange={setRange}
-                  {...range}
-                />
-              )}
+            <Fragment key={index}>
+              <div className="flex flex-col items-center justify-center md:flex-row">
+                <RandomStep index={index + 1} step={step} />
+                {index === 0 && windowWidth < SCREEN.MD && (
+                  <RangePriceRandom
+                    permission={wheelRotate}
+                    setRange={setRange}
+                    {...range}
+                  />
+                )}
+              </div>
               {index < randomPresent.steps.length - 1 && stepIcon}
-            </div>
+            </Fragment>
           );
         })}
       </div>

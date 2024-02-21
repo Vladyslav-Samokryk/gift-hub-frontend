@@ -7,7 +7,7 @@ import { useTranslation } from "react-i18next";
 import { SecretGift } from "shared/assets/svg/SecretGift";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import { useDispatch } from "react-redux";
-import { addToCart } from "app/store/cart/cartSlice";
+import { addSecretToCart } from "app/store/cart/cartSlice";
 
 interface SecretGiftUserWinProps {
   setUserWin: (value: boolean) => void;
@@ -31,10 +31,11 @@ export default function SecretGiftUserWin({
 
   const handleClick = (): void => {
     if (present) {
-      dispatch(addToCart(present));
+      dispatch(addSecretToCart(present.id));
       setUserWin(false);
     }
   };
+
   if (!query) return <></>;
   const { data } = useGetRandomProductsQuery(query);
   const { t } = useTranslation();
@@ -66,7 +67,7 @@ export default function SecretGiftUserWin({
           </button>
           <Link
             className="md:additional text-base text-black underline"
-            to="/shopping-cart"
+            to="/checkout"
           >
             {t("btn_make_order")}
           </Link>
