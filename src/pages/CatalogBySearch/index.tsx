@@ -1,6 +1,5 @@
 import { useGetProductsBySearchQuery } from "app/api/products";
 import { useState, useEffect } from "react";
-import { usePaginationParamsContext } from "app/context/catalogContext";
 import ProductCard from "components/ProductCard";
 import { PAGINATION_LOAD } from "shared/constants/pagination";
 import {
@@ -10,15 +9,15 @@ import {
 } from "shared/helpers/url";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import type { ProductCardType } from "shared/types/ProductTypes";
+import EmptyCatalog from "shared/UI/EmptyCatalog";
+import { useAppSelector } from "app/store";
+import { setCount } from "app/store/slices/catalog";
+import { useDispatch } from "react-redux";
 
 export default function CatalogBySearch(): JSX.Element {
   const lang = useGetCurrentLang();
-  const paginationContext = usePaginationParamsContext();
-  if (!paginationContext) {
-    console.error("Pagination context is null");
-    return <></>;
-  }
-  const { setCount, page, productNum, paginationLoad } = paginationContext;
+  const catalog = useAppSelector((state) => state.catalog);
+  const dispatch = useDispatch();
   const searchParams = getSearchParams();
 
   const { data } = useGetProductsBySearchQuery({
@@ -29,16 +28,16 @@ export default function CatalogBySearch(): JSX.Element {
     sort: prepareQueryParam(searchParams.sort),
     q: prepareQueryParam(searchParams.q),
     lang,
-    page,
-    productNum,
+    page: catalog.page,
+    productNum: catalog.productNum,
   });
 
   const [results, setResults] = useState<ProductCardType[]>();
 
   useEffect(() => {
     if (data) {
-      setCount(data?.count);
-      if (paginationLoad === PAGINATION_LOAD.PAGE) {
+      dispatch(setCount(data?.count));
+      if (catalog.paginationLoad === PAGINATION_LOAD.PAGE) {
         setResults(data.results);
       } else {
         setResults((prev) => (prev ? [...prev, ...data.results] : prev));
@@ -48,12 +47,12 @@ export default function CatalogBySearch(): JSX.Element {
 
   return (
     <>
-      {results ? (
+      {results?.length ? (
         results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (
-        <p></p>
+        <EmptyCatalog />
       )}
     </>
   );
