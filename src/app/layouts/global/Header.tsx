@@ -8,6 +8,15 @@ import Logo from "shared/UI/Logo";
 export default function Header(): JSX.Element {
   const location = useLocation();
 
+  const paths = [
+    "/secret-gift",
+    "/offer-contract",
+    "/payment-and-delivery",
+    "/return-conditions",
+    "/privacy-policy",
+    "/checkout",
+  ];
+
   return (
     <header>
       <section className="flex w-full items-center justify-between bg-white px-5 pb-6 shadow-main lg:px-20">
@@ -16,7 +25,7 @@ export default function Header(): JSX.Element {
         <LanguageToggle />
       </section>
 
-      {location.pathname.includes("/secret-gift") ? (
+      {paths.some((path) => location.pathname.includes(path)) ? (
         <HeaderWithGoBack />
       ) : (
         <HeaderWithSearch />

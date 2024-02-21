@@ -16,26 +16,13 @@ export default function ProductCard({
   category,
   price,
   global_rating,
-  discount,
-  quantity,
   id,
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
   const dispatch = useDispatch();
 
   const handleAddToCart = (): void => {
-    dispatch(
-      addToCart({
-        img,
-        name,
-        category,
-        price,
-        global_rating,
-        discount,
-        quantity,
-        id,
-      }),
-    );
+    dispatch(addToCart(id));
   };
 
   return (

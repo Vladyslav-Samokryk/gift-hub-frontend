@@ -1,5 +1,6 @@
 import EnterAsSection from "components/PopUps/EnterAsSection";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import type { ModalDialogProps } from "shared/types/Modals";
 import InputContainer from "shared/UI/InputContainer";
@@ -19,10 +20,10 @@ export default function RegistrationPopUp({
   const [password, setPassword] = useState("");
 
   return (
-    <ModalContainer visible={isOpen} onClose={onClose} top={80}>
+    <ModalContainer visible={isOpen} onClose={onClose} top={30}>
       <ModalHeader title={t("registr_popup.header")} onClose={onClose} />
 
-      <div className="grid md:grid-cols-[2fr_40px_1fr]">
+      <div className="grid md:grid-cols-[2fr_40px_1fr] lg:w-[40vw]">
         <div className="mt-6 grid grid-cols-1 justify-around gap-4 md:mr-5 md:gap-8">
           <InputContainer
             label={t("person.name")}
@@ -88,7 +89,26 @@ export default function RegistrationPopUp({
           <button className="btn-effect btn m-auto">
             {t("registr_popup.btn")}
           </button>
+          <span className="text-gray-900">
+            By registering, you are up to date with the regulations{" "}
+            <Link
+              to="/privacy-policy"
+              className="text-blue-600"
+              onClick={onClose}
+            >
+              regarding the processing and protection of personal data
+            </Link>{" "}
+            for{" "}
+            <Link
+              to="/privacy-policy"
+              className="text-blue-600"
+              onClick={onClose}
+            >
+              the benefit of the client.
+            </Link>
+          </span>
         </div>
+
         <EnterAsSection />
       </div>
     </ModalContainer>

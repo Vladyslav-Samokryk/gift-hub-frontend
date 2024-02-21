@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import UserSection from "components/UserSection";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +12,7 @@ import { Search } from "shared/assets/svg/Search";
 
 const HeaderWithSearch = (): JSX.Element => {
   const { t } = useTranslation();
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(localStorage.getItem("search") ?? "");
   const { onOpen } = useModals();
 
   const navigate = useNavigate();
@@ -28,6 +28,10 @@ const HeaderWithSearch = (): JSX.Element => {
       navigate(newUrl);
     }
   };
+
+  useEffect(() => {
+    localStorage.setItem("search", search);
+  }, [search]);
   return (
     <>
       <section className="relative mb-6 mt-8 flex h-28 items-start justify-between px-10 lg:mb-1 lg:h-fit">

@@ -69,6 +69,11 @@ interface ProductCommentsResponse {
   }>;
 }
 
+interface ProductsByIdRequest {
+  lang: string;
+  productIds: string[];
+}
+
 interface Catalog {
   results: ProductCardType[];
   count: number;
@@ -189,6 +194,30 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    getProductsById: builder.query<ProductCardType[], ProductsByIdRequest>({
+      query: ({ productIds, lang }) => {
+        const idParam = productIds.map((el) => `product_id=${el}`).join("&");
+        return {
+          url: `shop/guest_user/product/?${idParam}`,
+          method: "GET",
+          headers: {
+            "Accept-Language": lang,
+          },
+        };
+      },
+    }),
+    postOrder: builder.mutation({
+      query: ({ options, products }) => {
+        return {
+          url: `shop/guest_user/order_create/`,
+          method: "POST",
+          body: {
+            ...options,
+            items: [...products],
+          },
+        };
+      },
+    }),
   }),
 });
 
@@ -200,4 +229,6 @@ export const {
   useGetProductsBySearchQuery,
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
+  useGetProductsByIdQuery,
+  usePostOrderMutation,
 } = productsApi;

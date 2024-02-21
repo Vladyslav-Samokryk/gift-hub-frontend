@@ -1,17 +1,16 @@
 import { useState } from "react";
 import SecretGiftContainer from "components/SecretGiftContainer";
 import SecretGiftDescription from "components/SecretGiftDescription";
-import classNames from "classnames";
 
 export default function SecretGift(): JSX.Element {
-  const [isVisibleSelect, setIsVisibleSelect] = useState(false);
+  const [isVisibleSelect, setIsVisibleSelect] = useState(true);
 
   return (
     <div
-      className={classNames("relative left-0 top-0 w-full", {
-        "bg-[url('https://main--lighthearted-cocada-0d2e37.netlify.app/img/animation.svg')]]":
-          isVisibleSelect,
-      })}
+      className="relative left-0 top-0 w-full"
+      style={{
+        backgroundImage: `url("https://main--lighthearted-cocada-0d2e37.netlify.app/img/animation.svg")`,
+      }}
     >
       <div className="relative flex w-full flex-col items-center justify-center px-5 pb-5 text-black backdrop-blur-md">
         {!isVisibleSelect ? (

@@ -5,8 +5,12 @@ export interface Basket {
   setIsBasketOpen: (isBasketOpen: boolean) => void;
 }
 
-export interface BasketItemTypes {
-  product: ProductCardType;
+export interface CartFullItem extends ProductCardType {
   count: number;
+  isSecretPresent: boolean;
+}
+
+export interface BasketItemTypes {
+  product: CartFullItem;
   options?: Array<{ values: string[] }>;
 }

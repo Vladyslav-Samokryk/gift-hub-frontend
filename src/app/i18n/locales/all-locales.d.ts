@@ -8,7 +8,6 @@ interface AllLocalesType {
     };
 
     help_section: {
-      faq: string;
       offer_contract: string;
       payment_delivery: string;
       return_conditions: string;
@@ -229,6 +228,101 @@ interface AllLocalesType {
     delivery: string[];
     btn_to_basket: string;
     empty_catalog: string[];
+
+    checkout: {
+      title: string;
+      ph: {
+        surname: string;
+        name: string;
+        email: string;
+        tel: string;
+        town: string;
+        address: string;
+        building: string;
+        flat: string;
+        office: string;
+      };
+      section: {
+        info: string;
+        delivery: {
+          title: string;
+          self: string;
+          nova_poshta: string;
+          ukr_poshta: string;
+          in_office: string;
+          by_courier: string;
+          price: {
+            free: string;
+            by_tariff: string;
+          };
+        };
+        payment: {
+          title: string;
+          cash: string;
+          card: string;
+        };
+        additional: {
+          title: string;
+          add_comment: string;
+          not_recall: string;
+          another_person: string;
+          present: string;
+        };
+      };
+      errors: {
+        required: string;
+        tel: string;
+        email: string;
+        comment: {
+          small: string;
+          big: string;
+        };
+      };
+      success: {
+        title: string;
+        description: string;
+      };
+      bill: {
+        title: string;
+        total: string;
+      };
+      btn: string;
+    };
+    offer_contract: {
+      main_title: string;
+      title: string;
+      subtitle: string[];
+      text: {
+        first: string[];
+        second: string[];
+        third: string[];
+        fourth: string[];
+        fifth: string[];
+        sixth: string[];
+      };
+      sub_text: {
+        first: string[];
+        second: string[];
+        third: string[];
+        fourth: string[];
+        fifth: string[];
+      };
+    };
+
+    payment_and_delivery: {
+      main_title: string;
+      text: string[];
+    };
+
+    return_conditions: {
+      main_title: string;
+      text: string[];
+    };
+
+    privacy_police: {
+      main_title: string;
+      text: string[];
+    };
   };
 }
 

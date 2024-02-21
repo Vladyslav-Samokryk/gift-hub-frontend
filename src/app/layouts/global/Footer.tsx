@@ -24,24 +24,20 @@ const helpSection: Array<{
   path: string;
 }> = [
   {
-    key: "helpSection_1",
-    path: "/",
-  },
-  {
     key: "helpSection_2",
-    path: "/",
+    path: "/offer-contract",
   },
   {
     key: "helpSection_3",
-    path: "/",
+    path: "/payment-and-delivery",
   },
   {
     key: "helpSection_4",
-    path: "/",
+    path: "/return-conditions",
   },
   {
     key: "helpSection_5",
-    path: "/",
+    path: "/privacy-policy",
   },
 ];
 

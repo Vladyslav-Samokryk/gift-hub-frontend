@@ -2,6 +2,7 @@ import { CURRENCY } from "app/api/config";
 import {
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
+  useGetProductsByIdQuery,
 } from "app/api/products";
 import { addToCart } from "app/store/cart/cartSlice";
 import DescriptionContainer from "components/DecrtiptionContainer";
@@ -21,6 +22,8 @@ import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import classNames from "classnames";
+import { useEffect } from "react";
+import ProductSection from "shared/UI/ProductSection";
 // import { useEffect } from "react";
 
 export default function Product(): JSX.Element {
@@ -29,7 +32,7 @@ export default function Product(): JSX.Element {
   const { t } = useTranslation();
   const width = useScreenWidth();
   const dispatch = useDispatch();
-  /*   const reviewed: string[] | [] = JSON.parse(
+  const reviewed: string[] = JSON.parse(
     localStorage.getItem("reviewed") ?? "[]",
   );
 
@@ -44,10 +47,16 @@ export default function Product(): JSX.Element {
       }
     }
   }, []);
-  console.log(reviewed); */
 
-  // const { onOpen } = useModals();
-  //  reviewedProducts;
+  const { data: reviewedProducts } = useGetProductsByIdQuery(
+    {
+      productIds: reviewed.filter((pId) => pId !== id),
+      lang,
+    },
+    {
+      skip: !id ?? false,
+    },
+  );
 
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
@@ -74,18 +83,7 @@ export default function Product(): JSX.Element {
 
   const handleAddToCart = (): void => {
     if (data) {
-      dispatch(
-        addToCart({
-          img: data.img[0],
-          name: data.name,
-          category: data.category,
-          price: data.price,
-          global_rating: data.global_rating,
-          discount: data.discount,
-          quantity: data.quantity,
-          id: data.id,
-        }),
-      );
+      dispatch(addToCart(data.id));
     }
   };
 
@@ -221,12 +219,12 @@ export default function Product(): JSX.Element {
           </div>
         )}
       </section>
-      {/*       {reviewedProducts && (
+      {reviewedProducts && (
         <ProductSection
           products={reviewedProducts}
           title={t("product_sections.reviewed")}
         />
-      )} */}
+      )}
     </section>
   );
 }

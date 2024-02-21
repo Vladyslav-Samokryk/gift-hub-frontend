@@ -73,23 +73,48 @@ Here's the directory structure of the project:<br>
 - `src`
   - `app`
     - `api`
-    - `config`
+      -- `config`
+    - `context`
     - `i18n`
     - `layouts`
     - `navigation`
     - `providers`
     - `store`
+    - `styles`
   - `components`
+  - `mock`
   - `pages`
   - `shared`
+    - `assets`
+    - `constants`
+    - `helpers`
+    - `hooks`
+    - `types`
+    - `UI`
 
 <br>
 
-| Folder   | Description                                     |
-| -------- | ----------------------------------------------- |
-| `dist`   | Contain all code of application for production. |
-| `public` | Contain all static assets.                      |
-| `src`    | Contains all the source code of application.    |
+## Project Structure
+
+| Folder       | Description                                                 |
+| ------------ | ----------------------------------------------------------- |
+| `dist`       | Code of application for production.                         |
+| `public`     | Static assets.                                              |
+| `src`        | Source code of application.                                 |
+|  `app`      | Main logic of application.                                  |
+|  `api`      | Working with our backend (all request logic).               |
+|  `config`   | .env logic.                                                 |
+|  `context`  | React context for components.                               |
+|  `i18n`     | All locals for translation UA/EN.                           |
+|  `layouts`  | Main layouts for application.                               |
+| `navigation` | Routers for different roles.                              |
+| `providers` | Providers for modals, router, and Redux store.             |
+| `store`    | Redux store folder.                                         |
+| `styles`   | Global styles and custom classes for tailwind.              |
+| `components` | Smart components, blocks, etc.                             |
+| `mock`     | Mock data for testing without backend.                      |
+| `pages`    | Pages of application.                                       |
+| `shared`   | All assets, constants, helpers, hooks, types, UI that can be used in application. |
 
 ## .env
 
@@ -105,7 +130,20 @@ VITE_APP_API_URL=###
 VITE_NODE_ENV=###
 ```
 
-> Look at `.env.example` file in the root of the project for example.
+## Dev workflow
+
+```bash
+# Before work
+git checkout development
+git pull
+git checkout -b піб-task-name   # (for example cve-create-not-found-page)
+
+# After changes and commits 
+git push development піб-task-name
+
+# Create pull request and notify another dev team members about it.
+# After review and approve branch can be merged and deleted 
+```
 
 ## DBStructure
 
@@ -146,18 +184,18 @@ If you have any questions or feedback regarding the project, feel free to contac
 - i18next
 - eslint
 
-### Tools
+#### Tools
 
 - classnames
+- react-slider
+- react-select
+- pure-react-carousel
+- framer-motion
 
 #### Styles
 
 - scss
 - tailwindcss
-- framer-motion
-- react-slider
-- react-select
-- pure-react-carousel
 
 #### State management
 
