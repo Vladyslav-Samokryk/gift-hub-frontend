@@ -2,7 +2,6 @@ import { useGetProductsBySearchQuery } from "app/api/products";
 import { useState, useEffect } from "react";
 import { usePaginationParamsContext } from "app/context/catalogContext";
 import ProductCard from "components/ProductCard";
-import EmptyCatalog from "shared/UI/EmptyCatalog";
 import { PAGINATION_LOAD } from "shared/constants/pagination";
 import {
   getSearchParams,
@@ -49,12 +48,12 @@ export default function CatalogBySearch(): JSX.Element {
 
   return (
     <>
-      {results?.length ? (
+      {results ? (
         results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (
-        <EmptyCatalog />
+        <p></p>
       )}
     </>
   );
