@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { usePaginationParamsContext } from "app/context/catalogContext";
 import ProductCard from "components/ProductCard";
+import EmptyCatalog from "shared/UI/EmptyCatalog";
 import { PAGINATION_LOAD } from "shared/constants/pagination";
 import {
   getSearchParams,
@@ -59,12 +60,12 @@ export default function CatalogByCategory(): JSX.Element {
   }
   return (
     <>
-      {results ? (
+      {results?.length ? (
         results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (
-        <p></p>
+        <EmptyCatalog/>
       )}
     </>
   );
