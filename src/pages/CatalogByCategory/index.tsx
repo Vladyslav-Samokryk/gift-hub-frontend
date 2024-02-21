@@ -1,9 +1,7 @@
 import { useGetCategoryIdQuery } from "app/api/categories";
 import { useGetProductsByCategoryQuery } from "app/api/products";
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { usePaginationParamsContext } from "app/context/catalogContext";
 import ProductCard from "components/ProductCard";
 import { PAGINATION_LOAD } from "shared/constants/pagination";
 import {
@@ -14,19 +12,18 @@ import {
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import EmptyCatalog from "shared/UI/EmptyCatalog";
+import { useAppSelector } from "app/store";
+import { useDispatch } from "react-redux";
+import { setCount } from "app/store/slices/catalog";
 
 export default function CatalogByCategory(): JSX.Element {
   const { id } = useParams();
   const lang = useGetCurrentLang();
   const { data: categoryId } = useGetCategoryIdQuery(id ?? "");
-  const paginationContext = usePaginationParamsContext();
-  if (!paginationContext) {
-    console.error("Pagination context is null");
-    return <></>;
-  }
-  const { setCount, page, productNum, paginationLoad } = paginationContext;
   const searchParams = getSearchParams();
-  const { data, error } = useGetProductsByCategoryQuery(
+  const catalog = useAppSelector((state) => state.catalog);
+  const dispatch = useDispatch();
+  const { data } = useGetProductsByCategoryQuery(
     {
       categoryId: categoryId ?? "",
       main: handleQueryParamArray(searchParams.main),
@@ -35,8 +32,8 @@ export default function CatalogByCategory(): JSX.Element {
       priceTo: prepareQueryParam(searchParams.priceTo),
       sort: prepareQueryParam(searchParams.sort),
       lang,
-      page,
-      productNum,
+      page: catalog.page,
+      productNum: catalog.productNum,
     },
     {
       skip: !categoryId ?? false,
@@ -46,8 +43,8 @@ export default function CatalogByCategory(): JSX.Element {
 
   useEffect(() => {
     if (data) {
-      setCount(data?.count);
-      if (paginationLoad === PAGINATION_LOAD.PAGE) {
+      dispatch(setCount(data?.count));
+      if (catalog.paginationLoad === PAGINATION_LOAD.PAGE) {
         setResults(data.results);
       } else {
         setResults((prev) => (prev ? [...prev, ...data.results] : prev));
@@ -55,12 +52,9 @@ export default function CatalogByCategory(): JSX.Element {
     }
   }, [data]);
 
-  if (error) {
-    return <p></p>;
-  }
   return (
     <>
-      {results ? (
+      {results?.length ? (
         results.map((product: ProductCardType) => {
           return <ProductCard key={product.id} {...product} />;
         })

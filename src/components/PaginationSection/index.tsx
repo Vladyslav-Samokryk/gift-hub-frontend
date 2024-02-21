@@ -1,5 +1,3 @@
-import { usePaginationParamsContext } from "app/context/catalogContext";
-
 import { useTranslation } from "react-i18next";
 import Select from "shared/UI/Select";
 import SeeMoreButton from "shared/UI/Buttons/SeeMoreButton";
@@ -8,25 +6,30 @@ import { PAGE_OPTIONS } from "shared/constants/pageOptions";
 import { PAGINATION_LOAD } from "shared/constants/pagination";
 import { SCREEN } from "shared/constants/screens";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import { useAppSelector } from "app/store";
+import {
+  setPage,
+  setProductNum,
+  setPaginationLoad,
+} from "app/store/slices/catalog";
+import { useDispatch } from "react-redux";
 
 const PaginationSection = (): JSX.Element => {
   const windowWidth = useScreenWidth();
-  const paginationContext = usePaginationParamsContext();
-  if (!paginationContext) {
-    console.error("Pagination context is null");
-    return <></>;
-  }
-  const { page, setPage, setProductNum, count, productNum, setPaginationLoad } =
-    paginationContext;
-
+  const { page, count, productNum } = useAppSelector((state) => state.catalog);
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
   function handleSelect(e: number): void {
     const firstItem = (page - 1) * productNum + 1;
     const newPage = Math.ceil(firstItem / e);
-    setPage(newPage);
-    setProductNum(e);
-    setPaginationLoad(PAGINATION_LOAD.PAGE);
+    dispatch(setPage(newPage));
+    dispatch(setProductNum(e));
+    dispatch(setPaginationLoad(PAGINATION_LOAD.PAGE));
+  }
+
+  function setNewPage(p: number): void {
+    dispatch(setPage(p));
   }
 
   return (
@@ -41,17 +44,17 @@ const PaginationSection = (): JSX.Element => {
       <div className="flex grow flex-col items-center justify-between lg:flex-row">
         <SeeMoreButton
           onClick={() => {
-            setPaginationLoad(PAGINATION_LOAD.PRODUCTS);
-            setPage(page + 1);
+            dispatch(setPaginationLoad(PAGINATION_LOAD.PRODUCTS));
+            dispatch(setPage(page + 1));
           }}
           isHidden={Math.ceil(count / productNum) <= page}
         />
         <Pagination
           totalPages={Math.ceil(count / productNum)}
           page={page}
-          setPage={setPage}
+          setPage={setNewPage}
           onClick={() => {
-            setPaginationLoad(PAGINATION_LOAD.PAGE);
+            dispatch(setPaginationLoad(PAGINATION_LOAD.PAGE));
             window.scrollTo(0, 0);
           }}
         />
