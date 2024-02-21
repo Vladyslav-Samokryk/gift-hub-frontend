@@ -1,3 +1,4 @@
+import type { Dispatch, SetStateAction } from "react";
 import { useState } from "react";
 import { PasswordHide, PasswordShow } from "shared/assets/svg/PasswordIcons";
 import InputContainer from "shared/UI/InputContainer";
@@ -5,7 +6,7 @@ import InputContainer from "shared/UI/InputContainer";
 interface InputPasswordProps {
   label: string;
   password: string;
-  setPassword: (arg: string) => void;
+  setPassword: Dispatch<SetStateAction<string>>;
 }
 
 export default function InputPassword({
