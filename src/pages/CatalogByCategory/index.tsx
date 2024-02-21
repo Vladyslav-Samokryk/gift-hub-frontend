@@ -65,7 +65,7 @@ export default function CatalogByCategory(): JSX.Element {
           return <ProductCard key={product.id} {...product} />;
         })
       ) : (
-        <EmptyCatalog/>
+        <EmptyCatalog />
       )}
     </>
   );
