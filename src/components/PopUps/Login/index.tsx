@@ -27,16 +27,14 @@ export default function LoginPopUp({
 
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
-      <ModalHeader title={t("login_popup.header")} onClose={onClose}>
-        {data?.error ? (
-          <p className="additional text-accent-bOrange">
-            {t("login_popup.wishlist_error")}
-          </p>
-        ) : (
-          <></>
-        )}
-      </ModalHeader>
-
+      <ModalHeader title={t("login_popup.header")} onClose={onClose} />
+      {data?.error ? (
+        <p className="additional text-accent-bOrange">
+          {t("login_popup.wishlist_error")}
+        </p>
+      ) : (
+        <></>
+      )}
       <div className="grid md:grid-cols-[2fr_40px_1fr]">
         <Formik
           initialValues={{

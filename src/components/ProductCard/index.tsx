@@ -1,5 +1,7 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
-import { addToCart } from "app/store/cart/cartSlice";
+import { addToCart, selectCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ImgWithPreloader from "shared/UI/ImgWithPreloader";
@@ -9,6 +11,13 @@ import { SCREEN } from "shared/constants/screens";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import { Basket } from "shared/assets/svg/Basket";
+import { useAuth } from "shared/hooks/useAuth";
+import { MODALS } from "app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { useAppSelector } from "app/store";
+import classNames from "classnames";
+import { useState, useEffect } from "react";
+import { useAddToWishlistMutation } from "app/api/products";
 
 export default function ProductCard({
   img,
@@ -20,6 +29,15 @@ export default function ProductCard({
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+  const { onOpen } = useModals();
+  const cart = useAppSelector(selectCart);
+  const [isProductInCart, setIsProductInCart] = useState(false);
+  const [addToWishlist] = useAddToWishlistMutation();
+
+  useEffect(() => {
+    setIsProductInCart(cart.some((el) => el.id === id));
+  }, [cart]);
 
   const handleAddToCart = (): void => {
     dispatch(addToCart(id));
@@ -35,7 +53,18 @@ export default function ProductCard({
             name={name}
           />
         </Link>
-        <button className="group absolute right-2 top-2">
+        <button
+          type="button"
+          className="group absolute right-2 top-2"
+          onClick={() =>
+            isAuth
+              ? addToWishlist(id)
+              : onOpen({
+                  name: MODALS.LOGIN,
+                  data: { error: true },
+                })
+          }
+        >
           <Wishlist />
         </button>
       </div>
@@ -64,7 +93,9 @@ export default function ProductCard({
             <button onClick={handleAddToCart}>
               <Basket
                 type={windowWidth >= SCREEN.LG ? "lg" : "sm"}
-                className="fill-blue-700"
+                className={classNames("fill-blue-700", {
+                  "fill-blue-900": isProductInCart,
+                })}
               />
             </button>
           </div>

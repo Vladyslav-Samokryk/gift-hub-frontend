@@ -218,6 +218,18 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    addToWishlist: builder.mutation({
+      query: ({ id }) => {
+        return {
+          url: `shop/auth_user/wishlist/`,
+          method: "POST",
+          body: {
+            id,
+          },
+          credentials: "include",
+        };
+      },
+    }),
   }),
 });
 
@@ -231,4 +243,5 @@ export const {
   useGetOneProductCommentsQuery,
   useGetProductsByIdQuery,
   usePostOrderMutation,
+  useAddToWishlistMutation,
 } = productsApi;

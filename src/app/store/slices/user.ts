@@ -33,7 +33,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    authUser(state, action: PayloadAction<AuthAction>) {
+    setIsAuth(state, action: PayloadAction<AuthAction>) {
       const { isAuth } = action.payload;
       state.isAuth = isAuth;
     },
@@ -47,10 +47,12 @@ const userSlice = createSlice({
       authApi.endpoints.login.matchFulfilled,
       (state, { payload }) => {
         state.user_id = payload.user_id;
+        state.isAuth = true;
+        localStorage.setItem("user_id", payload.user_id);
       },
     );
   },
 });
 
-export const { authUser, setRole } = userSlice.actions;
+export const { setIsAuth, setRole } = userSlice.actions;
 export default userSlice.reducer;

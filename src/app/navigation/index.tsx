@@ -14,7 +14,6 @@ const CatalogByCategory = lazy(
   async () => await import("pages/CatalogByCategory"),
 );
 const CatalogBySearch = lazy(async () => await import("pages/CatalogBySearch"));
-const FAQ = lazy(async () => await import("pages/FAQ"));
 const Main = lazy(async () => await import("pages/Main"));
 const Product = lazy(async () => await import("pages/Product"));
 const SecretGift = lazy(async () => await import("pages/SecretGift"));
@@ -56,10 +55,6 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "about-us",
           element: <AboutUs />,
-        },
-        {
-          path: "faq",
-          element: <FAQ />,
         },
         {
           path: "secret-gift",

@@ -7,7 +7,6 @@ export const baseApi = createApi({
     prepareHeaders: (headers) => {
       return headers;
     },
-    credentials: "include",
   }),
   endpoints: () => ({}),
 });
