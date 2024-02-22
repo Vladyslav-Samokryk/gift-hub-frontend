@@ -238,6 +238,7 @@ interface AllLocalesType {
 
     delivery: string[];
     btn_to_basket: string;
+    empty_catalog: string[];
 
     checkout: {
       title: string;

@@ -462,5 +462,10 @@ export const en: AllLocalesType = {
         "The buyer is responsible for maintaining his personal data in an up-to-date state. The seller is not responsible for poor performance or non-fulfillment of his obligations due to the out-of-date information about the buyer or its inconsistency.",
       ],
     },
+    empty_catalog: [
+      "Oops, there are currently no products in this category",
+      "But we are doing our best to fix it as soon as possible!",
+      "We invite you to view other categories",
+    ],
   },
 };
