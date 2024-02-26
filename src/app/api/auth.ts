@@ -3,6 +3,16 @@ import { baseApi } from "./base";
 
 export interface UserResponse {
   user_id: string;
+  access: string;
+  refresh: string;
+}
+
+export interface RefreshToken {
+  refresh: string;
+}
+
+export interface AccessToken {
+  access: string;
 }
 
 export interface RegistrRequest {
@@ -39,8 +49,27 @@ export const authApi = baseApi.injectEndpoints({
         body: { id },
       }),
     }),
+    refresh: builder.mutation<AccessToken, RefreshToken>({
+      query: ({ refresh }) => ({
+        url: "accounts/token/refresh/",
+        method: "POST",
+        body: { refresh },
+      }),
+    }),
+    verify: builder.mutation<string, AccessToken>({
+      query: ({ access }) => ({
+        url: "accounts/token/verify/",
+        method: "POST",
+        body: { token: access },
+      }),
+    }),
   }),
 });
 
-export const { useLoginMutation, useLogoutMutation, useRegistrationMutation } =
-  authApi;
+export const {
+  useLoginMutation,
+  useLogoutMutation,
+  useRegistrationMutation,
+  useRefreshMutation,
+  useVerifyMutation,
+} = authApi;

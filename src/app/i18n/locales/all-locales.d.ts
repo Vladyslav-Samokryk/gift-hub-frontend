@@ -58,6 +58,7 @@ interface AllLocalesType {
       header: string;
       btn: string;
       wishlist_error: string;
+      login_error: string;
     };
 
     input_password: {

@@ -85,6 +85,7 @@ export const en: AllLocalesType = {
       header: "Log in",
       btn: "Log in",
       wishlist_error: "The wish list is only available to registered members!",
+      login_error: "Wrong password or login!",
     },
 
     input_password: {

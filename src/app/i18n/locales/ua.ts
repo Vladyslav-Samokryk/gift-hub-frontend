@@ -86,6 +86,7 @@ export const ua: AllLocalesType = {
       btn: "Увійти",
       wishlist_error:
         "Список бажань доступний тільки для зареєсрованих користувачів!",
+      login_error: "Неправильний пароль або логін!",
     },
 
     input_password: {

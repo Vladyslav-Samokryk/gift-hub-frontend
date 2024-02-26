@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
 import { lazy } from "react";
+import { useAuth } from "shared/hooks/useAuth";
 
 const CatalogLayout = lazy(
   async () => await import("../layouts/CatalogLayout"),
@@ -26,8 +27,10 @@ const ReturnConditions = lazy(
   async () => await import("pages/ReturnConditions"),
 );
 const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
+const UserPage = lazy(async () => await import("pages/User"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
+  const { isAuth } = useAuth();
   const element = useRoutes([
     {
       path: "/",
@@ -79,6 +82,10 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "privacy-policy",
           element: <PrivacyPolicy />,
+        },
+        {
+          path: "user",
+          element: isAuth ? <UserPage /> : <Navigate to="/" />,
         },
         {
           path: "*",

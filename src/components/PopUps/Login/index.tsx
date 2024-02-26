@@ -14,6 +14,9 @@ import { useLoginMutation } from "app/api/auth";
 import FormikInput from "shared/UI/FormikInput";
 import FormikPasswordInput from "shared/UI/FormikPassportInput";
 import { useState } from "react";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { setIsAuth } from "app/store/slices/user";
 
 export default function LoginPopUp({
   isOpen,
@@ -22,8 +25,10 @@ export default function LoginPopUp({
 }: ModalDialogProps): JSX.Element {
   const { onOpen } = useModals();
   const { t } = useTranslation();
-  const [login] = useLoginMutation();
+  const [login, { error }] = useLoginMutation();
   const [isSavedUser, setIsSavedUser] = useState(true);
+  const [, setCookie] = useCookies(["refresh", "access"]);
+  const dispatch = useDispatch();
 
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
@@ -31,6 +36,13 @@ export default function LoginPopUp({
       {data?.error ? (
         <p className="additional text-accent-bOrange">
           {t("login_popup.wishlist_error")}
+        </p>
+      ) : (
+        <></>
+      )}
+      {error ? (
+        <p className="additional text-accent-red">
+          {t("login_popup.login_error")}
         </p>
       ) : (
         <></>
@@ -44,12 +56,14 @@ export default function LoginPopUp({
           validationSchema={LoginSchema}
           onSubmit={async (values: LoginValue) => {
             await login(values)
-              .then(() => {
-                if (onClose) {
-                  onClose();
-                }
+              .unwrap()
+              .then((data) => {
+                setCookie("refresh", data.refresh);
+                setCookie("access", data.access);
+                dispatch(setIsAuth({ isAuth: true }));
+                onClose();
               })
-              .catch((e) => console.log(e));
+              .catch((e) => e);
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (

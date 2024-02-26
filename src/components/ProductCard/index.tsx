@@ -18,6 +18,7 @@ import { useAppSelector } from "app/store";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
 import { useAddToWishlistMutation } from "app/api/products";
+import { useCookies } from "react-cookie";
 
 export default function ProductCard({
   img,
@@ -34,6 +35,7 @@ export default function ProductCard({
   const cart = useAppSelector(selectCart);
   const [isProductInCart, setIsProductInCart] = useState(false);
   const [addToWishlist] = useAddToWishlistMutation();
+  const [cookies] = useCookies();
 
   useEffect(() => {
     setIsProductInCart(cart.some((el) => el.id === id));
@@ -41,6 +43,7 @@ export default function ProductCard({
 
   const handleAddToCart = (): void => {
     dispatch(addToCart(id));
+    console.log(cookies.access);
   };
 
   return (
@@ -58,7 +61,7 @@ export default function ProductCard({
           className="group absolute right-2 top-2"
           onClick={() =>
             isAuth
-              ? addToWishlist(id)
+              ? addToWishlist({ id, token: cookies.access })
               : onOpen({
                   name: MODALS.LOGIN,
                   data: { error: true },
