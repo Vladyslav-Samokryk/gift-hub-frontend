@@ -15,6 +15,7 @@ export default function Header(): JSX.Element {
     "/return-conditions",
     "/privacy-policy",
     "/checkout",
+    "/user",
   ];
 
   return (

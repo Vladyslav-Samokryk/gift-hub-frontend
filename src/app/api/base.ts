@@ -5,13 +5,7 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({
     baseUrl: API_URL,
-    prepareHeaders: (headers, { getState, endpoint }) => {
-      const token = (getState() as RootState).user.token;
-
-      const listOfRequiredJWTEndpoints = ["login", "logout"];
-      if (token && listOfRequiredJWTEndpoints.includes(endpoint)) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
+    prepareHeaders: (headers) => {
       return headers;
     },
   }),

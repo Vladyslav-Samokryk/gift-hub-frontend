@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
 import { lazy } from "react";
+import { useAuth } from "shared/hooks/useAuth";
 
 const CatalogLayout = lazy(
   async () => await import("app/layouts/CatalogLayout"),
@@ -14,7 +15,6 @@ const CatalogByCategory = lazy(
   async () => await import("pages/CatalogByCategory"),
 );
 const CatalogBySearch = lazy(async () => await import("pages/CatalogBySearch"));
-const FAQ = lazy(async () => await import("pages/FAQ"));
 const Main = lazy(async () => await import("pages/Main"));
 const Product = lazy(async () => await import("pages/Product"));
 const SecretGift = lazy(async () => await import("pages/SecretGift"));
@@ -27,8 +27,10 @@ const ReturnConditions = lazy(
   async () => await import("pages/ReturnConditions"),
 );
 const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
+const UserPage = lazy(async () => await import("pages/User"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
+  const { isAuth } = useAuth();
   const element = useRoutes([
     {
       path: "/",
@@ -58,10 +60,6 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
           element: <AboutUs />,
         },
         {
-          path: "faq",
-          element: <FAQ />,
-        },
-        {
           path: "secret-gift",
           element: <SecretGift />,
         },
@@ -84,6 +82,10 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         {
           path: "privacy-policy",
           element: <PrivacyPolicy />,
+        },
+        {
+          path: "user",
+          element: isAuth ? <UserPage /> : <Navigate to="/" />,
         },
         {
           path: "*",

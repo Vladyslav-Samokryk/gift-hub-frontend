@@ -7,11 +7,14 @@ import { UserAccount } from "shared/assets/svg/UserAccount";
 import { Wishlist } from "shared/assets/svg/Wishlist";
 import { Basket } from "shared/assets/svg/Basket";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useAuth } from "shared/hooks/useAuth";
 
 const UserSection = (): JSX.Element => {
   const { onOpen } = useModals();
   const cart = useAppSelector(selectCart);
-
+  const { isAuth } = useAuth();
+  const navigate = useNavigate();
   const [count, setCount] = useState(cart.length);
 
   useEffect(() => {
@@ -22,11 +25,18 @@ const UserSection = (): JSX.Element => {
     <section className="relative flex w-36 justify-between self-center">
       <button
         className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-800"
-        onClick={() => onOpen({ name: MODALS.LOGIN })}
+        onClick={() =>
+          !isAuth ? onOpen({ name: MODALS.LOGIN }) : navigate("/user")
+        }
       >
         <UserAccount />
       </button>
-      <button className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-800">
+      <button
+        className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-800"
+        onClick={() =>
+          !isAuth ? onOpen({ name: MODALS.LOGIN }) : navigate("/user/wishlist")
+        }
+      >
         <Wishlist />
       </button>
       <button
