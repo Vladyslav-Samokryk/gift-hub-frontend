@@ -228,6 +228,8 @@ interface AllLocalesType {
     delivery: string[];
     btn_to_basket: string;
     empty_catalog: string[];
+    notFoundContent: string[];
+    goToTheMainPage: string;
 
     checkout: {
       title: string;

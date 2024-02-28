@@ -7,6 +7,7 @@ import Logo from "shared/UI/Logo";
 
 export default function Header(): JSX.Element {
   const location = useLocation();
+  console.log("location", location.pathname);
 
   const paths = [
     "/secret-gift",
@@ -25,7 +26,10 @@ export default function Header(): JSX.Element {
         <LanguageToggle />
       </section>
 
-      {paths.some((path) => location.pathname.includes(path)) ? (
+      {paths.some((path) => {
+        location.pathname.includes(path);
+        console.log(location.pathname.includes(path));
+      }) ? (
         <HeaderWithGoBack />
       ) : (
         <HeaderWithSearch />
