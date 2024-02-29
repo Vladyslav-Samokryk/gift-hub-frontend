@@ -27,8 +27,8 @@ export default function Header(): JSX.Element {
       </section>
 
       {paths.some((path) => {
-        location.pathname.includes(path);
         console.log(location.pathname.includes(path));
+       return location.pathname.includes(path);
       }) ? (
         <HeaderWithGoBack />
       ) : (
