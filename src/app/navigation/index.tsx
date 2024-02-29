@@ -1,5 +1,5 @@
 import { useRoutes } from "react-router";
-import { Navigate } from "react-router-dom";
+// import { Navigate } from "react-router-dom";
 
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
@@ -113,7 +113,7 @@ const useManagerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/" />,
+          element: <NotFound />,
         },
       ],
     },

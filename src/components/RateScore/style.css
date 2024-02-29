@@ -1,0 +1,27 @@
+meter {
+  height: 20px;
+}
+meter::-webkit-meter-bar {
+  background-color: #B8C3E6;
+  border: 1px solid #B8C3E6;
+}
+meter::-webkit-meter-optimum-value, meter::-webkit-meter-suboptimum-value, meter::-webkit-meter-even-less-good-value {
+  background-color: #140285;
+}
+meter:-moz-meter-bar {
+  background-color: #B8C3E6;
+  border: 1px solid #B8C3E6;
+}
+meter:-moz-meter-optimum::-moz-meter-bar, meter:-moz-meter-sub-optimum::-moz-meter-bar, meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
+  background-color: #140285;
+}
+meter::-ms-fill {
+  background-color: #140285;
+}
+meter:-o-meter-bar {
+  background-color: #B8C3E6;
+  border: 1px solid #B8C3E6;
+}
+meter:-o-meter-optimum::-o-meter-bar, meter:-o-meter-suboptimum::-o-meter-bar, meter:-o-meter-even-less-good::-o-meter-bar {
+  background-color: #140285;
+}/*# sourceMappingURL=style.css.map */
