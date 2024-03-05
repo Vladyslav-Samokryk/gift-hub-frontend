@@ -240,6 +240,8 @@ interface AllLocalesType {
     delivery: string[];
     btn_to_basket: string;
     empty_catalog: string[];
+    not_found_content: string[];
+    go_to_the_main_page: string;
 
     checkout: {
       title: string;

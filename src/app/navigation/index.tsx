@@ -27,6 +27,7 @@ const ReturnConditions = lazy(
   async () => await import("pages/ReturnConditions"),
 );
 const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
+const NotFound = lazy(async () => await import("pages/NotFound"));
 const UserPage = lazy(async () => await import("pages/User"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
@@ -89,7 +90,7 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/" />,
+          element: <NotFound />,
         },
       ],
     },
@@ -114,7 +115,7 @@ const useManagerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/" />,
+          element: <NotFound />,
         },
       ],
     },

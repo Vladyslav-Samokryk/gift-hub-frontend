@@ -468,5 +468,10 @@ export const en: AllLocalesType = {
       "But we are doing our best to fix it as soon as possible!",
       "We invite you to view other categories",
     ],
+     not_found_content: [
+      "Unfortunately, the page was not found",
+      "The page you are trying to find does not exist or has been removed",
+    ],
+    go_to_the_main_page:"Go to the main page",
   },
 };
