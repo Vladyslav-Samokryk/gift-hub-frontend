@@ -1,5 +1,4 @@
 import { useRoutes } from "react-router";
-import { Navigate } from "react-router-dom";
 
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
@@ -31,6 +30,7 @@ const ReturnConditions = lazy(
 );
 const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
 const UserInfoPage = lazy(async () => await import("pages/UserInfo"));
+const NotFound = lazy(async () => await import("pages/NotFound"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const { isAuth } = useAuth();
@@ -99,7 +99,7 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/" />,
+          element: <NotFound />,
         },
       ],
     },
@@ -124,7 +124,7 @@ const useManagerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "*",
-          element: <Navigate to="/" />,
+          element: <NotFound />,
         },
       ],
     },

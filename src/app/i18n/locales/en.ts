@@ -478,5 +478,10 @@ export const en: AllLocalesType = {
     },
 
     logout: "Log out",
+    not_found_content: [
+      "Unfortunately, the page was not found",
+      "The page you are trying to find does not exist or has been removed",
+    ],
+    go_to_the_main_page: "Go to the main page",
   },
 };
