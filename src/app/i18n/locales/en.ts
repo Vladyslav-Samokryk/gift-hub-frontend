@@ -3,7 +3,7 @@ export const en: AllLocalesType = {
     footer_sections: {
       follow_us: "Follow us",
       contact_us: "Contact us",
-      copyright: "GIFTHUB.ua, 2023-2023 Internet-shop",
+      copyright: "GIFTHUB.ua, 2023-2024 Internet-shop",
       help: "Help",
     },
 
@@ -72,8 +72,8 @@ export const en: AllLocalesType = {
     },
 
     person: {
-      name: "Name",
-      last_name: "Surname",
+      name: "First name",
+      last_name: "Last name",
     },
 
     lang: {
@@ -85,6 +85,7 @@ export const en: AllLocalesType = {
       header: "Log in",
       btn: "Log in",
       wishlist_error: "The wish list is only available to registered members!",
+      login_error: "Wrong password or login!",
     },
 
     input_password: {
@@ -92,17 +93,24 @@ export const en: AllLocalesType = {
       ph_create: "Create password",
       ph_repeat: "Repeat password",
       remind_password: "Remind password",
-      rules: [
-        "Minimum 7 characters",
-        "Upper case",
-        "Low case",
-        "Numbers and symbols",
-      ],
+      rules: {
+        min_length: "Password must be at least 7 characters long",
+        letter_digit: "Password must contain at least one letter and one digit",
+        uppercase_letter: "Password must contain at least one uppercase letter",
+        lowercase_letter: "Password must contain at least one lowercase letter",
+        special_symbol: "Password must contain at least one special symbol",
+        match: "Passwords must match",
+      },
     },
 
     registr_popup: {
       header: "Register",
       btn: "Register",
+      register: "By registering, you are up to date with the regulations ",
+      privacy_policy:
+        "regarding the processing and protection of personal data ",
+      split: "for ",
+      benefit: "the benefit of the client.",
     },
 
     ph_email: "E-mail",

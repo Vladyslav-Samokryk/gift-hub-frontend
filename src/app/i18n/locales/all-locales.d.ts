@@ -58,6 +58,7 @@ interface AllLocalesType {
       header: string;
       btn: string;
       wishlist_error: string;
+      login_error: string;
     };
 
     input_password: {
@@ -65,12 +66,23 @@ interface AllLocalesType {
       ph_create: string;
       ph_repeat: string;
       remind_password: string;
-      rules: string[];
+      rules: {
+        min_length: string;
+        letter_digit: string;
+        uppercase_letter: string;
+        lowercase_letter: string;
+        special_symbol: string;
+        match: string;
+      };
     };
 
     registr_popup: {
       header: string;
       btn: string;
+      register: string;
+      privacy_policy: string;
+      split: string;
+      benefit: string;
     };
 
     ph_email: string;

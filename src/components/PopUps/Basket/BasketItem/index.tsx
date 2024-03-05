@@ -42,11 +42,13 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
           {product.isSecretPresent ? (
             <SecretGiftBasket />
           ) : (
-            <img
-              src={product.img}
-              className="h-28 w-28 shrink-0 rounded-xl border border-black"
-              alt={product.name}
-            />
+            <div className="h-28 w-28 shrink-0 rounded-xl border border-black overflow-hidden">
+              <img
+                src={product.img}
+                className="w-full h-full object-cover object-top"
+                alt={product.name}
+              />
+            </div>
           )}
           <div className="flex flex-col items-center justify-between">
             <p className="primary">
