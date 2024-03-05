@@ -335,6 +335,16 @@ interface AllLocalesType {
       main_title: string;
       text: string[];
     };
+
+    cabinet_section: {
+      personal_info: string;
+      address: string;
+      security: string;
+      wishlist: string;
+      history: string;
+    };
+
+    logout: string;
   };
 }
 

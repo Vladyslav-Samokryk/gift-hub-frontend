@@ -468,5 +468,15 @@ export const en: AllLocalesType = {
       "But we are doing our best to fix it as soon as possible!",
       "We invite you to view other categories",
     ],
+
+    cabinet_section: {
+      personal_info: "Personal information",
+      address: "Address",
+      security: "Security",
+      wishlist: "Wishlist",
+      history: "History",
+    },
+
+    logout: "Log out",
   },
 };

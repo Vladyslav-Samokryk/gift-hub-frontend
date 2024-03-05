@@ -3,7 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { RightBigArrow } from "shared/assets/svg/Arrows";
 import UserSection from "components/UserSection";
 
-export default function HeaderWithGoBack(): JSX.Element {
+interface HeaderWithGoBackProps {
+  withUserSection: boolean;
+}
+
+export default function HeaderWithGoBack({
+  withUserSection = false,
+}: HeaderWithGoBackProps): JSX.Element {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
@@ -15,7 +21,7 @@ export default function HeaderWithGoBack(): JSX.Element {
         <RightBigArrow />
         <h6 className="h6">{t("main_page")}</h6>
       </button>
-      <UserSection />
+      {withUserSection && <UserSection />}
     </section>
   );
 }

@@ -42,13 +42,6 @@ export const authApi = baseApi.injectEndpoints({
         body: { password, email },
       }),
     }),
-    logout: builder.mutation<UserResponse, LogoutRequest>({
-      query: ({ id }) => ({
-        url: "logout",
-        method: "POST",
-        body: { id },
-      }),
-    }),
     refresh: builder.mutation<AccessToken, RefreshToken>({
       query: ({ refresh }) => ({
         url: "accounts/token/refresh/",
@@ -68,7 +61,6 @@ export const authApi = baseApi.injectEndpoints({
 
 export const {
   useLoginMutation,
-  useLogoutMutation,
   useRegistrationMutation,
   useRefreshMutation,
   useVerifyMutation,

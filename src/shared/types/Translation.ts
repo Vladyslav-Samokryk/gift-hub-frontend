@@ -37,6 +37,14 @@ export interface TRHelp {
   privacy_policy: string;
 }
 
+export interface TRCabinet {
+  personal_info: string;
+  address: string;
+  security: string;
+  wishlist: string;
+  history: string;
+}
+
 export interface TRLang {
   en: string;
   ua: string;

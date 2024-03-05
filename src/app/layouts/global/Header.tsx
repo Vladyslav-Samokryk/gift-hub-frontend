@@ -18,6 +18,8 @@ export default function Header(): JSX.Element {
     "/user",
   ];
 
+  const backPaths = ["/user"];
+
   return (
     <header>
       <section className="flex w-full items-center justify-between bg-white px-5 pb-6 shadow-main lg:px-20">
@@ -27,7 +29,11 @@ export default function Header(): JSX.Element {
       </section>
 
       {paths.some((path) => location.pathname.includes(path)) ? (
-        <HeaderWithGoBack />
+        <HeaderWithGoBack
+          withUserSection={
+            !backPaths.some((path) => location.pathname.includes(path))
+          }
+        />
       ) : (
         <HeaderWithSearch />
       )}
