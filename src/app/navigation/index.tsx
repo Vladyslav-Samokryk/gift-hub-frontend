@@ -31,6 +31,7 @@ const ReturnConditions = lazy(
 const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
 const UserInfoPage = lazy(async () => await import("pages/UserInfo"));
 const NotFound = lazy(async () => await import("pages/NotFound"));
+const WishlistPage = lazy(async () => await import("pages/Wishlist"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const { isAuth } = useAuth();
@@ -91,9 +92,9 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
           element: <UserCabinetLayout />,
           children: [
             { path: "", element: <UserInfoPage /> },
+            { path: "wishlist", element: <WishlistPage /> },
             /*             { path: "address", element: <UserAddressPage /> },
             { path: "security", element: <UserSecurityPage /> },
-            { path: "wishlist", element: <UserWishlistPage /> },
             { path: "history", element: <UserHistoryPage /> }, */
           ],
         },

@@ -160,6 +160,7 @@ export const ua: AllLocalesType = {
 
     filter_popup_header: "Фільтри",
     sort_popup_header: "Сортувати",
+    cabinet_popup_header: "Особистий кабінет",
 
     bth_reset: "Зняти всі",
     btn_apply: "Застосувати",
@@ -302,7 +303,7 @@ export const ua: AllLocalesType = {
       "На жаль, сторінку не знайдено",
       "Сторінка, яку ви  намагаєтесь знайти не існує, або була видалена",
     ],
-    go_to_the_main_page:"Перейти на гловну сторінку",
+    go_to_the_main_page: "Перейти на гловну сторінку",
 
     checkout: {
       title: "ОФОРМЛЕННЯ ЗАМОВЛЕННЯ",
@@ -488,5 +489,12 @@ export const ua: AllLocalesType = {
     },
 
     logout: "Вийти з облікового запису",
+
+    wishlist: {
+      header: "Віш ліст порожній!",
+      description: "Але це ніколи не пізно виправити :)",
+      btn_add: "Додати все до кошика",
+      btn_delete: "Очистити список",
+    },
   },
 };

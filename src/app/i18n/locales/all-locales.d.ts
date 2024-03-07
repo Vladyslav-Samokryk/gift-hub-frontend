@@ -143,6 +143,7 @@ interface AllLocalesType {
     select_productNum: string;
     filter_popup_header: string;
     sort_popup_header: string;
+    cabinet_popup_header: string;
 
     bth_reset: string;
     btn_apply: string;
@@ -347,6 +348,13 @@ interface AllLocalesType {
     };
 
     logout: string;
+
+    wishlist: {
+      header: string;
+      description: string;
+      btn_add: string;
+      btn_delete: string;
+    };
   };
 }
 
