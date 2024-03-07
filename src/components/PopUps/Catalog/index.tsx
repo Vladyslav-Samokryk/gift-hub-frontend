@@ -28,7 +28,7 @@ export default function CatalogPopUp({
       {isOpen && !isLoading && data && (
         <>
           <motion.div
-            className="absolute left-0 top-0 z-40 h-full w-full  bg-gray-900"
+            className="fixed left-0 top-0 z-40 h-full w-full  bg-gray-900"
             initial={{ opacity: 0 }}
             animate={{
               opacity: 0.25,
