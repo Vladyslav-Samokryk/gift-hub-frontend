@@ -44,7 +44,7 @@ export default function RegistrationPopUp({
                   onOpen({ name: MODALS.LOGIN });
                 }
               })
-              .catch((e) => console.log(e));
+              .catch((e: unknown) => e);
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (

@@ -4,10 +4,19 @@ import HeaderWithSearch from "components/HeaderWithSearch";
 import LanguageToggle from "components/LanguageToggle";
 import NavigationByRole from "components/NavigationByRole";
 import Logo from "shared/UI/Logo";
+import type { Children } from "shared/types/CommonTypes";
+import UserSection from "components/UserSection";
+import { CabinetIcon } from "shared/assets/svg/UserAccount";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
+import { SCREEN } from "shared/constants/screens";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
 
 export default function Header(): JSX.Element {
   const location = useLocation();
- 
+  const windowWidth = useScreenWidth();
+  const { onOpen } = useModals();
+
   const paths = [
     "/secret-gift",
     "/offer-contract",
@@ -18,24 +27,39 @@ export default function Header(): JSX.Element {
     "/user",
   ];
 
+  const userCabinet = "/user";
+
   const additionalPaths = [
     "/",
     "/catalog",
-    "/catalog/:id",
     "/search",
     "/product",
-    "/product/:id",
     "/about-us",
     "/faq",
     "/catalog-for-manager",
     "/catalog-for-admin",
   ];
 
-  const getHeaderComponent = () => {
+  const getHeaderComponent = (): Children | null => {
     switch (true) {
-      case paths.includes(location.pathname):
-        return <HeaderWithGoBack />;
-      case additionalPaths.includes(location.pathname):
+      case paths.some((el) => location.pathname.includes(el)):
+        return (
+          <HeaderWithGoBack>
+            {location.pathname.includes(userCabinet) ? (
+              windowWidth <= SCREEN.MD ? (
+                <button
+                  type="button"
+                  onClick={() => onOpen({ name: MODALS.CABINET })}
+                >
+                  <CabinetIcon />
+                </button>
+              ) : null
+            ) : (
+              <UserSection />
+            )}
+          </HeaderWithGoBack>
+        );
+      case additionalPaths.some((el) => location.pathname.includes(el)):
         return <HeaderWithSearch />;
       default:
         return null;

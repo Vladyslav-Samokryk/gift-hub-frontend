@@ -9,6 +9,7 @@ export enum MODALS {
   SORT = "sort",
   FILTER = "filter",
   COMMENT = "comment",
+  CABINET = "cabinet",
 }
 
 const CategoryPopUp = lazy(
@@ -35,6 +36,9 @@ const RegistrationPopUp = lazy(
 const CatalogPopUp = lazy(
   async () => await import("../../../components/PopUps/Catalog/index"),
 );
+const CabinetPopUp = lazy(
+  async () => await import("../../../components/PopUps/UserCabinet/index"),
+);
 
 export const modalsList = [
   { name: MODALS.LOGIN, component: LoginPopUp },
@@ -45,4 +49,5 @@ export const modalsList = [
   { name: MODALS.SORT, component: SortPopUp },
   { name: MODALS.FILTER, component: FilterPopUp },
   { name: MODALS.COMMENT, component: CommentPopUp },
+  { name: MODALS.CABINET, component: CabinetPopUp },
 ];

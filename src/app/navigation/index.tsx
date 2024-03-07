@@ -1,5 +1,4 @@
 import { useRoutes } from "react-router";
-import { Navigate } from "react-router-dom";
 
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
@@ -8,6 +7,9 @@ import { useAuth } from "shared/hooks/useAuth";
 
 const CatalogLayout = lazy(
   async () => await import("app/layouts/CatalogLayout"),
+);
+const UserCabinetLayout = lazy(
+  async () => await import("app/layouts/UserCabinetLayout"),
 );
 const Layout = lazy(async () => await import("app/layouts/global/Layout"));
 const AboutUs = lazy(async () => await import("pages/AboutUs"));
@@ -27,8 +29,9 @@ const ReturnConditions = lazy(
   async () => await import("pages/ReturnConditions"),
 );
 const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
+const UserInfoPage = lazy(async () => await import("pages/UserInfo"));
 const NotFound = lazy(async () => await import("pages/NotFound"));
-const UserPage = lazy(async () => await import("pages/User"));
+const WishlistPage = lazy(async () => await import("pages/Wishlist"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const { isAuth } = useAuth();
@@ -86,7 +89,14 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
         },
         {
           path: "user",
-          element: isAuth ? <UserPage /> : <Navigate to="/" />,
+          element: <UserCabinetLayout />,
+          children: [
+            { path: "", element: <UserInfoPage /> },
+            { path: "wishlist", element: <WishlistPage /> },
+            /*             { path: "address", element: <UserAddressPage /> },
+            { path: "security", element: <UserSecurityPage /> },
+            { path: "history", element: <UserHistoryPage /> }, */
+          ],
         },
         {
           path: "*",

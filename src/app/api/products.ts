@@ -79,6 +79,11 @@ interface Catalog {
   count: number;
 }
 
+interface WishlistAction {
+  id: string | string[];
+  token: string;
+}
+
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<Catalog, Category>({
@@ -152,7 +157,7 @@ export const productsApi = baseApi.injectEndpoints({
     }),
     getNewProducts: builder.query({
       query: (lang) => ({
-        url: "shop/guest_user/search/?sort=new5&page_size=4",
+        url: "shop/guest_user/search/?sort=new&page_size=4",
         method: "GET",
         headers: {
           "Accept-Language": lang,
@@ -218,7 +223,7 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
-    addToWishlist: builder.mutation({
+    addToWishlist: builder.mutation<unknown, WishlistAction>({
       query: ({ id, token }) => {
         return {
           url: `shop/auth_user/wishlist/`,
@@ -226,6 +231,31 @@ export const productsApi = baseApi.injectEndpoints({
           body: {
             id,
           },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    deleteFromWishlist: builder.mutation<unknown, WishlistAction>({
+      query: ({ id, token }) => {
+        const globalIds = Array.isArray(id)
+          ? id.map((val) => "id=" + val).join("&")
+          : "id=" + id;
+        return {
+          url: `shop/auth_user/wishlist/?${globalIds}`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getUserWishlist: builder.query({
+      query: ({ token }) => {
+        return {
+          url: `shop/auth_user/wishlist`,
+          method: "GET",
           headers: {
             Authorization: `Bearer ${token as string}`,
           },
@@ -246,4 +276,6 @@ export const {
   useGetProductsByIdQuery,
   usePostOrderMutation,
   useAddToWishlistMutation,
+  useDeleteFromWishlistMutation,
+  useGetUserWishlistQuery,
 } = productsApi;
