@@ -84,6 +84,16 @@ interface WishlistAction {
   token: string;
 }
 
+interface BasketItem {
+  product_id: string;
+  amount: number;
+}
+
+interface BasketAction {
+  products: BasketItem[];
+  token: string;
+}
+
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<Catalog, Category>({
@@ -262,6 +272,29 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    addToBasket: builder.mutation<unknown, BasketAction>({
+      query: ({ products, token }) => {
+        return {
+          url: `shop/auth_user/basket/`,
+          method: "POST",
+          body: products,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getUserBasket: builder.query({
+      query: ({ token }) => {
+        return {
+          url: `shop/auth_user/basket`,
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token as string}`,
+          },
+        };
+      },
+    }),
   }),
 });
 
@@ -278,4 +311,6 @@ export const {
   useAddToWishlistMutation,
   useDeleteFromWishlistMutation,
   useGetUserWishlistQuery,
+  useAddToBasketMutation,
+  useGetUserBasketQuery,
 } = productsApi;

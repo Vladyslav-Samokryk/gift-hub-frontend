@@ -8,17 +8,37 @@ import { CURRENCY } from "app/api/config";
 import { EmptyBasketIcon } from "shared/assets/svg/Basket";
 import useGetCartItems from "shared/hooks/useGetCartItems";
 import { useNavigate } from "react-router";
+import { useCookies } from "react-cookie";
+import { useState, useEffect } from "react";
+import { useGetUserBasketQuery } from "app/api/products";
+import type { CartFullItem } from "shared/types/Basket";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
   const { t } = useTranslation();
-  const cart = useGetCartItems();
+  const cartLocal = useGetCartItems();
+  const [cookies] = useCookies();
+  const { data } = useGetUserBasketQuery(
+    { token: cookies.access },
+    {
+      skip: !cookies.access,
+    },
+  );
+  const [cart, setCart] = useState<CartFullItem[] | []>([]);
   const navigate = useNavigate();
 
   function goToCheckout(): void {
     navigate("/checkout");
     onClose();
   }
+
+  useEffect(() => {
+    if (cookies.access) {
+      setCart(data ?? []);
+    } else {
+      setCart(cartLocal ?? []);
+    }
+  }, []);
 
   return (
     <>

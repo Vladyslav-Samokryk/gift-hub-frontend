@@ -1,4 +1,5 @@
 import {
+  useAddToBasketMutation,
   useDeleteFromWishlistMutation,
   useGetUserWishlistQuery,
 } from "app/api/products";
@@ -13,12 +14,21 @@ export default function WishlistPage(): JSX.Element {
   const [cookies] = useCookies();
   const { t } = useTranslation();
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
+  const [addToBasket] = useAddToBasketMutation();
   const { data, refetch } = useGetUserWishlistQuery({
     token: cookies.access,
   });
 
   const handleAddToBasket = (): void => {
-    console.log("add");
+    void addToBasket({
+      products: data?.map((el: ProductCardType) => {
+        return {
+          product_id: el.id,
+          amount: 1,
+        };
+      }),
+      token: cookies.access,
+    });
   };
 
   const handleDeleteAllFromWishlist = (): void => {
