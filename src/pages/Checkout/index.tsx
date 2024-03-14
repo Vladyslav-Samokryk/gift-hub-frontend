@@ -1,26 +1,37 @@
 import { CURRENCY } from "app/api/config";
+import { useGetUserBasketQuery } from "app/api/products";
 import CheckoutForm from "components/CheckoutForm";
 import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
 import CheckoutCard from "shared/UI/CheckoutCard";
 import { CheckoutIcon } from "shared/assets/svg/CheckoutIcon";
 import { getTotalPrice } from "shared/helpers/price";
 import useGetCartItems from "shared/hooks/useGetCartItems";
+import type { CartFullItem } from "shared/types/Basket";
 
 function Checkout(): JSX.Element {
-  const cart = useGetCartItems();
+  const [cookies] = useCookies();
+  const cartLocal = useGetCartItems();
+  const { data } = useGetUserBasketQuery(
+    { token: cookies.access },
+    {
+      skip: !cookies.access,
+    },
+  );
+  const [cart, setCart] = useState<CartFullItem[] | []>([]);
   const [checkoutIsSuccess, setCheckoutIsSuccess] = useState<
     boolean | undefined
   >(false);
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   useEffect(() => {
-    if (cart?.length === 0) {
-      navigate("/");
+    if (cookies.access) {
+      setCart(data);
+    } else {
+      setCart(cartLocal ?? []);
     }
-  }, [cart]);
+  }, [cartLocal, data]);
 
   return (
     <div>

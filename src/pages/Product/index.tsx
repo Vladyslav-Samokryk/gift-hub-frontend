@@ -172,12 +172,14 @@ export default function Product(): JSX.Element {
       <section>
         <div className="flex justify-between">
           <h4 className="md:h5 h6">{t("comments.header")}</h4>
-          {/*  <button
-            className="btn btn-effect"
-            onClick={() => onOpen({ name: MODALS.COMMENT })}
-          >
-            {t("comments.write_comment.header")}
-          </button> */}
+          {cookies.access && (
+            <button
+              className="btn btn-effect"
+              onClick={() => onOpen({ name: MODALS.COMMENT })}
+            >
+              {t("comments.write_comment.header")}
+            </button>
+          )}
         </div>
       </section>
 

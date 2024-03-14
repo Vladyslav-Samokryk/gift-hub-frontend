@@ -9,16 +9,37 @@ import { Basket } from "shared/assets/svg/Basket";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "shared/hooks/useAuth";
+import { useGetUserBasketQuery } from "app/api/products";
+import { useCookies } from "react-cookie";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 
 const UserSection = (): JSX.Element => {
   const { onOpen } = useModals();
   const cart = useAppSelector(selectCart);
   const { isAuth } = useAuth();
   const navigate = useNavigate();
-  const [count, setCount] = useState(cart.length);
+  const [count, setCount] = useState(0);
+  const [cookies] = useCookies();
+  const lang = useGetCurrentLang();
+  const { data, refetch } = useGetUserBasketQuery(
+    { token: cookies.access, lang },
+    { skip: !cookies.access },
+  );
 
   useEffect(() => {
-    setCount(cart.length);
+    if (cookies.access) {
+      if (data) {
+        setCount(data.length);
+      }
+    } else {
+      setCount(cart.length);
+    }
+  }, [data, cart]);
+
+  useEffect(() => {
+    if (cookies.access) {
+      void refetch();
+    }
   });
 
   return (
@@ -43,9 +64,11 @@ const UserSection = (): JSX.Element => {
         className="group flex h-9 w-9 items-center justify-center rounded-full hover:bg-blue-900"
         onClick={() => onOpen({ name: MODALS.BASKET })}
       >
-        {cart.length > 0 && (
-          <div className=" absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-blue-700">
-            <span className="text-[10px] text-white">{count}</span>
+        {count > 0 && (
+          <div className="absolute right-0 top-0 flex h-4 w-4 items-center justify-center rounded-full bg-blue-700">
+            <span className="text-[10px] text-white">
+              {count < 100 ? data.length : "*"}
+            </span>
           </div>
         )}
         <Basket type="sm" className="fill-black group-hover:fill-white" />
