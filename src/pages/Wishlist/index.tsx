@@ -8,15 +8,18 @@ import { useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { EmptyBasketIcon } from "shared/assets/svg/Basket";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import type { ProductCardType } from "shared/types/ProductTypes";
 
 export default function WishlistPage(): JSX.Element {
   const [cookies] = useCookies();
   const { t } = useTranslation();
+  const lang = useGetCurrentLang();
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const [addToBasket] = useAddToBasketMutation();
   const { data, refetch } = useGetUserWishlistQuery({
     token: cookies.access,
+    lang,
   });
 
   const handleAddToBasket = (): void => {

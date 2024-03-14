@@ -1,6 +1,9 @@
 import { CURRENCY } from "app/api/config";
 import { useTranslation } from "react-i18next";
-import { useGetRandomProductsQuery } from "app/api/products";
+import {
+  useAddToBasketMutation,
+  useGetRandomProductsQuery,
+} from "app/api/products";
 import { Fragment } from "react";
 import ProductCardLine from "../ProductCardLine";
 import ProductCard from "../ProductCard";
@@ -9,6 +12,9 @@ import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import type { ProductCardType } from "shared/types/ProductTypes";
+import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
+import { addToCart } from "app/store/cart/cartSlice";
 
 export default function BuyTogetherSection(): JSX.Element {
   let total = 0;
@@ -23,6 +29,24 @@ export default function BuyTogetherSection(): JSX.Element {
     lang,
   });
   const windowWidth = useScreenWidth();
+  const [addToBasket] = useAddToBasketMutation();
+  const dispatch = useDispatch();
+  const [cookies] = useCookies();
+
+  const handleAddToBasket = (): void => {
+    if (data) {
+      if (cookies.access) {
+        void addToBasket({
+          products: data?.map((el) => {
+            return { product_id: el.id, amount: 1 };
+          }),
+          token: cookies.access,
+        });
+      } else {
+        data.map((el) => dispatch(addToCart(el.id)));
+      }
+    }
+  };
 
   return (
     <section className="mb-10">
@@ -51,7 +75,10 @@ export default function BuyTogetherSection(): JSX.Element {
               {total} {CURRENCY}
             </span>
           </h5>
-          <button className="btn-effect btn mt-4 p-3 px-10">
+          <button
+            className="btn-effect btn mt-4 p-3 px-10"
+            onClick={handleAddToBasket}
+          >
             {t("btn_add_to_basket")}
           </button>
         </div>

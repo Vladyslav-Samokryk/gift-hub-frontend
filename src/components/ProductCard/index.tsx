@@ -18,6 +18,7 @@ import { useAppSelector } from "app/store";
 import classNames from "classnames";
 import { useState, useEffect } from "react";
 import {
+  useAddToBasketMutation,
   useAddToWishlistMutation,
   useDeleteFromWishlistMutation,
 } from "app/api/products";
@@ -40,6 +41,7 @@ export default function ProductCard({
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
   const [addToWishlist] = useAddToWishlistMutation();
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
+  const [addToBasket] = useAddToBasketMutation();
   const [cookies] = useCookies();
 
   useEffect(() => {
@@ -47,7 +49,12 @@ export default function ProductCard({
   }, [cart]);
 
   const handleAddToCart = (): void => {
-    dispatch(addToCart(id));
+    if (cookies.access) {
+      void addToBasket({
+        products: [{ product_id: id, amount: 1 }],
+        token: cookies.access,
+      });
+    } else dispatch(addToCart(id));
   };
 
   const handleWishlistAction = (): void => {

@@ -12,14 +12,16 @@ import { useCookies } from "react-cookie";
 import { useState, useEffect } from "react";
 import { useGetUserBasketQuery } from "app/api/products";
 import type { CartFullItem } from "shared/types/Basket";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
   const { t } = useTranslation();
   const cartLocal = useGetCartItems();
   const [cookies] = useCookies();
-  const { data } = useGetUserBasketQuery(
-    { token: cookies.access },
+  const lang = useGetCurrentLang();
+  const { data, refetch } = useGetUserBasketQuery(
+    { token: cookies.access, lang },
     {
       skip: !cookies.access,
     },
@@ -34,11 +36,12 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
 
   useEffect(() => {
     if (cookies.access) {
+      void refetch();
       setCart(data ?? []);
     } else {
       setCart(cartLocal ?? []);
     }
-  }, []);
+  }, [cartLocal, data]);
 
   return (
     <>

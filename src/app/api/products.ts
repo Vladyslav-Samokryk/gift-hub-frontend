@@ -94,6 +94,11 @@ interface BasketAction {
   token: string;
 }
 
+interface BasketDeleteAction {
+  product_id: string;
+  token: string;
+}
+
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<Catalog, Category>({
@@ -157,22 +162,38 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     getPopularProducts: builder.query({
-      query: (lang) => ({
-        url: "shop/guest_user/search/?sort=popular&rate=4&rate=5&page_size=4",
-        method: "GET",
-        headers: {
-          "Accept-Language": lang,
-        },
-      }),
+      query: ({ lang, token }) => {
+        const headers = token
+          ? {
+              Authorization: `Bearer ${token as string}`,
+              "Accept-Language": lang,
+            }
+          : {
+              "Accept-Language": lang,
+            };
+        return {
+          url: "shop/guest_user/search/?sort=popular&rate=4&rate=5&page_size=4",
+          method: "GET",
+          headers,
+        };
+      },
     }),
     getNewProducts: builder.query({
-      query: (lang) => ({
-        url: "shop/guest_user/search/?sort=new&page_size=4",
-        method: "GET",
-        headers: {
-          "Accept-Language": lang,
-        },
-      }),
+      query: ({ lang, token }) => {
+        const headers = token
+          ? {
+              Authorization: `Bearer ${token as string}`,
+              "Accept-Language": lang,
+            }
+          : {
+              "Accept-Language": lang,
+            };
+        return {
+          url: "shop/guest_user/search/?sort=new&page_size=4",
+          method: "GET",
+          headers,
+        };
+      },
     }),
     getRandomProducts: builder.query<ProductCardType[], RangeT>({
       query: ({ range, lang, quantity = 5, categoryId = "" }) => {
@@ -262,11 +283,12 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     getUserWishlist: builder.query({
-      query: ({ token }) => {
+      query: ({ token, lang }) => {
         return {
           url: `shop/auth_user/wishlist`,
           method: "GET",
           headers: {
+            "Accept-Language": lang,
             Authorization: `Bearer ${token as string}`,
           },
         };
@@ -284,12 +306,24 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    deleteFromBasket: builder.mutation<unknown, BasketDeleteAction>({
+      query: ({ product_id, token }) => {
+        return {
+          url: `shop/auth_user/basket/?product_id=${product_id}`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
     getUserBasket: builder.query({
-      query: ({ token }) => {
+      query: ({ token, lang }) => {
         return {
           url: `shop/auth_user/basket`,
           method: "GET",
           headers: {
+            "Accept-Language": lang,
             Authorization: `Bearer ${token as string}`,
           },
         };
@@ -313,4 +347,5 @@ export const {
   useGetUserWishlistQuery,
   useAddToBasketMutation,
   useGetUserBasketQuery,
+  useDeleteFromBasketMutation,
 } = productsApi;
