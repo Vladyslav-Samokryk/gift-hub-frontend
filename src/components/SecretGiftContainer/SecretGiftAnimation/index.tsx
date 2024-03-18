@@ -33,9 +33,9 @@ export default function SecretGiftAnimation({
         initial={initial}
         animate={animate}
         transition={slowTransition}
-        className="absolute left-[5vw] top-[6vh] rotate-[0deg] transform-gpu object-contain object-center"
+        className="absolute left-[1vw] top-[1vh] rotate-[0deg] transform-gpu object-contain object-center"
       >
-        <LargePresentBox />
+        <LargePresentBox width="150" height="168" />
       </motion.div>
       <motion.div
         initial={initial}
@@ -51,16 +51,16 @@ export default function SecretGiftAnimation({
         transition={mediumTransition}
         className="absolute left-[43vw] top-[30vh] rotate-[110deg] transform-gpu object-contain object-center"
       >
-        <MidlePresentBox />
+        <MidlePresentBox width="120" height="140" />
       </motion.div>
       <motion.div
         initial={initial}
         animate={animate}
         transition={slowTransition}
         // eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-        className="absolute -top-[11vh] left-[48vw] rotate-[10deg] transform-gpu object-contain object-center"
+        className="absolute top-[1vh] left-[48vw] rotate-[10deg] transform-gpu object-contain object-center"
       >
-        <MidlePresentBox />
+        <MidlePresentBox width="120" height="140" />
       </motion.div>
       <motion.div
         initial={initial}
@@ -74,25 +74,25 @@ export default function SecretGiftAnimation({
         initial={initial}
         animate={animate}
         transition={transition}
-        className="absolute left-[96vw] top-[59vh] rotate-[20deg] transform-gpu object-contain object-center"
+        className="absolute left-[70vw] top-[59vh] rotate-[20deg] transform-gpu object-contain object-center"
       >
-        <MidlePresentBox />
+        <MidlePresentBox width="120" height="140" />
       </motion.div>
       <motion.div
         initial={initial}
         animate={animate}
         transition={fastTransition}
-        className="absolute left-[85vw] top-[81vh] rotate-[-10deg] transform-gpu object-contain object-center"
+        className="absolute left-[70vw] top-[81vh] rotate-[-10deg] transform-gpu object-contain object-center"
       >
-        <SemiSmallPresentBox />
+        <SemiSmallPresentBox width="90" height="105" />
       </motion.div>
       <motion.div
-        className="absolute left-[6vw] top-[95vh] h-[5vw] w-[3vw] rotate-[180deg] transform-gpu object-contain object-center"
+        className="absolute left-[6vw] top-[85vh] h-[5vw] w-[3vw] rotate-[180deg] transform-gpu object-contain object-center"
         initial={initial}
         animate={animate}
         transition={slowTransition}
       >
-        <QuestionMark />
+        <QuestionMark width="50" height="76" />
       </motion.div>
       <motion.div
         className="absolute left-[16vw] top-[46vh] h-[16vw] w-[10vw] rotate-[0deg] transform-gpu object-contain object-center"
@@ -100,7 +100,7 @@ export default function SecretGiftAnimation({
         animate={animate}
         transition={mediumTransition}
       >
-        <QuestionMark />
+        <QuestionMark width="50" height="76" />
       </motion.div>
       <motion.div
         className="absolute left-[36vw] top-[14vh] h-[18vw] w-[12vw] rotate-[0deg] transform-gpu object-contain object-center"
@@ -108,7 +108,7 @@ export default function SecretGiftAnimation({
         animate={animate}
         transition={fastTransition}
       >
-        <QuestionMark />
+        <QuestionMark width="50" height="76" />
       </motion.div>
       <motion.div
         className="absolute left-[56vw] top-[61vh] h-[23vw] w-[16vw] rotate-[0deg] transform-gpu object-contain object-center"
@@ -116,7 +116,7 @@ export default function SecretGiftAnimation({
         animate={animate}
         transition={slowTransition}
       >
-        <QuestionMark />
+        <QuestionMark width="50" height="76" />
       </motion.div>
       <motion.div
         className="absolute left-[70vw] top-[19vh] h-[12vw] w-[8vw] rotate-[0deg] transform-gpu object-contain object-center"
@@ -124,7 +124,7 @@ export default function SecretGiftAnimation({
         animate={animate}
         transition={mediumTransition}
       >
-        <QuestionMark />
+        <QuestionMark width="50" height="76" />
       </motion.div>
       <motion.div
         className="absolute left-[85vw] top-[38vh] h-[18vw] w-[12vw] rotate-[0deg] transform-gpu object-contain object-center"
@@ -132,7 +132,7 @@ export default function SecretGiftAnimation({
         animate={animate}
         transition={fastTransition}
       >
-        <QuestionMark />
+        <QuestionMark width="50" height="76" />
       </motion.div>
       <div className=" absolute left-[73vw] top-[5vh] object-contain object-center">
         <Accessories />
