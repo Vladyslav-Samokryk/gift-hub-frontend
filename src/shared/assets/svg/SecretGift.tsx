@@ -1,14 +1,25 @@
-export const LargePresentBox = (): JSX.Element => (
+interface SvgProps {
+  width: string;
+  height: string;
+  classname?: string;
+}
+
+export const LargePresentBox = ({
+  classname,
+  width,
+  height,
+}: SvgProps): JSX.Element => (
   <svg
-    width="200"
-    height="218"
+    width={width}
+    height={height}
+    className={classname}
     viewBox="0 0 200 218"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
     <rect
-      width="200"
-      height="216.848"
+      width={width}
+      height={height}
       transform="matrix(-1 0 0 1 200 0.957031)"
       fill="url(#pattern0)"
     />
@@ -34,15 +45,20 @@ export const LargePresentBox = (): JSX.Element => (
   </svg>
 );
 
-export const MidlePresentBox = (): JSX.Element => (
+export const MidlePresentBox = ({
+  width,
+  height,
+  classname,
+}: SvgProps): JSX.Element => (
   <svg
-    width="150"
-    height="164"
+    className={classname}
+    width={width}
+    height={height}
     viewBox="0 0 150 164"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect y="0.957031" width="150" height="162.636" fill="url(#pattern0)" />
+    <rect y="0.957031" width={width} height={height} fill="url(#pattern0)" />
     <defs>
       <pattern
         id="pattern0"
@@ -65,10 +81,15 @@ export const MidlePresentBox = (): JSX.Element => (
   </svg>
 );
 
-export const SemiSmallPresentBox = (): JSX.Element => (
+export const SemiSmallPresentBox = ({
+  width,
+  height,
+  classname,
+}: SvgProps): JSX.Element => (
   <svg
-    width="100"
-    height="110"
+    className={classname}
+    width={width}
+    height={height}
     viewBox="0 0 100 110"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
@@ -132,15 +153,16 @@ export const SmallPresentBox = (): JSX.Element => (
   </svg>
 );
 
-export const QuestionMark = (): JSX.Element => (
+export const QuestionMark = ({ width, height, classname }: SvgProps): JSX.Element => (
   <svg
-    width="100"
-    height="154"
+    width={width}
+    height={height}
+    className={classname}
     viewBox="0 0 100 154"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <rect y="0.957031" width="100" height="152.717" fill="url(#pattern1)" />
+    <rect y="0.957031" width={width} height={height} fill="url(#pattern1)" />
     <defs>
       <pattern
         id="pattern1"
