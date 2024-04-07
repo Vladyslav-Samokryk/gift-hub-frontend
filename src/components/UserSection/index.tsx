@@ -12,6 +12,7 @@ import { selectAuthCart, setAuthCount } from "app/store/cart/authCartSlice";
 import { useCookies } from "react-cookie";
 import { useGetUserBasketQuery } from "app/api/products";
 import { useDispatch } from "react-redux";
+import type { CartFullItem } from "shared/types/Basket";
 
 const UserSection = (): JSX.Element => {
   const { onOpen } = useModals();
@@ -32,11 +33,11 @@ const UserSection = (): JSX.Element => {
   );
 
   useEffect(() => {
-    if (data) dispatch(setAuthCount(data.length));
+    if (data) dispatch(setAuthCount(data.map((el: CartFullItem) => el.id)));
   }, [data]);
 
   useEffect(() => {
-    setCount(isAuth ? authCart : cart.length);
+    setCount(isAuth ? authCart.length : cart.length);
   }, [authCart, cart, isAuth]);
 
   return (

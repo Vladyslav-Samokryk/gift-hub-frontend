@@ -49,7 +49,7 @@ export default function SecretGiftUserWin({
           ],
           token: cookies.access,
         });
-        dispatch(incrementBy(1));
+        dispatch(incrementBy([present.id]));
       }
       dispatch(addSecretToCart(present.id));
       setUserWin(false);

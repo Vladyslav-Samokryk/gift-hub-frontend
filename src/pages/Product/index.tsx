@@ -107,7 +107,7 @@ export default function Product(): JSX.Element {
           ],
           token: cookies.access,
         });
-        dispatch(incrementBy(1));
+        dispatch(incrementBy([data.id]));
       } else {
         dispatch(addToCart(data.id));
       }

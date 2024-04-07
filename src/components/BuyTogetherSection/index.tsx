@@ -45,7 +45,7 @@ export default function BuyTogetherSection(): JSX.Element {
           }),
           token: cookies.access,
         });
-        dispatch(incrementBy(data.length));
+        dispatch(incrementBy(data?.map((el) => el.id)));
       } else {
         data.map((el) => dispatch(addToCart(el.id)));
       }
@@ -76,7 +76,7 @@ export default function BuyTogetherSection(): JSX.Element {
           <h5 className="primary text-center lg:text-left">
             Total:{" "}
             <span className="lg:h5 primary  font-semibold ">
-              {total} {CURRENCY}
+              {total.toFixed(2)} {CURRENCY}
             </span>
           </h5>
           <button

@@ -71,7 +71,7 @@ const BasketItem = ({
         product_id: product.id,
         token: cookies.access,
       }).then(() => {
-        dispatch(decrementBy(1));
+        dispatch(decrementBy([product.id]));
         if (refetch) void refetch();
       });
     } else dispatch(removeFromCart(product.id));

@@ -38,7 +38,7 @@ export default function WinSection({
           products: [{ product_id: present.id, amount: 1 }],
           token: cookies.access,
         })
-          .then(() => dispatch(incrementBy(1)))
+          .then(() => dispatch(incrementBy([present.id])))
           .finally(() => navigate("/checkout"));
       } else {
         dispatch(addToCart(present.id));

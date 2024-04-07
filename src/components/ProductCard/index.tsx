@@ -50,7 +50,7 @@ export default function ProductCard({
         products: [{ product_id: id, amount: 1 }],
         token: cookies.access,
       });
-      dispatch(incrementBy(1));
+      dispatch(incrementBy([id]));
     } else dispatch(addToCart(id));
   };
 
