@@ -63,7 +63,10 @@ export default function SecretGiftDescription({
         </section>
       </section>
       <button
-        onClick={() => setIsVisibleSelect(true)}
+        onClick={() => {
+          setIsVisibleSelect(true);
+          window.scrollTo(0, 0);
+        }}
         className="btn btn-effect m-auto mb-10 mt-5 w-60 bg-purple-900 py-4"
       >
         {secretGift.try_button}

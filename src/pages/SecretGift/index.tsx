@@ -3,7 +3,7 @@ import SecretGiftContainer from "components/SecretGiftContainer";
 import SecretGiftDescription from "components/SecretGiftDescription";
 
 export default function SecretGift(): JSX.Element {
-  const [isVisibleSelect, setIsVisibleSelect] = useState(true);
+  const [isVisibleSelect, setIsVisibleSelect] = useState(false);
 
   return (
     <div
