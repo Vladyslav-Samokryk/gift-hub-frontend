@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/promise-function-async */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
-import { addToCart, selectCart } from "app/store/cart/cartSlice";
+import { addToCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import ImgWithPreloader from "shared/UI/ImgWithPreloader";
@@ -14,15 +14,14 @@ import { Basket } from "shared/assets/svg/Basket";
 import { useAuth } from "shared/hooks/useAuth";
 import { MODALS } from "app/context/modalContext/modals";
 import { useModals } from "app/context/modalContext/useModals";
-import { useAppSelector } from "app/store";
-import classNames from "classnames";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   useAddToBasketMutation,
   useAddToWishlistMutation,
   useDeleteFromWishlistMutation,
 } from "app/api/products";
 import { useCookies } from "react-cookie";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 export default function ProductCard({
   img,
@@ -31,29 +30,27 @@ export default function ProductCard({
   price,
   global_rating,
   id,
+  isInWishlist,
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
   const dispatch = useDispatch();
   const { isAuth } = useAuth();
   const { onOpen } = useModals();
-  const cart = useAppSelector(selectCart);
-  const [isProductInCart, setIsProductInCart] = useState(false);
-  const [isProductInWishlist, setIsProductInWishlist] = useState(false);
+  const [isProductInWishlist, setIsProductInWishlist] = useState(
+    !!isInWishlist,
+  );
   const [addToWishlist] = useAddToWishlistMutation();
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const [addToBasket] = useAddToBasketMutation();
   const [cookies] = useCookies();
 
-  useEffect(() => {
-    setIsProductInCart(cart.some((el) => el.id === id));
-  }, [cart]);
-
   const handleAddToCart = (): void => {
-    if (cookies.access) {
+    if (isAuth) {
       void addToBasket({
         products: [{ product_id: id, amount: 1 }],
         token: cookies.access,
       });
+      dispatch(incrementBy(1));
     } else dispatch(addToCart(id));
   };
 
@@ -109,12 +106,10 @@ export default function ProductCard({
               starSize={windowWidth < SCREEN.LG ? 16 : 25}
               rate={global_rating}
             />
-            <button onClick={handleAddToCart}>
+            <button onClick={handleAddToCart} className="group">
               <Basket
                 type={windowWidth >= SCREEN.XL ? "lg" : "sm"}
-                className={classNames("fill-blue-700", {
-                  "fill-blue-900": isProductInCart,
-                })}
+                className="fill-blue-700 group-active:fill-blue-900"
               />
             </button>
           </div>

@@ -15,6 +15,8 @@ import type { ProductCardType } from "shared/types/ProductTypes";
 import { useDispatch } from "react-redux";
 import { useCookies } from "react-cookie";
 import { addToCart } from "app/store/cart/cartSlice";
+import { useAuth } from "shared/hooks/useAuth";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 export default function BuyTogetherSection(): JSX.Element {
   let total = 0;
@@ -32,16 +34,18 @@ export default function BuyTogetherSection(): JSX.Element {
   const [addToBasket] = useAddToBasketMutation();
   const dispatch = useDispatch();
   const [cookies] = useCookies();
+  const { isAuth } = useAuth();
 
   const handleAddToBasket = (): void => {
     if (data) {
-      if (cookies.access) {
+      if (isAuth) {
         void addToBasket({
           products: data?.map((el) => {
             return { product_id: el.id, amount: 1 };
           }),
           token: cookies.access,
         });
+        dispatch(incrementBy(data.length));
       } else {
         data.map((el) => dispatch(addToCart(el.id)));
       }

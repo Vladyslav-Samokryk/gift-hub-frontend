@@ -1,5 +1,8 @@
 import type { RangeT } from "app/api/products";
-import { useGetRandomProductsQuery } from "app/api/products";
+import {
+  useAddToBasketMutation,
+  useGetRandomProductsQuery,
+} from "app/api/products";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import SecretGiftAnimation from "components/SecretGiftContainer/SecretGiftAnimation";
@@ -8,9 +11,13 @@ import { SecretGift } from "shared/assets/svg/SecretGift";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import { useDispatch } from "react-redux";
 import { addSecretToCart } from "app/store/cart/cartSlice";
+import { useAuth } from "shared/hooks/useAuth";
+import { useCookies } from "react-cookie";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 interface SecretGiftUserWinProps {
   setUserWin: (value: boolean) => void;
+  userWin: boolean;
   query: RangeT | null;
   isAnimation: boolean;
 }
@@ -25,14 +32,33 @@ export default function SecretGiftUserWin({
   setUserWin,
   query,
   isAnimation,
+  userWin,
 }: SecretGiftUserWinProps): JSX.Element {
   const [present, setPresent] = useState<ProductCardType | null>(null);
   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+  const [cookies] = useCookies();
+  const [addToBasket] = useAddToBasketMutation();
 
-  const handleClick = (): void => {
+  const handleAddToBasket = (): void => {
     if (present) {
+      if (isAuth) {
+        void addToBasket({
+          products: [
+            { product_id: present.id, amount: 1, isSecretPresent: true },
+          ],
+          token: cookies.access,
+        });
+        dispatch(incrementBy(1));
+      }
       dispatch(addSecretToCart(present.id));
       setUserWin(false);
+    }
+  };
+
+  const handleNavigation = (): void => {
+    if (userWin) {
+      handleAddToBasket();
     }
   };
 
@@ -61,13 +87,14 @@ export default function SecretGiftUserWin({
           <button
             type="submit"
             className="btn btn-effect m-3 w-60 bg-purple-900 py-4"
-            onClick={handleClick}
+            onClick={handleAddToBasket}
           >
             {t("btn_add_to_basket")}
           </button>
           <Link
             className="md:additional text-base text-black underline"
             to="/checkout"
+            onClick={handleNavigation}
           >
             {t("btn_make_order")}
           </Link>

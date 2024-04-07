@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
 import {
   incrementItem,
@@ -23,8 +24,14 @@ import { useCookies } from "react-cookie";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
 import { useState } from "react";
+import { useAuth } from "shared/hooks/useAuth";
+import { decrementBy } from "app/store/cart/authCartSlice";
 
-const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
+const BasketItem = ({
+  product,
+  options,
+  refetch,
+}: BasketItemTypes): JSX.Element => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const [cookies] = useCookies();
@@ -34,33 +41,44 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
   const [addToWishlist] = useAddToWishlistMutation();
   const { onOpen } = useModals();
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
+  const { isAuth } = useAuth();
 
-  const handleIncrementCounter = (): void => {
-    if (cookies.access) {
-      void addToBasket({
+  const handleIncrementCounter = async (): Promise<void> => {
+    if (isAuth) {
+      await addToBasket({
         products: [{ product_id: product.id, amount: product.count + 1 }],
         token: cookies.access,
+      }).then(() => {
+        if (refetch) void refetch();
       });
     } else dispatch(incrementItem(product.id));
   };
 
-  const handleDecrementCounter = (): void => {
-    if (cookies.access) {
-      void addToBasket({
+  const handleDecrementCounter = async (): Promise<void> => {
+    if (isAuth) {
+      await addToBasket({
         products: [{ product_id: product.id, amount: product.count - 1 }],
         token: cookies.access,
+      }).then(() => {
+        if (refetch) void refetch();
       });
     } else dispatch(decrementItem(product.id));
   };
 
-  const handleDeleteItem = (): void => {
-    if (cookies.access) {
-      void deleteFromBasket({ product_id: product.id, token: cookies.access });
+  const handleDeleteItem = async (): Promise<void> => {
+    if (isAuth) {
+      await deleteFromBasket({
+        product_id: product.id,
+        token: cookies.access,
+      }).then(() => {
+        dispatch(decrementBy(1));
+        if (refetch) void refetch();
+      });
     } else dispatch(removeFromCart(product.id));
   };
 
   const handleWishlistAction = (): void => {
-    void (cookies.access
+    void (isAuth
       ? !isProductInWishlist
         ? addToWishlist({ id: product.id, token: cookies.access })
         : deleteFromWishlist({ id: product.id, token: cookies.access })

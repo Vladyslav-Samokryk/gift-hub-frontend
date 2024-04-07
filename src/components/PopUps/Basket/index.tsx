@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import { useGetUserBasketQuery } from "app/api/products";
 import type { CartFullItem } from "shared/types/Basket";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useAuth } from "shared/hooks/useAuth";
 
 // eslint-disable-next-line @typescript-eslint/no-empty-function
 const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
@@ -20,10 +21,11 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
   const cartLocal = useGetCartItems();
   const [cookies] = useCookies();
   const lang = useGetCurrentLang();
+  const { isAuth } = useAuth();
   const { data, refetch } = useGetUserBasketQuery(
     { token: cookies.access, lang },
     {
-      skip: !cookies.access,
+      skip: !isAuth,
     },
   );
   const [cart, setCart] = useState<CartFullItem[] | []>([]);
@@ -34,14 +36,26 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
     onClose();
   }
 
+  const compareFn = (a: CartFullItem, b: CartFullItem): number => {
+    if (a.id < b.id) {
+      return -1;
+    }
+    if (a.id > b.id) {
+      return 1;
+    }
+    return 0;
+  };
+
   useEffect(() => {
-    if (cookies.access) {
+    if (isAuth) {
       void refetch();
-      setCart(data ?? []);
+      if (data) {
+        setCart([].concat(data).sort(compareFn) ?? []);
+      }
     } else {
       setCart(cartLocal ?? []);
     }
-  }, [cartLocal, data]);
+  }, [isAuth, cartLocal, data]);
 
   return (
     <>
@@ -69,7 +83,9 @@ const BasketPopUp = ({ onClose = () => {} }: ModalDialogProps): JSX.Element => {
           <hr />
           <ul className=" mt-9 flex h-full list-none flex-col gap-5 overflow-scroll p-0">
             {cart?.length ? (
-              cart.map((el) => <BasketItem key={el.id} product={el} />)
+              cart.map((el) => (
+                <BasketItem key={el.id} product={el} refetch={refetch} />
+              ))
             ) : (
               <div className="flex flex-col items-center gap-2 text-secondary-900">
                 <EmptyBasketIcon />

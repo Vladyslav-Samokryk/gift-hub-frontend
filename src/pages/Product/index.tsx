@@ -30,6 +30,8 @@ import ProductSection from "shared/UI/ProductSection";
 import { useCookies } from "react-cookie";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
+import { useAuth } from "shared/hooks/useAuth";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 export default function Product(): JSX.Element {
   const { id } = useParams();
@@ -46,6 +48,7 @@ export default function Product(): JSX.Element {
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const [isProductInWishlist, setIsProductInWishlist] = useState(false);
   const { onOpen } = useModals();
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     if (id) {
@@ -94,7 +97,7 @@ export default function Product(): JSX.Element {
 
   const handleAddToCart = (): void => {
     if (data) {
-      if (cookies.access) {
+      if (isAuth) {
         void addToBasket({
           products: [
             {
@@ -104,6 +107,7 @@ export default function Product(): JSX.Element {
           ],
           token: cookies.access,
         });
+        dispatch(incrementBy(1));
       } else {
         dispatch(addToCart(data.id));
       }
@@ -111,7 +115,7 @@ export default function Product(): JSX.Element {
   };
 
   const handleWishlistAction = (): void => {
-    void (cookies.access && data
+    void (isAuth && data
       ? !isProductInWishlist
         ? addToWishlist({ id: data.id, token: cookies.access })
         : deleteFromWishlist({ id: data.id, token: cookies.access })
@@ -172,7 +176,7 @@ export default function Product(): JSX.Element {
       <section>
         <div className="flex justify-between">
           <h4 className="md:h5 h6">{t("comments.header")}</h4>
-          {cookies.access && (
+          {isAuth && (
             <button
               className="btn btn-effect"
               onClick={() => onOpen({ name: MODALS.COMMENT })}

@@ -7,16 +7,18 @@ import { useTranslation } from "react-i18next";
 import CheckoutCard from "shared/UI/CheckoutCard";
 import { CheckoutIcon } from "shared/assets/svg/CheckoutIcon";
 import { getTotalPrice } from "shared/helpers/price";
+import { useAuth } from "shared/hooks/useAuth";
 import useGetCartItems from "shared/hooks/useGetCartItems";
 import type { CartFullItem } from "shared/types/Basket";
 
 function Checkout(): JSX.Element {
   const [cookies] = useCookies();
   const cartLocal = useGetCartItems();
-  const { data } = useGetUserBasketQuery(
+  const { isAuth } = useAuth();
+  const { data, refetch } = useGetUserBasketQuery(
     { token: cookies.access },
     {
-      skip: !cookies.access,
+      skip: !isAuth,
     },
   );
   const [cart, setCart] = useState<CartFullItem[] | []>([]);
@@ -26,12 +28,13 @@ function Checkout(): JSX.Element {
   const { t } = useTranslation();
 
   useEffect(() => {
-    if (cookies.access) {
+    if (isAuth) {
+      void refetch();
       setCart(data);
     } else {
       setCart(cartLocal ?? []);
     }
-  }, [cartLocal, data]);
+  }, [isAuth, cartLocal, data]);
 
   return (
     <div>

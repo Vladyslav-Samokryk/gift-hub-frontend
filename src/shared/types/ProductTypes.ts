@@ -14,6 +14,8 @@ export interface ProductCardType {
   discount: number;
   //  Count of a product in a store
   quantity: number;
+  isInCart: null | boolean;
+  isInWishlist: null | boolean;
 }
 
 export interface ProductCardDetailedType {
@@ -55,4 +57,7 @@ export interface ProductCardDetailedType {
     description_match: number;
     price: number;
   };
+
+  isInCart: null | boolean;
+  isInWishlist: null | boolean;
 }

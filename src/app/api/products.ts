@@ -86,6 +86,7 @@ interface WishlistAction {
 
 interface BasketItem {
   product_id: string;
+  isSecretPresent?: boolean;
   amount: number;
 }
 
@@ -243,15 +244,24 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     postOrder: builder.mutation({
-      query: ({ options, products }) => {
-        return {
+      query: ({ options, products, token }) => {
+        const requestConfig = {
           url: `shop/guest_user/order_create/`,
           method: "POST",
           body: {
             ...options,
             items: [...products],
           },
+          headers: {},
         };
+
+        if (token.length) {
+          requestConfig.headers = {
+            Authorization: `Bearer ${token as string}`,
+          };
+        }
+
+        return requestConfig;
       },
     }),
     addToWishlist: builder.mutation<unknown, WishlistAction>({
@@ -317,6 +327,17 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+    clearBasket: builder.mutation<unknown, string>({
+      query: (token) => {
+        return {
+          url: `shop/auth_user/basket/clear/`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
     getUserBasket: builder.query({
       query: ({ token, lang }) => {
         return {
@@ -348,4 +369,5 @@ export const {
   useAddToBasketMutation,
   useGetUserBasketQuery,
   useDeleteFromBasketMutation,
+  useClearBasketMutation,
 } = productsApi;
