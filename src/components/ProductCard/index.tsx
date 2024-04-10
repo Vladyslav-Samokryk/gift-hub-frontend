@@ -67,7 +67,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white xl:h-card xl:w-card">
+    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:min-w-[320px]">
       <div className="relative">
         <Link to={`/product/${id}`}>
           <ImgWithPreloader
