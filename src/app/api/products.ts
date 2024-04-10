@@ -79,6 +79,27 @@ interface Catalog {
   count: number;
 }
 
+interface WishlistAction {
+  id: string | string[];
+  token: string;
+}
+
+interface BasketItem {
+  product_id: string;
+  isSecretPresent?: boolean;
+  amount: number;
+}
+
+interface BasketAction {
+  products: BasketItem[];
+  token: string;
+}
+
+interface BasketDeleteAction {
+  product_id: string;
+  token: string;
+}
+
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     getProductsByCategory: builder.query<Catalog, Category>({
@@ -142,22 +163,38 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     getPopularProducts: builder.query({
-      query: (lang) => ({
-        url: "shop/guest_user/search/?sort=popular&rate=4&rate=5&page_size=4",
-        method: "GET",
-        headers: {
-          "Accept-Language": lang,
-        },
-      }),
+      query: ({ lang, token }) => {
+        const headers = token
+          ? {
+              Authorization: `Bearer ${token as string}`,
+              "Accept-Language": lang,
+            }
+          : {
+              "Accept-Language": lang,
+            };
+        return {
+          url: "shop/guest_user/search/?sort=popular&rate=4&rate=5&page_size=4",
+          method: "GET",
+          headers,
+        };
+      },
     }),
     getNewProducts: builder.query({
-      query: (lang) => ({
-        url: "shop/guest_user/search/?sort=new5&page_size=4",
-        method: "GET",
-        headers: {
-          "Accept-Language": lang,
-        },
-      }),
+      query: ({ lang, token }) => {
+        const headers = token
+          ? {
+              Authorization: `Bearer ${token as string}`,
+              "Accept-Language": lang,
+            }
+          : {
+              "Accept-Language": lang,
+            };
+        return {
+          url: "shop/guest_user/search/?sort=new&page_size=4",
+          method: "GET",
+          headers,
+        };
+      },
     }),
     getRandomProducts: builder.query<ProductCardType[], RangeT>({
       query: ({ range, lang, quantity = 5, categoryId = "" }) => {
@@ -207,18 +244,27 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     postOrder: builder.mutation({
-      query: ({ options, products }) => {
-        return {
+      query: ({ options, products, token }) => {
+        const requestConfig = {
           url: `shop/guest_user/order_create/`,
           method: "POST",
           body: {
             ...options,
             items: [...products],
           },
+          headers: {},
         };
+
+        if (token.length) {
+          requestConfig.headers = {
+            Authorization: `Bearer ${token as string}`,
+          };
+        }
+
+        return requestConfig;
       },
     }),
-    addToWishlist: builder.mutation({
+    addToWishlist: builder.mutation<unknown, WishlistAction>({
       query: ({ id, token }) => {
         return {
           url: `shop/auth_user/wishlist/`,
@@ -227,6 +273,78 @@ export const productsApi = baseApi.injectEndpoints({
             id,
           },
           headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    deleteFromWishlist: builder.mutation<unknown, WishlistAction>({
+      query: ({ id, token }) => {
+        const globalIds = Array.isArray(id)
+          ? id.map((val) => "id=" + val).join("&")
+          : "id=" + id;
+        return {
+          url: `shop/auth_user/wishlist/?${globalIds}`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getUserWishlist: builder.query({
+      query: ({ token, lang }) => {
+        return {
+          url: `shop/auth_user/wishlist`,
+          method: "GET",
+          headers: {
+            "Accept-Language": lang,
+            Authorization: `Bearer ${token as string}`,
+          },
+        };
+      },
+    }),
+    addToBasket: builder.mutation<unknown, BasketAction>({
+      query: ({ products, token }) => {
+        return {
+          url: `shop/auth_user/basket/`,
+          method: "POST",
+          body: products,
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    deleteFromBasket: builder.mutation<unknown, BasketDeleteAction>({
+      query: ({ product_id, token }) => {
+        return {
+          url: `shop/auth_user/basket/?product_id=${product_id}`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    clearBasket: builder.mutation<unknown, string>({
+      query: (token) => {
+        return {
+          url: `shop/auth_user/basket/clear/`,
+          method: "DELETE",
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        };
+      },
+    }),
+    getUserBasket: builder.query({
+      query: ({ token, lang }) => {
+        return {
+          url: `shop/auth_user/basket`,
+          method: "GET",
+          headers: {
+            "Accept-Language": lang,
             Authorization: `Bearer ${token as string}`,
           },
         };
@@ -246,4 +364,10 @@ export const {
   useGetProductsByIdQuery,
   usePostOrderMutation,
   useAddToWishlistMutation,
+  useDeleteFromWishlistMutation,
+  useGetUserWishlistQuery,
+  useAddToBasketMutation,
+  useGetUserBasketQuery,
+  useDeleteFromBasketMutation,
+  useClearBasketMutation,
 } = productsApi;

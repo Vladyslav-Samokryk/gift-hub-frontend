@@ -8,12 +8,20 @@ import RandomPresentSection from "components/RandomPresent";
 import TrickedLine from "components/TrickedLine";
 import ProductSection from "shared/UI/ProductSection";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
+import { useCookies } from "react-cookie";
 
 export default function Main(): JSX.Element {
   const lang = useGetCurrentLang();
+  const [cookies] = useCookies();
 
-  const { data: popular } = useGetPopularProductsQuery(lang);
-  const { data: newProducts } = useGetNewProductsQuery(lang);
+  const { data: popular } = useGetPopularProductsQuery({
+    lang,
+    token: cookies.access,
+  });
+  const { data: newProducts } = useGetNewProductsQuery({
+    lang,
+    token: cookies.access,
+  });
   const { t } = useTranslation();
 
   return (

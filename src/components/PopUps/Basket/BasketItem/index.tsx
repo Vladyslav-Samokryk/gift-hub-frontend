@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
 import {
   incrementItem,
@@ -9,32 +10,84 @@ import { CountMinus, CountPlus } from "shared/assets/svg/BasketCounter";
 import Trash from "shared/assets/svg/Trash";
 import { getTotalPrice } from "shared/helpers/price";
 import type { BasketItemTypes } from "shared/types/Basket";
-// import type { SyntheticEvent } from "react";
 import { useDispatch } from "react-redux";
 import { SecretGiftBasket } from "shared/assets/svg/SecretGift";
 import { useTranslation } from "react-i18next";
 import classNames from "classnames";
+import {
+  useAddToBasketMutation,
+  useAddToWishlistMutation,
+  useDeleteFromBasketMutation,
+  useDeleteFromWishlistMutation,
+} from "app/api/products";
+import { useCookies } from "react-cookie";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
+import { useState } from "react";
+import { useAuth } from "shared/hooks/useAuth";
+import { decrementBy } from "app/store/cart/authCartSlice";
 
-const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
+const BasketItem = ({
+  product,
+  options,
+  refetch,
+}: BasketItemTypes): JSX.Element => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
+  const [cookies] = useCookies();
+  const [addToBasket] = useAddToBasketMutation();
+  const [deleteFromBasket] = useDeleteFromBasketMutation();
+  const [deleteFromWishlist] = useDeleteFromWishlistMutation();
+  const [addToWishlist] = useAddToWishlistMutation();
+  const { onOpen } = useModals();
+  const [isProductInWishlist, setIsProductInWishlist] = useState(false);
+  const { isAuth } = useAuth();
 
-  const handleIncrementCounter = (id: string): void => {
-    dispatch(incrementItem(id));
+  const handleIncrementCounter = async (): Promise<void> => {
+    if (isAuth) {
+      await addToBasket({
+        products: [{ product_id: product.id, amount: product.count + 1 }],
+        token: cookies.access,
+      }).then(() => {
+        if (refetch) void refetch();
+      });
+    } else dispatch(incrementItem(product.id));
   };
 
-  const handleDecrementCounter = (id: string): void => {
-    dispatch(decrementItem(id));
+  const handleDecrementCounter = async (): Promise<void> => {
+    if (isAuth) {
+      await addToBasket({
+        products: [{ product_id: product.id, amount: product.count - 1 }],
+        token: cookies.access,
+      }).then(() => {
+        if (refetch) void refetch();
+      });
+    } else dispatch(decrementItem(product.id));
   };
 
-  const handleDeleteItem = (id: string): void => {
-    dispatch(removeFromCart(id));
+  const handleDeleteItem = async (): Promise<void> => {
+    if (isAuth) {
+      await deleteFromBasket({
+        product_id: product.id,
+        token: cookies.access,
+      }).then(() => {
+        dispatch(decrementBy([product.id]));
+        if (refetch) void refetch();
+      });
+    } else dispatch(removeFromCart(product.id));
   };
 
-  // const handleAddToWishlist = (e: SyntheticEvent): void => {
-  //  TODO: Adiing to wishlist
-  // };
-
+  const handleWishlistAction = (): void => {
+    void (isAuth
+      ? !isProductInWishlist
+        ? addToWishlist({ id: product.id, token: cookies.access })
+        : deleteFromWishlist({ id: product.id, token: cookies.access })
+      : onOpen({
+          name: MODALS.LOGIN,
+          data: { error: true },
+        }));
+    setIsProductInWishlist((prev) => !prev);
+  };
   return (
     <li>
       <div className="grid h-fit grid-cols-[4fr_1fr_2fr] gap-2">
@@ -42,10 +95,10 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
           {product.isSecretPresent ? (
             <SecretGiftBasket />
           ) : (
-            <div className="h-28 w-28 shrink-0 rounded-xl border border-black overflow-hidden">
+            <div className="h-28 w-28 shrink-0 overflow-hidden rounded-xl border border-black">
               <img
                 src={product.img}
-                className="w-full h-full object-cover object-top"
+                className="h-full w-full object-cover object-top"
                 alt={product.name}
               />
             </div>
@@ -75,7 +128,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
               className={classNames("text-blue-700 hover:text-blue-800", {
                 "text-blue-800": product.count === 1,
               })}
-              onClick={() => handleDecrementCounter(product.id)}
+              onClick={handleDecrementCounter}
               disabled={product.count === 1}
             >
               <CountMinus />
@@ -85,7 +138,7 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
               className={classNames("text-blue-700 hover:text-blue-800", {
                 "text-blue-800": product.count >= product.quantity,
               })}
-              onClick={() => handleIncrementCounter(product.id)}
+              onClick={handleIncrementCounter}
               disabled={product.count >= product.quantity}
             >
               <CountPlus />
@@ -98,11 +151,14 @@ const BasketItem = ({ product, options }: BasketItemTypes): JSX.Element => {
         <div className="flex flex-col justify-between">
           <div className="flex justify-end gap-6">
             {!product.isSecretPresent && (
-              <button className="group transition-all">
-                <Wishlist />
+              <button
+                className="group transition-all"
+                onClick={handleWishlistAction}
+              >
+                <Wishlist inWishlist={isProductInWishlist} />
               </button>
             )}
-            <button onClick={() => handleDeleteItem(product.id)}>
+            <button onClick={handleDeleteItem}>
               <Trash />
             </button>
           </div>

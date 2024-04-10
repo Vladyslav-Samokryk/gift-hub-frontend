@@ -143,6 +143,7 @@ interface AllLocalesType {
     select_productNum: string;
     filter_popup_header: string;
     sort_popup_header: string;
+    cabinet_popup_header: string;
 
     bth_reset: string;
     btn_apply: string;
@@ -336,6 +337,23 @@ interface AllLocalesType {
     privacy_police: {
       main_title: string;
       text: string[];
+    };
+
+    cabinet_section: {
+      personal_info: string;
+      address: string;
+      security: string;
+      wishlist: string;
+      history: string;
+    };
+
+    logout: string;
+
+    wishlist: {
+      header: string;
+      description: string;
+      btn_add: string;
+      btn_delete: string;
     };
   };
 }

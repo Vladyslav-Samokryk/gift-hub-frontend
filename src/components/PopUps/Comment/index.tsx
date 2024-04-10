@@ -30,7 +30,7 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
           </div>
         ))}
       </div>
-      <textarea rows={10} className="w-72 md:w-[450px]"></textarea>
+      <textarea rows={10} className="w-72 resize-none md:w-[450px]"></textarea>
       <div>
         <p>{t("comments.max_comment_length")}</p>
       </div>

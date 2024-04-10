@@ -37,7 +37,9 @@ export const useAuth = (): { isAuth: boolean } => {
   };
 
   useEffect(() => {
-    void checkTokens();
+    if (cookies.access || cookies.refresh) {
+      void checkTokens();
+    }
   }, []);
 
   return useMemo(() => ({ isAuth }), [isAuth]);

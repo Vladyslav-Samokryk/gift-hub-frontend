@@ -157,6 +157,7 @@ export const en: AllLocalesType = {
     select_productNum: "Show by",
     filter_popup_header: "Filters",
     sort_popup_header: "Sort by",
+    cabinet_popup_header: "Personal cabinet",
 
     bth_reset: "Reset",
     btn_apply: "Apply",
@@ -468,10 +469,27 @@ export const en: AllLocalesType = {
       "But we are doing our best to fix it as soon as possible!",
       "We invite you to view other categories",
     ],
-     not_found_content: [
+
+    cabinet_section: {
+      personal_info: "Personal information",
+      address: "Address",
+      security: "Security",
+      wishlist: "Wishlist",
+      history: "History",
+    },
+
+    logout: "Log out",
+    not_found_content: [
       "Unfortunately, the page was not found",
       "The page you are trying to find does not exist or has been removed",
     ],
-    go_to_the_main_page:"Go to the main page",
+    go_to_the_main_page: "Go to the main page",
+
+    wishlist: {
+      header: "Wishlist is empty!",
+      description: "But it's never too late to fix it :)",
+      btn_add: "Add all to basket",
+      btn_delete: "Clean the list",
+    },
   },
 };

@@ -1,9 +1,15 @@
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { RightBigArrow } from "shared/assets/svg/Arrows";
-import UserSection from "components/UserSection";
+import type { Children } from "shared/types/CommonTypes";
 
-export default function HeaderWithGoBack(): JSX.Element {
+interface HeaderWithGoBackProps {
+  children?: Children | null;
+}
+
+export default function HeaderWithGoBack({
+  children = null,
+}: HeaderWithGoBackProps): JSX.Element {
   const navigate = useNavigate();
   const { t } = useTranslation();
   return (
@@ -15,7 +21,7 @@ export default function HeaderWithGoBack(): JSX.Element {
         <RightBigArrow />
         <h6 className="h6">{t("main_page")}</h6>
       </button>
-      <UserSection />
+      {children}
     </section>
   );
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { WhiteClose } from "shared/assets/svg/CloseIcons";
@@ -5,6 +6,10 @@ import { TryAgainIcon } from "shared/assets/svg/TryAgainIcon";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import { useDispatch } from "react-redux";
 import { addToCart } from "app/store/cart/cartSlice";
+import { useCookies } from "react-cookie";
+import { useAddToBasketMutation } from "app/api/products";
+import { useAuth } from "shared/hooks/useAuth";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 interface WinSectionProps {
   setUserWin: (value: boolean) => void;
@@ -22,11 +27,23 @@ export default function WinSection({
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [cookies] = useCookies();
+  const [addToBasket] = useAddToBasketMutation();
+  const { isAuth } = useAuth();
 
-  const handleGoToCheckout = (): void => {
+  const handleGoToCheckout = async (): Promise<void> => {
     if (present) {
-      dispatch(addToCart(present.id));
-      navigate("/checkout");
+      if (isAuth) {
+        await addToBasket({
+          products: [{ product_id: present.id, amount: 1 }],
+          token: cookies.access,
+        })
+          .then(() => dispatch(incrementBy([present.id])))
+          .finally(() => navigate("/checkout"));
+      } else {
+        dispatch(addToCart(present.id));
+        navigate("/checkout");
+      }
     }
     resetWheel();
   };
@@ -38,7 +55,7 @@ export default function WinSection({
   };
 
   if (present === null) {
-    return <p>{present}</p>;
+    return <></>;
   } else {
     return (
       <section
