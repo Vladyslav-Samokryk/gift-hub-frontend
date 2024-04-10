@@ -58,6 +58,7 @@ interface AllLocalesType {
       header: string;
       btn: string;
       wishlist_error: string;
+      login_error: string;
     };
 
     input_password: {
@@ -65,12 +66,23 @@ interface AllLocalesType {
       ph_create: string;
       ph_repeat: string;
       remind_password: string;
-      rules: string[];
+      rules: {
+        min_length: string;
+        letter_digit: string;
+        uppercase_letter: string;
+        lowercase_letter: string;
+        special_symbol: string;
+        match: string;
+      };
     };
 
     registr_popup: {
       header: string;
       btn: string;
+      register: string;
+      privacy_policy: string;
+      split: string;
+      benefit: string;
     };
 
     ph_email: string;
@@ -131,6 +143,7 @@ interface AllLocalesType {
     select_productNum: string;
     filter_popup_header: string;
     sort_popup_header: string;
+    cabinet_popup_header: string;
 
     bth_reset: string;
     btn_apply: string;
@@ -228,6 +241,8 @@ interface AllLocalesType {
     delivery: string[];
     btn_to_basket: string;
     empty_catalog: string[];
+    not_found_content: string[];
+    go_to_the_main_page: string;
 
     checkout: {
       title: string;
@@ -322,6 +337,23 @@ interface AllLocalesType {
     privacy_police: {
       main_title: string;
       text: string[];
+    };
+
+    cabinet_section: {
+      personal_info: string;
+      address: string;
+      security: string;
+      wishlist: string;
+      history: string;
+    };
+
+    logout: string;
+
+    wishlist: {
+      header: string;
+      description: string;
+      btn_add: string;
+      btn_delete: string;
     };
   };
 }

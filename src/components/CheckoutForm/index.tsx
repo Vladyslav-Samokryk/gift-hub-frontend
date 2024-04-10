@@ -1,15 +1,18 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { usePostOrderMutation } from "app/api/products";
+import { useClearBasketMutation, usePostOrderMutation } from "app/api/products";
+import { clear } from "app/store/cart/authCartSlice";
 import { clearCart } from "app/store/cart/cartSlice";
 import classNames from "classnames";
 import DeliveryInputGroup from "components/DeliveryInputGroup";
 import { Formik, Field, Form } from "formik";
+import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import FormikInput from "shared/UI/FormikInput";
 import ListBlock from "shared/UI/ListBlock";
-import { CheckoutSchema } from "shared/helpers/formValidate";
+import { CheckoutSchema } from "shared/helpers/checkoutFormValidate";
+import { useAuth } from "shared/hooks/useAuth";
 import useGetCartItems from "shared/hooks/useGetCartItems";
 import type { CheckoutValues } from "shared/types/Checkout";
 import type { Setter } from "shared/types/CommonTypes";
@@ -24,11 +27,18 @@ function CheckoutForm({
   const cart = useGetCartItems();
   const [postOrder] = usePostOrderMutation();
   const dispatch = useDispatch();
+  const [clearBasket] = useClearBasketMutation();
+  const { isAuth } = useAuth();
+  const [cookies] = useCookies();
+  const { t } = useTranslation();
+
   const handleClearCart = (): void => {
+    if (isAuth) {
+      void clearBasket(cookies.access);
+      dispatch(clear());
+    }
     dispatch(clearCart());
   };
-
-  const { t } = useTranslation();
 
   return (
     <Formik
@@ -71,6 +81,7 @@ function CheckoutForm({
 
         postOrder({
           options,
+          token: isAuth ? cookies.access : "",
           products: cart?.map((el) => {
             return {
               product: el.id,

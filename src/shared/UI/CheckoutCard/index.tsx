@@ -1,6 +1,7 @@
 import { CURRENCY } from "app/api/config";
 import { useTranslation } from "react-i18next";
 import { SecretGiftBasket } from "shared/assets/svg/SecretGift";
+import { getTotalPrice } from "shared/helpers/price";
 import type { CartFullItem } from "shared/types/Basket";
 
 function CheckoutCard(product: CartFullItem): JSX.Element {
@@ -26,7 +27,7 @@ function CheckoutCard(product: CartFullItem): JSX.Element {
         <p className="text-gray-600">{product?.count}</p>
 
         <p>
-          {product.price} {CURRENCY}
+          {getTotalPrice([product])} {CURRENCY}
         </p>
       </div>
       <hr />

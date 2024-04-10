@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/promise-function-async */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
 import { addToCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";
@@ -9,6 +11,17 @@ import { SCREEN } from "shared/constants/screens";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import type { ProductCardType } from "shared/types/ProductTypes";
 import { Basket } from "shared/assets/svg/Basket";
+import { useAuth } from "shared/hooks/useAuth";
+import { MODALS } from "app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { useState } from "react";
+import {
+  useAddToBasketMutation,
+  useAddToWishlistMutation,
+  useDeleteFromWishlistMutation,
+} from "app/api/products";
+import { useCookies } from "react-cookie";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 export default function ProductCard({
   img,
@@ -17,43 +30,75 @@ export default function ProductCard({
   price,
   global_rating,
   id,
+  isInWishlist,
 }: ProductCardType): JSX.Element {
   const windowWidth = useScreenWidth();
   const dispatch = useDispatch();
+  const { isAuth } = useAuth();
+  const { onOpen } = useModals();
+  const [isProductInWishlist, setIsProductInWishlist] = useState(
+    !!isInWishlist,
+  );
+  const [addToWishlist] = useAddToWishlistMutation();
+  const [deleteFromWishlist] = useDeleteFromWishlistMutation();
+  const [addToBasket] = useAddToBasketMutation();
+  const [cookies] = useCookies();
 
   const handleAddToCart = (): void => {
-    dispatch(addToCart(id));
+    if (isAuth) {
+      void addToBasket({
+        products: [{ product_id: id, amount: 1 }],
+        token: cookies.access,
+      });
+      dispatch(incrementBy([id]));
+    } else dispatch(addToCart(id));
+  };
+
+  const handleWishlistAction = (): void => {
+    void (isAuth
+      ? !isProductInWishlist
+        ? addToWishlist({ id, token: cookies.access })
+        : deleteFromWishlist({ id, token: cookies.access })
+      : onOpen({
+          name: MODALS.LOGIN,
+          data: { error: true },
+        }));
+    setIsProductInWishlist((prev) => !prev);
   };
 
   return (
-    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:w-card">
+    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:min-w-[320px]">
       <div className="relative">
         <Link to={`/product/${id}`}>
           <ImgWithPreloader
-            className="h-cardImg-sm w-full rounded-t-lg lg:h-cardImg"
+            className="h-cardImg-sm w-full rounded-t-lg xl:h-cardImg"
             img={img}
             name={name}
           />
         </Link>
-        <button className="group absolute right-2 top-2">
-          <Wishlist />
+        <button
+          type="button"
+          className="group absolute right-2 top-2"
+          onClick={handleWishlistAction}
+        >
+          <Wishlist inWishlist={isProductInWishlist} />
         </button>
       </div>
       <hr className="h-hr bg-black" />
 
-      <div className="p-2 lg:relative lg:h-40">
+      <div className="p-2 xl:relative xl:h-40">
         <Link to={`/product/${id}`}>
-          <h2 className="additional lg:primary-bold h-12 w-full overflow-hidden text-ellipsis font-semibold lg:h-20">
+          <h2 className="additional xl:primary-bold h-12 w-full overflow-hidden text-ellipsis font-semibold xl:h-20">
             {name}
           </h2>
         </Link>
-        <div className="w-[95%] lg:absolute lg:bottom-0">
+        <div className="w-[95%] xl:absolute xl:bottom-0">
           <Link to={`/product/${id}`}>
-            <h3 className="lg:additional text-[12px] text-gray-900">
+            <h3 className="xl:additional text-[12px] text-gray-900">
               {category}
             </h3>
           </Link>
-          <data className="additional lg:primary font-semibold" value={price}>
+          <data className="additional xl:primary font-semibold" value={price}>
             {price} {CURRENCY}
           </data>
           <div className="mr-2 flex w-full items-center justify-between">
@@ -61,10 +106,10 @@ export default function ProductCard({
               starSize={windowWidth < SCREEN.LG ? 16 : 25}
               rate={global_rating}
             />
-            <button onClick={handleAddToCart}>
+            <button onClick={handleAddToCart} className="group">
               <Basket
-                type={windowWidth >= SCREEN.LG ? "lg" : "sm"}
-                className="fill-blue-700"
+                type={windowWidth >= SCREEN.XL ? "lg" : "sm"}
+                className="fill-blue-700 group-active:fill-blue-900"
               />
             </button>
           </div>

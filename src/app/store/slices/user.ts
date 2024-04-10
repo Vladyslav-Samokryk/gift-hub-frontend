@@ -6,12 +6,14 @@ import type { RoleUnion } from "shared/types/User";
 interface UserState {
   isAuth: boolean;
   role: RoleUnion;
+  user_id: string | null;
   first_name: string | null;
   last_name: string | null;
   token: string | null;
 }
 
 const initialState: UserState = {
+  user_id: null,
   isAuth: false,
   role: "guest_user",
   first_name: null,
@@ -31,7 +33,7 @@ const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    authUser(state, action: PayloadAction<AuthAction>) {
+    setIsAuth(state, action: PayloadAction<AuthAction>) {
       const { isAuth } = action.payload;
       state.isAuth = isAuth;
     },
@@ -44,17 +46,13 @@ const userSlice = createSlice({
     builder.addMatcher(
       authApi.endpoints.login.matchFulfilled,
       (state, { payload }) => {
-        const { token, user } = payload;
-        const { role, first_name, last_name } = user;
-
-        state.token = token;
-        state.role = role;
-        state.first_name = first_name;
-        state.last_name = last_name;
+        state.user_id = payload.user_id;
+        state.isAuth = true;
+        localStorage.setItem("user_id", payload.user_id);
       },
     );
   },
 });
 
-export const { authUser, setRole } = userSlice.actions;
+export const { setIsAuth, setRole } = userSlice.actions;
 export default userSlice.reducer;

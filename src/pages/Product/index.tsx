@@ -3,6 +3,9 @@ import {
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
   useGetProductsByIdQuery,
+  useAddToBasketMutation,
+  useAddToWishlistMutation,
+  useDeleteFromWishlistMutation,
 } from "app/api/products";
 import { addToCart } from "app/store/cart/cartSlice";
 import DescriptionContainer from "components/DecrtiptionContainer";
@@ -22,9 +25,13 @@ import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProductSection from "shared/UI/ProductSection";
-// import { useEffect } from "react";
+import { useCookies } from "react-cookie";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
+import { useAuth } from "shared/hooks/useAuth";
+import { incrementBy } from "app/store/cart/authCartSlice";
 
 export default function Product(): JSX.Element {
   const { id } = useParams();
@@ -35,6 +42,13 @@ export default function Product(): JSX.Element {
   const reviewed: string[] = JSON.parse(
     localStorage.getItem("reviewed") ?? "[]",
   );
+  const [cookies] = useCookies();
+  const [addToBasket] = useAddToBasketMutation();
+  const [addToWishlist] = useAddToWishlistMutation();
+  const [deleteFromWishlist] = useDeleteFromWishlistMutation();
+  const [isProductInWishlist, setIsProductInWishlist] = useState(false);
+  const { onOpen } = useModals();
+  const { isAuth } = useAuth();
 
   useEffect(() => {
     if (id) {
@@ -83,8 +97,33 @@ export default function Product(): JSX.Element {
 
   const handleAddToCart = (): void => {
     if (data) {
-      dispatch(addToCart(data.id));
+      if (isAuth) {
+        void addToBasket({
+          products: [
+            {
+              product_id: data.id,
+              amount: 1,
+            },
+          ],
+          token: cookies.access,
+        });
+        dispatch(incrementBy([data.id]));
+      } else {
+        dispatch(addToCart(data.id));
+      }
     }
+  };
+
+  const handleWishlistAction = (): void => {
+    void (isAuth && data
+      ? !isProductInWishlist
+        ? addToWishlist({ id: data.id, token: cookies.access })
+        : deleteFromWishlist({ id: data.id, token: cookies.access })
+      : onOpen({
+          name: MODALS.LOGIN,
+          data: { error: true },
+        }));
+    setIsProductInWishlist((prev) => !prev);
   };
 
   if (!data) {
@@ -127,8 +166,8 @@ export default function Product(): JSX.Element {
             >
               {t("btn_to_basket")}
             </button>
-            <button className="h-8">
-              <Wishlist />
+            <button className="h-8" onClick={handleWishlistAction}>
+              <Wishlist inWishlist={isProductInWishlist} />
             </button>
           </div>
         </div>
@@ -137,12 +176,14 @@ export default function Product(): JSX.Element {
       <section>
         <div className="flex justify-between">
           <h4 className="md:h5 h6">{t("comments.header")}</h4>
-          {/*  <button
-            className="btn btn-effect"
-            onClick={() => onOpen({ name: MODALS.COMMENT })}
-          >
-            {t("comments.write_comment.header")}
-          </button> */}
+          {isAuth && (
+            <button
+              className="btn btn-effect"
+              onClick={() => onOpen({ name: MODALS.COMMENT })}
+            >
+              {t("comments.write_comment.header")}
+            </button>
+          )}
         </div>
       </section>
 

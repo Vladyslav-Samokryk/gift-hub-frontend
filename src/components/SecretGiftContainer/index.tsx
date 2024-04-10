@@ -26,6 +26,7 @@ export default function SecretGiftContainer({
     <SecretGiftUserWin
       setUserWin={setUserWin}
       query={query}
+      userWin={userWin}
       isAnimation={isAnimation}
     />
   );

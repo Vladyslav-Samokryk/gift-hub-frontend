@@ -25,7 +25,7 @@ export default function InputContainer({
 }: InputProps): JSX.Element {
   const { t } = useTranslation();
   return (
-    <div className="flex flex-col">
+    <div className="flex w-full flex-col">
       <div
         className={classNames(
           "input relative flex items-center bg-white h-12",
