@@ -153,7 +153,11 @@ export const SmallPresentBox = (): JSX.Element => (
   </svg>
 );
 
-export const QuestionMark = ({ width, height, classname }: SvgProps): JSX.Element => (
+export const QuestionMark = ({
+  width,
+  height,
+  classname,
+}: SvgProps): JSX.Element => (
   <svg
     width={width}
     height={height}
