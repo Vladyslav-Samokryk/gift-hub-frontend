@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/promise-function-async */
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
 import { addToCart } from "app/store/cart/cartSlice";
 import { useDispatch } from "react-redux";
