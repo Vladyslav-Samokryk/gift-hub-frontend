@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useClearBasketMutation, usePostOrderMutation } from "app/api/products";
 import { clear } from "app/store/cart/authCartSlice";

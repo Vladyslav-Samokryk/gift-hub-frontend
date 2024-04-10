@@ -10,6 +10,8 @@ export const productCardMock: ProductCardType[] = [
     global_rating: 3,
     discount: 0,
     quantity: 1,
+    isInCart: false,
+    isInWishlist: false,
   },
   {
     id: "12",
@@ -20,6 +22,8 @@ export const productCardMock: ProductCardType[] = [
     global_rating: 3,
     discount: 0,
     quantity: 1,
+    isInCart: false,
+    isInWishlist: false,
   },
   {
     id: "123",
@@ -30,6 +34,8 @@ export const productCardMock: ProductCardType[] = [
     discount: 0.5,
     global_rating: 3,
     quantity: 1,
+    isInCart: false,
+    isInWishlist: false,
   },
 ];
 

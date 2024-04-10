@@ -3,7 +3,6 @@ import { useRoutes } from "react-router";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
 import { lazy } from "react";
-import { useAuth } from "shared/hooks/useAuth";
 
 const CatalogLayout = lazy(
   async () => await import("app/layouts/CatalogLayout"),
@@ -34,7 +33,6 @@ const NotFound = lazy(async () => await import("pages/NotFound"));
 const WishlistPage = lazy(async () => await import("pages/Wishlist"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
-  const { isAuth } = useAuth();
   const element = useRoutes([
     {
       path: "/",

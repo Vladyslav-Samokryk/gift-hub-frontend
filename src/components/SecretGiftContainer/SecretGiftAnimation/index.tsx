@@ -96,8 +96,7 @@ export default function SecretGiftAnimation({
         initial={initial}
         animate={animate}
         transition={slowTransition}
-        // eslint-disable-next-line tailwindcss/enforces-negative-arbitrary-values
-        className="absolute top-[1vh] left-[48vw] rotate-[10deg] transform-gpu object-contain object-center"
+        className="absolute left-[48vw] top-[1vh] rotate-[10deg] transform-gpu object-contain object-center"
       >
         {windowWidth < 1024 ? (
           <MidlePresentBox
