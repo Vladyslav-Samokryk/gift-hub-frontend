@@ -164,6 +164,13 @@ export const en: AllLocalesType = {
 
     all_categories: "All categories",
 
+    ph_birthday: "Birthday",
+    birthday_errors: {
+      date_in_past: "Date is too early",
+      date_in_future: "Date cannot be in the future",
+      invalid: "Please enter a valid date",
+    },
+
     categories: {
       backpack: "Backpack",
       keychain: "Keychain",
