@@ -164,6 +164,9 @@ export const en: AllLocalesType = {
 
     all_categories: "All categories",
 
+    btn_save: "Save",
+    btn_edit: "Edit",
+
     ph_birthday: "Birthday",
     birthday_errors: {
       date_in_past: "Date is too early",

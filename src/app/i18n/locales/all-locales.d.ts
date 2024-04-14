@@ -251,6 +251,9 @@ interface AllLocalesType {
       invalid: string;
     };
 
+    btn_save: string;
+    btn_edit: string;
+
     checkout: {
       title: string;
       ph: {
