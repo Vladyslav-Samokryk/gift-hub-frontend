@@ -11,6 +11,7 @@ interface FormikInputProps {
   name: string;
   isError?: boolean;
   errorMessage?: string;
+  isDisable?: boolean;
 }
 
 function FormikPasswordInput({
@@ -20,6 +21,7 @@ function FormikPasswordInput({
   name,
   isError = false,
   errorMessage = "",
+  isDisable = false,
 }: FormikInputProps): JSX.Element {
   const [inputType, setInputType] = useState<"password" | "text">("password");
 
@@ -31,6 +33,7 @@ function FormikPasswordInput({
         setInputValue={async () => setFieldValue(name, "")}
         isError={isError}
         errorMessage={errorMessage}
+        // isDisable={isDisable}
       >
         <Field
           className="h-full w-full pr-8 focus:outline-none"

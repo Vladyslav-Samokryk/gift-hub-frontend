@@ -81,6 +81,10 @@ export const ua: AllLocalesType = {
       ua: "УКР",
     },
 
+    err_500: "Щось пішло не так! Спробуйте пізніше!",
+
+    err_400_change_password: "Пароль неправильний!",
+
     login_popup: {
       header: "Вхід",
       btn: "Увійти",
@@ -92,6 +96,7 @@ export const ua: AllLocalesType = {
     input_password: {
       ph: "Пароль",
       ph_create: "Придумайте пароль",
+      ph_current: "Пароль",
       ph_repeat: "Повторіть пароль",
       remind_password: "Нагадати пароль",
       rules: {

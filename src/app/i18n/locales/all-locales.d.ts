@@ -65,6 +65,7 @@ interface AllLocalesType {
       ph: string;
       ph_create: string;
       ph_repeat: string;
+      ph_current: string;
       remind_password: string;
       rules: {
         min_length: string;
@@ -75,6 +76,10 @@ interface AllLocalesType {
         match: string;
       };
     };
+
+    err_500: string;
+
+    err_400_change_password: string;
 
     registr_popup: {
       header: string;
