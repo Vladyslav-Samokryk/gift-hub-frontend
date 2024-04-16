@@ -121,7 +121,7 @@ export default function LoginPopUp({
             </Form>
           )}
         </Formik>
-        <EnterAsSection />
+        <EnterAsSection onClose={onClose} />
       </div>
     </ModalContainer>
   );
