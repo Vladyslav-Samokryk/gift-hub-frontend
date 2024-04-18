@@ -233,10 +233,12 @@ export const productsApi = baseApi.injectEndpoints({
     }),
     getProductsById: builder.query<ProductCardType[], ProductsByIdRequest>({
       query: ({ productIds, lang }) => {
-        const idParam = productIds.map((el) => `product_id=${el}`).join("&");
         return {
-          url: `shop/guest_user/product/?${idParam}`,
-          method: "GET",
+          url: `shop/guest_user/products/get_list_products_by_id/`,
+          method: "POST",
+          body: {
+            product_id: productIds,
+          },
           headers: {
             "Accept-Language": lang,
           },
@@ -280,12 +282,12 @@ export const productsApi = baseApi.injectEndpoints({
     }),
     deleteFromWishlist: builder.mutation<unknown, WishlistAction>({
       query: ({ id, token }) => {
-        const globalIds = Array.isArray(id)
-          ? id.map((val) => "id=" + val).join("&")
-          : "id=" + id;
         return {
-          url: `shop/auth_user/wishlist/?${globalIds}`,
-          method: "DELETE",
+          url: `shop/auth_user/wishlist/del_list_products/`,
+          method: "POST",
+          body: {
+            product_id: Array.isArray(id) ? [...id] : [id],
+          },
           headers: {
             Authorization: `Bearer ${token}`,
           },
