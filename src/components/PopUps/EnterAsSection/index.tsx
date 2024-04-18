@@ -2,9 +2,34 @@ import { useTranslation } from "react-i18next";
 
 import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
 import { FacebookLogin, GoogleLogin } from "shared/assets/svg/SocialMedia";
+import { useGoogleLogin } from "@react-oauth/google";
+import { getTokens } from "app/api/googleLogin";
+import { useCookies } from "react-cookie";
+import { useDispatch } from "react-redux";
+import { setIsAuth } from "app/store/slices/user";
+import type { ModalDialogProps } from "shared/types/Modals";
 
-export default function EnterAsSection(): JSX.Element {
+type CloseModalWindow= Pick<ModalDialogProps, 'onClose'>;
+
+export default function EnterAsSection({onClose}:CloseModalWindow): JSX.Element {
+  const [, setCookie] = useCookies(["refresh", "access"]);
   const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const googleLogin = useGoogleLogin({
+    onSuccess: async ({ code }) => {
+      try {
+        const { data } = await getTokens(code);
+        setCookie("refresh", data.refresh);
+        setCookie("access", data.access);
+        dispatch(setIsAuth({ isAuth: true }));
+        onClose();
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    flow: "auth-code",
+    onError: (errorResponse) => console.log(errorResponse),
+  });
   return (
     <>
       <div className="relative my-5 w-full  md:mx-2 md:h-[90%] md:w-[2px]">
@@ -20,7 +45,7 @@ export default function EnterAsSection(): JSX.Element {
           <ButtonWithIcon
             text="Google"
             onClick={() => {
-              ("");
+              googleLogin();
             }}
           >
             <GoogleLogin />
