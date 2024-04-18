@@ -2,14 +2,14 @@ import * as yup from "yup";
 import { parse } from "date-fns/parse";
 
 export const UserInfoSchema = yup.object().shape({
-  firstName: yup.string().trim().required("checkout.errors.required"),
-  lastName: yup.string().trim().required("checkout.errors.required"),
+  first_name: yup.string().trim().required("checkout.errors.required"),
+  last_name: yup.string().trim().required("checkout.errors.required"),
   email: yup
     .string()
     .email("checkout.errors.email")
     .required("checkout.errors.required"),
-  tel: yup.string().matches(/\+380[0-9]{9}/, "checkout.errors.tel"),
-  birthday: yup
+  mobile: yup.string().matches(/\+380[0-9]{9}/, "checkout.errors.tel"),
+  dob: yup
     .date()
     .transform(function (value, originalValue) {
       if (this.isType(value)) {
