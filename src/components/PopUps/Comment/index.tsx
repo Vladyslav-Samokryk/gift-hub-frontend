@@ -1,3 +1,4 @@
+import  { useState } from "react";
 import { t } from "i18next";
 import ModalContainer from "shared/UI/ModalContainer";
 import ModalHeader from "shared/UI/ModalHeader";
@@ -10,23 +11,56 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
     returnObjects: true,
   });
 
+  const [globalRate, setGlobalRate] = useState<number>(0);
+
+  const [criteriaRates, setCriteriaRates] = useState<Record<string, number>>(
+    Object.keys(criterias).reduce(
+      (acc, key) => {
+        acc[key] = 0;
+        return acc;
+      },
+      {} as Record<string, number>,
+    ),
+  );
+
+   const handleGlobalRateChange = (newRate: number) => {
+    setGlobalRate(newRate);
+   };
+  
+    const handleCriteriaRateChange = (key: string, newRate: number) => {
+    setCriteriaRates((prevRates) => ({
+      ...prevRates,
+      [key]: newRate,
+    }));
+    };
+  
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
-      <ModalHeader
-        title={t("comments.write_comment.header")}
-        onClose={onClose}
-      />
-      <p>{t("comments.write_comment.description")}</p>
+      <div className="mb-10">
+        <ModalHeader
+          classname="font-rubik"
+          title={t("comments.write_comment.header")}
+          onClose={onClose}
+        />
+        <p className="font-rubik font-light ">
+          {t("comments.write_comment.description")}
+        </p>
+      </div>
+
+      <div>
+        <h2></h2>
+      </div>
+
       <div>
         <div className="flex justify-between">
           <p className="primary">{t("global_rate")}</p>
-          <StarRate rate={0} />
+          <StarRate rate={globalRate} onRateChange={handleGlobalRateChange} />
         </div>
 
-        {Object.values(criterias).map((el, i) => (
+        {Object.entries(criterias).map(([key,el], i) => (
           <div key={i} className="flex justify-between">
             <p className="primary">{el}</p>
-            <StarRate rate={0} />
+            <StarRate  rate={criteriaRates[key]}  onRateChange={(newRate) => handleCriteriaRateChange(key, newRate)} />
           </div>
         ))}
       </div>
