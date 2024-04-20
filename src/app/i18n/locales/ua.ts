@@ -164,6 +164,15 @@ export const ua: AllLocalesType = {
 
     bth_reset: "Зняти всі",
     btn_apply: "Застосувати",
+    btn_save: "Зберегти",
+    btn_edit: "Редагувати",
+
+    ph_birthday: "Дата народження",
+    birthday_errors: {
+      date_in_past: "Дата занадто рання",
+      date_in_future: "Дата не може бути у майбутньому",
+      invalid: "Будь ласка, введіть коректну дату",
+    },
 
     all_categories: "Всі категорії",
 
