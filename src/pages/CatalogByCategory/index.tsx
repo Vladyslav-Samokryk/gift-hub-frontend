@@ -15,6 +15,7 @@ import EmptyCatalog from "shared/UI/EmptyCatalog";
 import { useAppSelector } from "app/store";
 import { useDispatch } from "react-redux";
 import { setCount } from "app/store/slices/catalog";
+import { useCookies } from "react-cookie";
 
 export default function CatalogByCategory(): JSX.Element {
   const { id } = useParams();
@@ -23,17 +24,21 @@ export default function CatalogByCategory(): JSX.Element {
   const searchParams = getSearchParams();
   const catalog = useAppSelector((state) => state.catalog);
   const dispatch = useDispatch();
+  const [cookies] = useCookies();
   const { data } = useGetProductsByCategoryQuery(
     {
-      categoryId: categoryId ?? "",
-      main: handleQueryParamArray(searchParams.main),
-      rate: handleQueryParamArray(searchParams.rate),
-      priceFrom: prepareQueryParam(searchParams.priceFrom),
-      priceTo: prepareQueryParam(searchParams.priceTo),
-      sort: prepareQueryParam(searchParams.sort),
-      lang,
-      page: catalog.page,
-      productNum: catalog.productNum,
+      category: {
+        categoryId: categoryId ?? "",
+        main: handleQueryParamArray(searchParams.main),
+        rate: handleQueryParamArray(searchParams.rate),
+        priceFrom: prepareQueryParam(searchParams.priceFrom),
+        priceTo: prepareQueryParam(searchParams.priceTo),
+        sort: prepareQueryParam(searchParams.sort),
+        lang,
+        page: catalog.page,
+        productNum: catalog.productNum,
+      },
+      token: cookies.access,
     },
     {
       skip: !categoryId ?? false,

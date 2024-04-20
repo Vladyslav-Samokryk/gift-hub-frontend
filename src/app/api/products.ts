@@ -5,6 +5,7 @@ import type {
 } from "shared/types/ProductTypes";
 
 import { baseApi } from "./base";
+import { generateHeader, urlParams } from "shared/helpers/urlParams";
 
 export interface RangeT {
   range: Range;
@@ -40,6 +41,7 @@ interface Search {
 interface OneProduct {
   id: string;
   lang: string;
+  token: string;
 }
 
 interface ProductCommentsRequest {
@@ -51,15 +53,10 @@ interface ProductCommentsRequest {
 interface ProductCommentsResponse {
   count: number;
   results: Array<{
-    // ім'я автора
     author: string;
-    // дата написання (у форматі 12 вересня 2023)
     date: string;
-    // глобальний рейтинг в зірочках
     global_rate: number;
-    // сам текст коментаря
     text: string;
-    // рейтинг за критеріями
     rate_by_criteria: {
       quality: number;
       photo_match: number;
@@ -72,6 +69,7 @@ interface ProductCommentsResponse {
 interface ProductsByIdRequest {
   lang: string;
   productIds: string[];
+  token?: string;
 }
 
 interface Catalog {
@@ -100,99 +98,79 @@ interface BasketDeleteAction {
   token: string;
 }
 
+interface CategoryAction {
+  category: Category;
+  token?: string;
+}
+
+interface SearchAction {
+  search: Search;
+  token?: string;
+}
+
 export const productsApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
-    getProductsByCategory: builder.query<Catalog, Category>({
-      query: ({
-        lang,
-        categoryId,
-        main = ["available"],
-        rate = [],
-        priceFrom = 0,
-        priceTo = 2000,
-        sort = "popular",
-        page,
-        productNum,
-      }) => {
-        const globalRate =
-          Array.isArray(rate) && rate.length > 0
-            ? rate.map((val) => "&rate=" + val.toString()).join("")
-            : "";
-        const globalMain =
-          Array.isArray(main) && main.length > 0
-            ? main.map((val) => "&main=" + val).join("")
-            : "";
+    getProductsByCategory: builder.query<Catalog, CategoryAction>({
+      query: ({ category, token }) => {
+        const {
+          lang,
+          categoryId,
+          main = ["available"],
+          rate = [],
+          priceFrom = 0,
+          priceTo = 2000,
+          sort = "popular",
+          page,
+          productNum,
+        } = category;
+        const globalRate = urlParams("rate", rate);
+        const globalMain = urlParams("main", main);
         return {
           url: `shop/guest_user/category/${categoryId}/products?${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
           method: "GET",
-          headers: {
-            "Accept-Language": lang,
-          },
+          headers: generateHeader(token, lang),
         };
       },
     }),
-    getProductsBySearch: builder.query<Catalog, Search>({
-      query: ({
-        lang,
-        q,
-        main = ["available"],
-        rate = [],
-        priceFrom = 0,
-        priceTo = 2000,
-        sort = "popular",
-        page,
-        productNum,
-      }) => {
-        const globalRate =
-          Array.isArray(rate) && rate.length > 0
-            ? rate.map((val) => "&rate=" + val.toString()).join("")
-            : "";
-        const globalMain =
-          Array.isArray(main) && main.length > 0
-            ? main.map((val) => "&main=" + val).join("")
-            : "";
+    getProductsBySearch: builder.query<Catalog, SearchAction>({
+      query: ({ search, token }) => {
+        const {
+          lang,
+          q,
+          main = ["available"],
+          rate = [],
+          priceFrom = 0,
+          priceTo = 2000,
+          sort = "popular",
+          page,
+          productNum,
+        } = search;
+        const globalRate = urlParams("rate", rate);
+        const globalMain = urlParams("main", main);
         return {
           url: `shop/guest_user/search/?${
             q ? "search=" + q : ""
           }${globalMain}&sort=${sort}&price_from=${priceFrom}&price_to=${priceTo}${globalRate}&page=${page}&page_size=${productNum}`,
           method: "GET",
-          headers: {
-            "Accept-Language": lang,
-          },
+          headers: generateHeader(token, lang),
         };
       },
     }),
     getPopularProducts: builder.query({
       query: ({ lang, token }) => {
-        const headers = token
-          ? {
-              Authorization: `Bearer ${token as string}`,
-              "Accept-Language": lang,
-            }
-          : {
-              "Accept-Language": lang,
-            };
         return {
           url: "shop/guest_user/search/?sort=popular&rate=4&rate=5&page_size=4",
           method: "GET",
-          headers,
+          headers: generateHeader(token, lang),
         };
       },
     }),
     getNewProducts: builder.query({
       query: ({ lang, token }) => {
-        const headers = token
-          ? {
-              Authorization: `Bearer ${token as string}`,
-              "Accept-Language": lang,
-            }
-          : {
-              "Accept-Language": lang,
-            };
         return {
           url: "shop/guest_user/search/?sort=new&page_size=4",
           method: "GET",
-          headers,
+          headers: generateHeader(token, lang),
         };
       },
     }),
@@ -210,13 +188,11 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     getOneProduct: builder.query<ProductCardDetailedType, OneProduct>({
-      query: ({ id, lang }) => {
+      query: ({ id, lang, token }) => {
         return {
           url: `shop/guest_user/product/${id}`,
           method: "GET",
-          headers: {
-            "Accept-Language": lang,
-          },
+          headers: generateHeader(token, lang),
         };
       },
     }),
@@ -232,16 +208,14 @@ export const productsApi = baseApi.injectEndpoints({
       },
     }),
     getProductsById: builder.query<ProductCardType[], ProductsByIdRequest>({
-      query: ({ productIds, lang }) => {
+      query: ({ productIds, lang, token }) => {
         return {
           url: `shop/guest_user/products/get_list_products_by_id/`,
           method: "POST",
           body: {
             product_id: productIds,
           },
-          headers: {
-            "Accept-Language": lang,
-          },
+          headers: generateHeader(token, lang),
         };
       },
     }),
