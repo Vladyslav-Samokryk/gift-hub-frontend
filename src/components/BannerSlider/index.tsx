@@ -32,7 +32,7 @@ export default function BannerSlider(): JSX.Element {
     return (
       <Slide index={index} key={index}>
         <Image
-          src={windowWidth > SCREEN.SM ? banner.img : banner.mobileImg}
+          src={windowWidth >= SCREEN.SM ? banner.img : banner.mobileImg}
           alt={banner.link}
           onClick={() => navigate(banner.link)}
           className="!h-fit !w-[90vw] object-cover"
@@ -56,7 +56,7 @@ export default function BannerSlider(): JSX.Element {
     >
       <Slider className="h-full w-full">{slides}</Slider>
       <DotGroup className="mt-3 flex justify-center" />
-      {windowWidth > SCREEN.SM && (
+      {windowWidth >= SCREEN.SM && (
         <>
           <ButtonBack className="group absolute top-[50%] m-1 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full hover:bg-blue-700">
             <LeftArrow />

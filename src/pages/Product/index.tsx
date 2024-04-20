@@ -131,7 +131,7 @@ export default function Product(): JSX.Element {
   }
   return (
     <section className="flex flex-col justify-center gap-6 px-[2vw]">
-      {width > SCREEN.LG && <Breadcrumbs product={data.name} />}
+      {width >= SCREEN.LG && <Breadcrumbs product={data.name} />}
       <section className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr,45vw,1fr]">
         <div>
           <h1 className="lg:h5 h6">{data.name}</h1>
