@@ -3,6 +3,8 @@ import {
   useDeleteFromWishlistMutation,
   useGetUserWishlistQuery,
 } from "app/api/products";
+import { MODALS } from "app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
 import ProductCard from "components/ProductCard";
 import { useEffect } from "react";
 import { useCookies } from "react-cookie";
@@ -21,6 +23,7 @@ export default function WishlistPage(): JSX.Element {
     token: cookies.access,
     lang,
   });
+  const { onOpen } = useModals();
 
   const handleAddToBasket = (): void => {
     void addToBasket({
@@ -31,7 +34,9 @@ export default function WishlistPage(): JSX.Element {
         };
       }),
       token: cookies.access,
-    });
+    })
+      .unwrap()
+      .then(() => onOpen({ name: MODALS.BASKET }));
   };
 
   const handleDeleteAllFromWishlist = (): void => {
@@ -47,6 +52,10 @@ export default function WishlistPage(): JSX.Element {
     void refetch();
   }, []);
 
+  const getNewWishlist = async (): Promise<void> => {
+    await refetch();
+  };
+
   return (
     <>
       {data?.length ? (
@@ -54,7 +63,7 @@ export default function WishlistPage(): JSX.Element {
           <ul className="flex flex-wrap justify-evenly gap-5 ">
             {data?.map((product: ProductCardType) => (
               <li key={product.id}>
-                <ProductCard {...product} />
+                <ProductCard {...product} refetch={getNewWishlist} />
               </li>
             ))}
           </ul>
