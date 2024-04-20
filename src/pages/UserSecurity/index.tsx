@@ -1,16 +1,21 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import type { ChangePasswordRequest } from "app/api/user";
 import { useChangePasswordMutation } from "app/api/user";
+import classNames from "classnames";
 import { Form, Formik } from "formik";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import FormikPasswordInput from "shared/UI/FormikPassportInput";
-import { ChangePasswordSchema } from "shared/helpers/changePasswordFormValidation";
+import {
+  ChangePasswordSchema,
+  ChangePasswordStableSchema,
+} from "shared/helpers/changePasswordFormValidation";
 
-interface UserSecurityValues extends ChangePasswordRequest {
-  new_password_try: string;
-}
+const initialValues = {
+  current_password: "",
+  new_password: "",
+  new_password_try: "",
+};
 
 export default function UserSecurityPage(): JSX.Element {
   const { t } = useTranslation();
@@ -20,21 +25,26 @@ export default function UserSecurityPage(): JSX.Element {
 
   return (
     <Formik
-      initialValues={{
-        current_password: "",
-        new_password: "",
-        new_password_try: "",
-      }}
-      validationSchema={ChangePasswordSchema}
-      onSubmit={async ({
-        current_password,
-        new_password,
-      }: UserSecurityValues) => {
-        await changePassword({
-          current_password,
-          new_password,
-          token: cookies.access,
-        });
+      initialValues={initialValues}
+      validationSchema={
+        isDisable ? ChangePasswordStableSchema : ChangePasswordSchema
+      }
+      onSubmit={(values) => {
+        setIsDisable(false);
+        if (!isDisable) {
+          void changePassword({
+            current_password: values.current_password,
+            new_password: values.new_password,
+            token: cookies.access,
+          })
+            .unwrap()
+            .then(() => {
+              setIsDisable(true);
+            })
+            .catch(() => {
+              setIsDisable(false);
+            });
+        }
       }}
     >
       {({ values, setFieldValue, errors, touched }) => (
@@ -48,6 +58,7 @@ export default function UserSecurityPage(): JSX.Element {
               )}
             </p>
           )}
+
           <FormikPasswordInput
             value={values.current_password}
             setFieldValue={setFieldValue}
@@ -57,6 +68,7 @@ export default function UserSecurityPage(): JSX.Element {
             name="current_password"
             isDisable={isDisable}
           ></FormikPasswordInput>
+
           <FormikPasswordInput
             value={values.new_password}
             setFieldValue={setFieldValue}
@@ -66,6 +78,7 @@ export default function UserSecurityPage(): JSX.Element {
             name="new_password"
             isDisable={isDisable}
           ></FormikPasswordInput>
+
           <FormikPasswordInput
             value={values.new_password_try}
             setFieldValue={setFieldValue}
@@ -75,8 +88,18 @@ export default function UserSecurityPage(): JSX.Element {
             name="new_password_try"
             isDisable={isDisable}
           ></FormikPasswordInput>
-          <button type="submit" className="btn-effect btn m-auto">
-            {t("registr_popup.btn")}
+
+          <button
+            className={classNames(
+              "btn mx-auto border-blue-700 border-2 hover:border-blue-800",
+              {
+                "text-blue-700 bg-white hover:text-blue-800": isDisable,
+                "btn-effect": !isDisable,
+              },
+            )}
+            type="submit"
+          >
+            {t(isDisable ? "btn_edit" : "btn_save")}
           </button>
         </Form>
       )}

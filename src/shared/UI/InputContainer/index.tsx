@@ -33,7 +33,7 @@ export default function InputContainer({
           {
             "hover:!border-gray-900": disabled,
             className: className.length,
-            "border-accent-red": isError,
+            "border-accent-red": isError && !disabled,
           },
         )}
       >
