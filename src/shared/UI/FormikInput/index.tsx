@@ -10,6 +10,7 @@ interface FormikInputProps {
   isError?: boolean;
   errorMessage?: string;
   type?: string;
+  disabled?: boolean;
 }
 
 function FormikInput({
@@ -20,22 +21,25 @@ function FormikInput({
   type = "text",
   isError = false,
   errorMessage = "",
+  disabled = false,
 }: FormikInputProps): JSX.Element {
   return (
     <InputContainer
-      label={label}
+      label={disabled ? "" : label}
       inputValue={value}
-      setInputValue={async () => setFieldValue(name, "")}
+      setInputValue={() => setFieldValue(name, "")}
       isError={isError}
       errorMessage={errorMessage}
+      disabled={disabled}
     >
       <Field
         className="h-full w-full pr-8 focus:outline-none"
         id={name}
         name={name}
-        placeholder=""
+        placeholder={disabled && value.length === 0 ? label : ""}
         type={type}
         value={value}
+        disabled={disabled}
       />
     </InputContainer>
   );

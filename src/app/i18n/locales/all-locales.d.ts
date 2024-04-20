@@ -249,6 +249,16 @@ interface AllLocalesType {
     not_found_content: string[];
     go_to_the_main_page: string;
 
+    ph_birthday: string;
+    birthday_errors: {
+      date_in_past: string;
+      date_in_future: string;
+      invalid: string;
+    };
+
+    btn_save: string;
+    btn_edit: string;
+
     checkout: {
       title: string;
       ph: {
