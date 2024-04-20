@@ -31,6 +31,7 @@ const PrivacyPolicy = lazy(async () => await import("pages/PrivacyPolicy"));
 const UserInfoPage = lazy(async () => await import("pages/UserInfo"));
 const NotFound = lazy(async () => await import("pages/NotFound"));
 const WishlistPage = lazy(async () => await import("pages/Wishlist"));
+const UserSecurityPage = lazy(async () => await import("pages/UserSecurity"));
 
 const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
   const element = useRoutes([
@@ -91,8 +92,8 @@ const useBuyerRouting = (): ReturnType<typeof useRoutes> => {
           children: [
             { path: "", element: <UserInfoPage /> },
             { path: "wishlist", element: <WishlistPage /> },
-            /*             { path: "address", element: <UserAddressPage /> },
             { path: "security", element: <UserSecurityPage /> },
+            /*             { path: "address", element: <UserAddressPage /> },
             { path: "history", element: <UserHistoryPage /> }, */
           ],
         },

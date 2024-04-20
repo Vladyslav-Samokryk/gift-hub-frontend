@@ -11,6 +11,7 @@ interface FormikInputProps {
   name: string;
   isError?: boolean;
   errorMessage?: string;
+  isDisable?: boolean;
 }
 
 function FormikPasswordInput({
@@ -20,25 +21,28 @@ function FormikPasswordInput({
   name,
   isError = false,
   errorMessage = "",
+  isDisable = false,
 }: FormikInputProps): JSX.Element {
   const [inputType, setInputType] = useState<"password" | "text">("password");
 
   return (
     <div className="flex justify-between gap-5">
       <InputContainer
-        label={label}
+        label={isDisable ? "" : label}
         inputValue={value}
-        setInputValue={async () => setFieldValue(name, "")}
+        setInputValue={() => setFieldValue(name, "")}
         isError={isError}
         errorMessage={errorMessage}
+        disabled={isDisable}
       >
         <Field
           className="h-full w-full pr-8 focus:outline-none"
           id={name}
           name={name}
-          placeholder=""
-          type={inputType}
+          placeholder={isDisable && value.length === 0 ? label : ""}
+          type={isDisable ? "password" : inputType}
           value={value}
+          disabled={isDisable}
         />
       </InputContainer>
       <button
@@ -47,7 +51,13 @@ function FormikPasswordInput({
           setInputType((prev) => (prev === "password" ? "text" : "password"))
         }
       >
-        {inputType === "password" ? <PasswordHide /> : <PasswordShow />}
+        {!isDisable ? (
+          inputType === "password" ? (
+            <PasswordHide />
+          ) : (
+            <PasswordShow />
+          )
+        ) : null}
       </button>
     </div>
   );

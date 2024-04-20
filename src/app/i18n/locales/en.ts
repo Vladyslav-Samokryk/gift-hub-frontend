@@ -81,6 +81,10 @@ export const en: AllLocalesType = {
       ua: "UA",
     },
 
+    err_500: "Something went wrong! Try later!",
+
+    err_400_change_password: "Current password is wrong!",
+
     login_popup: {
       header: "Log in",
       btn: "Log in",
@@ -91,6 +95,7 @@ export const en: AllLocalesType = {
     input_password: {
       ph: "Password",
       ph_create: "Create password",
+      ph_current: "Current password",
       ph_repeat: "Repeat password",
       remind_password: "Remind password",
       rules: {
