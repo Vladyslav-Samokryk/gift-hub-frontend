@@ -40,7 +40,8 @@ export default function InputContainer({
         {children}
         {inputValue.length && !disabled ? (
           <button
-            onClick={() => (!disabled ? {} : setInputValue())}
+            type="button"
+            onClick={() => setInputValue()}
             className="absolute right-2 top-1/2 -translate-y-1/2"
           >
             <Close />

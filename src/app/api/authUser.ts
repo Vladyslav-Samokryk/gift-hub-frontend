@@ -23,6 +23,7 @@ interface UserInfo {
   role: string;
   notice: string;
   get_age: number;
+  email: string;
 }
 
 interface UserInfoAction {

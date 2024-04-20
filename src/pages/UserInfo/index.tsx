@@ -4,11 +4,10 @@ import {
   usePatchUserInfoMutation,
 } from "app/api/authUser";
 import classNames from "classnames";
-import { Formik } from "formik";
+import { Formik, Form } from "formik";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
-import { Form } from "react-router-dom";
 import FormikInput from "shared/UI/FormikInput";
 import { UserInfoSchema } from "shared/helpers/userInfoForm";
 
@@ -27,12 +26,16 @@ function UserInfoPage(): JSX.Element {
           initialValues={data}
           validationSchema={UserInfoSchema}
           onSubmit={(values) => {
-            void patchUserInfo({ token: cookies.access, user: values })
-              .unwrap()
-              .then(() => {
-                setIsDisabled((prev) => !prev);
-              })
-              .catch(() => setIsDisabled(false));
+            if (!isDisable) {
+              void patchUserInfo({ token: cookies.access, user: values })
+                .unwrap()
+                .then(() => {
+                  setIsDisabled((prev) => !prev);
+                })
+                .catch(() => setIsDisabled(false));
+            } else {
+              setIsDisabled(false);
+            }
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (
@@ -57,7 +60,7 @@ function UserInfoPage(): JSX.Element {
                   errorMessage={errors.first_name}
                   disabled={isDisable}
                 ></FormikInput>
-
+                {/* 
                 <FormikInput
                   value={values.email}
                   setFieldValue={setFieldValue}
@@ -66,10 +69,10 @@ function UserInfoPage(): JSX.Element {
                   isError={!!errors.email && touched.email}
                   errorMessage={errors.email}
                   disabled={isDisable}
-                ></FormikInput>
+                ></FormikInput> */}
 
                 <FormikInput
-                  value={values.mobile}
+                  value={values.mobile ?? ""}
                   setFieldValue={setFieldValue}
                   label={t("checkout.ph.tel")}
                   name="mobile"
@@ -80,7 +83,7 @@ function UserInfoPage(): JSX.Element {
                 />
 
                 <FormikInput
-                  value={values.dob.toString()}
+                  value={(values.dob ?? "").toString()}
                   setFieldValue={setFieldValue}
                   label={t("ph_birthday")}
                   name="dob"
