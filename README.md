@@ -128,6 +128,8 @@ Add the following variables and replace `###` with the desired values:
 # Application Configuration
 VITE_APP_API_URL=###
 VITE_NODE_ENV=###
+VITE_APP_CLIENT_SECRET=###
+VITE_APP_CLIENT_ID=###
 ```
 
 ## Dev workflow
@@ -191,6 +193,7 @@ If you have any questions or feedback regarding the project, feel free to contac
 - react-select
 - pure-react-carousel
 - framer-motion
+- @react-oauth/google
 
 #### Styles
 

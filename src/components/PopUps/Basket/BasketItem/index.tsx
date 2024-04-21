@@ -23,7 +23,6 @@ import {
 import { useCookies } from "react-cookie";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
-import { useState } from "react";
 import { useAuth } from "shared/hooks/useAuth";
 import { decrementBy } from "app/store/cart/authCartSlice";
 
@@ -40,7 +39,6 @@ const BasketItem = ({
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const [addToWishlist] = useAddToWishlistMutation();
   const { onOpen } = useModals();
-  const [isProductInWishlist, setIsProductInWishlist] = useState(false);
   const { isAuth } = useAuth();
 
   const handleIncrementCounter = async (): Promise<void> => {
@@ -78,15 +76,19 @@ const BasketItem = ({
   };
 
   const handleWishlistAction = (): void => {
-    void (isAuth
-      ? !isProductInWishlist
-        ? addToWishlist({ id: product.id, token: cookies.access })
-        : deleteFromWishlist({ id: product.id, token: cookies.access })
-      : onOpen({
-          name: MODALS.LOGIN,
-          data: { error: true },
-        }));
-    setIsProductInWishlist((prev) => !prev);
+    if (isAuth) {
+      if (!product.isInWishlist) {
+        void addToWishlist({ id: product.id, token: cookies.access });
+      } else {
+        void deleteFromWishlist({ id: product.id, token: cookies.access });
+      }
+      if (refetch) void refetch();
+    } else {
+      onOpen({
+        name: MODALS.LOGIN,
+        data: { error: true },
+      });
+    }
   };
   return (
     <li>
@@ -155,7 +157,7 @@ const BasketItem = ({
                 className="group transition-all"
                 onClick={handleWishlistAction}
               >
-                <Wishlist inWishlist={isProductInWishlist} />
+                <Wishlist inWishlist={product.isInWishlist ?? false} />
               </button>
             )}
             <button onClick={handleDeleteItem}>

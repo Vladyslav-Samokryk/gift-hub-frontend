@@ -4,10 +4,10 @@ import { parse } from "date-fns/parse";
 export const UserInfoSchema = yup.object().shape({
   first_name: yup.string().trim().required("checkout.errors.required"),
   last_name: yup.string().trim().required("checkout.errors.required"),
-  /*   email: yup
+  email: yup
     .string()
     .email("checkout.errors.email")
-    .required("checkout.errors.required"), */
+    .required("checkout.errors.required"),
   mobile: yup
     .string()
     .matches(/\+380[0-9]{9}/, "checkout.errors.tel")

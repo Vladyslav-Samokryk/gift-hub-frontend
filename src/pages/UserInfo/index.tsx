@@ -60,7 +60,7 @@ function UserInfoPage(): JSX.Element {
                   errorMessage={errors.first_name}
                   disabled={isDisable}
                 ></FormikInput>
-                {/* 
+
                 <FormikInput
                   value={values.email}
                   setFieldValue={setFieldValue}
@@ -69,7 +69,7 @@ function UserInfoPage(): JSX.Element {
                   isError={!!errors.email && touched.email}
                   errorMessage={errors.email}
                   disabled={isDisable}
-                ></FormikInput> */}
+                ></FormikInput>
 
                 <FormikInput
                   value={values.mobile ?? ""}
