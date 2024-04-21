@@ -370,6 +370,9 @@ interface AllLocalesType {
       btn_add: string;
       btn_delete: string;
     };
+
+    courier_address: string;
+    err_fill_all: string;
   };
 }
 

@@ -506,5 +506,8 @@ export const en: AllLocalesType = {
       btn_add: "Add all to basket",
       btn_delete: "Clean the list",
     },
+
+    courier_address: "Address for courier delivery",
+    err_fill_all: "Fill all fields in section",
   },
 };
