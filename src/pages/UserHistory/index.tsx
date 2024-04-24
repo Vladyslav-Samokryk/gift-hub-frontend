@@ -1,74 +1,59 @@
+import { useGetUserHistoryQuery } from "app/api/user";
+import { useEffect, useState } from "react";
+import { useCookies } from "react-cookie";
+import { useTranslation } from "react-i18next";
 import Table from "shared/UI/Table";
+import { EmptyBasketIcon } from "shared/assets/svg/Basket";
+import { format } from "date-fns";
 
 export default function UserHistoryPage(): JSX.Element {
-  const data = [
-    {
-      id: 0,
-      status: "new_order",
-      order_date: "2024-04-20T14:09:02.619Z",
-      products: [
-        {
-          product: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          name: "string",
-          img: "string",
-          quantity: 0,
-          price: "7",
-        },
-        {
-          product: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          name: "string",
-          img: "string",
-          quantity: 0,
-          price: "7",
-        },
-        {
-          product: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          name: "string",
-          img: "string",
-          quantity: 0,
-          price: "7",
-        },
-      ],
-    },
-    {
-      id: 1,
-      status: "new_order",
-      order_date: "2024-04-20T14:09:02.619Z",
-      products: [
-        {
-          product: "3fa85f64-5717-4562-b3fc-2c963f66afa6",
-          name: "string",
-          img: "string",
-          quantity: 0,
-          price: "7",
-        },
-      ],
-    },
-  ];
+  const [cookies] = useCookies();
+  const { data } = useGetUserHistoryQuery({
+    token: cookies.access,
+    page: 1,
+  });
+  const { t } = useTranslation();
+  const [columns, setColumns] = useState<string[]>([]);
 
-  const columns = Object.keys(data[0])
-    .slice(1)
-    .reverse()
-    .map((key) => "history." + key);
+  useEffect(() => {
+    if (data?.results) {
+      setColumns(
+        Object.keys(data.results[0])
+          .slice(1)
+          .reverse()
+          .map((key) => "history." + key),
+      );
+    }
+    console.log(columns);
+  }, [data]);
+
   return (
     <>
-      <Table columns={columns}>
-        <tbody className="divide-y divide-gray-400">
-          {data.map((el) => {
-            return (
-              <tr key={el.id} className="divide-x divide-gray-400 [&>td]:p-2">
-                <td>
-                  {el.products.map((prod) => {
-                    return <div key={prod.product}>{prod.name}</div>;
-                  })}
-                </td>
-                <td>{el.order_date}</td>
-                <td>{el.status}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
+      {data?.results ? (
+        <Table columns={columns}>
+          <tbody className="divide-y divide-gray-400">
+            {data.results.map((el) => {
+              return (
+                <tr key={el.id} className="divide-x divide-gray-400 [&>td]:p-2">
+                  <td>
+                    {el.products.map((prod) => {
+                      return <div key={prod.product}>{prod.name}</div>;
+                    })}
+                  </td>
+                  <td>{format(new Date(el.order_date), "dd.MM.yyyy")}</td>
+                  <td>{t("history.statuses." + el.status)}</td>
+                </tr>
+              );
+            })}
+          </tbody>
+        </Table>
+      ) : (
+        <section className="flex flex-col items-center text-secondary-900">
+          <EmptyBasketIcon />
+          <p className="primary-bold">{t("wishlist.header")}</p>
+          <p className="secondary">{t("wishlist.description")}</p>
+        </section>
+      )}
     </>
   );
 }

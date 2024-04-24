@@ -12,18 +12,19 @@ import FormikInput from "shared/UI/FormikInput";
 import ListBlock from "shared/UI/ListBlock";
 import { CheckoutSchema } from "shared/helpers/checkoutFormValidate";
 import { useAuth } from "shared/hooks/useAuth";
-import useGetCartItems from "shared/hooks/useGetCartItems";
+import type { CartFullItem } from "shared/types/Basket";
 import type { CheckoutValues } from "shared/types/Checkout";
 import type { Setter } from "shared/types/CommonTypes";
 
 interface CheckoutFormProps {
   setCheckoutIsSuccess: Setter<boolean>;
+  cart: CartFullItem[];
 }
 
 function CheckoutForm({
   setCheckoutIsSuccess,
+  cart,
 }: CheckoutFormProps): JSX.Element {
-  const cart = useGetCartItems();
   const [postOrder] = usePostOrderMutation();
   const dispatch = useDispatch();
   const [clearBasket] = useClearBasketMutation();
@@ -81,7 +82,7 @@ function CheckoutForm({
         postOrder({
           options,
           token: isAuth ? cookies.access : "",
-          products: cart?.map((el) => {
+          products: cart.map((el) => {
             return {
               product: el.id,
               quantity: el?.count,

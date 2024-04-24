@@ -370,6 +370,18 @@ interface AllLocalesType {
       btn_add: string;
       btn_delete: string;
     };
+
+    history: {
+      products: string;
+      order_date: string;
+      status: string;
+      statuses: {
+        staffing: string;
+        sending: string;
+        returning: string;
+        completing: string;
+      };
+    };
   };
 }
 
