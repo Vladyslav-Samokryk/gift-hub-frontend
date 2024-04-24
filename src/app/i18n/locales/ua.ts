@@ -510,5 +510,8 @@ export const ua: AllLocalesType = {
       btn_add: "Додати все до кошика",
       btn_delete: "Очистити список",
     },
+
+    courier_address: "Адреса для кур’єрської доставки",
+    err_fill_all: "Заповніть всі поля в секції",
   },
 };

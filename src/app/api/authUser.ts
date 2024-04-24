@@ -6,18 +6,18 @@ interface UserInfo {
   mobile: string;
   dob: Date;
   address: {
-    address_town: string;
-    address_street: string;
-    address_building: string;
-    address_flat: string;
+    town: string;
+    street: string;
+    building: string;
+    flat: string;
   };
   novaPoshta: {
-    nova_poshta_town: string;
-    nova_poshta_post_office: string;
+    town: string;
+    postOffice: string;
   };
   ukrPoshta: {
-    ukr_poshta_town: string;
-    ukr_poshta_post_office: string;
+    town: string;
+    postOffice: string;
   };
   gender: string;
   role: string;
