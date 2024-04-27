@@ -17,7 +17,7 @@ export default function ModalContainer({
   return (
     <AnimatePresence>
       {visible && (
-        <div className="fixed inset-0 z-50">
+        <div className="fixed inset-0 z-50 overflow-y-auto">
           <motion.div
             initial={{ y: 200, opacity: 0 }}
             animate={{
