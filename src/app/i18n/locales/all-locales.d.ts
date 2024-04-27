@@ -195,6 +195,8 @@ interface AllLocalesType {
         header: string;
         description: string;
       };
+      comment_description: string;
+      learn_more: string;
       max_comment_length: string;
       btn_add_comment: string;
     };

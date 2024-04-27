@@ -214,12 +214,14 @@ export const ua: AllLocalesType = {
         description:
           "Розкажи нам, що ти думаєш про цей продукт і поділись своїм досвідом з іншими.",
       },
+      comment_description: "Твій коментар буде публічним і його зможе переглядати будь-хто.",
+      learn_more:"Дізнатися більше",
       max_comment_length:
         "Максимальна кількість символів для одного коментаря - 400 знаків",
       btn_add_comment: "Додати відгук",
     },
 
-    global_rate: "Загальний рейтинг",
+    global_rate: "Загальний рейтинг *",
     rate_by_criteria: {
       quality: "Якість",
       photo_match: "Відповідність фото",
