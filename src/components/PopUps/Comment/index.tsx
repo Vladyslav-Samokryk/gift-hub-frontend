@@ -1,18 +1,19 @@
-import { useState} from "react";
+import { useState } from "react";
 import { t } from "i18next";
 import ModalContainer from "shared/UI/ModalContainer";
 import ModalHeader from "shared/UI/ModalHeader";
 import StarRate from "shared/UI/StarRate";
 import type { ModalDialogProps } from "shared/types/Modals";
 import type { TRCriteria } from "shared/types/Translation";
+import { Warning } from "shared/assets/svg/Warning";
 
 function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
   });
 
-
   const [globalRate, setGlobalRate] = useState<number>(0);
+  const [comment, setComment] = useState<string>("");
 
   const [criteriaRates, setCriteriaRates] = useState<Record<string, number>>(
     Object.keys(criterias).reduce(
@@ -35,9 +36,14 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
     }));
   };
 
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    console.log(e.target.value);
+    setComment(e.target.value);
+  };
+
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
-      <div>
+      <div className="font-rubik">
         <div className="mb-10">
           <ModalHeader
             classname="font-rubik"
@@ -78,14 +84,24 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
           ))}
         </div>
         <textarea
+          value={comment}
+          onChange={handleChange}
           rows={10}
           className="w-72 resize-none md:w-[450px] block mx-auto outline-none border-2 p-5
-    border-solid rounded-md focus:border-blue-500 font-light text-[18px]"
+    border-solid rounded-md focus:border-blue-500 font-light text-[18px] mb-2"
         ></textarea>
-        <div>
-          <p>{t("comments.max_comment_length")}</p>
+        <div className="mx-auto  flex items-center gap-1 mb-12">
+          <Warning fill={comment.length > 400 ? "#ff3232" : "#13183a"} />
+          <p
+            className={comment.length > 400 ? "text-accent-red" : "text-black"}
+          >
+            {t("comments.max_comment_length")}
+          </p>
         </div>
-        <button className="btn btn-effect">
+        <button
+          disabled={comment.length > 400 || comment.length === 0}
+          className=" block btn btn-effect text-center mx-auto"
+        >
           {t("comments.btn_add_comment")}
         </button>
       </div>
