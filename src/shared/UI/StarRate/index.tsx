@@ -3,7 +3,7 @@ import "./index.scss";
 
 interface StarRateProps {
   rate: number;
-    onRateChange: (rate: number) => void;
+    onRateChange?: (rate: number) => void;
   starSize?: number;
 }
 
@@ -34,6 +34,7 @@ export default function StarRate({
       const x = e.pageX - meterRef.current.getBoundingClientRect().left;
       const clickedValue =
         Math.ceil((x / meterRef.current.offsetWidth) * maxStars);
+      if (onRateChange)
       onRateChange(clickedValue);
     }
   };

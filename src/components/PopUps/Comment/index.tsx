@@ -15,6 +15,14 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
   const [globalRate, setGlobalRate] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
 
+  
+    const productID = localStorage.getItem("productID");
+    if (productID) {
+      const parsedProductID = JSON.parse(productID)[0];
+      console.log(parsedProductID);
+    }
+  
+
   const [criteriaRates, setCriteriaRates] = useState<Record<string, number>>(
     Object.keys(criterias).reduce(
       (acc, key) => {
@@ -36,9 +44,17 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
     }));
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    console.log(e.target.value);
+  const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setComment(e.target.value);
+  };
+
+  const addComment = () => {
+    const commentOfUser = {
+      rate: globalRate,
+      criterias: criteriaRates,
+      comment,
+    };
+    console.log("comment", commentOfUser);
   };
 
   return (
@@ -85,7 +101,7 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
         </div>
         <textarea
           value={comment}
-          onChange={handleChange}
+          onChange={handleCommentChange}
           rows={10}
           className="w-72 resize-none md:w-[450px] block mx-auto outline-none border-2 p-5
     border-solid rounded-md focus:border-blue-500 font-light text-[18px] mb-2"
@@ -99,6 +115,7 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
           </p>
         </div>
         <button
+          onClick={addComment}
           disabled={comment.length > 400 || comment.length === 0}
           className=" block btn btn-effect text-center mx-auto"
         >

@@ -69,6 +69,19 @@ interface ProductCommentsResponse {
   }>;
 }
 
+interface AddProductCommentRequest {
+  productId: string;
+  comment: string;
+  rate: number;
+  criterias: {
+    description_match: number;
+    photo_match: number;
+    price: number;
+    quality: number;
+  };
+  token: string;
+}
+
 interface ProductsByIdRequest {
   lang: string;
   productIds: string[];
@@ -231,6 +244,20 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
+     addProductComment: builder.mutation<unknown, AddProductCommentRequest>({
+      query: ({ productId, comment, rate, criterias, token }) => ({
+        url: `shop/auth_user/product/${productId}/comments`,
+        method: "POST",
+        body: {
+          comment,
+          rate,
+          criterias,
+        },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      }),
+    }),
     getProductsById: builder.query<ProductCardType[], ProductsByIdRequest>({
       query: ({ productIds, lang }) => {
         const idParam = productIds.map((el) => `product_id=${el}`).join("&");
@@ -361,6 +388,7 @@ export const {
   useGetProductsBySearchQuery,
   useGetOneProductQuery,
   useGetOneProductCommentsQuery,
+  useAddProductCommentMutation,
   useGetProductsByIdQuery,
   usePostOrderMutation,
   useAddToWishlistMutation,

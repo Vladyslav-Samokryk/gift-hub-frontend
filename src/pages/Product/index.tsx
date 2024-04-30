@@ -59,8 +59,10 @@ export default function Product(): JSX.Element {
       if (!reviewed.includes(id)) {
         localStorage.setItem("reviewed", JSON.stringify([...reviewed, id]));
       }
+       localStorage.setItem("productID", JSON.stringify([id]))
     }
   }, []);
+
 
   const { data: reviewedProducts } = useGetProductsByIdQuery(
     {
