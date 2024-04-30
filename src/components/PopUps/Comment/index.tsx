@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { t } from "i18next";
 import ModalContainer from "shared/UI/ModalContainer";
 import ModalHeader from "shared/UI/ModalHeader";
@@ -6,6 +6,9 @@ import StarRate from "shared/UI/StarRate";
 import type { ModalDialogProps } from "shared/types/Modals";
 import type { TRCriteria } from "shared/types/Translation";
 import { Warning } from "shared/assets/svg/Warning";
+import { productsApi } from "app/api/products";
+import { useCookies } from "react-cookie";
+import { useAuth } from "shared/hooks/useAuth";
 
 function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
@@ -14,14 +17,20 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
 
   const [globalRate, setGlobalRate] = useState<number>(0);
   const [comment, setComment] = useState<string>("");
+  const [productId, setProductId] = useState<string | null>("");
+  const [addProductComment] = productsApi.useAddProductCommentMutation();
 
-  
+  useEffect(() => {
     const productID = localStorage.getItem("productID");
     if (productID) {
       const parsedProductID = JSON.parse(productID)[0];
       console.log(parsedProductID);
+      setProductId(parsedProductID);
     }
-  
+  }, [productId]);
+
+  const { isAuth } = useAuth();
+  const [cookies] = useCookies();
 
   const [criteriaRates, setCriteriaRates] = useState<Record<string, number>>(
     Object.keys(criterias).reduce(
@@ -48,13 +57,58 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
     setComment(e.target.value);
   };
 
-  const addComment = () => {
-    const commentOfUser = {
-      rate: globalRate,
-      criterias: criteriaRates,
-      comment,
+  const addComment = async () => {
+    if (!productId || !isAuth) {
+      console.error("Product ID or authentication is missing");
+      return;
+    }
+
+    const parsedCriterias = Object.entries(criterias).reduce(
+      (acc, [key, value]) => {
+        const parsedValue = parseFloat(value);
+        acc[key] = isNaN(parsedValue) ? 0 : parsedValue; // Default to 0 if parsing fails
+        return acc;
+      },
+      {} as Record<string, number>,
+    );
+
+    const completeCriterias = {
+      description_match: 0,
+      photo_match: 0,
+      price: 0,
+      quality: 0,
+      ...parsedCriterias, // Spread the parsed values over the defaults
     };
-    console.log("comment", commentOfUser);
+
+    try {
+      const commentOfUser = {
+        productId,
+        comment,
+        rate: globalRate,
+        criterias: completeCriterias,
+        token: cookies.access,
+      };
+
+      const response = await addProductComment(commentOfUser).unwrap();
+      console.log("Comment added successfully:", response);
+      // Optionally, you can reset the comment state after successful addition
+      setComment("");
+      setGlobalRate(0);
+      setCriteriaRates(
+        Object.keys(criterias).reduce(
+          (acc, key) => {
+            acc[key] = 0;
+            return acc;
+          },
+          {} as Record<string, number>,
+        ),
+      );
+      // You can also close the modal or show a success message
+      onClose();
+    } catch (error) {
+      console.error("Error adding comment:", error);
+      // Handle the error as needed, e.g., show an error message to the user
+    }
   };
 
   return (

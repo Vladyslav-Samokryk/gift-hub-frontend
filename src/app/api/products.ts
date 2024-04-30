@@ -70,7 +70,7 @@ interface ProductCommentsResponse {
 }
 
 interface AddProductCommentRequest {
-  productId: string;
+  productId: string|null;
   comment: string;
   rate: number;
   criterias: {
