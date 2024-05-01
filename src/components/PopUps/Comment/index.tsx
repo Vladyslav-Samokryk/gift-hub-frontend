@@ -16,7 +16,11 @@ interface Critaries {
   quality: number;
 }
 
-function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
+function CommentPopUp({
+  isOpen,
+  onClose,
+  data,
+}: ModalDialogProps): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
   });
@@ -80,6 +84,10 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
       // Optionally, you can reset the comment state after successful addition
       setComment("");
       setGlobalRate(0);
+      if (data?.refetch) {
+        await data.refetch();
+      }
+
       // You can also close the modal or show a success message
       onClose();
     } catch (error) {
@@ -87,8 +95,6 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
       // Handle the error as needed, e.g., show an error message to the user
     }
   };
-
-
 
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>

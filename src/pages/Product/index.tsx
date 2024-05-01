@@ -186,7 +186,14 @@ export default function Product(): JSX.Element {
           {isAuth && (
             <button
               className="btn btn-effect"
-              onClick={() => onOpen({ name: MODALS.COMMENT })}
+              onClick={() =>
+                onOpen({
+                  name: MODALS.COMMENT,
+                  data: {
+                    refetch,
+                  },
+                })
+              }
             >
               {t("comments.write_comment.header")}
             </button>

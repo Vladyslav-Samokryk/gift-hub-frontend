@@ -70,7 +70,7 @@ interface ProductCommentsResponse {
 }
 
 export interface AddProductCommentRequest {
-  productId: string|null;
+  productId: string | null;
   comment: string;
   rate: number;
   criterias: {
@@ -244,7 +244,7 @@ export const productsApi = baseApi.injectEndpoints({
         };
       },
     }),
-     addProductComment: builder.mutation<unknown, AddProductCommentRequest>({
+    addProductComment: builder.mutation<unknown, AddProductCommentRequest>({
       query: ({ productId, comment, rate, criterias, token }) => ({
         url: `shop/auth_user/product/${productId}/comments`,
         method: "POST",

@@ -1,3 +1,4 @@
+import type { QueryActionCreatorResult } from "@reduxjs/toolkit/dist/query/core/buildInitiate";
 import type { MODALS } from "../../app/context/modalContext/modals";
 import type { CategorySub } from "./Categories";
 
@@ -7,6 +8,8 @@ export interface ModalDataProps {
   error?: boolean;
   title?: string;
   sub?: CategorySub[];
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  refetch?: () => QueryActionCreatorResult<any>;
 }
 
 export interface ModalDialogProps {
