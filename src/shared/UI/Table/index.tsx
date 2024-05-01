@@ -23,18 +23,22 @@ export default function Table({
   page,
 }: TableProps): JSX.Element {
   const { t } = useTranslation();
+  const changePage = (i: number): void => {
+    setPage(i + 1);
+    window.scrollTo(0, 0);
+  };
   return (
     <>
-      <div className="min-w-full overflow-hidden rounded-md border">
-        <div className="min-w-full table-fixed divide-y divide-gray-400">
+      <div className="rounded-md border">
+        <div className="divide-y divide-gray-400">
           <div className="bg-purple-100">
-            <div className="flex w-full flex-row divide-x divide-gray-400 break-words">
+            <div className="flex flex-row divide-x divide-gray-400 break-words">
               {columns.map((header, index) => {
                 return (
                   <div
                     key={index}
                     className={classNames(
-                      "px-2 py-3 text-center secondary",
+                      "px-2 py-3 text-center mobile-font sm:additional md:secondary",
                       columnsWidth[index],
                     )}
                   >
@@ -54,9 +58,10 @@ export default function Table({
               <button
                 key={i}
                 type="button"
-                onClick={() => setPage(i + 1)}
+                onClick={() => changePage(i)}
                 className={classNames({
-                  "text-blue-700 mr-1": i + 1 === page,
+                  "text-blue-700 mr-1 mobile-font sm:additional md:secondary":
+                    i + 1 === page,
                 })}
               >
                 {i + 1}

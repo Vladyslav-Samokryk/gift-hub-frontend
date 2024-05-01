@@ -20,18 +20,14 @@ export default function TableItem({
 
   return (
     <div
-      className="flex w-full cursor-pointer flex-col py-3 pl-5 md:flex-row"
+      className="flex cursor-pointer flex-col p-1 md:flex-row md:py-3 md:pl-5 "
       onClick={() => navigate(`/product/${product}`)}
     >
-      <div className="flex w-full gap-2">
-        <img
-          className="h-10 w-10 rounded md:h-20 md:w-20"
-          src={img}
-          alt={name}
-        />
-        <p className="additional md:secondary">{name}</p>
+      <div className="flex gap-2">
+        <img className="h-7 w-7 rounded md:h-20 md:w-20" src={img} alt={name} />
+        <p className="mobile-font sm:additional md:secondary">{name}</p>
       </div>
-      <div className="flex w-full justify-around">
+      <div className="flex justify-around">
         <p className="text-gray-600">X {quantity}</p>
         <p>
           {price} {CURRENCY}

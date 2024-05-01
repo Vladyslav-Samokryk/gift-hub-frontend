@@ -46,7 +46,7 @@ export default function UserHistoryPage(): JSX.Element {
               return (
                 <div
                   key={el.id}
-                  className="flex w-full flex-row divide-x divide-gray-400 break-words [&>td]:p-2"
+                  className="flex flex-row divide-x divide-gray-400 break-words"
                 >
                   <div className={columnsWidth[0]}>
                     {el.products.map((prod) => {
@@ -54,17 +54,24 @@ export default function UserHistoryPage(): JSX.Element {
                     })}
                   </div>
                   <div
-                    className={classNames("text-center pt-3", columnsWidth[1])}
+                    className={classNames(
+                      "text-center pt-3 mobile-font md:additional",
+                      columnsWidth[1],
+                    )}
                   >
                     {format(new Date(el.order_date), "dd.MM.yyyy")}
                   </div>
                   <div
-                    className={classNames("text-center pt-3", columnsWidth[2], {
-                      "text-blue-700": el.status === "staffing",
-                      "text-accent-bOrange": el.status === "sending",
-                      "text-accent-red": el.status === "returning",
-                      "text-black": el.status === "completing",
-                    })}
+                    className={classNames(
+                      "text-center pt-3 mobile-font md:additional",
+                      columnsWidth[2],
+                      {
+                        "text-blue-700": el.status === "staffing",
+                        "text-accent-bOrange": el.status === "sending",
+                        "text-accent-red": el.status === "returning",
+                        "text-black": el.status === "completing",
+                      },
+                    )}
                   >
                     {t("history.statuses." + el.status)}
                   </div>
