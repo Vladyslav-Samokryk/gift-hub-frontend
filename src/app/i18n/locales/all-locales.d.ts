@@ -382,6 +382,8 @@ interface AllLocalesType {
         completing: string;
       };
     };
+    courier_address: string;
+    err_fill_all: string;
   };
 }
 

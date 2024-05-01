@@ -521,5 +521,8 @@ export const ua: AllLocalesType = {
         completing: "Завершено",
       },
     },
+
+    courier_address: "Адреса для кур’єрської доставки",
+    err_fill_all: "Заповніть всі поля в секції",
   },
 };

@@ -517,5 +517,8 @@ export const en: AllLocalesType = {
         completing: "Completed",
       },
     },
+
+    courier_address: "Address for courier delivery",
+    err_fill_all: "Fill all fields in section",
   },
 };
