@@ -9,6 +9,12 @@ import { Warning } from "shared/assets/svg/Warning";
 import { productsApi } from "app/api/products";
 import { useCookies } from "react-cookie";
 import { useAuth } from "shared/hooks/useAuth";
+interface Critaries {
+  description_match: number;
+  photo_match: number;
+  price: number;
+  quality: number;
+}
 
 function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
@@ -32,21 +38,18 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
   const { isAuth } = useAuth();
   const [cookies] = useCookies();
 
-  const [criteriaRates, setCriteriaRates] = useState<Record<string, number>>(
-    Object.keys(criterias).reduce(
-      (acc, key) => {
-        acc[key] = 0;
-        return acc;
-      },
-      {} as Record<string, number>,
-    ),
-  );
+  const [criteriaRates, setCriteriaRates] = useState<Critaries>({
+    description_match: 0,
+    photo_match: 0,
+    price: 0,
+    quality: 0,
+  });
 
   const handleGlobalRateChange = (newRate: number) => {
     setGlobalRate(newRate);
   };
 
-  const handleCriteriaRateChange = (key: string, newRate: number) => {
+  const handleCriteriaRateChange = (key: keyof Critaries, newRate: number) => {
     setCriteriaRates((prevRates) => ({
       ...prevRates,
       [key]: newRate,
@@ -63,29 +66,12 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
       return;
     }
 
-    const parsedCriterias = Object.entries(criterias).reduce(
-      (acc, [key, value]) => {
-        const parsedValue = parseFloat(value);
-        acc[key] = isNaN(parsedValue) ? 0 : parsedValue; // Default to 0 if parsing fails
-        return acc;
-      },
-      {} as Record<string, number>,
-    );
-
-    const completeCriterias = {
-      description_match: 0,
-      photo_match: 0,
-      price: 0,
-      quality: 0,
-      ...parsedCriterias, // Spread the parsed values over the defaults
-    };
-
     try {
       const commentOfUser = {
         productId,
         comment,
         rate: globalRate,
-        criterias: completeCriterias,
+        criterias: criteriaRates,
         token: cookies.access,
       };
 
@@ -94,15 +80,6 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
       // Optionally, you can reset the comment state after successful addition
       setComment("");
       setGlobalRate(0);
-      setCriteriaRates(
-        Object.keys(criterias).reduce(
-          (acc, key) => {
-            acc[key] = 0;
-            return acc;
-          },
-          {} as Record<string, number>,
-        ),
-      );
       // You can also close the modal or show a success message
       onClose();
     } catch (error) {
@@ -110,6 +87,8 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
       // Handle the error as needed, e.g., show an error message to the user
     }
   };
+
+
 
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
@@ -145,9 +124,9 @@ function CommentPopUp({ isOpen, onClose }: ModalDialogProps): JSX.Element {
             <div key={i} className="flex justify-between">
               <p className="primary">{el}</p>
               <StarRate
-                rate={criteriaRates[key]}
+                rate={criteriaRates[key as keyof Critaries]}
                 onRateChange={(newRate) =>
-                  handleCriteriaRateChange(key, newRate)
+                  handleCriteriaRateChange(key as keyof Critaries, newRate)
                 }
               />
             </div>

@@ -69,7 +69,7 @@ interface ProductCommentsResponse {
   }>;
 }
 
-interface AddProductCommentRequest {
+export interface AddProductCommentRequest {
   productId: string|null;
   comment: string;
   rate: number;

@@ -59,10 +59,9 @@ export default function Product(): JSX.Element {
       if (!reviewed.includes(id)) {
         localStorage.setItem("reviewed", JSON.stringify([...reviewed, id]));
       }
-       localStorage.setItem("productID", JSON.stringify([id]))
+      localStorage.setItem("productID", JSON.stringify([id]));
     }
   }, []);
-
 
   const { data: reviewedProducts } = useGetProductsByIdQuery(
     {
@@ -87,7 +86,7 @@ export default function Product(): JSX.Element {
     },
   );
 
-  const { data: comments } = useGetOneProductCommentsQuery(
+  const { data: comments, refetch } = useGetOneProductCommentsQuery(
     {
       id: id ?? "",
       page: 1,
@@ -96,6 +95,12 @@ export default function Product(): JSX.Element {
       skip: !id ?? false,
     },
   );
+
+  useEffect(() => {
+    void refetch();
+  }, [comments]);
+
+  console.log("comments", comments);
 
   const handleAddToCart = (): void => {
     if (data) {
