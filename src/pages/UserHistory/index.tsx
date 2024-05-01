@@ -5,15 +5,20 @@ import { useTranslation } from "react-i18next";
 import Table from "shared/UI/Table";
 import { EmptyBasketIcon } from "shared/assets/svg/Basket";
 import { format } from "date-fns";
+import TableItem from "shared/UI/TableItem";
+import classNames from "classnames";
 
 export default function UserHistoryPage(): JSX.Element {
   const [cookies] = useCookies();
+  const [page, setPage] = useState(1);
   const { data } = useGetUserHistoryQuery({
     token: cookies.access,
-    page: 1,
+    page,
+    pageSize: 10,
   });
   const { t } = useTranslation();
   const [columns, setColumns] = useState<string[]>([]);
+  const columnsWidth = ["w-[60%]", "w-[20%]", "w-[20%]"];
 
   useEffect(() => {
     if (data?.results) {
@@ -24,28 +29,49 @@ export default function UserHistoryPage(): JSX.Element {
           .map((key) => "history." + key),
       );
     }
-    console.log(columns);
   }, [data]);
 
   return (
     <>
       {data?.results ? (
-        <Table columns={columns}>
-          <tbody className="divide-y divide-gray-400">
+        <Table
+          columns={columns}
+          columnsWidth={columnsWidth}
+          setPage={setPage}
+          recordsCount={data.count}
+          page={page}
+        >
+          <div className="divide-y divide-gray-400">
             {data.results.map((el) => {
               return (
-                <tr key={el.id} className="divide-x divide-gray-400 [&>td]:p-2">
-                  <td>
+                <div
+                  key={el.id}
+                  className="flex w-full flex-row divide-x divide-gray-400 break-words [&>td]:p-2"
+                >
+                  <div className={columnsWidth[0]}>
                     {el.products.map((prod) => {
-                      return <div key={prod.product}>{prod.name}</div>;
+                      return <TableItem key={prod.product} {...prod} />;
                     })}
-                  </td>
-                  <td>{format(new Date(el.order_date), "dd.MM.yyyy")}</td>
-                  <td>{t("history.statuses." + el.status)}</td>
-                </tr>
+                  </div>
+                  <div
+                    className={classNames("text-center pt-3", columnsWidth[1])}
+                  >
+                    {format(new Date(el.order_date), "dd.MM.yyyy")}
+                  </div>
+                  <div
+                    className={classNames("text-center pt-3", columnsWidth[2], {
+                      "text-blue-700": el.status === "staffing",
+                      "text-accent-bOrange": el.status === "sending",
+                      "text-accent-red": el.status === "returning",
+                      "text-black": el.status === "completing",
+                    })}
+                  >
+                    {t("history.statuses." + el.status)}
+                  </div>
+                </div>
               );
             })}
-          </tbody>
+          </div>
         </Table>
       ) : (
         <section className="flex flex-col items-center text-secondary-900">
