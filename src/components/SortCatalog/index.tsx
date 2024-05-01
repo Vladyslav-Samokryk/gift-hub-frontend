@@ -24,11 +24,11 @@ export default function SortCatalog(): JSX.Element {
 
   return (
     <section className="additional flex w-60 flex-col items-center gap-6 divide-y-2 rounded-md bg-white px-1 lg:h-10 lg:w-full lg:flex-row lg:divide-y-0">
-      {windowWidth > SCREEN.LG && (
+      {windowWidth >= SCREEN.LG && (
         <p className="text-gray-900">{t("sorts_title")}</p>
       )}
       {Object.keys(sorts).map((sort, i) => {
-        return windowWidth > SCREEN.LG ? (
+        return windowWidth >= SCREEN.LG ? (
           <button
             key={i}
             type="submit"

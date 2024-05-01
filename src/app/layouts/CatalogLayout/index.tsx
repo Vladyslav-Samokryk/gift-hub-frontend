@@ -20,10 +20,10 @@ export default function CatalogLayout(): JSX.Element {
 
   return (
     <div className="m-auto lg:p-5 lg:px-10">
-      {windowWidth > SCREEN.LG && <Breadcrumbs />}
+      {windowWidth >= SCREEN.LG && <Breadcrumbs />}
 
       <section className="grid grid-cols-1 gap-3 lg:grid-cols-[230px_1fr]">
-        {windowWidth > SCREEN.LG ? (
+        {windowWidth >= SCREEN.LG ? (
           <FiltersCatalog />
         ) : (
           <div className="flex w-full items-center justify-center">
@@ -44,7 +44,7 @@ export default function CatalogLayout(): JSX.Element {
           </div>
         )}
         <div>
-          {windowWidth > SCREEN.LG && <SortCatalog />}
+          {windowWidth >= SCREEN.LG && <SortCatalog />}
           <div>
             <div className="mt-3 flex flex-wrap justify-between lg:gap-7">
               <Outlet />

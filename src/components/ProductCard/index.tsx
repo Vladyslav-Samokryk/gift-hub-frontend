@@ -116,7 +116,7 @@ export default function ProductCard({
           </data>
           <div className="mr-2 flex w-full items-center justify-between">
             <StarRate
-              starSize={windowWidth < SCREEN.LG ? 16 : 25}
+              starSize={windowWidth <= SCREEN.LG ? 16 : 25}
               rate={global_rating}
             />
             <button onClick={handleAddToCart} className="group">

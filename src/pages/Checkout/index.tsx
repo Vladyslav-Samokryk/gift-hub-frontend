@@ -42,7 +42,10 @@ function Checkout(): JSX.Element {
         <div className="mb-3 px-[3vw]">
           <h1 className="h5 mb-5 text-center">{t("checkout.title")}</h1>
           <section className="flex flex-col-reverse gap-5 lg:flex-row">
-            <CheckoutForm setCheckoutIsSuccess={setCheckoutIsSuccess} />
+            <CheckoutForm
+              setCheckoutIsSuccess={setCheckoutIsSuccess}
+              cart={cart}
+            />
             <div className="flex h-fit w-full flex-col gap-5 rounded-md bg-white p-4 lg:w-[40%]">
               <h6 className="h6">{t("checkout.bill.title")}</h6>
               {cart?.map((item) => <CheckoutCard key={item.id} {...item} />)}

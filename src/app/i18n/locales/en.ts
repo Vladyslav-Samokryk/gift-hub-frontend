@@ -506,6 +506,17 @@ export const en: AllLocalesType = {
       btn_add: "Add all to basket",
       btn_delete: "Clean the list",
     },
+    history: {
+      products: "Products",
+      order_date: "Order Date",
+      status: "Order Status",
+      statuses: {
+        staffing: "Being Staffed",
+        sending: "Sent",
+        returning: "Returning",
+        completing: "Completed",
+      },
+    },
 
     courier_address: "Address for courier delivery",
     err_fill_all: "Fill all fields in section",

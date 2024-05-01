@@ -510,6 +510,17 @@ export const ua: AllLocalesType = {
       btn_add: "Додати все до кошика",
       btn_delete: "Очистити список",
     },
+    history: {
+      products: "Замовлення",
+      order_date: "Дата замовлення",
+      status: "Статус замовлення",
+      statuses: {
+        staffing: "Комплектується",
+        sending: "Відправлений",
+        returning: "Повернення",
+        completing: "Завершено",
+      },
+    },
 
     courier_address: "Адреса для кур’єрської доставки",
     err_fill_all: "Заповніть всі поля в секції",
