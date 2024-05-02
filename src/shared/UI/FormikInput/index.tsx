@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
 import { Field } from "formik";
 import InputContainer from "../InputContainer";
 

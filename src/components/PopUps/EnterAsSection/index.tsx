@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useTranslation } from "react-i18next";
 
 import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
@@ -9,9 +10,11 @@ import { useDispatch } from "react-redux";
 import { setIsAuth } from "app/store/slices/user";
 import type { ModalDialogProps } from "shared/types/Modals";
 
-type CloseModalWindow= Pick<ModalDialogProps, 'onClose'>;
+type CloseModalWindow = Pick<ModalDialogProps, "onClose">;
 
-export default function EnterAsSection({onClose}:CloseModalWindow): JSX.Element {
+export default function EnterAsSection({
+  onClose,
+}: CloseModalWindow): JSX.Element {
   const [, setCookie] = useCookies(["refresh", "access"]);
   const { t } = useTranslation();
   const dispatch = useDispatch();
