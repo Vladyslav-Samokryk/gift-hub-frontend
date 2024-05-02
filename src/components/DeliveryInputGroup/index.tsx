@@ -1,12 +1,15 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import classNames from "classnames";
+import type { UserDelivery } from "components/CheckoutForm";
 import { Field } from "formik";
+import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import InputContainer from "shared/UI/InputContainer";
 import type { CheckoutValues } from "shared/types/Checkout";
 
 interface DeliveryInputGroupProps {
   values: CheckoutValues;
+  userValues?: UserDelivery | null;
   type: "ukr" | "nova";
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setFieldValue: (field: string, value: any) => void;
@@ -22,8 +25,25 @@ export default function DeliveryInputGroup({
   setFieldValue,
   errors,
   touched,
+  userValues,
 }: DeliveryInputGroupProps): JSX.Element {
   const { t } = useTranslation();
+  const [isDeliveryChange, setIsDeliveryChange] = useState(true);
+
+  useEffect(() => {
+    if (userValues) {
+      if (values.delivery_option === "courier") {
+        setFieldValue("town", userValues?.address.town ?? "");
+        setFieldValue("street", userValues?.address.street ?? "");
+        setFieldValue("building", userValues?.address.building ?? "");
+        setFieldValue("flat", userValues?.address.flat ?? "");
+      } else {
+        setFieldValue("post_office", userValues?.[type].postOffice ?? "");
+        setFieldValue("town", userValues?.[type].town ?? "");
+      }
+    }
+  }, [isDeliveryChange]);
+
   return (
     <div
       className={classNames("flex flex-col gap-3", {
@@ -33,7 +53,15 @@ export default function DeliveryInputGroup({
     >
       <div className="flex justify-between">
         <label>
-          <Field type="radio" name="delivery_type" value={type} />
+          <Field
+            type="radio"
+            name="delivery_type"
+            value={type}
+            onChange={() => {
+              setIsDeliveryChange((prev) => !prev);
+              setFieldValue("delivery_type", type);
+            }}
+          />
           {t("checkout.section.delivery." + type + "_poshta")}
         </label>
         <p className="font-bold">
@@ -44,14 +72,22 @@ export default function DeliveryInputGroup({
       {values.delivery_type === type && (
         <div className="flex flex-col gap-3 px-2">
           <label>
-            <Field type="radio" name="delivery_option" value="post_office" />
+            <Field
+              type="radio"
+              name="delivery_option"
+              value="post_office"
+              onChange={() => {
+                setIsDeliveryChange((prev) => !prev);
+                setFieldValue("delivery_option", "post_office");
+              }}
+            />
             {t("checkout.section.delivery.in_office")}
           </label>
           {values.delivery_option === "post_office" && (
             <div className="flex flex-col gap-3">
               <InputContainer
                 label={t("checkout.ph.town")}
-                inputValue={values?.town ?? ""}
+                inputValue={userValues?.[type].town ?? values?.town ?? ""}
                 setInputValue={async () => setFieldValue("town", "")}
                 isError={!!errors.town && touched.town}
                 errorMessage={errors.town}
@@ -80,14 +116,22 @@ export default function DeliveryInputGroup({
             </div>
           )}
           <label>
-            <Field type="radio" name="delivery_option" value="courier" />
+            <Field
+              type="radio"
+              name="delivery_option"
+              value="courier"
+              onChange={() => {
+                setIsDeliveryChange((prev) => !prev);
+                setFieldValue("delivery_option", "courier");
+              }}
+            />
             {t("checkout.section.delivery.by_courier")}
           </label>
           {values.delivery_option === "courier" && (
             <div className="flex flex-col gap-3">
               <InputContainer
                 label={t("checkout.ph.town")}
-                inputValue={values?.town ?? ""}
+                inputValue={values?.town ?? userValues?.address.town ?? ""}
                 setInputValue={async () => setFieldValue("town", "")}
                 isError={!!errors.town && touched.town}
                 errorMessage={errors.town}
@@ -101,7 +145,7 @@ export default function DeliveryInputGroup({
               </InputContainer>
               <InputContainer
                 label={t("checkout.ph.address")}
-                inputValue={values.address ?? ""}
+                inputValue={values.address ?? userValues?.address.street ?? ""}
                 setInputValue={async () => setFieldValue("address", "")}
                 isError={!!errors.address && touched.address}
                 errorMessage={errors.address}
@@ -116,7 +160,9 @@ export default function DeliveryInputGroup({
               <div className="flex gap-3">
                 <InputContainer
                   label={t("checkout.ph.building")}
-                  inputValue={values.building ?? ""}
+                  inputValue={
+                    values.building ?? userValues?.address.building ?? ""
+                  }
                   setInputValue={async () => setFieldValue("building", "")}
                   isError={!!errors.building && touched.building}
                   errorMessage={errors.building}
@@ -130,7 +176,7 @@ export default function DeliveryInputGroup({
                 </InputContainer>
                 <InputContainer
                   label={t("checkout.ph.flat")}
-                  inputValue={values.flat ?? ""}
+                  inputValue={values.flat ?? userValues?.address.flat ?? ""}
                   setInputValue={async () => setFieldValue("flat", "")}
                   isError={!!errors.flat && touched.flat}
                   errorMessage={errors.flat}

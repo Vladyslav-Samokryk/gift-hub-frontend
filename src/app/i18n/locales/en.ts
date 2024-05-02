@@ -81,6 +81,10 @@ export const en: AllLocalesType = {
       ua: "UA",
     },
 
+    err_500: "Something went wrong! Try later!",
+
+    err_400_change_password: "Current password is wrong!",
+
     login_popup: {
       header: "Log in",
       btn: "Log in",
@@ -91,6 +95,7 @@ export const en: AllLocalesType = {
     input_password: {
       ph: "Password",
       ph_create: "Create password",
+      ph_current: "Current password",
       ph_repeat: "Repeat password",
       remind_password: "Remind password",
       rules: {
@@ -163,6 +168,16 @@ export const en: AllLocalesType = {
     btn_apply: "Apply",
 
     all_categories: "All categories",
+
+    btn_save: "Save",
+    btn_edit: "Edit",
+
+    ph_birthday: "Birthday",
+    birthday_errors: {
+      date_in_past: "Date is too early",
+      date_in_future: "Date cannot be in the future",
+      invalid: "Please enter a valid date",
+    },
 
     categories: {
       backpack: "Backpack",
@@ -493,5 +508,19 @@ export const en: AllLocalesType = {
       btn_add: "Add all to basket",
       btn_delete: "Clean the list",
     },
+    history: {
+      products: "Products",
+      order_date: "Order Date",
+      status: "Order Status",
+      statuses: {
+        staffing: "Being Staffed",
+        sending: "Sent",
+        returning: "Returning",
+        completing: "Completed",
+      },
+    },
+
+    courier_address: "Address for courier delivery",
+    err_fill_all: "Fill all fields in section",
   },
 };

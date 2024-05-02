@@ -81,6 +81,10 @@ export const ua: AllLocalesType = {
       ua: "УКР",
     },
 
+    err_500: "Щось пішло не так! Спробуйте пізніше!",
+
+    err_400_change_password: "Пароль неправильний!",
+
     login_popup: {
       header: "Вхід",
       btn: "Увійти",
@@ -92,6 +96,7 @@ export const ua: AllLocalesType = {
     input_password: {
       ph: "Пароль",
       ph_create: "Придумайте пароль",
+      ph_current: "Пароль",
       ph_repeat: "Повторіть пароль",
       remind_password: "Нагадати пароль",
       rules: {
@@ -164,6 +169,15 @@ export const ua: AllLocalesType = {
 
     bth_reset: "Зняти всі",
     btn_apply: "Застосувати",
+    btn_save: "Зберегти",
+    btn_edit: "Редагувати",
+
+    ph_birthday: "Дата народження",
+    birthday_errors: {
+      date_in_past: "Дата занадто рання",
+      date_in_future: "Дата не може бути у майбутньому",
+      invalid: "Будь ласка, введіть коректну дату",
+    },
 
     all_categories: "Всі категорії",
 
@@ -498,5 +512,19 @@ export const ua: AllLocalesType = {
       btn_add: "Додати все до кошика",
       btn_delete: "Очистити список",
     },
+    history: {
+      products: "Замовлення",
+      order_date: "Дата замовлення",
+      status: "Статус замовлення",
+      statuses: {
+        staffing: "Комплектується",
+        sending: "Відправлений",
+        returning: "Повернення",
+        completing: "Завершено",
+      },
+    },
+
+    courier_address: "Адреса для кур’єрської доставки",
+    err_fill_all: "Заповніть всі поля в секції",
   },
 };

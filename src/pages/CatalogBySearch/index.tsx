@@ -13,23 +13,28 @@ import EmptyCatalog from "shared/UI/EmptyCatalog";
 import { useAppSelector } from "app/store";
 import { setCount } from "app/store/slices/catalog";
 import { useDispatch } from "react-redux";
+import { useCookies } from "react-cookie";
 
 export default function CatalogBySearch(): JSX.Element {
   const lang = useGetCurrentLang();
   const catalog = useAppSelector((state) => state.catalog);
   const dispatch = useDispatch();
   const searchParams = getSearchParams();
+  const [cookies] = useCookies();
 
   const { data } = useGetProductsBySearchQuery({
-    main: handleQueryParamArray(searchParams.main),
-    rate: handleQueryParamArray(searchParams.rate),
-    priceFrom: prepareQueryParam(searchParams.priceFrom),
-    priceTo: prepareQueryParam(searchParams.priceTo),
-    sort: prepareQueryParam(searchParams.sort),
-    q: prepareQueryParam(searchParams.q),
-    lang,
-    page: catalog.page,
-    productNum: catalog.productNum,
+    search: {
+      main: handleQueryParamArray(searchParams.main),
+      rate: handleQueryParamArray(searchParams.rate),
+      priceFrom: prepareQueryParam(searchParams.priceFrom),
+      priceTo: prepareQueryParam(searchParams.priceTo),
+      sort: prepareQueryParam(searchParams.sort),
+      q: prepareQueryParam(searchParams.q),
+      lang,
+      page: catalog.page,
+      productNum: catalog.productNum,
+    },
+    token: cookies.access,
   });
 
   const [results, setResults] = useState<ProductCardType[]>();

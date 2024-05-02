@@ -65,6 +65,7 @@ interface AllLocalesType {
       ph: string;
       ph_create: string;
       ph_repeat: string;
+      ph_current: string;
       remind_password: string;
       rules: {
         min_length: string;
@@ -75,6 +76,10 @@ interface AllLocalesType {
         match: string;
       };
     };
+
+    err_500: string;
+
+    err_400_change_password: string;
 
     registr_popup: {
       header: string;
@@ -246,6 +251,16 @@ interface AllLocalesType {
     not_found_content: string[];
     go_to_the_main_page: string;
 
+    ph_birthday: string;
+    birthday_errors: {
+      date_in_past: string;
+      date_in_future: string;
+      invalid: string;
+    };
+
+    btn_save: string;
+    btn_edit: string;
+
     checkout: {
       title: string;
       ph: {
@@ -357,6 +372,20 @@ interface AllLocalesType {
       btn_add: string;
       btn_delete: string;
     };
+
+    history: {
+      products: string;
+      order_date: string;
+      status: string;
+      statuses: {
+        staffing: string;
+        sending: string;
+        returning: string;
+        completing: string;
+      };
+    };
+    courier_address: string;
+    err_fill_all: string;
   };
 }
 

@@ -15,13 +15,15 @@ export default function InputPassword({
   setPassword,
 }: InputPasswordProps): JSX.Element {
   const [inputType, setInputType] = useState<"password" | "text">("password");
-
+  const clearValue = (): void => {
+    setPassword("");
+  };
   return (
     <div className="flex justify-between gap-5">
       <InputContainer
         label={label}
         inputValue={password}
-        setInputValue={setPassword}
+        setInputValue={clearValue}
       >
         <input
           type={inputType}
