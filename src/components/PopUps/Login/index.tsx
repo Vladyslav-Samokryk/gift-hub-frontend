@@ -61,7 +61,9 @@ export default function LoginPopUp({
                 setCookie("refresh", data.refresh);
                 setCookie("access", data.access);
                 dispatch(setIsAuth({ isAuth: true }));
-                onClose();
+                if (onClose) {
+                  onClose();
+                }
               })
               .catch((e) => e);
           }}

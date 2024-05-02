@@ -25,7 +25,9 @@ export default function EnterAsSection({
         setCookie("refresh", data.refresh);
         setCookie("access", data.access);
         dispatch(setIsAuth({ isAuth: true }));
-        onClose();
+        if (onClose) {
+          onClose();
+        }
       } catch (err) {
         console.log(err);
       }
