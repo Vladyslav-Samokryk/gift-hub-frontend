@@ -74,7 +74,7 @@ export default function Product(): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
   });
-  const { data, refetch } = useGetOneProductQuery(
+  const { data, refetch:refetchOneProduct } = useGetOneProductQuery(
     {
       id: id ?? "",
       lang,
@@ -86,7 +86,7 @@ export default function Product(): JSX.Element {
   );
 
 
-  const { data: comments, refetch } = useGetOneProductCommentsQuery(
+  const { data: comments, refetch:refetchOneProductComment } = useGetOneProductCommentsQuery(
     {
       id: id ?? "",
       page: 1,
@@ -97,7 +97,7 @@ export default function Product(): JSX.Element {
   );
 
   useEffect(() => {
-    void refetch();
+    void refetchOneProductComment();
   }, [comments]);
 
 
@@ -127,7 +127,7 @@ export default function Product(): JSX.Element {
       } else {
         void addToWishlist({ id: data.id, token: cookies.access });
       }
-      void refetch();
+      void refetchOneProduct();
     } else {
       onOpen({
         name: MODALS.LOGIN,
@@ -193,7 +193,7 @@ export default function Product(): JSX.Element {
                 onOpen({
                   name: MODALS.COMMENT,
                   data: {
-                    refetch,
+                    refetchOneProductComment,
                   },
                 })
               }

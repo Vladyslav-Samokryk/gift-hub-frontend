@@ -9,7 +9,7 @@ export interface ModalDataProps {
   title?: string;
   sub?: CategorySub[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  refetch?: () => QueryActionCreatorResult<any>;
+  refetchOneProductComment?: () => QueryActionCreatorResult<any>;
 }
 
 export interface ModalDialogProps {

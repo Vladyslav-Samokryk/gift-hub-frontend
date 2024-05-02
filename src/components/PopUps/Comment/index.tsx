@@ -91,11 +91,12 @@ function CommentPopUp({
       // Optionally, you can reset the comment state after successful addition
       setComment("");
       setGlobalRate(0);
-      if (data?.refetch) {
-        await data.refetch();
+      if (data?.refetchOneProductComment) {
+        await data.refetchOneProductComment();
       }
 
       // You can also close the modal or show a success message
+      if (onClose)
       onClose();
     } catch (error) {
       console.error("Error adding comment:", error);
