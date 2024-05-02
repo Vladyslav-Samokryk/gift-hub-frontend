@@ -86,6 +86,7 @@ export default function Product(): JSX.Element {
     },
   );
 
+
   const { data: comments, refetch } = useGetOneProductCommentsQuery(
     {
       id: id ?? "",
@@ -100,7 +101,6 @@ export default function Product(): JSX.Element {
     void refetch();
   }, [comments]);
 
-  console.log("comments", comments);
 
   const handleAddToCart = (): void => {
     if (data) {
@@ -247,7 +247,7 @@ export default function Product(): JSX.Element {
                     <p className="secondary font-light text-gray-900">
                       {comment.date}
                     </p>
-                    <StarRate rate={comment.global_rate} />
+                    <StarRate rate={comment.global_rate} /> {/*it can be changed*/}
                   </div>
 
                   <div className="px-2">

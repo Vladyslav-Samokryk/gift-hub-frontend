@@ -9,6 +9,8 @@ import { Warning } from "shared/assets/svg/Warning";
 import { productsApi } from "app/api/products";
 import { useCookies } from "react-cookie";
 import { useAuth } from "shared/hooks/useAuth";
+import { useGetUserInfoQuery } from "app/api/auth";
+
 interface Critaries {
   description_match: number;
   photo_match: number;
@@ -30,17 +32,21 @@ function CommentPopUp({
   const [productId, setProductId] = useState<string | null>("");
   const [addProductComment] = productsApi.useAddProductCommentMutation();
 
+
   useEffect(() => {
     const productID = localStorage.getItem("productID");
     if (productID) {
       const parsedProductID = JSON.parse(productID)[0];
-      console.log(parsedProductID);
       setProductId(parsedProductID);
     }
   }, [productId]);
 
   const { isAuth } = useAuth();
   const [cookies] = useCookies();
+  
+
+  const { data: userInfo } = useGetUserInfoQuery(cookies.access);
+
 
   const [criteriaRates, setCriteriaRates] = useState<Critaries>({
     description_match: 0,
@@ -79,6 +85,7 @@ function CommentPopUp({
         token: cookies.access,
       };
 
+
       const response = await addProductComment(commentOfUser).unwrap();
       console.log("Comment added successfully:", response);
       // Optionally, you can reset the comment state after successful addition
@@ -111,7 +118,7 @@ function CommentPopUp({
         </div>
 
         <div className="font-rubik mb-8">
-          <h2>Users name</h2> {/* name of user will be given from db */}
+          <h2>{ userInfo?.first_name}</h2> 
           <div className="flex gap-3 text-sm">
             <p>{t("comments.comment_description")}</p>
             <button className="text-blue-600">
