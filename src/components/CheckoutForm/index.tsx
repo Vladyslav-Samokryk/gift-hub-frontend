@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
+import { useGetUserInfoQuery } from "app/api/authUser";
 import { useClearBasketMutation, usePostOrderMutation } from "app/api/products";
 import { clear } from "app/store/cart/authCartSlice";
 import { clearCart } from "app/store/cart/cartSlice";
 import classNames from "classnames";
 import DeliveryInputGroup from "components/DeliveryInputGroup";
 import { Formik, Field, Form } from "formik";
+import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -12,24 +14,72 @@ import FormikInput from "shared/UI/FormikInput";
 import ListBlock from "shared/UI/ListBlock";
 import { CheckoutSchema } from "shared/helpers/checkoutFormValidate";
 import { useAuth } from "shared/hooks/useAuth";
-import useGetCartItems from "shared/hooks/useGetCartItems";
+import type { CartFullItem } from "shared/types/Basket";
 import type { CheckoutValues } from "shared/types/Checkout";
 import type { Setter } from "shared/types/CommonTypes";
 
 interface CheckoutFormProps {
   setCheckoutIsSuccess: Setter<boolean>;
+  cart: CartFullItem[];
 }
+
+export interface UserDelivery {
+  address: {
+    town: string;
+    street: string;
+    building: string;
+    flat: string;
+  };
+  nova: {
+    town: string;
+    postOffice: string;
+  };
+  ukr: {
+    town: string;
+    postOffice: string;
+  };
+}
+
+const initialCheckout: CheckoutValues = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  tel: "",
+  delivery_type: "self",
+  is_not_recall: false,
+  is_another_person: false,
+  is_comment: false,
+  another_person: {
+    tel: "",
+    firstName: "",
+    lastName: "",
+  },
+  is_gift: false,
+  town: "",
+  address: "",
+  building: "",
+  flat: "",
+  post_office: "",
+  comment: "",
+  delivery_option: "",
+};
 
 function CheckoutForm({
   setCheckoutIsSuccess,
+  cart,
 }: CheckoutFormProps): JSX.Element {
-  const cart = useGetCartItems();
   const [postOrder] = usePostOrderMutation();
   const dispatch = useDispatch();
   const [clearBasket] = useClearBasketMutation();
   const { isAuth } = useAuth();
   const [cookies] = useCookies();
   const { t } = useTranslation();
+  const [initialValues, setInitialValues] = useState(initialCheckout);
+  const [userDeliveryValues, setUserDeliveryValues] =
+    useState<UserDelivery | null>(null);
+  const { data } = useGetUserInfoQuery(cookies.access, {
+    skip: !cookies.access,
+  });
 
   const handleClearCart = (): void => {
     if (isAuth) {
@@ -39,31 +89,28 @@ function CheckoutForm({
     dispatch(clearCart());
   };
 
+  useEffect(() => {
+    if (data) {
+      const { first_name, last_name, email, mobile } = data;
+      setInitialValues((prev) => ({
+        ...prev,
+        firstName: first_name,
+        lastName: last_name,
+        email,
+        tel: mobile ?? "",
+      }));
+      setUserDeliveryValues({
+        address: data.address,
+        ukr: data.ukrPoshta,
+        nova: data.novaPoshta,
+      });
+    }
+  }, [data]);
+
   return (
     <Formik
-      initialValues={{
-        firstName: "",
-        lastName: "",
-        email: "",
-        tel: "",
-        delivery_type: "self",
-        is_not_recall: false,
-        is_another_person: false,
-        is_comment: false,
-        another_person: {
-          tel: "",
-          firstName: "",
-          lastName: "",
-        },
-        is_gift: false,
-        town: "",
-        address: "",
-        building: "",
-        flat: "",
-        post_office: "",
-        comment: "",
-        delivery_option: "",
-      }}
+      enableReinitialize={true}
+      initialValues={initialValues}
       validationSchema={CheckoutSchema}
       onSubmit={(values: CheckoutValues) => {
         const options: Partial<CheckoutValues> = Object.entries(values).reduce<
@@ -81,7 +128,7 @@ function CheckoutForm({
         postOrder({
           options,
           token: isAuth ? cookies.access : "",
-          products: cart?.map((el) => {
+          products: cart.map((el) => {
             return {
               product: el.id,
               quantity: el?.count,
@@ -156,6 +203,7 @@ function CheckoutForm({
               </p>
             </div>
             <DeliveryInputGroup
+              userValues={userDeliveryValues}
               values={values}
               setFieldValue={setFieldValue}
               type="nova"
@@ -163,6 +211,7 @@ function CheckoutForm({
               touched={touched}
             />
             <DeliveryInputGroup
+              userValues={userDeliveryValues}
               values={values}
               setFieldValue={setFieldValue}
               type="ukr"

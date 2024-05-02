@@ -5,14 +5,20 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import ReactSlider from "react-slider";
 import { MIN_PRICE, MAX_PRICE } from "shared/constants/price";
+import { SCREEN } from "shared/constants/screens";
 import { setSearchParam } from "shared/helpers/url";
+import { useScreenWidth } from "shared/hooks/useScreenWidth";
 
 interface Price {
   priceFrom: string;
   priceTo: string;
 }
 
-const RangeWithInputs = (): JSX.Element => {
+interface RangeWithInputsProps {
+  modalClose?: () => void;
+}
+
+const RangeWithInputs = ({ modalClose }: RangeWithInputsProps): JSX.Element => {
   const searchParams = new URLSearchParams(window.location.search);
   const dispatch = useDispatch();
 
@@ -26,7 +32,7 @@ const RangeWithInputs = (): JSX.Element => {
   const [maxValue, setMaxValue] = useState("2000");
   const [minRange, setMinRange] = useState("0");
   const [maxRange, setMaxRange] = useState("2000");
-
+  const windowWidth = useScreenWidth();
   const [error, setError] = useState({ min: false, max: false });
 
   useEffect(() => {
@@ -81,6 +87,10 @@ const RangeWithInputs = (): JSX.Element => {
 
       setMinRange(minValue);
       setMaxRange(maxValue);
+
+      if (modalClose && windowWidth <= SCREEN.MD) {
+        modalClose();
+      }
     }
   };
 

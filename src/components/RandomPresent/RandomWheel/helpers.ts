@@ -58,7 +58,7 @@ export function getStyle(
   let offset = 0;
   let width = 1;
 
-  if (windowWidth < SCREEN.MD) {
+  if (windowWidth <= SCREEN.MD) {
     times = 2;
     offset = 30;
     width = 0.7;

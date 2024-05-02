@@ -21,6 +21,10 @@ import {
 import { useCookies } from "react-cookie";
 import { incrementBy } from "app/store/cart/authCartSlice";
 
+interface ProductCardProps extends ProductCardType {
+  refetch?: () => Promise<void>;
+}
+
 export default function ProductCard({
   img,
   name,
@@ -29,7 +33,8 @@ export default function ProductCard({
   global_rating,
   id,
   isInWishlist,
-}: ProductCardType): JSX.Element {
+  refetch,
+}: ProductCardProps): JSX.Element {
   const windowWidth = useScreenWidth();
   const dispatch = useDispatch();
   const { isAuth } = useAuth();
@@ -53,19 +58,29 @@ export default function ProductCard({
   };
 
   const handleWishlistAction = (): void => {
-    void (isAuth
-      ? !isProductInWishlist
-        ? addToWishlist({ id, token: cookies.access })
-        : deleteFromWishlist({ id, token: cookies.access })
-      : onOpen({
-          name: MODALS.LOGIN,
-          data: { error: true },
-        }));
+    if (isAuth) {
+      if (!isProductInWishlist) {
+        void addToWishlist({ id, token: cookies.access });
+      } else {
+        void deleteFromWishlist({ id, token: cookies.access })
+          .unwrap()
+          .then(async () => {
+            if (refetch) {
+              await refetch();
+            }
+          });
+      }
+    } else {
+      onOpen({
+        name: MODALS.LOGIN,
+        data: { error: true },
+      });
+    }
     setIsProductInWishlist((prev) => !prev);
   };
 
   return (
-    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white lg:h-card lg:min-w-[320px]">
+    <div className="m-2 h-card-sm w-card-sm rounded-lg border-2 border-black bg-white xl:h-card xl:min-w-[320px]">
       <div className="relative">
         <Link to={`/product/${id}`}>
           <ImgWithPreloader
@@ -101,7 +116,7 @@ export default function ProductCard({
           </data>
           <div className="mr-2 flex w-full items-center justify-between">
             <StarRate
-              starSize={windowWidth < SCREEN.LG ? 16 : 25}
+              starSize={windowWidth <= SCREEN.LG ? 16 : 25}
               rate={global_rating}
             />
             <button onClick={handleAddToCart} className="group">

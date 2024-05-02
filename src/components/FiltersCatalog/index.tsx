@@ -1,3 +1,4 @@
+import { useModals } from "app/context/modalContext/useModals";
 import { setPage } from "app/store/slices/catalog";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -20,6 +21,7 @@ export default function FiltersCatalog(): JSX.Element {
   const searchParams = new URLSearchParams(window.location.search);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { onClose } = useModals();
 
   const handleCheckboxClick = (
     filterType: keyof Filters,
@@ -72,7 +74,7 @@ export default function FiltersCatalog(): JSX.Element {
       </ListContainer>
 
       <ListContainer title={t("price")}>
-        <RangeWithInputs />
+        <RangeWithInputs modalClose={onClose} />
       </ListContainer>
     </section>
   );

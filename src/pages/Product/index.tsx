@@ -10,7 +10,6 @@ import {
 import { addToCart } from "app/store/cart/cartSlice";
 import DescriptionContainer from "components/DecrtiptionContainer";
 import RateScore from "components/RateScore";
-
 import ImageSlider from "shared/UI/ImageSlider";
 import { CommentsNotFoundIcon } from "shared/assets/svg/Comments";
 import { getRateWithStars } from "shared/helpers/rate";
@@ -25,7 +24,7 @@ import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ProductSection from "shared/UI/ProductSection";
 import { useCookies } from "react-cookie";
 import { useModals } from "app/context/modalContext/useModals";
@@ -46,7 +45,6 @@ export default function Product(): JSX.Element {
   const [addToBasket] = useAddToBasketMutation();
   const [addToWishlist] = useAddToWishlistMutation();
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
-  const [isProductInWishlist, setIsProductInWishlist] = useState(false);
   const { onOpen } = useModals();
   const { isAuth } = useAuth();
 
@@ -75,10 +73,11 @@ export default function Product(): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
   });
-  const { data } = useGetOneProductQuery(
+  const { data, refetch } = useGetOneProductQuery(
     {
       id: id ?? "",
       lang,
+      token: cookies.access,
     },
     {
       skip: !id ?? false,
@@ -115,15 +114,19 @@ export default function Product(): JSX.Element {
   };
 
   const handleWishlistAction = (): void => {
-    void (isAuth && data
-      ? !isProductInWishlist
-        ? addToWishlist({ id: data.id, token: cookies.access })
-        : deleteFromWishlist({ id: data.id, token: cookies.access })
-      : onOpen({
-          name: MODALS.LOGIN,
-          data: { error: true },
-        }));
-    setIsProductInWishlist((prev) => !prev);
+    if (isAuth && data) {
+      if (data.isInWishlist) {
+        void deleteFromWishlist({ id: data.id, token: cookies.access });
+      } else {
+        void addToWishlist({ id: data.id, token: cookies.access });
+      }
+      void refetch();
+    } else {
+      onOpen({
+        name: MODALS.LOGIN,
+        data: { error: true },
+      });
+    }
   };
 
   if (!data) {
@@ -131,7 +134,7 @@ export default function Product(): JSX.Element {
   }
   return (
     <section className="flex flex-col justify-center gap-6 px-[2vw]">
-      {width > SCREEN.LG && <Breadcrumbs product={data.name} />}
+      {width >= SCREEN.LG && <Breadcrumbs product={data.name} />}
       <section className="grid grid-cols-1 gap-5 lg:grid-cols-[1fr,45vw,1fr]">
         <div>
           <h1 className="lg:h5 h6">{data.name}</h1>
@@ -167,7 +170,7 @@ export default function Product(): JSX.Element {
               {t("btn_to_basket")}
             </button>
             <button className="h-8" onClick={handleWishlistAction}>
-              <Wishlist inWishlist={isProductInWishlist} />
+              <Wishlist inWishlist={data.isInWishlist ?? false} />
             </button>
           </div>
         </div>
