@@ -12,7 +12,7 @@ export interface ModalDataProps {
 export interface ModalDialogProps {
   isOpen: boolean;
   name: ValueOf<MODALS> | "";
-  onClose: () => void;
+  onClose?: () => void;
   onConfirm?: () => void;
   data?: ModalDataProps;
 }
