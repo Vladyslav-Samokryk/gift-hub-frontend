@@ -24,13 +24,14 @@ import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProductSection from "shared/UI/ProductSection";
 import { useCookies } from "react-cookie";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
 import { useAuth } from "shared/hooks/useAuth";
 import { incrementBy } from "app/store/cart/authCartSlice";
+import Pagination from "shared/UI/Pagination";
 
 export default function Product(): JSX.Element {
   const { id } = useParams();
@@ -47,6 +48,7 @@ export default function Product(): JSX.Element {
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const { onOpen } = useModals();
   const { isAuth } = useAuth();
+  const [page, setPage]=useState<number>(1)
 
   useEffect(() => {
     if (id) {
@@ -89,7 +91,7 @@ export default function Product(): JSX.Element {
   const { data: comments, refetch:refetchOneProductComment } = useGetOneProductCommentsQuery(
     {
       id: id ?? "",
-      page: 1,
+      page,
     },
     {
       skip: !id ?? false,
@@ -274,8 +276,15 @@ export default function Product(): JSX.Element {
             <CommentsNotFoundIcon />
             <p className="h6 font-light">{t("comments.non_found.header")}</p>
             <h4 className="h5">{t("comments.non_found.description")}</h4>
-          </div>
+            </div>    
         )}
+        {(comments && comments?.count>3)&&<Pagination
+          totalPages={comments?.count ? Math.ceil(comments.count / 3) : 0}
+          setPage={setPage}
+          onClick={refetchOneProductComment}
+          page={page}
+          classname="items-center justify-center"
+        />}
       </section>
       {reviewedProducts && (
         <ProductSection
