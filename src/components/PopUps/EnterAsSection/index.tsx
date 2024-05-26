@@ -17,15 +17,15 @@ export default function EnterAsSection(): JSX.Element {
   const dispatch = useDispatch();
   const { onOpen } = useModals();
 
-  const pushError = () => {
-            onOpen({
-          name: MODALS.PUSH,
-          data: {
-            variant: "error",
-                    message: t("push_notifications.error.default"),
-          },
-        });
-  } 
+  const pushError = (): void => {
+    onOpen({
+      name: MODALS.PUSH,
+      data: {
+        variant: "error",
+        message: t("push_notifications.error.default"),
+      },
+    });
+  };
 
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
@@ -38,7 +38,7 @@ export default function EnterAsSection(): JSX.Element {
           name: MODALS.PUSH,
           data: {
             variant: "success",
-                    message: t("push_notifications.success.default"),
+            message: t("push_notifications.success.default"),
           },
         });
       } catch (err) {
@@ -46,8 +46,7 @@ export default function EnterAsSection(): JSX.Element {
       }
     },
     flow: "auth-code",
-    onError: (errorResponse) =>
-      pushError()
+    onError: () => pushError(),
   });
   return (
     <>

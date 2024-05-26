@@ -44,7 +44,7 @@ export default function UserCabinetNavigation({
 }: UserCabinetNavigationProps): JSX.Element {
   const [, , removeCookie] = useCookies(["access", "refresh"]);
   const dispatch = useDispatch();
-    const { onOpen } = useModals();
+  const { onOpen } = useModals();
 
   const { t } = useTranslation();
   const cabinetLinks: TRCabinet = t("cabinet_section", {
@@ -57,13 +57,13 @@ export default function UserCabinetNavigation({
     dispatch(setIsAuth({ isAuth: false }));
     removeCookie("access");
     removeCookie("refresh");
-                    onOpen({
-                  name: MODALS.PUSH,
-                  data: {
-                    variant: "success",
-                    message: t("push_notifications.success.default"),
-                  },
-  });
+    onOpen({
+      name: MODALS.PUSH,
+      data: {
+        variant: "success",
+        message: t("push_notifications.success.default"),
+      },
+    });
   };
 
   return (

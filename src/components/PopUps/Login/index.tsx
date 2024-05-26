@@ -69,13 +69,15 @@ export default function LoginPopUp({
                   },
                 });
               })
-              .catch((e) =>  onOpen({
+              .catch(() =>
+                onOpen({
                   name: MODALS.PUSH,
                   data: {
                     variant: "error",
                     message: t("push_notifications.error.default"),
                   },
-                }));
+                }),
+              );
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (
@@ -135,7 +137,7 @@ export default function LoginPopUp({
             </Form>
           )}
         </Formik>
-        <EnterAsSection/>
+        <EnterAsSection />
       </div>
     </ModalContainer>
   );
