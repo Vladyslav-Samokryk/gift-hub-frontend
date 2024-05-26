@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import EnterAsSection from "components/PopUps/EnterAsSection";
 import { useTranslation } from "react-i18next";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
@@ -17,6 +16,7 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { setIsAuth } from "app/store/slices/user";
+import EnterAsSection from "../EnterAsSection";
 
 export default function LoginPopUp({
   isOpen,
@@ -61,11 +61,21 @@ export default function LoginPopUp({
                 setCookie("refresh", data.refresh);
                 setCookie("access", data.access);
                 dispatch(setIsAuth({ isAuth: true }));
-                if (onClose) {
-                  onClose();
-                }
+                onOpen({
+                  name: MODALS.PUSH,
+                  data: {
+                    variant: "success",
+                    message: t("push_notifications.success.default"),
+                  },
+                });
               })
-              .catch((e) => e);
+              .catch((e) =>  onOpen({
+                  name: MODALS.PUSH,
+                  data: {
+                    variant: "error",
+                    message: t("push_notifications.error.default"),
+                  },
+                }));
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (
@@ -113,7 +123,9 @@ export default function LoginPopUp({
                   onClick={() => {
                     if (onClose) {
                       onClose();
-                      onOpen({ name: MODALS.REGISTR });
+                      onOpen({
+                        name: MODALS.REGISTR,
+                      });
                     }
                   }}
                 >
@@ -123,7 +135,7 @@ export default function LoginPopUp({
             </Form>
           )}
         </Formik>
-        <EnterAsSection onClose={onClose} />
+        <EnterAsSection/>
       </div>
     </ModalContainer>
   );

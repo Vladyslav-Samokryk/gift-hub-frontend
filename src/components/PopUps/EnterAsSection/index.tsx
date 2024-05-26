@@ -8,16 +8,25 @@ import { getTokens } from "app/api/googleLogin";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { setIsAuth } from "app/store/slices/user";
-import type { ModalDialogProps } from "shared/types/Modals";
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
 
-type CloseModalWindow = Pick<ModalDialogProps, "onClose">;
-
-export default function EnterAsSection({
-  onClose,
-}: CloseModalWindow): JSX.Element {
+export default function EnterAsSection(): JSX.Element {
   const [, setCookie] = useCookies(["refresh", "access"]);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { onOpen } = useModals();
+
+  const pushError = () => {
+            onOpen({
+          name: MODALS.PUSH,
+          data: {
+            variant: "error",
+                    message: t("push_notifications.error.default"),
+          },
+        });
+  } 
+
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       try {
@@ -25,15 +34,20 @@ export default function EnterAsSection({
         setCookie("refresh", data.refresh);
         setCookie("access", data.access);
         dispatch(setIsAuth({ isAuth: true }));
-        if (onClose) {
-          onClose();
-        }
+        onOpen({
+          name: MODALS.PUSH,
+          data: {
+            variant: "success",
+                    message: t("push_notifications.success.default"),
+          },
+        });
       } catch (err) {
-        console.log(err);
+        pushError();
       }
     },
     flow: "auth-code",
-    onError: (errorResponse) => console.log(errorResponse),
+    onError: (errorResponse) =>
+      pushError()
   });
   return (
     <>

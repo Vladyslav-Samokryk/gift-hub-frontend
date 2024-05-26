@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import { MODALS } from "app/context/modalContext/modals";
+import { useModals } from "app/context/modalContext/useModals";
 import { setIsAuth } from "app/store/slices/user";
 import classNames from "classnames";
 import { useCookies } from "react-cookie";
@@ -42,6 +44,8 @@ export default function UserCabinetNavigation({
 }: UserCabinetNavigationProps): JSX.Element {
   const [, , removeCookie] = useCookies(["access", "refresh"]);
   const dispatch = useDispatch();
+    const { onOpen } = useModals();
+
   const { t } = useTranslation();
   const cabinetLinks: TRCabinet = t("cabinet_section", {
     returnObjects: true,
@@ -53,7 +57,13 @@ export default function UserCabinetNavigation({
     dispatch(setIsAuth({ isAuth: false }));
     removeCookie("access");
     removeCookie("refresh");
-    onClose();
+                    onOpen({
+                  name: MODALS.PUSH,
+                  data: {
+                    variant: "success",
+                    message: t("push_notifications.success.default"),
+                  },
+  });
   };
 
   return (

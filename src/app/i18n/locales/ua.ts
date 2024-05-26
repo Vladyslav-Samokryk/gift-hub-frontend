@@ -524,5 +524,14 @@ export const ua: AllLocalesType = {
 
     courier_address: "Адреса для кур’єрської доставки",
     err_fill_all: "Заповніть всі поля в секції",
+
+    push_notifications: {
+      error: {
+        default: "Щось пішло не так!",
+      },
+      success: {
+        default: "Операція успішна!",
+      },
+    },
   },
 };

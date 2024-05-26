@@ -1,9 +1,10 @@
+import type { PushNotificationProps } from "shared/UI/PushNotification";
 import type { MODALS } from "../../app/context/modalContext/modals";
 import type { CategorySub } from "./Categories";
 
 type ValueOf<T extends string> = `${T}`;
 
-export interface ModalDataProps {
+export interface ModalDataProps extends PushNotificationProps {
   error?: boolean;
   title?: string;
   sub?: CategorySub[];
