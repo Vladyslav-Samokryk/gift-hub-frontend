@@ -23,7 +23,7 @@ import bg8 from "../../shared/assets/img/bg8.png";
 export default function TeamList() {
   const { t } = useTranslation();
 
-  const fotos = [
+  const participants = [
     {
       name: t("about_as_section.participants")[0],
       image: foto1,
@@ -75,14 +75,16 @@ export default function TeamList() {
   ];
 
   return (
-    <ul className="mx-auto  grid-template-custom">
-      {fotos.map((foto, idx) => (
+    <ul className="mx-auto  grid-template-custom place-items-end">
+      {participants.map((foto, idx) => (
         <li key={idx} className={`grid-area-${idx + 1}`}>
-          <div className="relative">
+          <div className="mx-auto flex flex-col">
             <div
-               className="custom-bg w-full relative"
-                style={
-                { "--bg-image": `url(${foto.background})` } as React.CSSProperties
+              className="custom-bg w-full relative mb-3 "
+              style={
+                {
+                  "--bg-image": `url(${foto.background})`,
+                } as React.CSSProperties
               }
             >
               <img
@@ -91,10 +93,9 @@ export default function TeamList() {
                 className="w-full h-auto z-10"
               />
             </div>
-
-            <h4>{foto.name}</h4>
-            <p>{foto.position}</p>
-            <IconsBlock/>
+            <h4 className="text-center text-xl lg:text-4xl">{foto.name}</h4>
+            <p className="text-center text-blue-700 font-light text-sm lg:text-base">{foto.position}</p>
+            <IconsBlock />
           </div>
         </li>
       ))}

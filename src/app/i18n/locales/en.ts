@@ -12,6 +12,18 @@ export const en: AllLocalesType = {
         "Borislav Xbus",
         "Alex Kovalenko",
       ],
+      left_project_participants:[
+        "Lubomir Susar",
+        "Alex Chercasov",
+        "Vasil Katchyan",
+        "Taras Fedorenko",
+        "Olga Letyagina",
+        "Olexandr Zimnitza",
+        "Bogdan Domansky",
+        "Yaroslav Lisovy",
+        "Zarichna Christyna",
+        
+      ],
       project_info:
         "We worked on our project for 7 months. This is an online gift shop for IT professionals. Well done and made a cool site with various features.",
       regards: "We thank the colleagues who participated in the project:",
