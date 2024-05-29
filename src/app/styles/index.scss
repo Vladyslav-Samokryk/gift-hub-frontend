@@ -121,10 +121,9 @@ input[type="number"] {
     -ms-overflow-style: none;
     scrollbar-width: none;
   }
-  
+
   .hidden {
-   @apply overflow-hidden;
-   
+    @apply overflow-hidden;
   }
 }
 
@@ -141,4 +140,68 @@ body,
 
 .carousel__dot--selected {
   @apply bg-blue-700;
+}
+
+.grid-template-custom {
+  display: grid;
+  grid-template-areas:
+    "a b c"
+    "d . e"
+    "f g h";
+  gap: 2.5rem;
+  /* This is equivalent to Tailwind's gap-10 */
+}
+
+.grid-area-1 {
+  grid-area: a;
+}
+
+.grid-area-2 {
+  grid-area: b;
+}
+
+.grid-area-3 {
+  grid-area: c;
+}
+
+.grid-area-4 {
+  grid-area: d;
+}
+
+.grid-area-5 {
+  grid-area: e;
+}
+
+.grid-area-6 {
+  grid-area: f;
+}
+
+.grid-area-7 {
+  grid-area: g;
+}
+
+.grid-area-8 {
+  grid-area: h;
+}
+
+.custom-bg {
+  position: relative;
+  z-index: 1;
+}
+
+.custom-bg::before {
+  content: "";
+  display: block;
+  position: absolute;
+  background-size: contain;
+  background-position: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translate(-50% -50%);
+  transform: scale(1.1);
+  background-repeat: no-repeat;
+  background-image: var(--bg-image);
+  z-index: -1;
 }

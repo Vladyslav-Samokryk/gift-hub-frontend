@@ -42,6 +42,12 @@ export default function Header(): JSX.Element {
 
   const getHeaderComponent = (): Children | null => {
     switch (true) {
+      case location.pathname === "/about-us":
+        return (
+          <HeaderWithGoBack>
+            <UserSection />
+          </HeaderWithGoBack>
+        );
       case paths.some((el) => location.pathname.includes(el)):
         return (
           <HeaderWithGoBack>

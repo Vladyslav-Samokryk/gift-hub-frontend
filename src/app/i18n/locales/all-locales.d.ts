@@ -1,5 +1,12 @@
 interface AllLocalesType {
   translation: {
+    about_as_section: {
+      title: string;
+      participants: string[];
+      left_project_participants: string[];
+      project_info: string;
+      regards: string;
+    };
     footer_sections: {
       follow_us: string;
       contact_us: string;
