@@ -225,8 +225,9 @@ export const en: AllLocalesType = {
         header: "Add comment",
         description: "Tell us what you think about this product",
       },
-      comment_description: "Your comment will be public and anyone can view it.",
-      learn_more:"Learn more",
+      comment_description:
+        "Your comment will be public and anyone can view it.",
+      learn_more: "Learn more",
       max_comment_length: "Maximum comment length is - 400 signs",
       btn_add_comment: "Add comment",
     },

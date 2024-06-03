@@ -33,25 +33,24 @@ export interface UserInfoResponse {
   mobile?: string;
   dob?: string;
   address?: {
-    address_town: string,
-    address_street: string,
-    address_building: string,
-    address_flat: string
-  },
+    address_town: string;
+    address_street: string;
+    address_building: string;
+    address_flat: string;
+  };
   novaPoshta?: {
-    nova_poshta_town: string,
-    nova_poshta_post_office: string
-  },
+    nova_poshta_town: string;
+    nova_poshta_post_office: string;
+  };
   ukrPoshta?: {
-    ukr_poshta_town: string,
-    ukr_poshta_post_office: string
-  },
-  gender?: string,
-  role?: string,
-  notice?: string,
-  get_age?: number
+    ukr_poshta_town: string;
+    ukr_poshta_post_office: string;
+  };
+  gender?: string;
+  role?: string;
+  notice?: string;
+  get_age?: number;
 }
-
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -84,16 +83,15 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
 
-     getUserInfo: builder.query<UserInfoResponse, void>({
-       query: (token) => ({
+    getUserInfo: builder.query<UserInfoResponse, void>({
+      query: (token) => ({
         url: "accounts/auth_user/user_info/",
         method: "GET",
         headers: {
-          Authorization: `Bearer ${token}`
+          Authorization: `Bearer ${token}`,
         },
       }),
     }),
-
   }),
 });
 
@@ -102,5 +100,5 @@ export const {
   useRegistrationMutation,
   useRefreshMutation,
   useVerifyMutation,
-  useGetUserInfoQuery
+  useGetUserInfoQuery,
 } = authApi;

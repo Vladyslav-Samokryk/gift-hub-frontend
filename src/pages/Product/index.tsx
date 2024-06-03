@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
 import {
   useGetOneProductQuery,
@@ -48,7 +49,7 @@ export default function Product(): JSX.Element {
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const { onOpen } = useModals();
   const { isAuth } = useAuth();
-  const [page, setPage]=useState<number>(1)
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     if (id) {
@@ -76,7 +77,7 @@ export default function Product(): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
   });
-  const { data, refetch:refetchOneProduct } = useGetOneProductQuery(
+  const { data, refetch: refetchOneProduct } = useGetOneProductQuery(
     {
       id: id ?? "",
       lang,
@@ -87,21 +88,20 @@ export default function Product(): JSX.Element {
     },
   );
 
-
-  const { data: comments, refetch:refetchOneProductComment } = useGetOneProductCommentsQuery(
-    {
-      id: id ?? "",
-      page,
-    },
-    {
-      skip: !id ?? false,
-    },
-  );
+  const { data: comments, refetch: refetchOneProductComment } =
+    useGetOneProductCommentsQuery(
+      {
+        id: id ?? "",
+        page,
+      },
+      {
+        skip: !id ?? false,
+      },
+    );
 
   useEffect(() => {
     void refetchOneProductComment();
   }, [comments]);
-
 
   const handleAddToCart = (): void => {
     if (data) {
@@ -252,7 +252,7 @@ export default function Product(): JSX.Element {
                     <p className="secondary font-light text-gray-900">
                       {comment.date}
                     </p>
-                    <StarRate rate={comment.global_rate} /> {/*it can be changed*/}
+                    <StarRate rate={comment.global_rate} />{" "}
                   </div>
 
                   <div className="px-2">
@@ -276,15 +276,17 @@ export default function Product(): JSX.Element {
             <CommentsNotFoundIcon />
             <p className="h6 font-light">{t("comments.non_found.header")}</p>
             <h4 className="h5">{t("comments.non_found.description")}</h4>
-            </div>    
+          </div>
         )}
-        {(comments && comments?.count>3)&&<Pagination
-          totalPages={comments?.count ? Math.ceil(comments.count / 3) : 0}
-          setPage={setPage}
-          onClick={refetchOneProductComment}
-          page={page}
-          classname="items-center justify-center"
-        />}
+        {comments && comments?.count > 3 && (
+          <Pagination
+            totalPages={comments?.count ? Math.ceil(comments.count / 3) : 0}
+            setPage={setPage}
+            onClick={refetchOneProductComment}
+            page={page}
+            classname="items-center justify-center"
+          />
+        )}
       </section>
       {reviewedProducts && (
         <ProductSection

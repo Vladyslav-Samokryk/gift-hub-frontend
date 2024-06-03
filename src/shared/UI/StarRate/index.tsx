@@ -3,7 +3,7 @@ import "./index.scss";
 
 interface StarRateProps {
   rate: number;
-    onRateChange?: (rate: number) => void;
+  onRateChange?: (rate: number) => void;
   starSize?: number;
 }
 
@@ -16,7 +16,7 @@ interface MeterCSSProperties extends React.CSSProperties {
 export default function StarRate({
   rate,
   starSize = 25,
-  onRateChange
+  onRateChange,
 }: StarRateProps): JSX.Element {
   const meterRef = useRef<HTMLMeterElement | null>(null);
   const maxStars = 5;
@@ -29,13 +29,13 @@ export default function StarRate({
     "--stars-gap": `${starsGap}px`,
   };
 
-   const handleClick = (e: React.MouseEvent<HTMLMeterElement>) => {
+  const handleClick = (e: React.MouseEvent<HTMLMeterElement>): void => {
     if (meterRef.current) {
       const x = e.pageX - meterRef.current.getBoundingClientRect().left;
-      const clickedValue =
-        Math.ceil((x / meterRef.current.offsetWidth) * maxStars);
-      if (onRateChange)
-      onRateChange(clickedValue);
+      const clickedValue = Math.ceil(
+        (x / meterRef.current.offsetWidth) * maxStars,
+      );
+      if (onRateChange) onRateChange(clickedValue);
     }
   };
 

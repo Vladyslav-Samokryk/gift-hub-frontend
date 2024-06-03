@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { useState, useEffect } from "react";
 import { t } from "i18next";
 import ModalContainer from "shared/UI/ModalContainer";
@@ -32,7 +33,6 @@ function CommentPopUp({
   const [productId, setProductId] = useState<string | null>("");
   const [addProductComment] = productsApi.useAddProductCommentMutation();
 
-
   useEffect(() => {
     const productID = localStorage.getItem("productID");
     if (productID) {
@@ -43,10 +43,8 @@ function CommentPopUp({
 
   const { isAuth } = useAuth();
   const [cookies] = useCookies();
-  
 
   const { data: userInfo } = useGetUserInfoQuery(cookies.access);
-
 
   const [criteriaRates, setCriteriaRates] = useState<Critaries>({
     description_match: 0,
@@ -55,24 +53,28 @@ function CommentPopUp({
     quality: 0,
   });
 
-  const handleGlobalRateChange = (newRate: number) => {
+  const handleGlobalRateChange = (newRate: number): void => {
     setGlobalRate(newRate);
   };
 
-  const handleCriteriaRateChange = (key: keyof Critaries, newRate: number) => {
+  const handleCriteriaRateChange = (
+    key: keyof Critaries,
+    newRate: number,
+  ): void => {
     setCriteriaRates((prevRates) => ({
       ...prevRates,
       [key]: newRate,
     }));
   };
 
-  const handleCommentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  const handleCommentChange = (
+    e: React.ChangeEvent<HTMLTextAreaElement>,
+  ): void => {
     setComment(e.target.value);
   };
 
-  const addComment = async () => {
+  const addComment = async (): Promise<void> => {
     if (!productId || !isAuth) {
-      console.error("Product ID or authentication is missing");
       return;
     }
 
@@ -85,22 +87,15 @@ function CommentPopUp({
         token: cookies.access,
       };
 
-
-      const response = await addProductComment(commentOfUser).unwrap();
-      console.log("Comment added successfully:", response);
-      // Optionally, you can reset the comment state after successful addition
+      await addProductComment(commentOfUser).unwrap();
       setComment("");
       setGlobalRate(0);
       if (data?.refetchOneProductComment) {
         await data.refetchOneProductComment();
       }
-
-      // You can also close the modal or show a success message
-      if (onClose)
-      onClose();
+      if (onClose) onClose();
     } catch (error) {
-      console.error("Error adding comment:", error);
-      // Handle the error as needed, e.g., show an error message to the user
+      //
     }
   };
 
@@ -118,8 +113,8 @@ function CommentPopUp({
           </p>
         </div>
 
-        <div className="font-rubik mb-8">
-          <h2>{ userInfo?.first_name}</h2> 
+        <div className="mb-8 font-rubik">
+          <h2>{userInfo?.first_name}</h2>
           <div className="flex gap-3 text-sm">
             <p>{t("comments.comment_description")}</p>
             <button className="text-blue-600">
@@ -128,7 +123,7 @@ function CommentPopUp({
           </div>
         </div>
 
-        <div className="font-rubik flex flex-col mb-8 gap-4">
+        <div className="mb-8 flex flex-col gap-4 font-rubik">
           <div className="flex justify-between">
             <p className="primary">{t("global_rate")}</p>
             <StarRate rate={globalRate} onRateChange={handleGlobalRateChange} />
@@ -150,10 +145,10 @@ function CommentPopUp({
           value={comment}
           onChange={handleCommentChange}
           rows={10}
-          className="w-72 resize-none md:w-[450px] block mx-auto outline-none border-2 p-5
-    border-solid rounded-md focus:border-blue-500 font-light text-[18px] mb-2"
+          className="mx-auto mb-2 block w-72 resize-none rounded-md border-2 border-solid
+    p-5 text-[18px] font-light outline-none focus:border-blue-500 md:w-[450px]"
         ></textarea>
-        <div className="mx-auto  flex items-center gap-1 mb-12">
+        <div className="mx-auto  mb-12 flex items-center gap-1">
           <Warning fill={comment.length > 400 ? "#ff3232" : "#13183a"} />
           <p
             className={comment.length > 400 ? "text-accent-red" : "text-black"}
@@ -164,7 +159,7 @@ function CommentPopUp({
         <button
           onClick={addComment}
           disabled={comment.length > 400 || comment.length === 0}
-          className=" block btn btn-effect text-center mx-auto"
+          className=" btn btn-effect mx-auto block text-center"
         >
           {t("comments.btn_add_comment")}
         </button>

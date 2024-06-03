@@ -13,7 +13,7 @@ const Pagination = ({
   setPage,
   onClick,
   page,
-  classname
+  classname,
 }: PaginationProps): JSX.Element => {
   return (
     <div className={classNames("flex gap-3", classname)}>
