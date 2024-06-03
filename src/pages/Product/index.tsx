@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { CURRENCY } from "app/api/config";
 import {
   useGetOneProductQuery,
@@ -24,13 +25,14 @@ import { SCREEN } from "shared/constants/screens";
 import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 import classNames from "classnames";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ProductSection from "shared/UI/ProductSection";
 import { useCookies } from "react-cookie";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
 import { useAuth } from "shared/hooks/useAuth";
 import { incrementBy } from "app/store/cart/authCartSlice";
+import Pagination from "shared/UI/Pagination";
 
 export default function Product(): JSX.Element {
   const { id } = useParams();
@@ -47,6 +49,7 @@ export default function Product(): JSX.Element {
   const [deleteFromWishlist] = useDeleteFromWishlistMutation();
   const { onOpen } = useModals();
   const { isAuth } = useAuth();
+  const [page, setPage] = useState<number>(1);
 
   useEffect(() => {
     if (id) {
@@ -57,6 +60,7 @@ export default function Product(): JSX.Element {
       if (!reviewed.includes(id)) {
         localStorage.setItem("reviewed", JSON.stringify([...reviewed, id]));
       }
+      localStorage.setItem("productID", JSON.stringify([id]));
     }
   }, []);
 
@@ -73,7 +77,7 @@ export default function Product(): JSX.Element {
   const criterias: TRCriteria = t("rate_by_criteria", {
     returnObjects: true,
   });
-  const { data, refetch } = useGetOneProductQuery(
+  const { data, refetch: refetchOneProduct } = useGetOneProductQuery(
     {
       id: id ?? "",
       lang,
@@ -84,15 +88,20 @@ export default function Product(): JSX.Element {
     },
   );
 
-  const { data: comments } = useGetOneProductCommentsQuery(
-    {
-      id: id ?? "",
-      page: 1,
-    },
-    {
-      skip: !id ?? false,
-    },
-  );
+  const { data: comments, refetch: refetchOneProductComment } =
+    useGetOneProductCommentsQuery(
+      {
+        id: id ?? "",
+        page,
+      },
+      {
+        skip: !id ?? false,
+      },
+    );
+
+  useEffect(() => {
+    void refetchOneProductComment();
+  }, [comments]);
 
   const handleAddToCart = (): void => {
     if (data) {
@@ -120,7 +129,7 @@ export default function Product(): JSX.Element {
       } else {
         void addToWishlist({ id: data.id, token: cookies.access });
       }
-      void refetch();
+      void refetchOneProduct();
     } else {
       onOpen({
         name: MODALS.LOGIN,
@@ -182,7 +191,14 @@ export default function Product(): JSX.Element {
           {isAuth && (
             <button
               className="btn btn-effect"
-              onClick={() => onOpen({ name: MODALS.COMMENT })}
+              onClick={() =>
+                onOpen({
+                  name: MODALS.COMMENT,
+                  data: {
+                    refetchOneProductComment,
+                  },
+                })
+              }
             >
               {t("comments.write_comment.header")}
             </button>
@@ -236,7 +252,7 @@ export default function Product(): JSX.Element {
                     <p className="secondary font-light text-gray-900">
                       {comment.date}
                     </p>
-                    <StarRate rate={comment.global_rate} />
+                    <StarRate rate={comment.global_rate} />{" "}
                   </div>
 
                   <div className="px-2">
@@ -261,6 +277,15 @@ export default function Product(): JSX.Element {
             <p className="h6 font-light">{t("comments.non_found.header")}</p>
             <h4 className="h5">{t("comments.non_found.description")}</h4>
           </div>
+        )}
+        {comments && comments?.count > 3 && (
+          <Pagination
+            totalPages={comments?.count ? Math.ceil(comments.count / 3) : 0}
+            setPage={setPage}
+            onClick={refetchOneProductComment}
+            page={page}
+            classname="items-center justify-center"
+          />
         )}
       </section>
       {reviewedProducts && (

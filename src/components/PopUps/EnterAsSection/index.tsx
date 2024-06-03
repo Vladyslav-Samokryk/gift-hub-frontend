@@ -22,6 +22,7 @@ export default function EnterAsSection({
     onSuccess: async ({ code }) => {
       try {
         const { data } = await getTokens(code);
+        console.log(data);
         setCookie("refresh", data.refresh);
         setCookie("access", data.access);
         dispatch(setIsAuth({ isAuth: true }));
