@@ -386,6 +386,15 @@ interface AllLocalesType {
     };
     courier_address: string;
     err_fill_all: string;
+
+    push_notifications: {
+      error: {
+        default: string;
+      };
+      success: {
+        default: string;
+      };
+    };
   };
 }
 

@@ -1,4 +1,5 @@
 import { lazy } from "react";
+import PushNotification from "shared/UI/PushNotification";
 
 export enum MODALS {
   LOGIN = "login",
@@ -10,6 +11,7 @@ export enum MODALS {
   FILTER = "filter",
   COMMENT = "comment",
   CABINET = "cabinet",
+  PUSH = "push",
 }
 
 const CategoryPopUp = lazy(
@@ -50,4 +52,5 @@ export const modalsList = [
   { name: MODALS.FILTER, component: FilterPopUp },
   { name: MODALS.COMMENT, component: CommentPopUp },
   { name: MODALS.CABINET, component: CabinetPopUp },
+  { name: MODALS.PUSH, component: PushNotification },
 ];
