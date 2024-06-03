@@ -5,6 +5,7 @@ interface PaginationProps {
   setPage: (_val: number) => void;
   onClick: () => void;
   page: number;
+  classname?: string;
 }
 
 const Pagination = ({
@@ -12,9 +13,10 @@ const Pagination = ({
   setPage,
   onClick,
   page,
+  classname,
 }: PaginationProps): JSX.Element => {
   return (
-    <div className="flex gap-3">
+    <div className={classNames("flex gap-3", classname)}>
       {Array.from({ length: totalPages }, (_el, p) => (
         <button
           key={p}
