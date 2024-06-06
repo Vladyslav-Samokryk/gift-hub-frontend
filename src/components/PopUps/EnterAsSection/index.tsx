@@ -9,15 +9,24 @@ import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { setIsAuth } from "app/store/slices/user";
 import type { ModalDialogProps } from "shared/types/Modals";
+import { useAddToBasketMutation } from "app/api/products";
+import { useAppSelector } from "app/store";
+import { selectCart, clearCart } from "app/store/cart/cartSlice";
 
 type CloseModalWindow = Pick<ModalDialogProps, "onClose">;
 
 export default function EnterAsSection({
   onClose,
 }: CloseModalWindow): JSX.Element {
-  const [, setCookie] = useCookies(["refresh", "access"]);
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const [, setCookie] = useCookies(["refresh", "access"]);
+  const cart = useAppSelector(selectCart);
+  const [addToBasket] = useAddToBasketMutation();
+
+  const handleClearLocalCart = (): void => {
+    dispatch(clearCart());
+  };
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       try {
@@ -26,6 +35,20 @@ export default function EnterAsSection({
         setCookie("refresh", data.refresh);
         setCookie("access", data.access);
         dispatch(setIsAuth({ isAuth: true }));
+        if (cart.length > 0) {
+          void addToBasket({
+            products: cart.map((product) => {
+              return {
+                product_id: product.id,
+                amount: product.count,
+                isSecretPresent: product.isSecretPresent,
+              };
+            }),
+            token: data.access,
+          })
+            .unwrap()
+            .then(() => handleClearLocalCart());
+        }
         if (onClose) {
           onClose();
         }
