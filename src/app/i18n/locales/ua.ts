@@ -176,7 +176,7 @@ export const ua: AllLocalesType = {
     birthday_errors: {
       date_in_past: "Дата занадто рання",
       date_in_future: "Дата не може бути у майбутньому",
-      invalid: "Будь ласка, введіть коректну дату",
+      invalid: "Будь ласка, введіть коректну дату: рррр-мм-дд",
     },
 
     all_categories: "Всі категорії",

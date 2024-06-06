@@ -13,21 +13,34 @@ export const UserInfoSchema = yup.object().shape({
     .matches(/\+380[0-9]{9}/, "checkout.errors.tel")
     .nullable(),
   dob: yup
-    .date()
+    .mixed()
     .nullable()
-    .transform(function (value, originalValue) {
-      if (this.isType(value)) {
-        return value;
-      }
-      if (typeof originalValue === "string") {
-        const parsedDate = parse(originalValue, "dd.MM.yyyy", new Date());
-        if (!isNaN(parsedDate.getTime())) {
-          return parsedDate;
+    .transform(function (_value, originalValue) {
+      const parsedDate = parse(
+        originalValue.toString(),
+        "yyyy-MM-dd",
+        new Date(),
+      );
+      if (parsedDate.toString() !== "Invalid Date") {
+        const year = parsedDate.getFullYear();
+        if (year < 1940) {
+          return "min";
         }
+        if (parsedDate > new Date()) {
+          return "max";
+        }
+
+        return parsedDate;
       }
       return null;
     })
-    .typeError("birthday_errors.invalid")
-    .min(new Date("1969-11-13"), "birthday_errors.date_in_past")
-    .max(new Date(), "birthday_errors.date_in_future"),
+    .test("valid", "birthday_errors.invalid", (value) => {
+      return value !== null;
+    })
+    .test("min", "birthday_errors.date_in_past", (value) => {
+      return value !== "min";
+    })
+    .test("max", "birthday_errors.date_in_future", (value) => {
+      return value !== "max";
+    }),
 });

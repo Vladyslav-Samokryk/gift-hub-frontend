@@ -4,7 +4,7 @@ interface UserInfo {
   first_name: string;
   last_name: string;
   mobile: string;
-  dob: Date;
+  dob: string;
   address: {
     town: string;
     street: string;
