@@ -6,6 +6,7 @@ const AnotherPersonSchema = yup.object().shape({
   tel: yup
     .string()
     .matches(/\+380[0-9]{9}/, "checkout.errors.tel")
+    .length(13, "checkout.errors.tel")
     .required("checkout.errors.required"),
 });
 
@@ -15,6 +16,7 @@ const noAnotherPersonSchema = yup.object().shape({
   tel: yup
     .string()
     .matches(/\+380[0-9]{9}/)
+    .length(13, "checkout.errors.tel")
     .notRequired(),
 });
 
@@ -32,6 +34,7 @@ export const CheckoutSchema = yup.object().shape({
   tel: yup
     .string()
     .matches(/\+380[0-9]{9}/, "checkout.errors.tel")
+    .length(13, "checkout.errors.tel")
     .required("checkout.errors.required"),
   delivery_type: yup
     .string()

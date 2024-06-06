@@ -11,6 +11,7 @@ export const UserInfoSchema = yup.object().shape({
   mobile: yup
     .string()
     .matches(/\+380[0-9]{9}/, "checkout.errors.tel")
+    .length(13, "checkout.errors.tel")
     .nullable(),
   dob: yup
     .mixed()
