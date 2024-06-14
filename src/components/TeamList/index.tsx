@@ -34,13 +34,13 @@ export default function TeamList() {
       name: t("about_as_section.participants")[1],
       image: foto2,
       background: bg2,
-      position: "frontend",
+      position: "Frontend",
     },
     {
       name: t("about_as_section.participants")[2],
       image: foto3,
       background: bg3,
-      position: "UIUX designer",
+      position: " UI/UX designer",
     },
     {
       name: t("about_as_section.participants")[3],
@@ -52,13 +52,13 @@ export default function TeamList() {
       name: t("about_as_section.participants")[4],
       image: foto5,
       background: bg5,
-      position: "UIUX designer",
+      position: "UI/UX designer",
     },
     {
       name: t("about_as_section.participants")[5],
       image: foto6,
       background: bg6,
-      position: "frontend",
+      position: "Frontend",
     },
     {
       name: t("about_as_section.participants")[6],
@@ -70,7 +70,7 @@ export default function TeamList() {
       name: t("about_as_section.participants")[7],
       image: foto8,
       background: bg8,
-      position: "Beckend",
+      position: "Backend",
     },
   ];
 

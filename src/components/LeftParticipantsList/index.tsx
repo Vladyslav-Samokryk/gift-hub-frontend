@@ -6,15 +6,15 @@ export default function LeftParticipants() {
  const left_participants = [
     {
       name: t("about_as_section.left_project_participants")[0],
-      position: "frontend",
+      position: "Frontend",
     },
     {
       name: t("about_as_section.left_project_participants")[1],
-      position: "frontend",
+      position: "Frontend",
     },
     {
       name: t("about_as_section.left_project_participants")[2],
-      position: "Beckend",
+      position: "Backend",
     },
     {
       name: t("about_as_section.left_project_participants")[3],
@@ -26,15 +26,15 @@ export default function LeftParticipants() {
     },
     {
       name: t("about_as_section.left_project_participants")[5],
-      position: "frontend",
+      position: "Frontend",
     },
     {
       name: t("about_as_section.left_project_participants")[6],
-      position: "frontend",
+      position: "Frontend",
     },
     {
       name: t("about_as_section.left_project_participants")[7],
-      position: "Beckend",
+      position: "Backend",
     },
     {
       name: t("about_as_section.left_project_participants")[8],

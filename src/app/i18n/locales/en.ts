@@ -3,14 +3,14 @@ export const en: AllLocalesType = {
      about_as_section: {
       title: "Meet our team!",
       participants: [
-        "Slava Samokryk",
-        "Vlada Chayka",
-        "Ilona Nedzelska",
-        "Tomara Covalenko",
-        "Olena Kasyanenko",
+        "Vladyslav Samokryk",
+        "Vladyslava Chaika",
+        "Nedzelska Ilona",
+        "Tamara Kovalenko",
+        "Olena Kasianenko",
         "Mykhailo Kapeliushnyk",
-        "Borislav Xbus",
-        "Alex Kovalenko",
+        "Borislav Hbus",
+        "Oleksii Kovalenko",
       ],
       left_project_participants:[
         "Lubomir Susar",
