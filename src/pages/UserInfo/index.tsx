@@ -27,7 +27,10 @@ function UserInfoPage(): JSX.Element {
           validationSchema={UserInfoSchema}
           onSubmit={(values) => {
             if (!isDisable) {
-              void patchUserInfo({ token: cookies.access, user: values })
+              void patchUserInfo({
+                token: cookies.access,
+                user: { ...values, dob: values.dob !== "" ? values.dob : null },
+              })
                 .unwrap()
                 .then(() => {
                   setIsDisabled((prev) => !prev);
