@@ -26,6 +26,7 @@ export interface ProductCardDetailedType {
   name: string;
   /** Category of product (type of product) */
   category: string;
+  categoryUrl: string;
   /** Price of product */
   price: number;
   /** Rate of product (number from 0 to 5) */
