@@ -105,6 +105,7 @@ export const en: AllLocalesType = {
         lowercase_letter: "Password must contain at least one lowercase letter",
         special_symbol: "Password must contain at least one special symbol",
         match: "Passwords must match",
+        only_latin_letters: "Password must have only latin letters",
       },
     },
 

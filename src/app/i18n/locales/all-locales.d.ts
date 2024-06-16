@@ -74,6 +74,7 @@ interface AllLocalesType {
         lowercase_letter: string;
         special_symbol: string;
         match: string;
+        only_latin_letters: string;
       };
     };
 

@@ -11,6 +11,10 @@ export const RegistrSchema = yup.object().shape({
   password: yup
     .string()
     .min(7, "input_password.rules.min_length")
+    .matches(
+      /^(?!.*[^\P{Alphabetic}a-zA-Z])/u,
+      "input_password.rules.only_latin_letters",
+    )
     .matches(/^(?=.*[A-Za-z])(?=.*\d).*$/, "input_password.rules.letter_digit")
     .matches(/[A-Z]/, "input_password.rules.uppercase_letter")
     .matches(/[a-z]/, "input_password.rules.lowercase_letter")
