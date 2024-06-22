@@ -98,13 +98,20 @@ export const en: AllLocalesType = {
       ph_current: "Current password",
       ph_repeat: "Repeat password",
       remind_password: "Remind password",
+      rules_popup: {
+        min_length: "Minimum 7 characters",
+        cases: "Upper and low cases",
+        latin_only: "Only latin letters",
+        number_symbol: "Numbers and symbols",
+      },
       rules: {
-        min_length: "Password must be at least 7 characters long",
-        letter_digit: "Password must contain at least one letter and one digit",
-        uppercase_letter: "Password must contain at least one uppercase letter",
-        lowercase_letter: "Password must contain at least one lowercase letter",
-        special_symbol: "Password must contain at least one special symbol",
+        min_length: "At least 7 characters long",
+        letter_digit: "At least one letter and digit",
+        uppercase_letter: "At least one uppercase letter",
+        lowercase_letter: "At least one lowercase letter",
+        special_symbol: "At least one special symbol",
         match: "Passwords must match",
+        only_latin_letters: "Only latin letters",
       },
     },
 
@@ -176,7 +183,7 @@ export const en: AllLocalesType = {
     birthday_errors: {
       date_in_past: "Date is too early",
       date_in_future: "Date cannot be in the future",
-      invalid: "Please enter a valid date",
+      invalid: "Please enter a valid date: yyyy-mm-dd",
     },
 
     categories: {

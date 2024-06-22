@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import classNames from "classnames";
 import type { UserDelivery } from "components/CheckoutForm";
@@ -11,11 +12,8 @@ interface DeliveryInputGroupProps {
   values: CheckoutValues;
   userValues?: UserDelivery | null;
   type: "ukr" | "nova";
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   setFieldValue: (field: string, value: any) => void;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   errors: any;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   touched: any;
 }
 
@@ -34,7 +32,7 @@ export default function DeliveryInputGroup({
     if (userValues) {
       if (values.delivery_option === "courier") {
         setFieldValue("town", userValues?.address.town ?? "");
-        setFieldValue("street", userValues?.address.street ?? "");
+        setFieldValue("address", userValues?.address.street ?? "");
         setFieldValue("building", userValues?.address.building ?? "");
         setFieldValue("flat", userValues?.address.flat ?? "");
       } else {
@@ -145,7 +143,7 @@ export default function DeliveryInputGroup({
               </InputContainer>
               <InputContainer
                 label={t("checkout.ph.address")}
-                inputValue={values.address ?? userValues?.address.street ?? ""}
+                inputValue={userValues?.address.street ?? values?.address ?? ""}
                 setInputValue={async () => setFieldValue("address", "")}
                 isError={!!errors.address && touched.address}
                 errorMessage={errors.address}

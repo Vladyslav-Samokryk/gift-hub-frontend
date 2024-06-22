@@ -16,6 +16,9 @@ import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { setIsAuth } from "app/store/slices/user";
+import { useAppSelector } from "app/store";
+import { clearCart, selectCart } from "app/store/cart/cartSlice";
+import { useAddToBasketMutation } from "app/api/products";
 import EnterAsSection from "../EnterAsSection";
 
 export default function LoginPopUp({
@@ -29,6 +32,12 @@ export default function LoginPopUp({
   const [isSavedUser, setIsSavedUser] = useState(true);
   const [, setCookie] = useCookies(["refresh", "access"]);
   const dispatch = useDispatch();
+  const cart = useAppSelector(selectCart);
+  const [addToBasket] = useAddToBasketMutation();
+
+  const handleClearLocalCart = (): void => {
+    dispatch(clearCart());
+  };
 
   return (
     <ModalContainer visible={isOpen} onClose={onClose} top={100}>
@@ -61,6 +70,23 @@ export default function LoginPopUp({
                 setCookie("refresh", data.refresh);
                 setCookie("access", data.access);
                 dispatch(setIsAuth({ isAuth: true }));
+                if (cart.length > 0) {
+                  void addToBasket({
+                    products: cart.map((product) => {
+                      return {
+                        product_id: product.id,
+                        amount: product.count,
+                        isSecretPresent: product.isSecretPresent,
+                      };
+                    }),
+                    token: data.access,
+                  })
+                    .unwrap()
+                    .then(() => handleClearLocalCart());
+                }
+                if (onClose) {
+                  onClose();
+                }
                 onOpen({
                   name: MODALS.PUSH,
                   data: {

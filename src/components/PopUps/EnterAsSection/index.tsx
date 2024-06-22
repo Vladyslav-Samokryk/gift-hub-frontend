@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useTranslation } from "react-i18next";
-
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
 import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
 import { FacebookLogin, GoogleLogin } from "shared/assets/svg/SocialMedia";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -8,10 +9,23 @@ import { getTokens } from "app/api/googleLogin";
 import { useCookies } from "react-cookie";
 import { useDispatch } from "react-redux";
 import { setIsAuth } from "app/store/slices/user";
-import { useModals } from "app/context/modalContext/useModals";
-import { MODALS } from "app/context/modalContext/modals";
+import type { ModalDialogProps } from "shared/types/Modals";
+import { useAddToBasketMutation } from "app/api/products";
+import { useAppSelector } from "app/store";
+import { selectCart, clearCart } from "app/store/cart/cartSlice";
 
-export default function EnterAsSection(): JSX.Element {
+type CloseModalWindow = Pick<ModalDialogProps, "onClose">;
+
+export default function EnterAsSection({
+  onClose,
+}: CloseModalWindow): JSX.Element {
+  const cart = useAppSelector(selectCart);
+  const [addToBasket] = useAddToBasketMutation();
+
+  const handleClearLocalCart = (): void => {
+    dispatch(clearCart());
+  };
+
   const [, setCookie] = useCookies(["refresh", "access"]);
   const { t } = useTranslation();
   const dispatch = useDispatch();
@@ -35,6 +49,23 @@ export default function EnterAsSection(): JSX.Element {
         setCookie("refresh", data.refresh);
         setCookie("access", data.access);
         dispatch(setIsAuth({ isAuth: true }));
+        if (cart.length > 0) {
+          void addToBasket({
+            products: cart.map((product) => {
+              return {
+                product_id: product.id,
+                amount: product.count,
+                isSecretPresent: product.isSecretPresent,
+              };
+            }),
+            token: data.access,
+          })
+            .unwrap()
+            .then(() => handleClearLocalCart());
+        }
+        if (onClose) {
+          onClose();
+        }
         onOpen({
           name: MODALS.PUSH,
           data: {
