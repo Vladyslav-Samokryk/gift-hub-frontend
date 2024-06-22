@@ -530,5 +530,14 @@ export const en: AllLocalesType = {
 
     courier_address: "Address for courier delivery",
     err_fill_all: "Fill all fields in section",
+
+    push_notifications: {
+      error: {
+        default: "Something went wrong!",
+      },
+      success: {
+        default: "Success operation!",
+      },
+    },
   },
 };

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { useTranslation } from "react-i18next";
-
+import { useModals } from "app/context/modalContext/useModals";
+import { MODALS } from "app/context/modalContext/modals";
 import ButtonWithIcon from "shared/UI/Buttons/ButtonWithIcon";
 import { FacebookLogin, GoogleLogin } from "shared/assets/svg/SocialMedia";
 import { useGoogleLogin } from "@react-oauth/google";
@@ -18,15 +19,28 @@ type CloseModalWindow = Pick<ModalDialogProps, "onClose">;
 export default function EnterAsSection({
   onClose,
 }: CloseModalWindow): JSX.Element {
-  const { t } = useTranslation();
-  const dispatch = useDispatch();
-  const [, setCookie] = useCookies(["refresh", "access"]);
   const cart = useAppSelector(selectCart);
   const [addToBasket] = useAddToBasketMutation();
 
   const handleClearLocalCart = (): void => {
     dispatch(clearCart());
   };
+
+  const [, setCookie] = useCookies(["refresh", "access"]);
+  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const { onOpen } = useModals();
+
+  const pushError = (): void => {
+    onOpen({
+      name: MODALS.PUSH,
+      data: {
+        variant: "error",
+        message: t("push_notifications.error.default"),
+      },
+    });
+  };
+
   const googleLogin = useGoogleLogin({
     onSuccess: async ({ code }) => {
       try {
@@ -52,12 +66,19 @@ export default function EnterAsSection({
         if (onClose) {
           onClose();
         }
+        onOpen({
+          name: MODALS.PUSH,
+          data: {
+            variant: "success",
+            message: t("push_notifications.success.default"),
+          },
+        });
       } catch (err) {
-        console.log(err);
+        pushError();
       }
     },
     flow: "auth-code",
-    onError: (errorResponse) => console.log(errorResponse),
+    onError: () => pushError(),
   });
   return (
     <>

@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import EnterAsSection from "components/PopUps/EnterAsSection";
 import { useTranslation } from "react-i18next";
 import { useModals } from "app/context/modalContext/useModals";
 import { MODALS } from "app/context/modalContext/modals";
@@ -20,6 +19,7 @@ import { setIsAuth } from "app/store/slices/user";
 import { useAppSelector } from "app/store";
 import { clearCart, selectCart } from "app/store/cart/cartSlice";
 import { useAddToBasketMutation } from "app/api/products";
+import EnterAsSection from "../EnterAsSection";
 
 export default function LoginPopUp({
   isOpen,
@@ -87,8 +87,23 @@ export default function LoginPopUp({
                 if (onClose) {
                   onClose();
                 }
+                onOpen({
+                  name: MODALS.PUSH,
+                  data: {
+                    variant: "success",
+                    message: t("push_notifications.success.default"),
+                  },
+                });
               })
-              .catch((e) => e);
+              .catch(() =>
+                onOpen({
+                  name: MODALS.PUSH,
+                  data: {
+                    variant: "error",
+                    message: t("push_notifications.error.default"),
+                  },
+                }),
+              );
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (
@@ -136,7 +151,9 @@ export default function LoginPopUp({
                   onClick={() => {
                     if (onClose) {
                       onClose();
-                      onOpen({ name: MODALS.REGISTR });
+                      onOpen({
+                        name: MODALS.REGISTR,
+                      });
                     }
                   }}
                 >
@@ -146,7 +163,7 @@ export default function LoginPopUp({
             </Form>
           )}
         </Formik>
-        <EnterAsSection onClose={onClose} />
+        <EnterAsSection />
       </div>
     </ModalContainer>
   );

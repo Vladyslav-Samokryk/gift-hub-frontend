@@ -39,6 +39,7 @@ const PaginationSection = (): JSX.Element => {
           options={PAGE_OPTIONS}
           title={t("select_productNum")}
           onSelect={handleSelect}
+          productNum={productNum}
         />
       )}
       <div className="flex grow flex-col items-center justify-between lg:flex-row">
