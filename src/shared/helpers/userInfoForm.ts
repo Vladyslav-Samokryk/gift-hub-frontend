@@ -17,6 +17,9 @@ export const UserInfoSchema = yup.object().shape({
     .mixed()
     .nullable()
     .transform(function (_value, originalValue) {
+      if (originalValue === "" || originalValue === null) {
+        return "";
+      }
       const parsedDate = parse(
         originalValue.toString(),
         "yyyy-MM-dd",
