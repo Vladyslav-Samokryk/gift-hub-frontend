@@ -67,6 +67,12 @@ interface AllLocalesType {
       ph_repeat: string;
       ph_current: string;
       remind_password: string;
+      rules_popup: {
+        min_length: string;
+        cases: string;
+        latin_only: string;
+        number_symbol: string;
+      };
       rules: {
         min_length: string;
         letter_digit: string;

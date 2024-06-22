@@ -13,6 +13,7 @@ import FormikPasswordInput from "shared/UI/FormikPassportInput";
 import { MODALS } from "app/context/modalContext/modals";
 import { useModals } from "app/context/modalContext/useModals";
 import { useRegistrationMutation } from "app/api/auth";
+import classNames from "classnames";
 
 export default function RegistrationPopUp({
   isOpen,
@@ -48,7 +49,7 @@ export default function RegistrationPopUp({
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (
-            <Form className="mt-6 flex flex-col justify-around gap-4 md:mr-5 md:gap-6">
+            <Form className="mt-6 flex flex-col justify-around gap-3 md:mr-5 md:gap-4">
               <FormikInput
                 value={values.first_name}
                 setFieldValue={setFieldValue}
@@ -84,6 +85,19 @@ export default function RegistrationPopUp({
                 errorMessage={errors.password}
                 label={t("input_password.ph_create")}
               />
+
+              <ol
+                className={classNames("list-disc ml-5", {
+                  // eslint-disable-next-line @typescript-eslint/no-unnecessary-boolean-literal-compare
+                  "text-accent-green": !!errors.password === false,
+                  "text-gray-400": errors.password && !touched.password,
+                })}
+              >
+                <li>{t("input_password.rules_popup.min_length")}</li>
+                <li>{t("input_password.rules_popup.cases")}</li>
+                <li>{t("input_password.rules_popup.latin_only")}</li>
+                <li>{t("input_password.rules_popup.number_symbol")}</li>
+              </ol>
 
               <FormikPasswordInput
                 label={t("input_password.ph_repeat")}
