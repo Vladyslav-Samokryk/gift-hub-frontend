@@ -1,5 +1,33 @@
 export const en: AllLocalesType = {
   translation: {
+     about_as_section: {
+      title: "Meet our team!",
+      participants: [
+        "Vladyslav Samokryk",
+        "Vladyslava Chaika",
+        "Nedzelska Ilona",
+        "Tamara Kovalenko",
+        "Olena Kasianenko",
+        "Mykhailo Kapeliushnyk",
+        "Borislav Hbus",
+        "Oleksii Kovalenko",
+      ],
+      left_project_participants:[
+        "LIUBOMYR SIUSAR",
+        "ALEKS  CHERKASOV",
+        "VASYL KACHAN",
+        "TARAS FEDORENKO",
+        "OLHA LETIAHINA",
+        "OLEKSANDR ZIMNYTSIA",
+        "BOHDAN DOMANSKI",
+        "YAROSLAV LISOVYI",
+        "ZARICHNA KHRYSTYNA",
+        
+      ],
+      project_info:
+        "We worked on our project for 7 months. This is an online gift shop for IT professionals. Well done and made a cool site with various features.",
+      regards: "We thank the colleagues who participated in the project:",
+    },
     footer_sections: {
       follow_us: "Follow us",
       contact_us: "Contact us",
