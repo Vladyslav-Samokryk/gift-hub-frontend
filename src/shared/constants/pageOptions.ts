@@ -1,1 +1,1 @@
-export const PAGE_OPTIONS = [9, 18, 36, 24];
+export const PAGE_OPTIONS = [9, 18, 36];

@@ -3,7 +3,7 @@ import { MdAlternateEmail } from "react-icons/md";
 import { FaInstagram } from "react-icons/fa6";
 import { FaGithub } from "react-icons/fa6";
 import { SCREEN } from "shared/constants/screens";
-import { PAGE_OPTIONS } from "shared/constants/pageOptions";
+import { ICON_SIZES } from "shared/constants/iconSizes";
 
 import { useScreenWidth } from "shared/hooks/useScreenWidth";
 
@@ -11,7 +11,7 @@ const iconBlockClass="hover:text-blue-800 cursor-pointer transition-colors	durat
 
 export default function IconsBlock(): JSX.Element {
   const screenWidth = useScreenWidth();
-  const iconSize = screenWidth <= SCREEN.LG ? PAGE_OPTIONS[3] : PAGE_OPTIONS[2];
+  const iconSize = screenWidth <= SCREEN.LG ? ICON_SIZES[0] : ICON_SIZES[1];
 
   return (
     <div className="flex items-center mx-auto gap-3 w-fit">
