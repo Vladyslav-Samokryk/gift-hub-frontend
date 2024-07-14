@@ -20,6 +20,7 @@ import { useAppSelector } from "app/store";
 import { clearCart, selectCart } from "app/store/cart/cartSlice";
 import { useAddToBasketMutation } from "app/api/products";
 import EnterAsSection from "../EnterAsSection";
+import { useGetCurrentLang } from "shared/hooks/useGetCurrentLang";
 
 export default function LoginPopUp({
   isOpen,
@@ -34,6 +35,7 @@ export default function LoginPopUp({
   const dispatch = useDispatch();
   const cart = useAppSelector(selectCart);
   const [addToBasket] = useAddToBasketMutation();
+  const lang = useGetCurrentLang();
 
   const handleClearLocalCart = (): void => {
     dispatch(clearCart());
@@ -135,7 +137,11 @@ export default function LoginPopUp({
                   onChange={() => setIsSavedUser((prev) => !prev)}
                 />
                 <a
-                  href="#"
+                  href={
+                    lang !== "en"
+                      ? "https://alex-online-store.fly.dev/api/v1/accounts/ua/password-reset/"
+                      : "https://alex-online-store.fly.dev/api/v1/accounts/en/password-reset/"
+                  }
                   className="additional mb-3 text-blue-800 underline md:mb-0"
                 >
                   {t("input_password.remind_password")}
