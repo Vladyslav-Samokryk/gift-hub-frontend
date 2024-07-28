@@ -2,14 +2,14 @@ import { useTranslation } from "react-i18next";
 import "../../app/styles/index.scss";
 import IconsBlock from "shared/UI/IconsBlock";
 
-import foto1 from "../../shared/assets/img/foto1.png";
-import foto2 from "../../shared/assets/img/foto2.png";
-import foto3 from "../../shared/assets/img/foto3.png";
-import foto4 from "../../shared/assets/img/foto4.png";
-import foto5 from "../../shared/assets/img/foto5.png";
-import foto6 from "../../shared/assets/img/foto6.png";
-import foto7 from "../../shared/assets/img/foto7.png";
-import foto8 from "../../shared/assets/img/foto8.png";
+import foto1 from "../../shared/assets/img/VS.png";
+import foto2 from "../../shared/assets/img/VCh.png";
+import foto3 from "../../shared/assets/img/IN.png";
+import foto4 from "../../shared/assets/img/TK.png";
+import foto5 from "../../shared/assets/img/OK.png";
+import foto6 from "../../shared/assets/img/MK.png";
+import foto7 from "../../shared/assets/img/BX.png";
+import foto8 from "../../shared/assets/img/OlK.png";
 
 import bg1 from "../../shared/assets/img/bg1.png";
 import bg2 from "../../shared/assets/img/bg2.png";
