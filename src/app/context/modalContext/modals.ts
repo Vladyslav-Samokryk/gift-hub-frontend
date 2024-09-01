@@ -1,3 +1,4 @@
+import AddManagerPopUp from "components/PopUps/AddManager";
 import AdminCabinetPopUp from "components/PopUps/AdminCabinet";
 import { lazy } from "react";
 import PushNotification from "shared/UI/PushNotification";
@@ -14,6 +15,7 @@ export enum MODALS {
   CABINET = "cabinet",
   PUSH = "push",
   ADMIN_CABINET = "admin",
+  ADD_MANAGER = "add_manager",
 }
 
 const CategoryPopUp = lazy(
@@ -56,4 +58,5 @@ export const modalsList = [
   { name: MODALS.CABINET, component: CabinetPopUp },
   { name: MODALS.PUSH, component: PushNotification },
   { name: MODALS.ADMIN_CABINET, component: AdminCabinetPopUp },
+  { name: MODALS.ADD_MANAGER, component: AddManagerPopUp },
 ];

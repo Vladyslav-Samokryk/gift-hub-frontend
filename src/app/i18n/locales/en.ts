@@ -551,5 +551,25 @@ export const en: AllLocalesType = {
         default: "Success operation!",
       },
     },
+
+    manager: {
+      name: "Name",
+      email: "Email",
+      orders: "Solved orders",
+      online: "Status",
+    },
+
+    status: {
+      online: "Online",
+      offline: "Offline",
+    },
+
+    error_add_manager: {
+      login_match_email: "Login cannot match personal email",
+    },
+
+    btn_add_manager: "Add manager",
+    ph_name: "Name",
+    ph_login: "Login",
   },
 };

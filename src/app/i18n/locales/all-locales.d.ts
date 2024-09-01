@@ -97,6 +97,9 @@ interface AllLocalesType {
       benefit: string;
     };
 
+    btn_add_manager: string;
+    ph_name: string;
+    ph_login: string;
     ph_email: string;
     ph_search: string;
     tricked_line_text: string;
@@ -413,6 +416,22 @@ interface AllLocalesType {
       success: {
         default: string;
       };
+    };
+
+    manager: {
+      name: string;
+      email: string;
+      orders: string;
+      online: string;
+    };
+
+    status: {
+      online: string;
+      offline: string;
+    };
+
+    error_add_manager: {
+      login_match_email: string;
     };
   };
 }

@@ -2,6 +2,7 @@ import type { PushNotificationProps } from "shared/UI/PushNotification";
 import type { QueryActionCreatorResult } from "@reduxjs/toolkit/dist/query/core/buildInitiate";
 import type { MODALS } from "../../app/context/modalContext/modals";
 import type { CategorySub } from "./Categories";
+import type { AddManagerValue } from "./Admin";
 
 type ValueOf<T extends string> = `${T}`;
 
@@ -11,6 +12,7 @@ export interface ModalDataProps extends PushNotificationProps {
   sub?: CategorySub[];
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   refetchOneProductComment?: () => QueryActionCreatorResult<any>;
+  onAdd?: (el: AddManagerValue) => void;
 }
 
 export interface ModalDialogProps {

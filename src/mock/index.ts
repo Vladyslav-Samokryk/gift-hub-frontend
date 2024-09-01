@@ -1,3 +1,4 @@
+import type { Manager } from "shared/types/Admin";
 import type { ProductCardType } from "shared/types/ProductTypes";
 
 export const productCardMock: ProductCardType[] = [
@@ -91,5 +92,29 @@ export const comments = [
       description_match: 16,
       price: 60,
     },
+  },
+];
+
+export const managers: Manager[] = [
+  {
+    id: "1",
+    name: "Ivan Vasnilenko",
+    email: "ivan.vasnilenko@gmail.com",
+    orders: 4,
+    online: true,
+  },
+  {
+    id: "2",
+    name: "Liza Kotlar",
+    email: "l_kot@outlook.com",
+    orders: 100,
+    online: false,
+  },
+  {
+    id: "3",
+    name: "Nik Daniels",
+    email: "nkdjo2@ukr.net",
+    orders: 1,
+    online: true,
   },
 ];

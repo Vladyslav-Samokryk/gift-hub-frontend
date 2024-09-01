@@ -553,5 +553,25 @@ export const ua: AllLocalesType = {
         default: "Операція успішна!",
       },
     },
+
+    manager: {
+      name: "ПІБ",
+      email: "Пошта",
+      orders: "Виконані замовлення",
+      online: "Статус",
+    },
+
+    status: {
+      online: "Онлайн",
+      offline: "Офлайн",
+    },
+
+    error_add_manager: {
+      login_match_email: "Логін не може співпадати з персональною поштою",
+    },
+
+    btn_add_manager: "Додати менеджера",
+    ph_name: "ПІБ",
+    ph_login: "Логін",
   },
 };
