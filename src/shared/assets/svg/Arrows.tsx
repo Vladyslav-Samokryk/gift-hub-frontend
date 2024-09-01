@@ -62,6 +62,21 @@ export const DownStep = (): JSX.Element => (
   </svg>
 );
 
+export const UpStep = (): JSX.Element => (
+  <svg
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M10.5876 7.149L1 16.8802L2.21976 18L11.7782 8.2983L21.8097 17.9817L23 16.8327L11.7779 6L10.5876 7.149Z"
+      fill="#607D8B"
+    />
+  </svg>
+);
+
 export const CategoryArrow = (): JSX.Element => (
   <svg
     width="24"

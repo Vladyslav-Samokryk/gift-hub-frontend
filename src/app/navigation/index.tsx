@@ -3,6 +3,8 @@ import { useRoutes } from "react-router";
 import { useAppSelector } from "../store";
 import { ADMIN, MANAGER } from "shared/constants/roles";
 import { lazy } from "react";
+import AdminLayout from "app/layouts/AdminLayout/AdminLayout";
+import AdminManagers from "pages/Admin/Managers";
 
 const CatalogLayout = lazy(
   async () => await import("app/layouts/CatalogLayout"),
@@ -146,8 +148,14 @@ const useAdminRouting = (): ReturnType<typeof useRoutes> => {
           element: <Main />,
         },
         {
-          path: "catalog-for-admin",
-          element: <CatalogByCategory />,
+          path: "admin",
+          element: <AdminLayout />,
+          children: [
+            {
+              path: "",
+              element: <AdminManagers />,
+            },
+          ],
         },
       ],
     },
@@ -160,14 +168,15 @@ export const Routing = (): React.ReactElement | null => {
   const role = useAppSelector((state) => state.user.role);
 
   switch (role) {
-    case MANAGER: {
+    /*     case MANAGER: {
       return useManagerRouting();
     }
-    case ADMIN: {
+    case ADMIN: { */
+    default: {
       return useAdminRouting();
     }
-    default: {
+    /*     default: {
       return useBuyerRouting();
-    }
+    } */
   }
 };

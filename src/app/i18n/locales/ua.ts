@@ -510,6 +510,18 @@ export const ua: AllLocalesType = {
       history: "Історія замовлень",
     },
 
+    admin_section: {
+      managers: "Менеджери",
+      reviews: "Відгуки",
+      orders: "Замовлення",
+      products: "Продукти",
+      history: "Історія замовлень",
+      categories: "Категорії",
+      banners: "Банери",
+      contacts: "Контакти",
+      faq: "FAQ",
+    },
+
     logout: "Вийти з облікового запису",
 
     wishlist: {

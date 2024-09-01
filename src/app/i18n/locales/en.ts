@@ -503,6 +503,18 @@ export const en: AllLocalesType = {
       history: "History",
     },
 
+    admin_section: {
+      managers: "Managers",
+      reviews: "Reviews",
+      orders: "Orders",
+      products: "Products",
+      history: "History",
+      categories: "Categories",
+      banners: "Banners",
+      contacts: "Contacts",
+      faq: "FAQ",
+    },
+
     logout: "Log out",
     not_found_content: [
       "Unfortunately, the page was not found",

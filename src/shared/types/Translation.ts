@@ -45,6 +45,18 @@ export interface TRCabinet {
   history: string;
 }
 
+export interface TRAdmin {
+  managers: string;
+  reviews: string;
+  orders: string;
+  products: string;
+  history: string;
+  categories: string;
+  banners: string;
+  contacts: string;
+  faq: string;
+}
+
 export interface TRLang {
   en: string;
   ua: string;

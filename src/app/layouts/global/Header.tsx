@@ -25,9 +25,11 @@ export default function Header(): JSX.Element {
     "/privacy-policy",
     "/checkout",
     "/user",
+    "/admin",
   ];
 
   const userCabinet = "/user";
+  const adminCabinet = "/admin";
 
   const additionalPaths = [
     "/",
@@ -40,25 +42,40 @@ export default function Header(): JSX.Element {
     "/catalog-for-admin",
   ];
 
+  const getRoleCabinet = (): Children | null => {
+    if (location.pathname.includes(userCabinet)) {
+      return (
+        <>
+          {windowWidth <= SCREEN.MD ? (
+            <button
+              type="button"
+              onClick={() => onOpen({ name: MODALS.CABINET })}
+            >
+              <CabinetIcon />
+            </button>
+          ) : null}
+          <UserSection />
+        </>
+      );
+    }
+
+    if (location.pathname.includes(adminCabinet)) {
+      return windowWidth <= SCREEN.MD ? (
+        <button
+          type="button"
+          onClick={() => onOpen({ name: MODALS.ADMIN_CABINET })}
+        >
+          <CabinetIcon />
+        </button>
+      ) : null;
+    }
+    return null;
+  };
+
   const getHeaderComponent = (): Children | null => {
     switch (true) {
       case paths.some((el) => location.pathname.includes(el)):
-        return (
-          <HeaderWithGoBack>
-            {location.pathname.includes(userCabinet) ? (
-              windowWidth <= SCREEN.MD ? (
-                <button
-                  type="button"
-                  onClick={() => onOpen({ name: MODALS.CABINET })}
-                >
-                  <CabinetIcon />
-                </button>
-              ) : null
-            ) : (
-              <UserSection />
-            )}
-          </HeaderWithGoBack>
-        );
+        return <HeaderWithGoBack>{getRoleCabinet()}</HeaderWithGoBack>;
       case additionalPaths.some((el) => location.pathname.includes(el)):
         return <HeaderWithSearch />;
       default:

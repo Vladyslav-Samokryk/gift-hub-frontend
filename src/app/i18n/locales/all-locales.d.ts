@@ -371,6 +371,18 @@ interface AllLocalesType {
       history: string;
     };
 
+    admin_section: {
+      managers: string;
+      reviews: string;
+      orders: string;
+      products: string;
+      history: string;
+      categories: string;
+      banners: string;
+      contacts: string;
+      faq: string;
+    };
+
     logout: string;
 
     wishlist: {
