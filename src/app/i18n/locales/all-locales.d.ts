@@ -425,10 +425,30 @@ interface AllLocalesType {
       online: string;
     };
 
+    review: {
+      date: string;
+      user_name: string;
+      review: string;
+    };
+
     status: {
       online: string;
       offline: string;
     };
+
+    manager_empty: string;
+    review_empty: string;
+    action: string;
+    see_product: string;
+
+    review_answer: string;
+    fast_answers: {
+      title: string;
+      positive: string;
+      negative: string;
+    };
+
+    btn_answer: string;
 
     error_add_manager: {
       login_match_email: string;

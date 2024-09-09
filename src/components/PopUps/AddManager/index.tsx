@@ -48,7 +48,7 @@ const AddManagerPopUp = ({
           }}
         >
           {({ values, setFieldValue, errors, touched }) => (
-            <Form className="mt-6 flex flex-col justify-around gap-3 md:mr-5 md:gap-6">
+            <Form className="mt-6 flex flex-col items-center justify-around gap-3 md:mr-5 md:gap-6">
               <FormikInput
                 label={t("ph_name")}
                 type="text"

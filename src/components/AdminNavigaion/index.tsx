@@ -138,7 +138,7 @@ export default function AdminNavigation({
                   <li key={key}>
                     <Link
                       to={"/admin" + path}
-                      className={classNames("secondary", {
+                      className={classNames("secondary pl-3", {
                         "text-blue-700": url.includes(path),
                       })}
                       onClick={onClose}

@@ -12,3 +12,11 @@ export interface AddManagerValue {
   login: string;
   password: string;
 }
+
+export interface Reviews {
+  id: string;
+  date: Date;
+  user_name: string;
+  review: string;
+  product_id: string;
+}

@@ -5,6 +5,8 @@ import { ADMIN, MANAGER } from "shared/constants/roles";
 import { lazy } from "react";
 import AdminLayout from "app/layouts/AdminLayout/AdminLayout";
 import AdminManagers from "pages/Admin/Managers";
+import AdminReviews from "pages/Admin/Reviews";
+import AdminReviewAnswer from "pages/Admin/ReviewAnswer";
 
 const CatalogLayout = lazy(
   async () => await import("app/layouts/CatalogLayout"),
@@ -154,6 +156,18 @@ const useAdminRouting = (): ReturnType<typeof useRoutes> => {
             {
               path: "",
               element: <AdminManagers />,
+            },
+            {
+              path: "managers",
+              element: <AdminManagers />,
+            },
+            {
+              path: "reviews",
+              element: <AdminReviews />,
+            },
+            {
+              path: "reviewAnswer/:id",
+              element: <AdminReviewAnswer />,
             },
           ],
         },

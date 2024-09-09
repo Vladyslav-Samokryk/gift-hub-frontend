@@ -5,9 +5,7 @@ import { managers } from "mock";
 import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import Table from "shared/UI/Table";
-import { EmptyBasketIcon } from "shared/assets/svg/Basket";
 import { BlueClose } from "shared/assets/svg/CloseIcons";
-import { Plus } from "shared/assets/svg/Plus";
 import { Search } from "shared/assets/svg/Search";
 import Trash from "shared/assets/svg/Trash";
 import type { AddManagerValue, Manager } from "shared/types/Admin";
@@ -27,7 +25,7 @@ function AdminManagers(): JSX.Element {
         ...Object.keys(data[0])
           .slice(1)
           .map((key) => "manager." + key),
-        "",
+        "action",
       ]);
     }
   }, [data]);
@@ -76,8 +74,8 @@ function AdminManagers(): JSX.Element {
 
   return (
     <>
-      <div className="flex mb-3">
-        <section className="group flex grow items-center rounded-l-lg border-r-transparent border border-black bg-white p-1 text-center">
+      <div className="mb-3 flex">
+        <section className="group flex grow items-center rounded-l-lg border border-black border-r-transparent bg-white p-1 text-center">
           <button>
             <Search />
           </button>
@@ -97,7 +95,7 @@ function AdminManagers(): JSX.Element {
         </section>
         <button
           type="button"
-          className="btn-effect btn rounded-r-lg border-black border text-black bg-purple-100 px-6 pb-1 pt-0 text-3xl font-light"
+          className="btn rounded-r-lg border border-black bg-purple-100 px-6 pb-1 pt-0 text-3xl font-light text-black hover:bg-purple-900 hover:text-white"
           onClick={openAddManagerModal}
         >
           +
@@ -121,7 +119,7 @@ function AdminManagers(): JSX.Element {
                 return (
                   <div
                     key={el.name}
-                    className="secondary flex flex-row divide-x divide-gray-400 break-all mobile-font xl:secondary"
+                    className="secondary mobile-font xl:secondary flex flex-row divide-x divide-gray-400 break-all"
                   >
                     <div className={classNames(columnsWidth[0], "p-3")}>
                       {el.name}
@@ -162,10 +160,8 @@ function AdminManagers(): JSX.Element {
           </Table>
         </>
       ) : (
-        <section className="flex flex-col items-center text-secondary-900">
-          <EmptyBasketIcon />
-          <p className="primary-bold">{t("wishlist.header")}</p>
-          <p className="secondary">{t("wishlist.description")}</p>
+        <section className="flex h-[40vh] flex-col items-center justify-center text-secondary-900">
+          <p className="primary-bold">{t("manager_empty")}</p>
         </section>
       )}
     </>

@@ -559,6 +559,12 @@ export const en: AllLocalesType = {
       online: "Status",
     },
 
+    review: {
+      date: "Date",
+      user_name: "Username",
+      review: "Review",
+    },
+
     status: {
       online: "Online",
       offline: "Offline",
@@ -571,5 +577,21 @@ export const en: AllLocalesType = {
     btn_add_manager: "Add manager",
     ph_name: "Name",
     ph_login: "Login",
+    see_product: "See product",
+
+    review_answer: "Review answer",
+    fast_answers: {
+      title: "Fast answers",
+      positive:
+        "Hi! \nThank you for such a review. \nWe are glad that you are satisfied with us! \nWe look forward to continuing our collaboration.",
+      negative:
+        "Hi! \nWe are sorry that you encountered such a problem.\nThank you for your feedback, and we want to resolve the situation. Our specialist will contact you in a manner convenient for you and will offer a replacement or a refund.\nPlease provide us with your contact details.",
+    },
+
+    btn_answer: "Answer",
+
+    manager_empty: "There are no managers",
+    review_empty: "There are no reviews",
+    action: "Action",
   },
 };
