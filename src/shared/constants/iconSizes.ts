@@ -1,0 +1,1 @@
+export const ICON_SIZES = [24, 36];
